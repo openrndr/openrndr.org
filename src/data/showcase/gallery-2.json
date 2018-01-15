@@ -1,0 +1,194 @@
+{
+    "data": [
+        {
+            "id": "14857",
+            "itemType": "gallery_item",
+            "updatedAt": "2018-01-15T15:46:53.570Z",
+            "createdAt": "2018-01-15T14:51:49.866Z",
+            "blurb": "<p>hi there</p>",
+            "url": "https://www.google.com",
+            "media": [
+                {
+                    "id": "156394",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-15T14:51:49.187Z",
+                    "createdAt": "2018-01-15T14:51:49.107Z",
+                    "file": {
+                        "format": "png",
+                        "size": 363531,
+                        "width": 424,
+                        "height": 500,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516027847-screen-shot-2017-09-25-at-2-44-46-pm.png"
+                    },
+                    "caption": "a beautiful picture"
+                },
+                {
+                    "id": "156393",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-15T14:51:49.035Z",
+                    "createdAt": "2018-01-15T14:51:48.958Z",
+                    "file": {
+                        "format": "png",
+                        "size": 18391,
+                        "width": 220,
+                        "height": 191,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516027874-screen-shot-2017-12-11-at-3-53-58-pm.png"
+                    },
+                    "caption": "another beautiful picture"
+                },
+                {
+                    "id": "156476",
+                    "itemType": "video",
+                    "updatedAt": "2018-01-15T15:46:53.071Z",
+                    "createdAt": "2018-01-15T15:46:53.071Z",
+                    "file": {
+                        "url": "https://www.youtube.com/watch?v=vF4JmwRXAwM",
+                        "title": "Hella - Tripper (2011) [Full Album]",
+                        "width": 459,
+                        "height": 344,
+                        "provider": "youtube",
+                        "providerUid": "vF4JmwRXAwM",
+                        "thumbnailUrl": "https://i.ytimg.com/vi/vF4JmwRXAwM/hqdefault.jpg"
+                    },
+                    "caption": null
+                },
+                {
+                    "id": "156475",
+                    "itemType": "gif",
+                    "updatedAt": "2018-01-15T15:46:53.063Z",
+                    "createdAt": "2018-01-15T15:46:53.063Z",
+                    "caption": null,
+                    "url": "https://media.giphy.com/media/zk6XXepJxKsX6/giphy.gif"
+                }
+            ],
+            "title": "Project 1"
+        },
+        {
+            "id": "12370",
+            "itemType": "gallery_item",
+            "updatedAt": "2018-01-15T15:35:09.384Z",
+            "createdAt": "2018-01-15T15:35:09.384Z",
+            "blurb": "<p>oioioioioioi</p>",
+            "url": "https://google.com",
+            "media": [
+                {
+                    "id": "156467",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-15T15:35:08.978Z",
+                    "createdAt": "2018-01-15T15:35:08.935Z",
+                    "file": {
+                        "format": "png",
+                        "size": 452408,
+                        "width": 512,
+                        "height": 512,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516030495-lenaoriginal.png"
+                    },
+                    "caption": "lena"
+                }
+            ],
+            "title": "Project2"
+        },
+        {
+            "id": "4652",
+            "itemType": "gallery_item",
+            "updatedAt": "2018-01-15T15:46:53.570Z",
+            "createdAt": "2018-01-15T14:51:49.866Z",
+            "blurb": "<p>hi there</p>",
+            "url": "https://www.google.com",
+            "media": [
+                {
+                    "id": "156394",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-15T14:51:49.187Z",
+                    "createdAt": "2018-01-15T14:51:49.107Z",
+                    "file": {
+                        "format": "png",
+                        "size": 363531,
+                        "width": 424,
+                        "height": 500,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516027847-screen-shot-2017-09-25-at-2-44-46-pm.png"
+                    },
+                    "caption": "a beautiful picture"
+                },
+                {
+                    "id": "156393",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-15T14:51:49.035Z",
+                    "createdAt": "2018-01-15T14:51:48.958Z",
+                    "file": {
+                        "format": "png",
+                        "size": 18391,
+                        "width": 220,
+                        "height": 191,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516027874-screen-shot-2017-12-11-at-3-53-58-pm.png"
+                    },
+                    "caption": "another beautiful picture"
+                },
+                {
+                    "id": "156476",
+                    "itemType": "video",
+                    "updatedAt": "2018-01-15T15:46:53.071Z",
+                    "createdAt": "2018-01-15T15:46:53.071Z",
+                    "file": {
+                        "url": "https://www.youtube.com/watch?v=vF4JmwRXAwM",
+                        "title": "Hella - Tripper (2011) [Full Album]",
+                        "width": 459,
+                        "height": 344,
+                        "provider": "youtube",
+                        "providerUid": "vF4JmwRXAwM",
+                        "thumbnailUrl": "https://i.ytimg.com/vi/vF4JmwRXAwM/hqdefault.jpg"
+                    },
+                    "caption": null
+                },
+                {
+                    "id": "156475",
+                    "itemType": "gif",
+                    "updatedAt": "2018-01-15T15:46:53.063Z",
+                    "createdAt": "2018-01-15T15:46:53.063Z",
+                    "caption": null,
+                    "url": "https://media.giphy.com/media/zk6XXepJxKsX6/giphy.gif"
+                }
+            ],
+            "title": "Project 1"
+        },
+        {
+            "id": "12671",
+            "itemType": "gallery_item",
+            "updatedAt": "2018-01-15T15:35:09.384Z",
+            "createdAt": "2018-01-15T15:35:09.384Z",
+            "blurb": "<p>oioioioioioi</p>",
+            "url": "https://google.com",
+            "media": [
+                {
+                    "id": "156467",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-15T15:35:08.978Z",
+                    "createdAt": "2018-01-15T15:35:08.935Z",
+                    "file": {
+                        "format": "png",
+                        "size": 452408,
+                        "width": 512,
+                        "height": 512,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516030495-lenaoriginal.png"
+                    },
+                    "caption": "lena"
+                }
+            ],
+            "title": "Project2"
+        }
+    ],
+    "next": null,
+    "prev": "/showcase/gallery-2.json"
+}

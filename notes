@@ -1,0 +1,69 @@
+
+
+
+
+
+Dato
+
+It turns out it's possible to configure highly granular permissions for reading the api.
+
+However, the api client leaves a lot of manual work to the developer. Related models are not automatically resolved by the client and is left up to the developer to do. For example:
+I want to list showcases:
+
+```
+client.items
+  .all({
+    "filter[type]": "showcase",
+    "page[offset]": 0,
+    "page[limit]": 15
+  })
+  .then(records => console.log(records));
+```
+
+response:
+[
+   {
+       id: '155234',
+       createdAt: '2018-01-12T11:34:30.674Z',
+       updatedAt: '2018-01-15T10:27:22.173Z',
+       isValid: true,
+       gallery: [ '156200', '156201' ],
+       caseStudy: [],
+       itemType: '19743'
+   }
+ ]
+
+
+The linked model `gallery` is not populated and has to be fetched manually with additional requests.
+
+populating the gallery field:
+```
+client.items
+  .all({
+    "filter[type]": "showcase",
+    "page[offset]": 0,
+    "page[limit]": 15
+  })
+  .then(records => {
+    const populatedGalleries = records.map(r => {
+      return client.items
+        .all({
+          "filter[ids]": r.gallery.join(",")
+        })
+        .then(g => {
+          return {
+            ...r,
+            gallery: g
+          };
+        });
+    });
+    return Promise.all(populatedGalleries);
+  })
+  .then(result => {
+    console.log(JSON.stringify(result, null, 4));
+  });
+```
+
+It's not difficult to do, but such logic would have to be implemented for any model that we need to dynamically request and which has a relational field. 
+
+I'm looking into another solution for this use case.
