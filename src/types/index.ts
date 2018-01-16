@@ -36,8 +36,8 @@ export interface Gif extends Entity {
 
 export type MediaItem = Image | Video | Gif;
 
-export interface GalleryItem extends Entity {
-  itemType: "gallery_item";
+export interface Project extends Entity {
+  itemType: "project";
   title: string;
   blurb: string;
   url: string;
@@ -45,7 +45,7 @@ export interface GalleryItem extends Entity {
 }
 
 export interface Showcase extends Entity {
-  gallery: GalleryItem[];
-  experiments: GalleryItem[];
-  caseStudies: GalleryItem[];
+  gallery: Project[];
+  experiments: Project[];
+  caseStudies: Project[];
 }

@@ -1,5 +1,5 @@
 // Paths Aliases defined through tsconfig.json
-const typescriptWebpackPaths = require("./webpack.config.js");
+// const typescriptWebpackPaths = require("./webpack.config.js");
 const fs = require("fs");
 
 export default {
@@ -10,18 +10,25 @@ export default {
     return [
       {
         path: "/",
-        component: "src/app/containers/Home",
+        component: "src/app/containers/home",
         getProps: async () => {
           return {
-            gallery: JSON.parse(
+            page: JSON.parse(
               fs.readFileSync("public/showcase/gallery-0.json", "utf-8")
             )
           };
         }
       },
       {
+        path: "/sandbox",
+        component: "src/app/containers/sandbox",
+        getProps: async () => {
+          return {};
+        }
+      },
+      {
         path: "/about",
-        component: "src/app/containers/About"
+        component: "src/app/containers/about"
       },
       {
         is404: true,
@@ -35,7 +42,7 @@ export default {
 
     // Add TypeScript Path Mappings (from tsconfig via webpack.config.js)
     // to react-statics alias resolution
-    config.resolve.alias = typescriptWebpackPaths.resolve.alias;
+    // config.resolve.alias = typescriptWebpackPaths.resolve.alias;
 
     // We replace the existing JS rule with one, that allows us to use
     // both TypeScript and JavaScript interchangeably
