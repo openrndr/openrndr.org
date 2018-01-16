@@ -57,11 +57,18 @@ export default {
         oneOf: [
           {
             test: /\.tsx?$/,
-            use: "ts-loader",
-            exclude: /node_modules/
+            exclude: defaultLoaders.jsLoader.exclude,
+            use: [
+              {
+                loader: "ts-loader",
+                options: {
+                  configFile: "tsconfig.webpack.json"
+                }
+              }
+            ]
           },
           {
-            test: /\.(js|jsx)$/,
+            test: /\.(jsx?)$/,
             exclude: defaultLoaders.jsLoader.exclude,
             use: [
               {
