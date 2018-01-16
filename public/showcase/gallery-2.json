@@ -1,8 +1,67 @@
 {
     "data": [
         {
-            "id": "8142",
-            "itemType": "gallery_item",
+            "id": "18834",
+            "itemType": "project",
+            "updatedAt": "2018-01-16T13:20:47.269Z",
+            "createdAt": "2018-01-16T13:20:47.269Z",
+            "blurb": "<p>You control the control room. In Hyperlocator you get a sense of the city in one single space. Who is observing who? Every day a new hyperlocation is created, exploring a new space and unlocking its local palette.</p>",
+            "url": "https://rndr.studio/",
+            "media": [
+                {
+                    "id": "156880",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-16T13:20:46.718Z",
+                    "createdAt": "2018-01-16T13:20:46.681Z",
+                    "file": {
+                        "format": "png",
+                        "size": 2126394,
+                        "width": 1544,
+                        "height": 872,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516108794-screen-shot-2018-01-16-at-14-19-48.png"
+                    },
+                    "caption": null
+                },
+                {
+                    "id": "156881",
+                    "itemType": "image",
+                    "updatedAt": "2018-01-16T13:20:46.780Z",
+                    "createdAt": "2018-01-16T13:20:46.744Z",
+                    "file": {
+                        "format": "png",
+                        "size": 2021894,
+                        "width": 1576,
+                        "height": 882,
+                        "title": null,
+                        "alt": null,
+                        "url": "https://www.datocms-assets.com/4385/1516108811-screen-shot-2018-01-16-at-14-20-00.png"
+                    },
+                    "caption": null
+                },
+                {
+                    "id": "156882",
+                    "itemType": "video",
+                    "updatedAt": "2018-01-16T13:20:46.751Z",
+                    "createdAt": "2018-01-16T13:20:46.751Z",
+                    "file": {
+                        "url": "https://vimeo.com/231850147",
+                        "title": "Hyperlocator",
+                        "width": 640,
+                        "height": 360,
+                        "provider": "vimeo",
+                        "providerUid": "231850147",
+                        "thumbnailUrl": "https://i.vimeocdn.com/video/652762172_640.jpg"
+                    },
+                    "caption": null
+                }
+            ],
+            "title": "HYPERLOCATOR"
+        },
+        {
+            "id": "16834",
+            "itemType": "project",
             "updatedAt": "2018-01-15T15:46:53.570Z",
             "createdAt": "2018-01-15T14:51:49.866Z",
             "blurb": "<p>hi there</p>",
@@ -68,8 +127,8 @@
             "title": "Project 1"
         },
         {
-            "id": "5997",
-            "itemType": "gallery_item",
+            "id": "7136",
+            "itemType": "project",
             "updatedAt": "2018-01-15T15:35:09.384Z",
             "createdAt": "2018-01-15T15:35:09.384Z",
             "blurb": "<p>oioioioioioi</p>",
@@ -95,100 +154,65 @@
             "title": "Project2"
         },
         {
-            "id": "4164",
-            "itemType": "gallery_item",
-            "updatedAt": "2018-01-15T15:46:53.570Z",
-            "createdAt": "2018-01-15T14:51:49.866Z",
-            "blurb": "<p>hi there</p>",
-            "url": "https://www.google.com",
+            "id": "14825",
+            "itemType": "project",
+            "updatedAt": "2018-01-16T13:20:47.269Z",
+            "createdAt": "2018-01-16T13:20:47.269Z",
+            "blurb": "<p>You control the control room. In Hyperlocator you get a sense of the city in one single space. Who is observing who? Every day a new hyperlocation is created, exploring a new space and unlocking its local palette.</p>",
+            "url": "https://rndr.studio/",
             "media": [
                 {
-                    "id": "156394",
+                    "id": "156880",
                     "itemType": "image",
-                    "updatedAt": "2018-01-15T14:51:49.187Z",
-                    "createdAt": "2018-01-15T14:51:49.107Z",
+                    "updatedAt": "2018-01-16T13:20:46.718Z",
+                    "createdAt": "2018-01-16T13:20:46.681Z",
                     "file": {
                         "format": "png",
-                        "size": 363531,
-                        "width": 424,
-                        "height": 500,
+                        "size": 2126394,
+                        "width": 1544,
+                        "height": 872,
                         "title": null,
                         "alt": null,
-                        "url": "https://www.datocms-assets.com/4385/1516027847-screen-shot-2017-09-25-at-2-44-46-pm.png"
-                    },
-                    "caption": "a beautiful picture"
-                },
-                {
-                    "id": "156393",
-                    "itemType": "image",
-                    "updatedAt": "2018-01-15T14:51:49.035Z",
-                    "createdAt": "2018-01-15T14:51:48.958Z",
-                    "file": {
-                        "format": "png",
-                        "size": 18391,
-                        "width": 220,
-                        "height": 191,
-                        "title": null,
-                        "alt": null,
-                        "url": "https://www.datocms-assets.com/4385/1516027874-screen-shot-2017-12-11-at-3-53-58-pm.png"
-                    },
-                    "caption": "another beautiful picture"
-                },
-                {
-                    "id": "156476",
-                    "itemType": "video",
-                    "updatedAt": "2018-01-15T15:46:53.071Z",
-                    "createdAt": "2018-01-15T15:46:53.071Z",
-                    "file": {
-                        "url": "https://www.youtube.com/watch?v=vF4JmwRXAwM",
-                        "title": "Hella - Tripper (2011) [Full Album]",
-                        "width": 459,
-                        "height": 344,
-                        "provider": "youtube",
-                        "providerUid": "vF4JmwRXAwM",
-                        "thumbnailUrl": "https://i.ytimg.com/vi/vF4JmwRXAwM/hqdefault.jpg"
+                        "url": "https://www.datocms-assets.com/4385/1516108794-screen-shot-2018-01-16-at-14-19-48.png"
                     },
                     "caption": null
                 },
                 {
-                    "id": "156475",
-                    "itemType": "gif",
-                    "updatedAt": "2018-01-15T15:46:53.063Z",
-                    "createdAt": "2018-01-15T15:46:53.063Z",
-                    "caption": null,
-                    "url": "https://media.giphy.com/media/zk6XXepJxKsX6/giphy.gif"
-                }
-            ],
-            "title": "Project 1"
-        },
-        {
-            "id": "4286",
-            "itemType": "gallery_item",
-            "updatedAt": "2018-01-15T15:35:09.384Z",
-            "createdAt": "2018-01-15T15:35:09.384Z",
-            "blurb": "<p>oioioioioioi</p>",
-            "url": "https://google.com",
-            "media": [
-                {
-                    "id": "156467",
+                    "id": "156881",
                     "itemType": "image",
-                    "updatedAt": "2018-01-15T15:35:08.978Z",
-                    "createdAt": "2018-01-15T15:35:08.935Z",
+                    "updatedAt": "2018-01-16T13:20:46.780Z",
+                    "createdAt": "2018-01-16T13:20:46.744Z",
                     "file": {
                         "format": "png",
-                        "size": 452408,
-                        "width": 512,
-                        "height": 512,
+                        "size": 2021894,
+                        "width": 1576,
+                        "height": 882,
                         "title": null,
                         "alt": null,
-                        "url": "https://www.datocms-assets.com/4385/1516030495-lenaoriginal.png"
+                        "url": "https://www.datocms-assets.com/4385/1516108811-screen-shot-2018-01-16-at-14-20-00.png"
                     },
-                    "caption": "lena"
+                    "caption": null
+                },
+                {
+                    "id": "156882",
+                    "itemType": "video",
+                    "updatedAt": "2018-01-16T13:20:46.751Z",
+                    "createdAt": "2018-01-16T13:20:46.751Z",
+                    "file": {
+                        "url": "https://vimeo.com/231850147",
+                        "title": "Hyperlocator",
+                        "width": 640,
+                        "height": 360,
+                        "provider": "vimeo",
+                        "providerUid": "231850147",
+                        "thumbnailUrl": "https://i.vimeocdn.com/video/652762172_640.jpg"
+                    },
+                    "caption": null
                 }
             ],
-            "title": "Project2"
+            "title": "HYPERLOCATOR"
         }
     ],
-    "next": null,
+    "next": "/showcase/gallery-2.json",
     "prev": "/showcase/gallery-2.json"
 }
