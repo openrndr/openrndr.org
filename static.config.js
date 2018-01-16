@@ -1,6 +1,7 @@
 // Paths Aliases defined through tsconfig.json
 // const typescriptWebpackPaths = require("./webpack.config.js");
 const fs = require("fs");
+const path = require("path");
 
 export default {
   getSiteProps: () => ({
@@ -37,6 +38,11 @@ export default {
     ];
   },
   webpack: (config, { defaultLoaders }) => {
+    // replace context & entry
+    const context = path.resolve("src");
+    config.context = context;
+    config.entry[config.entry.length - 1] = "index.tsx";
+
     // Add .ts and .tsx extension to resolver
     config.resolve.extensions.push(".ts", ".tsx");
 
@@ -50,17 +56,16 @@ export default {
       {
         oneOf: [
           {
-            test: /\.(js|jsx|ts|tsx)$/,
-            exclude: defaultLoaders.jsLoader.exclude, // as std jsLoader exclude
+            test: /\.tsx?$/,
+            use: "ts-loader",
+            exclude: /node_modules/
+          },
+          {
+            test: /\.(js|jsx)$/,
+            exclude: defaultLoaders.jsLoader.exclude,
             use: [
               {
                 loader: "babel-loader"
-              },
-              {
-                loader: require.resolve("ts-loader"),
-                options: {
-                  transpileOnly: true
-                }
               }
             ]
           },
