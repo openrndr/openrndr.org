@@ -5944,6 +5944,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-static-routes@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-static-routes/-/react-static-routes-1.0.0.tgz#73882f1569498d7ce5b4b1d4057ff642b1eea40c"
+
 react-static@^4.8.3:
   version "4.8.3"
   resolved "https://registry.yarnpkg.com/react-static/-/react-static-4.8.3.tgz#7a943a96cc5211f236aef9809a3e9558ea3acbf6"
