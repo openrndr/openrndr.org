@@ -1,6 +1,8 @@
 import React from "react";
 import SandboxComponentExample from "../components/sandbox-component-example";
+import Section from "../components/section";
 import { Image } from "src/types";
+import Config from "../config";
 
 const dummyImage: Image = {
   id: "0",
@@ -17,10 +19,24 @@ const dummyImage: Image = {
   }
 };
 
+// export default (props: any) => {
+//   return (
+//     <div>
+//       <SandboxComponentExample image={dummyImage} />
+//     </div>
+//   );
+// };
+
+
+
+
 export default (props: any) => {
   return (
     <div>
-      <SandboxComponentExample image={dummyImage} />
+        { Config.sections.map((object, i) =>
+            <Section key={i} title={object.title} ></Section>
+        )}
     </div>
   );
 };
+
