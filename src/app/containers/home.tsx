@@ -53,7 +53,7 @@ export default class Home extends React.Component<Props, State> {
               Getting started
             </SectionHeader>
             <SectionBody name={"Showcase"}>
-              WHATEVER CONTENT IS
+
             </SectionBody>
           </Section>
         </div>
