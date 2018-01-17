@@ -4278,6 +4278,10 @@ js-base64@^2.1.9:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.0.tgz#9e566fee624751a1d720c966cd6226d29d4025aa"
 
+js-base64@^2.3.2:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.1.tgz#e02813181cd53002888e918935467acb2910e596"
+
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
@@ -4371,6 +4375,10 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+jsuri@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/jsuri/-/jsuri-1.3.1.tgz#cd93fc6a87b255142cb7b0f479f00517ab9395ed"
 
 jsx-ast-utils@^2.0.0:
   version "2.0.1"
@@ -5919,6 +5927,13 @@ react-hot-loader@^3.0.0-beta.7:
     react-proxy "^3.0.0-alpha.0"
     redbox-react "^1.3.6"
     source-map "^0.6.1"
+
+react-imgix@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/react-imgix/-/react-imgix-7.1.1.tgz#1b8d9fbb2f3afd3d693f67dbf534576dae178440"
+  dependencies:
+    js-base64 "^2.3.2"
+    jsuri "^1.3.1"
 
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"
