@@ -5,7 +5,7 @@ import { Location } from "history";
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
-import ProjectSet from '../components/project-set/index';
+import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
 
 import {
@@ -18,7 +18,7 @@ import {
   Paged,
   Project
 } from "../../types";
-import '../app.css';
+import "../app.css";
 
 export interface DataProps {
   calendar: {
@@ -65,77 +65,70 @@ export default class Home extends React.Component<Props, State> {
   render() {
     if (!this.state.data) return null;
 
-    const {
-      showcase
-    } = this.state.data;
+    const { showcase } = this.state.data;
 
-    console.log("showcase", showcase);
     // use the pathname to set the scroll position
     console.log(this.props.location.pathname);
-
-
     return (
-        <div className="sweet-home">
-          <Section name={"intro"}>
-            <SectionHeader>
-              <iframe src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0" width="100%" height="300px"></iframe>
-            </SectionHeader>
-            <SectionBody name={"Landing"}>
-                {
-                    this.state.data.landing.contentBlocks.map(cb=> <TextBlock data={cb} />)
-                }
-            </SectionBody>
-          </Section>
+      <div className="sweet-home">
+        <Section name={"intro"}>
+          <SectionHeader>
+            <iframe
+              src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0"
+              width="100%"
+              height="300px"
+            />
+          </SectionHeader>
+          <SectionBody name={"Landing"}>
+            {this.state.data.landing.contentBlocks.map(cb => (
+              <TextBlock data={cb} />
+            ))}
+          </SectionBody>
+        </Section>
 
-          <Section name={"getting-started"}>
-            <SectionHeader>
-                <h1>Getting started</h1> <a href="https://github.com/">Github</a>
-            </SectionHeader>
-            <SectionBody name={"Getting Started"}>
-              WHATEVER CONTENT IS
-            </SectionBody>
-          </Section>
-          <Section name={"Showcase"}>
-            <SectionHeader>
-               <h1>Showcase</h1>
-            </SectionHeader>
-            <SectionBody name={"Showcase"}>
-              <ProjectSet page={showcase.caseStudies}/>
-              {/*{*/}
-                {/*Object.keys(showcase).map(title=>*/}
-                    {/*<ProjectSet data={{*/}
-                      {/*title,*/}
-                      {/*items: showcase[title]*/}
-                    {/*}}/>*/}
-                {/*)*/}
-              {/*}*/}
-            </SectionBody>
-          </Section>
-          <Section name={"Community"}>
-            <SectionHeader>
-                <h2>Community</h2>
-            </SectionHeader>
-            <SectionBody name={"Community"}>
-                WHATEVER CONTENT IS
-            </SectionBody>
-          </Section>
-            <Section name={"About"}>
-                <SectionHeader>
-                    <h2>About</h2>
-                </SectionHeader>
-                <SectionBody name={"About"}>
-                    WHATEVER CONTENT IS
-                </SectionBody>
-            </Section>
-            <Section name={"Calender"}>
-                <SectionHeader>
-                    <h2>Calender</h2>
-                </SectionHeader>
-                <SectionBody name={"Calender"}>
-                    WHATEVER CONTENT IS
-                </SectionBody>
-            </Section>
-        </div>
-    )
+        <Section name={"getting-started"}>
+          <SectionHeader>
+            <h1>Getting started</h1> <a href="https://github.com/">Github</a>
+          </SectionHeader>
+          <SectionBody name={"Getting Started"}>
+            WHATEVER CONTENT IS
+          </SectionBody>
+        </Section>
+        <Section name={"Showcase"}>
+          <SectionHeader>
+            <h1>Showcase</h1>
+          </SectionHeader>
+          <SectionBody name={"Showcase"}>
+            <ProjectSet page={showcase.caseStudies} />
+            {/*{*/}
+            {/*Object.keys(showcase).map(title=>*/}
+            {/*<ProjectSet data={{*/}
+            {/*title,*/}
+            {/*items: showcase[title]*/}
+            {/*}}/>*/}
+            {/*)*/}
+            {/*}*/}
+          </SectionBody>
+        </Section>
+        <Section name={"Community"}>
+          <SectionHeader>
+            <h2>Community</h2>
+          </SectionHeader>
+          <SectionBody name={"Community"}>WHATEVER CONTENT IS</SectionBody>
+        </Section>
+        <Section name={"About"}>
+          <SectionHeader>
+            <h2>About</h2>
+          </SectionHeader>
+          <SectionBody name={"About"}>WHATEVER CONTENT IS</SectionBody>
+        </Section>
+        <Section name={"Calender"}>
+          <SectionHeader>
+            <h2>Calender</h2>
+          </SectionHeader>
+          <SectionBody name={"Calender"}>WHATEVER CONTENT IS</SectionBody>
+        </Section>
+      </div>
+    );
   }
 }

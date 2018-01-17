@@ -1,12 +1,9 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import {
-  Paged,
-  Project as ProjectType,
-} from "../../../types/index";
+import { Paged, Project as ProjectType } from "../../../types/index";
 
-import Project from '../project';
-import {PaginatedProps, withPagination} from "../paginated";
+import Project from "../project";
+import { withPagination } from "../paginated";
 
 // type Props = PaginatedProps<ProjectType>;
 interface Props {
@@ -29,18 +26,16 @@ const ProjectsWrapper = styled.div`
 const ProjectSet = (props: Props) => {
   console.log("PROPS", props);
   return (
-      <Wrapper>
-        <h1>{props.title}</h1>
-        <ProjectsWrapper>
-          {
-            props.data.map(project=> {
-              console.log(project);
-              // return project.id;
-              return <Project key={project.id} data={project}/>
-            })
-          }
-        </ProjectsWrapper>
-      </Wrapper>
+    <Wrapper>
+      <h1>{props.title}</h1>
+      <ProjectsWrapper>
+        {props.data.map(project => {
+          console.log(project);
+          // return project.id;
+          return <Project key={project.id} data={project} />;
+        })}
+      </ProjectsWrapper>
+    </Wrapper>
   );
 };
 
