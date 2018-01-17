@@ -6,6 +6,7 @@ import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import ProjectSet from '../components/project-set/index';
+import TextBlock from "../components/text-block";
 
 import {
   Event,
@@ -80,7 +81,9 @@ export default class Home extends React.Component<Props, State> {
               <iframe src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0" width="100%" height="300px"></iframe>
             </SectionHeader>
             <SectionBody name={"Landing"}>
-              WHATEVER CONTENT IS
+                {
+                    this.state.data.landing.contentBlocks.map(cb=> <TextBlock data={cb} />)
+                }
             </SectionBody>
           </Section>
 
