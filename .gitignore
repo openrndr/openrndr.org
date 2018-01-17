@@ -21,3 +21,4 @@ public/**/*.json
 .env*
 data/dato-dump.json
 .idea
+data/home-dataprops.json

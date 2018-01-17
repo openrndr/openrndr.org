@@ -6,7 +6,7 @@
     "scripts": {
         "start": "react-static start",
         "build": "react-static build",
-        "data:fetch": "ts-node data/fetch",
+        "data:fetch": "ts-node data/index",
         "serve": "serve dist -p 3000"
     },
     "dependencies": {

@@ -15,11 +15,6 @@ import {
   Project
 } from "../../types";
 
-interface State {
-  isInitialDataFetched: boolean;
-  data: any;
-}
-
 export interface DataProps {
   calendar: {
     events: Paged<Event>;
@@ -35,6 +30,11 @@ export interface DataProps {
   };
 }
 
+interface State {
+  isInitialDataFetched: boolean;
+  data: DataProps;
+}
+
 export interface Props {
   location: Location;
   data: DataProps;
@@ -43,14 +43,16 @@ export interface Props {
 export default class Home extends React.Component<Props, State> {
   state: State = {
     isInitialDataFetched: false,
-    data: []
+    data: null
   };
 
   componentWillMount() {
-    prefetch("/data").then(({ initialProps }: any) => {
+    console.log("this.props.data", this.props.data);
+    prefetch("/data").then((data: { initialProps: DataProps }) => {
+      console.log("initialProps from prefetch /data", data);
       this.setState({
         isInitialDataFetched: true,
-        data: initialProps
+        data: data.initialProps
       });
     });
   }
@@ -59,8 +61,8 @@ export default class Home extends React.Component<Props, State> {
     if (!this.state.data) return null;
 
     //use the pathname to set the scroll position
-    console.log(this.props.location.pathname);
-
+    // console.log(this.props.location.pathname);
+    console.log("HERE IS SOME DATA ", this.state.data.calendar.events);
     return (
       <div className="sweet-home">
         <Section name={"intro"}>

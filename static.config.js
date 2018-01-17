@@ -2,7 +2,6 @@
 // const typescriptWebpackPaths = require("./webpack.config.js");
 const fs = require("fs");
 const path = require("path");
-
 export default {
   getSiteProps: () => ({
     title: "React Static"
@@ -12,12 +11,10 @@ export default {
       {
         path: "/data",
         getProps: async () => {
-          return {
-            data: {
-              gallery: [],
-              calendar: []
-            }
-          };
+          const data = JSON.parse(
+            fs.readFileSync(path.resolve("data", "home-dataprops.json"))
+          );
+          return data;
         }
       },
       {
@@ -26,7 +23,7 @@ export default {
         getProps: async () => {
           return {};
         }
-      },
+      }
     ];
   },
   webpack: (config, { defaultLoaders }) => {

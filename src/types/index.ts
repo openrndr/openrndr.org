@@ -91,6 +91,7 @@ export interface Calendar extends Entity {
 
 export interface Paged<T extends Entity> {
   data: T[];
+  current: string;
   prev: string | null;
   next: string | null;
 }
