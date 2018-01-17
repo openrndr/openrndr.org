@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import {Project} from "../../../types/";
 
-
 import Image from "../image";
 import Gif from "../gif";
 import Video from "../video";
