@@ -1,8 +1,8 @@
 import React from "react";
 import SandboxComponentExample from "../components/sandbox-component-example";
 import Section from "../components/section";
-import { Image } from "src/types";
 import Config from "../config";
+import { Image } from "../../types/index";
 
 const dummyImage: Image = {
   id: "0",

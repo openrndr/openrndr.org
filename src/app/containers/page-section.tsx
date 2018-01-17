@@ -1,7 +1,7 @@
 import React from "react";
 import { getRouteProps } from "react-static";
-import { Project, Image } from "src/types";
 import { withPagination } from "../components/paginated";
+import { Project, Image } from "../../types/index";
 
 interface Props {
   data: Project[];

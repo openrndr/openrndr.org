@@ -1,6 +1,6 @@
 import React from "react";
-import { Image } from "src/types";
 import styled from "styled-components";
+import { Image } from "../../types/index";
 
 interface Props {
   image: Image;

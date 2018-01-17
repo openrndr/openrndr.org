@@ -4,7 +4,5 @@ import {
   getRouteProps
 } from "react-static";
 // import { Paged } from "src/data/paginate";
-import { Project, Image } from "src/types";
+import { Project, Image } from "../../types";
 import { withPagination } from "../components/paginated";
-
-
