@@ -18,8 +18,8 @@ export function paginate<T extends Entity>(
     const nextIndex = i + 1 < chunkedData.length - 1 ? i + 1 : null;
     return {
       data: chunk,
-      next: nextIndex ? buildUrl(i) : null,
-      prev: prevIndex ? buildUrl(i) : null
+      next: nextIndex ? buildUrl(nextIndex) : null,
+      prev: prevIndex ? buildUrl(prevIndex) : null
     };
   });
 }

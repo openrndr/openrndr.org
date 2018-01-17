@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { Showcase, Entity } from "src/types";
 import { paginate } from "./paginate";
-const client = new SiteClient("5647f190cafe05e80863fa32aae0c1");
+const client = new SiteClient(process.env.DATO_API_TOKEN);
 const loader = new Loader(client);
 
 interface LoadResult {
