@@ -39,7 +39,6 @@ export interface Gif extends Entity {
 export type MediaItem = Image | Video | Gif;
 
 export interface Project extends Entity {
-  itemType: "project";
   title: string;
   blurb: string;
   url: string;
@@ -50,4 +49,51 @@ export interface Showcase extends Entity {
   gallery: Project[];
   experiments: Project[];
   caseStudies: Project[];
+}
+
+export interface Event extends Entity {
+  eventType: "exhibition" | "workshop" | "event";
+  title: string;
+  endDate?: string;
+  startDate?: string;
+  location?: {
+    latitude: string;
+    longitude: string;
+  };
+  note?: string;
+  link?: string;
+}
+
+export interface TextBlock extends Entity {
+  bodyText: string;
+  title: string;
+  link?: string;
+}
+
+export interface About extends Entity {
+  contentBlocks: TextBlock[];
+}
+
+export interface Community extends Entity {
+  contentBlocks: TextBlock[];
+}
+
+export interface GettingStarted extends Entity {
+  contentBlocks: TextBlock[];
+}
+
+export interface Landing extends Entity {
+  banner: Project;
+  contentBlocks: TextBlock[];
+}
+
+export interface Calendar extends Entity {
+  events: Event[];
+}
+
+export interface Paged<T extends Entity> {
+  data: T[];
+  current: string;
+  prev: string | null;
+  next: string | null;
 }

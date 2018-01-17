@@ -1,25 +1,34 @@
 import { chunk } from "lodash";
-import { Entity } from "src/types";
+import { Entity, Paged } from "../src/types/index";
+import * as crypto from "crypto";
 
-export interface Paged<T extends Entity> {
-  data: T[];
-  prev: string | null;
-  next: string | null;
-}
+const digest = (content: any) =>
+  crypto
+    .createHash("md5")
+    .update(JSON.stringify(content))
+    .digest("hex");
 
 export function paginate<T extends Entity>(
   source: T[],
-  buildUrl: (index: number) => string,
+  buildUrl: (hash: string) => string,
   pageSize: number = 8
 ): Paged<T>[] {
-  const chunkedData = chunk(source, pageSize);
-  return chunkedData.map((chunk, i) => {
-    const prevIndex = i >= 1 ? i - 1 : null;
-    const nextIndex = i + 1 < chunkedData.length - 1 ? i + 1 : null;
+  const chunkedData = chunk(source, pageSize).map((chunk, i) => {
+    const hashDigest = digest(chunk);
     return {
       data: chunk,
-      next: nextIndex ? buildUrl(nextIndex) : null,
-      prev: prevIndex ? buildUrl(prevIndex) : null
+      hash: digest(chunk)
+    };
+  });
+
+  return chunkedData.map((chunk, i) => {
+    const prevChunk = i >= 1 ? chunkedData[i - 1] : null;
+    const nextChunk = i < chunkedData.length - 2 ? chunkedData[i + 1] : null;
+    return {
+      ...chunk,
+      current: buildUrl(chunk.hash),
+      next: prevChunk ? buildUrl(prevChunk.hash) : null,
+      prev: nextChunk ? buildUrl(nextChunk.hash) : null
     };
   });
 }
