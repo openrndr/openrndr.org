@@ -24,7 +24,6 @@ const InfoWrapper = styled.article`
   background: pink;
 `;
 
-
 export default (props: Props) => {
   console.log("PROJECT PROPS", props);
   const { title, blurb, media } = props.data;
@@ -32,28 +31,20 @@ export default (props: Props) => {
   return (
     <Wrapper>
       <MediaWrapper>
-        {
-          (function () {
-            switch (thumbnail.itemType) {
-              case "image":
-                return <Image data={thumbnail} />
-              case "gif":
-                return <Gif data={thumbnail} />
-              case "video":
-                <Video data={thumbnail} />
-            }
-          })()
-        }
+        {(function() {
+          switch (thumbnail.itemType) {
+            case "image":
+              return <Image data={thumbnail} />;
+            case "gif":
+              return <Gif data={thumbnail} />;
+            case "video":
+              return <Video data={thumbnail} />;
+          }
+        })()}
       </MediaWrapper>
       <InfoWrapper>
-        {
-          (title && title.length > 0) &&
-          <strong>{title}</strong>
-        }
-        {
-          (blurb && blurb.length > 0) &&
-          <p>{blurb}</p>
-        }
+        {title && title.length > 0 && <strong>{title}</strong>}
+        {blurb && blurb.length > 0 && <p>{blurb}</p>}
       </InfoWrapper>
     </Wrapper>
   );
