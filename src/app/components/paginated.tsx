@@ -1,5 +1,6 @@
 import React from "react";
-import { Paged, Entity } from "../../types/index";
+import {Entity, Paged} from "../../types/index";
+
 
 interface Props<T extends Entity> {
   page: Paged<T>;
@@ -11,9 +12,14 @@ interface State<T extends Entity> {
   loading: false;
 }
 
-export function withPagination<T extends Entity>(
-  Comp: React.ComponentClass<any> | React.StatelessComponent<any>
-) {
+export interface PaginatedProps<T extends Entity> {
+  loading: boolean;
+  data: Paged<T>;
+  loadNext: () => any;
+  hasNext: boolean;
+}
+
+export function withPagination<T extends Entity>(Comp: React.ComponentClass<any> | React.StatelessComponent<any>) {
   return class Paginated extends React.Component<Props<T>> {
     state: State<T> = {
       data: [],
@@ -22,7 +28,7 @@ export function withPagination<T extends Entity>(
     };
 
     componentWillMount() {
-      const { data, next } = this.props.page;
+      const {data, next} = this.props.page;
       this.setState({
         data,
         nextUrl: next
@@ -34,29 +40,30 @@ export function withPagination<T extends Entity>(
         loading: true
       });
       fetch(this.state.nextUrl)
-        .then(res => {
-          return res.json();
-        })
-        .then((res: Paged<T>) => {
-          const { data, next } = res;
-          this.setState({
-            data: this.state.data.concat(data),
-            nextUrl: next,
-            loading: false
+          .then(res => {
+            return res.json();
+          })
+          .then((res: Paged<T>) => {
+            const {data, next} = res;
+            this.setState({
+              data: this.state.data.concat(data),
+              nextUrl: next,
+              loading: false
+            });
           });
-        });
     };
+
     render() {
-      const { page, ...rest } = this.props;
+      const {page, ...rest} = this.props;
       console.log("PAGINATED STATE", this.state);
       return (
-        <Comp
-          {...rest}
-          loading={this.state.loading}
-          data={this.state.data}
-          loadNext={this.loadNext}
-          hasNext={this.state.nextUrl !== null}
-        />
+          <Comp
+              {...rest}
+              loading={this.state.loading}
+              data={this.state.data}
+              loadNext={this.loadNext}
+              hasNext={this.state.nextUrl !== null}
+          />
       );
     }
   };

@@ -1,9 +1,12 @@
 import React from "react";
 import { prefetch } from "react-static";
 import { Location } from "history";
+
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
+import ProjectSet from '../components/project-set/index';
+
 import {
   Event,
   Calendar,
@@ -61,8 +64,14 @@ export default class Home extends React.Component<Props, State> {
   render() {
     if (!this.state.data) return null;
 
+    const {
+      showcase
+    } = this.state.data;
+
+    console.log("showcase", showcase);
     // use the pathname to set the scroll position
     console.log(this.props.location.pathname);
+
 
     return (
         <div className="sweet-home">
@@ -88,7 +97,15 @@ export default class Home extends React.Component<Props, State> {
                <h1>Showcase</h1>
             </SectionHeader>
             <SectionBody name={"Showcase"}>
-                WHATEVER CONTENT IS
+              <ProjectSet page={showcase.caseStudies}/>
+              {/*{*/}
+                {/*Object.keys(showcase).map(title=>*/}
+                    {/*<ProjectSet data={{*/}
+                      {/*title,*/}
+                      {/*items: showcase[title]*/}
+                    {/*}}/>*/}
+                {/*)*/}
+              {/*}*/}
             </SectionBody>
           </Section>
           <Section name={"Community"}>
