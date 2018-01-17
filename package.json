@@ -16,6 +16,7 @@
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "react-imgix": "^7.1.1",
+        "react-player": "^0.25.3",
         "react-router": "^4.2.0",
         "react-static": "4.8.4",
         "styled-components": "^2.4.0"

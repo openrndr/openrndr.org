@@ -72,7 +72,7 @@ export default class Home extends React.Component<Props, State> {
 
         <Section name={"getting-started"}>
           <SectionHeader>Getting started</SectionHeader>
-          <SectionBody name={"Showcase"}>WHATEVER CONTENT IS</SectionBody>
+          <SectionBody name={"Showcase"}>Some showcased content</SectionBody>
         </Section>
       </div>
     );
