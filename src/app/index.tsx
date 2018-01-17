@@ -1,6 +1,8 @@
 import * as React from "react";
-import { Router, Link } from "react-static";
-import Routes from "react-static-routes";
+import { Router, Switch, Route, Link } from "react-static";
+
+import Home from './containers/home';
+import Sand from './containers/sandbox';
 import Layout from "./layout";
 
 export default () => (
@@ -12,7 +14,10 @@ export default () => (
           <Link to="/about">About</Link>
         </nav>
         <div className="content">
-          <Routes />
+          <Switch>
+            <Route path="/sandbox" component={Sand} />
+            <Route path="*" component={Home} />
+          </Switch>
         </div>
       </div>
     </Layout>

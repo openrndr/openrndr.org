@@ -1,6 +1,6 @@
 import React from "react";
-import { Paged } from "src/data/paginate";
 import { Entity } from "src/types";
+import {Paged} from "../../../data/paginate";
 
 interface Props<T extends Entity> {
   page: Paged<T>;

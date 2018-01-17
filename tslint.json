@@ -5,6 +5,6 @@
         "tslint-plugin-prettier"
     ],
     "rules": {
-        "prettier": true
+        "prettier": false
     }
 }

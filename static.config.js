@@ -10,13 +10,13 @@ export default {
   getRoutes: async () => {
     return [
       {
-        path: "/",
-        component: "src/app/containers/home",
+        path: "/data",
         getProps: async () => {
           return {
-            page: JSON.parse(
-              fs.readFileSync("public/showcase/gallery-0.json", "utf-8")
-            )
+            data: {
+              gallery: [],
+              calendar: []
+            }
           };
         }
       },
@@ -27,14 +27,6 @@ export default {
           return {};
         }
       },
-      {
-        path: "/about",
-        component: "src/app/containers/about"
-      },
-      {
-        is404: true,
-        component: "src/app/containers/404"
-      }
     ];
   },
   webpack: (config, { defaultLoaders }) => {

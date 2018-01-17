@@ -2,7 +2,7 @@ import { SiteClient, Loader } from "datocms-client";
 import * as fs from "fs";
 import * as path from "path";
 import { Showcase, Entity } from "src/types";
-import { paginate } from "./paginate";
+import {Paged, paginate} from "./paginate";
 const client = new SiteClient(process.env.DATO_API_TOKEN);
 const loader = new Loader(client);
 

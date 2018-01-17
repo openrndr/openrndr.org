@@ -1,62 +1,45 @@
 import React from "react";
-import {
-  // getSiteProps,
-  getRouteProps
-} from "react-static";
-import { Paged } from "src/data/paginate";
-import { Project, Image } from "src/types";
-import { withPagination } from "../components/paginated";
+import {prefetch} from "react-static";
+import {Location} from "history";
+
+
+interface State {
+  isInitialDataFetched: boolean;
+  data: any;
+}
 
 interface Props {
-  data: Project[];
-  loadNext: () => Promise<any>;
-  hasNext: boolean;
-  loading: boolean;
+  location: Location;
 }
 
-function unwrapImages(data: Project[]) {
-  return data.map(item => {
-    const firstImage = item.media.find(m => m.itemType === "image");
-    return firstImage as Image;
-  });
-}
+export default class Home extends React.Component<Props, State>{
+  state: State = {
+    isInitialDataFetched: false,
+    data: []
+  };
+  componentWillMount() {
+    prefetch("/data")
+        .then(({initialProps}: any)=>{
+          this.setState({
+            isInitialDataFetched: true,
+            data: initialProps
+          })
+        })
+  }
+  render(){
+    if(!this.state.data) return null;
 
-const Home = (props: Props) => {
-  const { data, loading, loadNext, hasNext } = props;
-  const galleryItems = unwrapImages(data).map((img, i) => {
-    return (
-      <div
-        key={i}
-        style={{
-          height: "300px",
-          width: "300px",
-          padding: "10px",
-          display: "inline-block"
-        }}
-      >
-        <img style={{ width: "100%" }} src={img.file.url} />
-        <div>{img.id}</div>
-      </div>
-    );
-  });
-  return (
-    <div>
-      <div>loadmore</div>
-      <div style={{ width: "1300px" }}>{galleryItems}</div>
-      {loading ? (
-        <div style={{ paddingTop: "100px" }}>Loading next page...</div>
-      ) : (
-        <div style={{ paddingTop: "100px" }}>
-          <button
-            style={{ width: "100px", height: "50px" }}
-            onClick={hasNext ? loadNext : null}
-          >
-            {hasNext ? "Load more" : "No more pages to load"}
-          </button>
+    //use the pathname to set the scroll position
+    console.log(this.props.location.pathname);
+
+    return(
+        <div className="sweet-home">
+          <strong>Page/Section 1<br/></strong>
+          <strong>Page/Section 2<br/></strong>
+          <strong>Page/Section 3<br/></strong>
+          <strong>Page/Section 4<br/></strong>
+          <strong>Page/Section 5<br/></strong>
         </div>
-      )}
-    </div>
-  );
-};
-
-export default getRouteProps(withPagination(Home));
+    )
+  }
+}
