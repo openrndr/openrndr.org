@@ -1,7 +1,12 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
+
 import {Project} from "../../../types/";
+
+
 import Image from "../image";
+import Gif from "../gif";
+import Video from "../video";
 
 interface Props {
   data: Project;
@@ -29,7 +34,16 @@ export default (props: Props) => {
       <MediaWrapper>
         {
           thumbnail.itemType==="image" &&
-          <Image data={thumbnail} />
+          (
+              thumbnail.file.format === "gif"?
+                  <Gif data={thumbnail} />
+                  :
+                  <Image data={thumbnail} />
+          )
+        }
+        {
+          thumbnail.itemType==='video'&&
+          <Video data={thumbnail}/>
         }
       </MediaWrapper>
       <InfoWrapper>
