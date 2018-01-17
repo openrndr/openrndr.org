@@ -8,7 +8,7 @@ interface Props {
 
 export default class Gif extends React.Component<Props> {
   render() {
-    const { url } = this.props.data.file;
+    const { url } = this.props.data;
     return <Imgix src={url} />;
   }
 }
