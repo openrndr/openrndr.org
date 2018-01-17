@@ -14,6 +14,7 @@ import {
   Paged,
   Project
 } from "../../types";
+import '../app.css';
 
 export interface DataProps {
   calendar: {
