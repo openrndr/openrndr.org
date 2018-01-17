@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Config from "../config";
 
 const Container = styled.div`
-background: orange;
+//background: orange;
 `
 
 interface Props {

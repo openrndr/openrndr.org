@@ -43,7 +43,7 @@ export default class Home extends React.Component<Props, State> {
             <SectionHeader>
               here will be the intro VIDEO/IMAGE
             </SectionHeader>
-            <SectionBody>
+            <SectionBody name={"Landing"}>
               WHATEVER CONTENT IS
             </SectionBody>
           </Section>
@@ -52,11 +52,10 @@ export default class Home extends React.Component<Props, State> {
             <SectionHeader>
               Getting started
             </SectionHeader>
-            <SectionBody>
+            <SectionBody name={"Showcase"}>
               WHATEVER CONTENT IS
             </SectionBody>
           </Section>
-
         </div>
     )
   }

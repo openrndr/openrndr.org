@@ -1,5 +1,12 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import styled from "styled-components";
+import Menu from "../menu";
+
+
+interface Props {
+    name: string;
+    children: any
+}
 
 const SectionBody = styled.div`
   width: 100%;
@@ -16,11 +23,11 @@ const Right = styled.div`
   background: orange;
 `;
 
-export default (props: any) => {
+export default (props: Props) => {
   return (
       <SectionBody>
         <Left>
-          <div>Menu component</div>
+          <Menu selection={props.name} />
         </Left>
         <Right>
           {props.children}
