@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Router, Switch, Route, Link } from "react-static";
 
-import Home from './containers/home';
-import Sand from './containers/sandbox';
+import Home from "./containers/home";
+import Sand from "./containers/sandbox";
 import Layout from "./layout";
 
 export default () => (
