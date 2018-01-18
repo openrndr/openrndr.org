@@ -8,13 +8,17 @@ interface Props {
 export default class BgGif extends React.Component<Props> {
   render() {
     const { url } = this.props.data;
-    return <div style={{
-      backgroundImage: `url(${url})`,
-      backgroundSize: 'fill',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      width: `100%`,
-      height: `100%`
-    }}/>;
+    return (
+      <div
+        style={{
+          backgroundImage: `url(${url})`,
+          backgroundSize: "fill",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          width: `100%`,
+          height: `100%`
+        }}
+      />
+    );
   }
 }
