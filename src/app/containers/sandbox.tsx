@@ -6,6 +6,7 @@ import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import TextBlock from "../components/text-block";
 import EventSet from "../components/event-set";
+import Footer from "../components/footer";
 
 import {
     Event,
@@ -121,6 +122,7 @@ export default class Home extends React.Component<Props, State> {
                         <EventSet title={"Events"} events={this.state.data.calendar.events.data}/>
                     </SectionBody>
                 </Section>
+                <Footer />
             </div>
         )
     }
