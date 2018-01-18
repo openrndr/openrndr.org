@@ -100,7 +100,7 @@ export default class Home extends React.Component<Props, State> {
 
     return (
       <Layout className="sweet-home">
-        <Section name="landing">
+        <Section id="landing" name="landing">
           <SectionHeader className="banner">
             <Banner data={landing.banner} />
           </SectionHeader>
@@ -109,7 +109,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section name={"Getting Started"}>
+        <Section id="getting-started" name={"Getting Started"}>
           <SectionHeader>
             <LinkBanner
               link={"http://github.com"}
@@ -125,7 +125,7 @@ export default class Home extends React.Component<Props, State> {
             />
           </SectionBody>
         </Section>
-        <Section name={"Showcase"}>
+        <Section id="showcase" name={"Showcase"}>
           <SectionHeader>
             <h1>Showcase</h1>
           </SectionHeader>
@@ -135,7 +135,7 @@ export default class Home extends React.Component<Props, State> {
             ))}
           </SectionBody>
         </Section>
-        <Section name={"Community"}>
+        <Section id="community" name={"Community"}>
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
@@ -143,7 +143,7 @@ export default class Home extends React.Component<Props, State> {
             <TextSet data={community.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-        <Section name={"About"}>
+        <Section id="about" name={"About"}>
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
@@ -151,7 +151,7 @@ export default class Home extends React.Component<Props, State> {
             <TextSet data={about.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-        <Section name={"Calendar"}>
+        <Section id="calendar" name={"Calendar"}>
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>

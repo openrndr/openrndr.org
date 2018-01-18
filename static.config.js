@@ -2,58 +2,32 @@
 // const typescriptWebpackPaths = require("./webpack.config.js");
 const fs = require("fs");
 const path = require("path");
+
 export default {
+  entry: path.resolve("src", "index.tsx"),
+  siteRoot: "https://openrndr.org",
   getSiteProps: () => ({
     title: "React Static"
   }),
   getRoutes: async () => {
-    const data = JSON.parse(
-      fs.readFileSync(path.resolve("data", "home-dataprops.json"))
-    );
-    const appRoutes = [
-      "/",
-      "/gallery",
-      "/getting-started",
-      "/community",
-      "/about",
-      "/calendar"
-    ].map(path => {
-      return {
-        path,
-        component: "src/app/containers/home",
-        getProps: async () => data
-      };
-    });
-    return appRoutes.concat([
-      {
-        path: "/data",
-        getProps: async () => {
-          return data;
-        }
-      },
-      {
-        path: "/sandbox",
-        component: "src/app/containers/sandbox",
-        getProps: async () => {
-          return data;
-        }
-      }
-    ]);
+    const dataProps = {
+      data: JSON.parse(
+        fs.readFileSync(path.resolve("data", "home-dataprops.json"))
+      )
+    };
+    return ["/"]
+      .map(path => {
+        return {
+          path,
+          getProps: async () => dataProps
+        };
+      })
+      .concat({
+        is404: true,
+        getProps: async () => dataProps
+      });
   },
   webpack: (config, { stage, defaultLoaders }) => {
-    console.log(stage);
-    // replace context & entry
-    const context = path.resolve("src");
-    config.context = context;
-    console.log("entry:", config.entry);
-    console.log("stage:", stage);
-    if (stage == "dev") {
-      config.entry.pop();
-      config.entry.push("index.tsx");
-    } else {
-      config.entry = "index.tsx";
-    }
-
     // Add .ts and .tsx extension to resolver
     config.resolve.extensions.push(".ts", ".tsx");
 
