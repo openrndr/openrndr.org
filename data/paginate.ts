@@ -27,8 +27,8 @@ export function paginate<T extends Entity>(
     return {
       ...chunk,
       current: buildUrl(chunk.hash),
-      next: prevChunk ? buildUrl(prevChunk.hash) : null,
-      prev: nextChunk ? buildUrl(nextChunk.hash) : null
+      next: prevChunk !== null ? buildUrl(prevChunk.hash) : null,
+      prev: nextChunk !== null ? buildUrl(nextChunk.hash) : null
     };
   });
 }
