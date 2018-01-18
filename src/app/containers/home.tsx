@@ -15,15 +15,14 @@ import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import ProjectSet from "../components/project-set/index";
-import TextBlock from "../components/text-block";
 import EventSet from "../components/event-set";
 import TextSet from "../components/text-set";
 import Footer from "../components/footer";
 import Banner from "../components/banner";
+import LinkBanner from "../components/linkBanner";
 
 import {
   Event,
-  Calendar,
   About,
   Community,
   GettingStarted,
@@ -133,8 +132,12 @@ export default class Home extends React.Component<Props, State> {
 
         <Section name="getting-started">
           <SectionHeader>
-            <h1>Getting started</h1>
-            <a href="https://github.com/">Github</a>
+            <LinkBanner
+              link={"http://github.com"}
+              linkTitle={"Source code Github"}
+            >
+              <h1>Getting started</h1>
+            </LinkBanner>
           </SectionHeader>
           <SectionBody>
             <TextSet

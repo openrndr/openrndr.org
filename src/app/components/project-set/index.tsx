@@ -16,11 +16,12 @@ interface Props {
 
 const Wrapper = styled.div`
   background: lightblue;
-  h1 {
+  h3 {
     text-transform: uppercase;
   }
   .load-more {
     cursor: pointer;
+    padding: 10px;
   }
 `;
 
@@ -28,27 +29,57 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  //TODO make different layouts for different sets
-
-  > *:first-child {
+  //Default mode
+  .project:first-child {
     grid-column: 1 / 3;
   }
-
-  > *:nth-child(2) {
+  .project:nth-child(2) {
     grid-column: 3 / 5;
   }
+
+  .project {
+    height: 400px;
+    border: 1px solid black;
+  }
+  .project:nth-child(n + 3) {
+    height: 300px;
+  }
+
+  &.no-small-thumb {
+    grid-template-columns: repeat(2, 1fr);
+    .project {
+      grid-column: auto;
+      height: 400px;
+    }
+  }
+
+  &.no-large-thumb {
+    grid-template-columns: repeat(4, 1fr);
+    .project {
+      grid-column: auto;
+      height: 300px;
+    }
+  }
 `;
+
+const layoutMode: any = {
+  gallery: "",
+  experiments: "no-small-thumb",
+  caseStudies: "no-large-thumb"
+};
 
 const ProjectSet = (props: Props) => {
   const { hasNext, loadNext } = props;
   return (
-    <Wrapper key={props.title}>
-      <h1>{props.title}</h1>
-      <Grid>
-        {props.data.map(project => <Project key={project.id} data={project} />)}
+    <Wrapper>
+      <h3>{props.title}</h3>
+      <Grid className={layoutMode[props.title]}>
+        {props.data.map((project, i) => (
+          <Project key={project.id} data={project} className={"project"} />
+        ))}
       </Grid>
       <span className={"load-more"} onClick={hasNext ? loadNext : null}>
-        {hasNext ? "Load more" : "No more pages to load"}
+        {hasNext ? "MORE" : "No more pages to load"}
       </span>
     </Wrapper>
   );

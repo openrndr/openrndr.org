@@ -20,7 +20,6 @@ export default (props: Props) => {
       <div>
         <a href={props.event.link}>Event page</a>
       </div>
-      <hr />
     </Container>
   );
 };

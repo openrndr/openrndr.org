@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { DataProps as HomeDataProps } from "../src/app/containers/home";
 import { paginate } from "./paginate";
-import {log} from "util";
+import { log } from "util";
 
 (async function() {
   const data = await fetchData();
@@ -16,12 +16,12 @@ import {log} from "util";
   const paginatedGallery = paginate(
     data.showcase.gallery,
     hash => `/data/project-${hash}.json`,
-    4
+    6
   );
   const paginatedExperiments = paginate(
     data.showcase.experiments,
     hash => `/data/project-${hash}.json`,
-    4
+    2
   );
   const paginatedCaseStudies = paginate(
     data.showcase.caseStudies,
@@ -40,7 +40,7 @@ import {log} from "util";
       caseStudies: paginatedCaseStudies[0]
     }
   };
-   console.log("paginatedGallery next", paginatedGallery.map(p => p.next));
+  console.log("paginatedGallery next", paginatedGallery.map(p => p.next));
   const filepath = path.resolve(__dirname, "dato-dump.json");
   fs.writeFileSync(filepath, JSON.stringify(data, null, 4));
 

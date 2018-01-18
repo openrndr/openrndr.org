@@ -3,47 +3,41 @@ import styled from "styled-components";
 
 import { Project } from "../../../types/";
 
-import BgImage from '../background-image';
-import BgGif from '../background-gif';
+import BgImage from "../background-image";
+import BgGif from "../background-gif";
 import Video from "../video";
 
 interface Props {
   data: Project;
+  className?: string;
 }
 
 const Wrapper = styled.div`
   overflow: hidden;
-  border: 1px solid white;
-  
-  
   display: grid;
-  grid-template-rows: 3fr 1fr;
-  
-  >*{
-    border: 1px solid yellow;
-  }
-  
-  .project-media{
-    
-  }
-  
-  &:nth-child(n+3){
-    .blurb{
+  grid-template-rows: 3fr 1.5fr;
+
+  &:nth-child(n + 3) {
+    .blurb {
       display: none;
     }
-  } 
-  .project-media{
-    width: 100%;  
+  }
+
+  .project-media {
+    width: 100%;
+  }
+
+  .project-info {
+    padding: 10px;
   }
 `;
 
-
 export default (props: Props) => {
+  const { className } = props;
   const { title, blurb, media } = props.data;
   const thumbnail = media[0];
-
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <div className={"project-media"}>
         {(function() {
           switch (thumbnail.itemType) {
@@ -52,20 +46,28 @@ export default (props: Props) => {
             case "gif":
               return <BgGif data={thumbnail} />;
             case "video":
-              return <Video data={thumbnail}
-                            controls={false}
-                            width={`100%`}
-                            height={`100%`}
-              />;
+              return (
+                <Video
+                  data={thumbnail}
+                  controls={false}
+                  width={`100%`}
+                  height={`100%`}
+                />
+              );
           }
         })()}
       </div>
       <div className={"project-info"}>
-        {title && title.length > 0 && <strong className={"title"}>{title}</strong>}
-        {blurb && blurb.length > 0 && <p className={"blurb"}
-                                         dangerouslySetInnerHTML={{
-                                           __html: blurb
-                                         }}/>}
+        {title && title.length > 0 && <span className={"title"}>{title}</span>}
+        {blurb &&
+          blurb.length > 0 && (
+            <p
+              className={"blurb"}
+              dangerouslySetInnerHTML={{
+                __html: blurb
+              }}
+            />
+          )}
       </div>
     </Wrapper>
   );
