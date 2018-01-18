@@ -5,14 +5,15 @@ import { Link } from "react-static";
 
 const Container = styled.nav`
   background: orange;
+  padding-top: 20px;
 `;
 
 const MenuLink = styled(Link)`
   color: black;
   font-weight: normal;
+  text-transform: uppercase;
   &.active {
     font-weight: bold;
-    text-decoration: underline;
   }
 `;
 

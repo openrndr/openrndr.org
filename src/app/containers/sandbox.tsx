@@ -1,6 +1,7 @@
 import React from "react";
 import { prefetch } from "react-static";
 import { Location } from "history";
+import styled from "styled-components";
 
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
@@ -8,8 +9,10 @@ import SectionBody from "../components/section/section-body";
 import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
 import EventSet from "../components/event-set";
-import Footer from "../components/footer";
 import TextSet from "../components/text-set";
+import Footer from "../components/footer";
+import Banner from "../components/banner";
+import LinkBanner from "../components/linkBanner";
 
 import {
   Event,
@@ -19,7 +22,7 @@ import {
   GettingStarted,
   Landing,
   Paged,
-  Project
+  Project as ProjectType
 } from "../../types";
 import "../app.css";
 
@@ -32,10 +35,10 @@ export interface DataProps {
   gettingStarted: GettingStarted;
   landing: Landing;
   showcase: {
-    [index: string]: Paged<Project>;
-    gallery: Paged<Project>;
-    experiments: Paged<Project>;
-    caseStudies: Paged<Project>;
+    [index: string]: Paged<ProjectType>;
+    gallery: Paged<ProjectType>;
+    experiments: Paged<ProjectType>;
+    caseStudies: Paged<ProjectType>;
   };
 }
 
@@ -49,6 +52,18 @@ export interface Props {
   data: DataProps;
 }
 
+const Layout = styled.div`
+  display: grid;
+  section.landing {
+    height: 100vh;
+    .banner {
+    }
+  }
+  h1 {
+    font-size: 32px;
+  }
+`;
+
 export default class Home extends React.Component<Props, State> {
   state: State = {
     isInitialDataFetched: false,
@@ -56,14 +71,16 @@ export default class Home extends React.Component<Props, State> {
   };
 
   componentWillMount() {
-    console.log("this.props.data", this.props.data);
-    prefetch("/data").then((data: { initialProps: DataProps }) => {
-      console.log("initialProps from prefetch /data", data);
-      this.setState({
-        isInitialDataFetched: true,
-        data: data.initialProps
+    console.log("home.tsx: this.props.data", this.props.data);
+    if ((process as any).browser) {
+      prefetch("/data").then((data: { initialProps: DataProps }) => {
+        console.log("initialProps from prefetch /data", data);
+        this.setState({
+          isInitialDataFetched: true,
+          data: data.initialProps
+        });
       });
-    });
+    }
   }
 
   render() {
@@ -80,17 +97,12 @@ export default class Home extends React.Component<Props, State> {
 
     // use the pathname to set the scroll position
     console.log(this.props.location.pathname);
-    console.log(landing);
-
-    const contentBlocks = gettingStarted.contentBlocks.map(cb => {
-      return <TextBlock data={cb} />;
-    });
 
     return (
-      <div className="sweet-home">
-        <Section>
-          <SectionHeader>
-            sksks
+      <Layout className="sweet-home">
+        <Section className="landing">
+          <SectionHeader className="banner">
+            <Banner data={landing.banner} />
           </SectionHeader>
           <SectionBody name={"Landing"}>
             <TextSet data={landing.contentBlocks} className={"columns-3"} />
@@ -99,8 +111,12 @@ export default class Home extends React.Component<Props, State> {
 
         <Section>
           <SectionHeader>
-            <h1>Getting started</h1>
-            <a href="https://github.com/">Github</a>
+            <LinkBanner
+              link={"http://github.com"}
+              linkTitle={"Source code Github"}
+            >
+              <h1>Getting started</h1>
+            </LinkBanner>
           </SectionHeader>
           <SectionBody name={"Getting Started"}>
             <TextSet
@@ -147,7 +163,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
         <Footer />
-      </div>
+      </Layout>
     );
   }
 }
