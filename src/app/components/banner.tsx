@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import { Project } from "../../types/";
 
-import BgImage from './background-image';
-import BgGif from './background-gif';
+import BgImage from "./background-image";
+import BgGif from "./background-gif";
 import Video from "./video";
 
 interface Props {
@@ -14,7 +14,6 @@ interface Props {
 const Wrapper = styled.div`
   overflow: hidden;
 `;
-
 
 export default (props: Props) => {
   const { media } = props.data;
@@ -29,13 +28,16 @@ export default (props: Props) => {
           case "gif":
             return <BgGif data={thumbnail} />;
           case "video":
-            return <Video data={thumbnail}
-                          controls={false}
-                          autoplay={true}
-                          playing={true}
-                          width={`100%`}
-                          height={`80vh`}
-            />;
+            return (
+              <Video
+                data={thumbnail}
+                controls={false}
+                autoPlay={true}
+                playing={true}
+                width={`100%`}
+                height={`80vh`}
+              />
+            );
         }
       })()}
     </Wrapper>
