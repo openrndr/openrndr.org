@@ -5,6 +5,10 @@ import EventBlock from "../event-block";
 
 const Container = styled.div`
   background: grey;
+  padding: 20px;
+  h3 {
+    text-transform: uppercase;
+  }
 `;
 
 interface Props {
@@ -16,11 +20,12 @@ export default (props: Props) => {
   return (
     <Container>
       <div>
-        <b>{props.title}</b>
+        <h3>{props.title}</h3>
       </div>
       {props.events.map((object, i) => (
         <EventBlock event={object}>{i}</EventBlock>
       ))}
+      <div>More</div>
     </Container>
   );
 };
