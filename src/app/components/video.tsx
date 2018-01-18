@@ -1,5 +1,5 @@
 import React from "react";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 import { Video as VideoType } from "../../types";
 
 interface Props {

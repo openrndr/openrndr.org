@@ -142,9 +142,9 @@ export default class Home extends React.Component<Props, State> {
         </Section>
         <Section name={"Calender"}>
           <SectionHeader>
-            <h2>Calender</h2>
+            <h2>Calendar</h2>
           </SectionHeader>
-          <SectionBody name={"Calender"}>WHATEVER CONTENT IS</SectionBody>
+          <SectionBody name={"Calendar"}>WHATEVER CONTENT IS</SectionBody>
         </Section>
       </div>
     );
