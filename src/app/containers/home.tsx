@@ -2,6 +2,14 @@ import React from "react";
 import { prefetch } from "react-static";
 import { Location } from "history";
 import styled from "styled-components";
+import {
+  Link,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
 
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
@@ -12,7 +20,6 @@ import EventSet from "../components/event-set";
 import TextSet from "../components/text-set";
 import Footer from "../components/footer";
 import Banner from "../components/banner";
-
 
 import {
   Event,
@@ -35,7 +42,7 @@ export interface DataProps {
   gettingStarted: GettingStarted;
   landing: Landing;
   showcase: {
-    [index:string]: Paged<ProjectType>;
+    [index: string]: Paged<ProjectType>;
     gallery: Paged<ProjectType>;
     experiments: Paged<ProjectType>;
     caseStudies: Paged<ProjectType>;
@@ -54,14 +61,10 @@ export interface Props {
 
 const Layout = styled.div`
   display: grid;
-  section.landing{
+  > div[name="landing"] {
     height: 100vh;
-    .banner{
-      
-    }
   }
 `;
-
 
 export default class Home extends React.Component<Props, State> {
   state: State = {
@@ -82,6 +85,29 @@ export default class Home extends React.Component<Props, State> {
     }
   }
 
+  componentDidMount() {
+    const name = this.getSectionNameFromPath(this.props.location.pathname);
+    console.log("name on load", name);
+  }
+
+  componentWillReceiveProps(nextProps: any) {
+    const { location: { pathname } } = nextProps;
+    const name = this.getSectionNameFromPath(pathname);
+    this.scrollTo(name, 1000, 100);
+  }
+
+  getSectionNameFromPath = (pathname: string) => {
+    return pathname.slice(-1 * pathname.length + 1);
+  };
+
+  scrollTo = (name: string, duration?: number, delay?: number) => {
+    scroller.scrollTo(name, {
+      duration: duration || 0,
+      delay: delay || 0,
+      smooth: true
+    });
+  };
+
   render() {
     if (!this.state.data) return null;
 
@@ -94,69 +120,68 @@ export default class Home extends React.Component<Props, State> {
       community
     } = this.state.data;
 
-    // use the pathname to set the scroll position
-    console.log(this.props.location.pathname);
-
     return (
-      <Layout className="sweet-home">
-        <Section className="landing">
+      <Layout className="sweet-home" id={"containerElement"}>
+        <Section name="landing">
           <SectionHeader className="banner">
-            <Banner data={landing.banner}/>
+            <Banner data={landing.banner} />
           </SectionHeader>
-          <SectionBody name={"Landing"}>
+          <SectionBody>
             <TextSet data={landing.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
 
-        <Section>
+        <Section name="getting-started">
           <SectionHeader>
             <h1>Getting started</h1>
             <a href="https://github.com/">Github</a>
           </SectionHeader>
-          <SectionBody name={"Getting Started"}>
+          <SectionBody>
             <TextSet
-                data={gettingStarted.contentBlocks}
-                className={"columns-4"}
+              data={gettingStarted.contentBlocks}
+              className={"columns-4"}
             />
           </SectionBody>
         </Section>
-        <Section>
+
+        <Section name="showcase">
           <SectionHeader>
             <h1>Showcase</h1>
           </SectionHeader>
-          <SectionBody name={"Showcase"}>
+          <SectionBody>
             {Object.keys(showcase).map(name => (
               <ProjectSet page={showcase[name]} title={name} />
             ))}
           </SectionBody>
         </Section>
-        <Section>
+
+        <Section name="community">
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
-          <SectionBody name={"Community"}>
+          <SectionBody>
             <TextSet data={community.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-        <Section>
+
+        <Section name={"about"}>
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
-          <SectionBody name={"About"}>
+          <SectionBody>
             <TextSet data={about.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-        <Section>
+
+        <Section name={"calendar"}>
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>
-          <SectionBody name={"Calendar"}>
-            <EventSet
-              title={"Events"}
-              events={this.state.data.calendar.events.data}
-            />
+          <SectionBody>
+            <EventSet title={"Events"} events={calendar.events.data} />
           </SectionBody>
         </Section>
+
         <Footer />
       </Layout>
     );

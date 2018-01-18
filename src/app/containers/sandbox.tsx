@@ -89,10 +89,8 @@ export default class Home extends React.Component<Props, State> {
     return (
       <div className="sweet-home">
         <Section>
-          <SectionHeader>
-            sksks
-          </SectionHeader>
-          <SectionBody name={"Landing"}>
+          <SectionHeader>sksks</SectionHeader>
+          <SectionBody>
             <TextSet data={landing.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
@@ -102,7 +100,7 @@ export default class Home extends React.Component<Props, State> {
             <h1>Getting started</h1>
             <a href="https://github.com/">Github</a>
           </SectionHeader>
-          <SectionBody name={"Getting Started"}>
+          <SectionBody>
             <TextSet
               data={gettingStarted.contentBlocks}
               className={"columns-4"}
@@ -113,7 +111,7 @@ export default class Home extends React.Component<Props, State> {
           <SectionHeader>
             <h1>Showcase</h1>
           </SectionHeader>
-          <SectionBody name={"Showcase"}>
+          <SectionBody>
             {Object.keys(showcase).map(name => (
               <ProjectSet page={showcase[name]} title={name} />
             ))}
@@ -123,7 +121,7 @@ export default class Home extends React.Component<Props, State> {
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
-          <SectionBody name={"Community"}>
+          <SectionBody>
             <TextSet data={community.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
@@ -131,7 +129,7 @@ export default class Home extends React.Component<Props, State> {
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
-          <SectionBody name={"About"}>
+          <SectionBody>
             <TextSet data={about.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
@@ -139,7 +137,7 @@ export default class Home extends React.Component<Props, State> {
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>
-          <SectionBody name={"Calendar"}>
+          <SectionBody>
             <EventSet
               title={"Events"}
               events={this.state.data.calendar.events.data}

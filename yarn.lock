@@ -110,6 +110,12 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-scroll@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@types/react-scroll/-/react-scroll-1.5.2.tgz#bd1adc45f09d373a5779f954cbf11f9776a47000"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.0.18":
   version "16.0.34"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.34.tgz#7a8f795afd8a404a9c4af9539b24c75d3996914e"
@@ -6011,6 +6017,12 @@ react-router@^4.2.0:
     path-to-regexp "^1.7.0"
     prop-types "^15.5.4"
     warning "^3.0.0"
+
+react-scroll@^1.7.6:
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.7.6.tgz#826102e6a9de30142cd8450f190b0fed87171ff6"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-side-effect@^1.1.0:
   version "1.1.3"

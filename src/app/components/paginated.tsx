@@ -57,7 +57,6 @@ export function withPagination<T extends Entity>(
 
     render() {
       const { page, ...rest } = this.props;
-      console.log("PAGINATED STATE", this.state);
       return (
         <Comp
           {...rest}

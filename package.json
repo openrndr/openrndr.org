@@ -13,6 +13,7 @@
     "precommit": "pretty-quick --staged"
   },
   "dependencies": {
+    "@types/react-scroll": "^1.5.2",
     "axios": "^0.17.0",
     "datocms-client": "^0.3.41",
     "lodash": "^4.17.4",
@@ -21,6 +22,7 @@
     "react-imgix": "^7.1.1",
     "react-player": "^0.25.3",
     "react-router": "^4.2.0",
+    "react-scroll": "^1.7.6",
     "react-static": "4.8.4",
     "styled-components": "^2.4.0"
   },

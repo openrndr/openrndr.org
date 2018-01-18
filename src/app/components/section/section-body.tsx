@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Menu from "../menu";
 
 interface Props {
-  name: string;
+  sectionName?: string;
   children: any;
 }
 
@@ -26,7 +26,7 @@ export default (props: Props) => {
   return (
     <SectionBody>
       <Left>
-        <Menu selection={props.name} />
+        <Menu selection={props.sectionName} />
       </Left>
       <Right>{props.children}</Right>
     </SectionBody>
