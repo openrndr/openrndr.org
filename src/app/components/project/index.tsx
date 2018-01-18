@@ -52,7 +52,11 @@ export default (props: Props) => {
             case "gif":
               return <BgGif data={thumbnail} />;
             case "video":
-              return <Video data={thumbnail} />;
+              return <Video data={thumbnail}
+                            controls={false}
+                            width={`100%`}
+                            height={`100%`}
+              />;
           }
         })()}
       </div>

@@ -16,6 +16,9 @@ interface Props {
 
 const Wrapper = styled.div`
   background: lightblue;
+  .load-more{
+    cursor: pointer;
+  }
 `;
 
 const Grid = styled.div`
@@ -34,14 +37,16 @@ const Grid = styled.div`
 `;
 
 const ProjectSet = (props: Props) => {
-  console.log("PROPS", props);
+  const {hasNext, loadNext} = props;
   return (
       <Wrapper>
         <h1>{props.title}</h1>
         <Grid>
           {props.data.map(project => <Project key={project.id} data={project}/>)}
-          {props.data.map(project => <Project key={project.id} data={project}/>)}
         </Grid>
+        <span className={"load-more"} onClick={hasNext ? loadNext : null}>
+          {hasNext ? "Load more" : "No more pages to load"}
+        </span>
       </Wrapper>
   );
 };

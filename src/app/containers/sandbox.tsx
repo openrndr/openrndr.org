@@ -71,13 +71,13 @@ export default class Home extends React.Component<Props, State> {
 
     return (
       <div className="sweet-home">
-        <Section name={"intro"}>
+        <Section>
           <SectionHeader>
-            <iframe
-              src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0"
-              width="100%"
-              height="300px"
-            />
+            {/*<iframe*/}
+              {/*src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0"*/}
+              {/*width="100%"*/}
+              {/*height="300px"*/}
+            {/*/>*/}
           </SectionHeader>
           <SectionBody name={"Landing"}>
             {this.state.data.landing.contentBlocks.map(cb => (
@@ -86,7 +86,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-                <Section name={"getting-started"}>
+                <Section>
                     <SectionHeader>
                         <h1>Getting started</h1> <a href="https://github.com/">Github</a>
                     </SectionHeader>
@@ -94,7 +94,7 @@ export default class Home extends React.Component<Props, State> {
                         WHATEVER CONTENT IS
                     </SectionBody>
                 </Section>
-                <Section name={"Showcase"}>
+                <Section>
                     <SectionHeader>
                         <h1>Showcase</h1>
                     </SectionHeader>
@@ -102,7 +102,7 @@ export default class Home extends React.Component<Props, State> {
                         WHATEVER CONTENT IS
                     </SectionBody>
                 </Section>
-                <Section name={"Community"}>
+                <Section>
                     <SectionHeader>
                         <h2>Community</h2>
                     </SectionHeader>
@@ -110,7 +110,7 @@ export default class Home extends React.Component<Props, State> {
                         WHATEVER CONTENT IS
                     </SectionBody>
                 </Section>
-                <Section name={"About"}>
+                <Section>
                     <SectionHeader>
                         <h2>About</h2>
                     </SectionHeader>
@@ -118,7 +118,7 @@ export default class Home extends React.Component<Props, State> {
                         WHATEVER CONTENT IS
                     </SectionBody>
                 </Section>
-                <Section name={"Calender"}>
+                <Section>
                     <SectionHeader>
                         <h2>Calendar</h2>
                     </SectionHeader>

@@ -22,13 +22,13 @@ export function paginate<T extends Entity>(
   });
 
   return chunkedData.map((chunk, i) => {
-    const prevChunk = i >= 1 ? chunkedData[i - 1] : null;
-    const nextChunk = i < chunkedData.length - 2 ? chunkedData[i + 1] : null;
+    const prevChunk = chunkedData[i - 1];
+    const nextChunk = chunkedData[i + 1];
     return {
       ...chunk,
       current: buildUrl(chunk.hash),
-      next: prevChunk ? buildUrl(prevChunk.hash) : null,
-      prev: nextChunk ? buildUrl(nextChunk.hash) : null
+      next: nextChunk ? buildUrl(nextChunk.hash) : null,
+      prev: prevChunk ? buildUrl(prevChunk.hash) : null
     };
   });
 }

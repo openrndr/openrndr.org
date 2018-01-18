@@ -1,6 +1,7 @@
 import React from "react";
 import { prefetch } from "react-static";
 import { Location } from "history";
+import styled from "styled-components";
 
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
@@ -9,6 +10,8 @@ import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
 import EventSet from "../components/event-set"
 import Footer from "../components/footer";
+import Banner from "../components/banner";
+
 
 import {
   Event,
@@ -18,7 +21,7 @@ import {
   GettingStarted,
   Landing,
   Paged,
-  Project
+  Project as ProjectType
 } from "../../types";
 import "../app.css";
 
@@ -31,10 +34,10 @@ export interface DataProps {
   gettingStarted: GettingStarted;
   landing: Landing;
   showcase: {
-    [index:string]: Paged<Project>;
-    gallery: Paged<Project>;
-    experiments: Paged<Project>;
-    caseStudies: Paged<Project>;
+    [index:string]: Paged<ProjectType>;
+    gallery: Paged<ProjectType>;
+    experiments: Paged<ProjectType>;
+    caseStudies: Paged<ProjectType>;
   };
 }
 
@@ -47,6 +50,17 @@ export interface Props {
   location: Location;
   data: DataProps;
 }
+
+const Layout = styled.div`
+  display: grid;
+  section.landing{
+    height: 100vh;
+    .banner{
+      
+    }
+  }
+`;
+
 
 export default class Home extends React.Component<Props, State> {
   state: State = {
@@ -72,23 +86,19 @@ export default class Home extends React.Component<Props, State> {
       showcase,
       landing,
       gettingStarted,
-        about,
-        calendar,
-        community
+      about,
+      calendar,
+      community
     } = this.state.data;
 
     // use the pathname to set the scroll position
     console.log(this.props.location.pathname);
-    console.log(landing);
-
-    const contentBlocks = gettingStarted.contentBlocks.map(cb => {
-      return <TextBlock data={cb} />
-    });
 
     return (
-      <div className="sweet-home">
-        <Section name={"intro"}>
-          <SectionHeader>
+      <Layout className="sweet-home">
+        <Section className="landing">
+          <SectionHeader className="banner">
+            <Banner data={landing.banner}/>
           </SectionHeader>
           <SectionBody name={"Landing"}>
             {landing.contentBlocks.map(cb => {
@@ -97,7 +107,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section name={"getting-started"}>
+        <Section>
           <SectionHeader>
             <h1>Getting started</h1>
             <a href="https://github.com/">Github</a>
@@ -108,7 +118,7 @@ export default class Home extends React.Component<Props, State> {
             })}
           </SectionBody>
         </Section>
-        <Section name={"Showcase"}>
+        <Section>
           <SectionHeader>
             <h1>Showcase</h1>
           </SectionHeader>
@@ -122,7 +132,7 @@ export default class Home extends React.Component<Props, State> {
             }
           </SectionBody>
         </Section>
-        <Section name={"Community"}>
+        <Section>
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
@@ -132,7 +142,7 @@ export default class Home extends React.Component<Props, State> {
             })}
           </SectionBody>
         </Section>
-        <Section name={"About"}>
+        <Section>
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
@@ -142,16 +152,16 @@ export default class Home extends React.Component<Props, State> {
             })}
           </SectionBody>
         </Section>
-        <Section name={"Calender"}>
+        <Section>
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>
           <SectionBody name={"Calendar"}>
-              <EventSet title={"Events"} events={this.state.data.calendar.events.data}/>
+              <EventSet title={"Events"} events={calendar.events.data}/>
           </SectionBody>
         </Section>
         <Footer />
-      </div>
+      </Layout>
     );
   }
 }
