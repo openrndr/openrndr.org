@@ -55,14 +55,16 @@ export default class Home extends React.Component<Props, State> {
   };
 
   componentWillMount() {
-    console.log("this.props.data", this.props.data);
-    prefetch("/data").then((data: { initialProps: DataProps }) => {
-      console.log("initialProps from prefetch /data", data);
-      this.setState({
-        isInitialDataFetched: true,
-        data: data.initialProps
+    console.log("home.tsx: this.props.data", this.props.data);
+    if ((process as any).browser) {
+      prefetch("/data").then((data: { initialProps: DataProps }) => {
+        console.log("initialProps from prefetch /data", data);
+        this.setState({
+          isInitialDataFetched: true,
+          data: data.initialProps
+        });
       });
-    });
+    }
   }
 
   render() {
