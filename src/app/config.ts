@@ -4,6 +4,6 @@ export default {
 		{title:"Showcase"},
 		{title:"Community"},
 		{title:"About"},
-		{title:"Calender"},
+		{title:"Calendar"},
 	]
 }

@@ -5,6 +5,8 @@ import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import TextBlock from "../components/text-block";
+import EventSet from "../components/event-set";
+
 import {
     Event,
     Calendar,
@@ -16,6 +18,7 @@ import {
     Project
 } from "../../types";
 import '../app.css';
+import Config from "../config";
 
 export interface DataProps {
     calendar: {
@@ -112,13 +115,21 @@ export default class Home extends React.Component<Props, State> {
                 </Section>
                 <Section name={"Calender"}>
                     <SectionHeader>
-                        <h2>Calender</h2>
+                        <h2>Calendar</h2>
                     </SectionHeader>
-                    <SectionBody name={"Calender"}>
-                        WHATEVER CONTENT IS
+                    <SectionBody name={"Calendar"}>
+                        <EventSet title={"Events"} events={this.state.data.calendar.events.data}/>
                     </SectionBody>
                 </Section>
             </div>
         )
     }
 }
+
+// { this.state.data.calendar.events.data.map((object, i) =>
+//     <div>
+//         <EventSet title={"Events"} events={null}/>
+//         <EventSet title={"Workshops"} events={null}/>
+//         <EventSet title={"Exhibitions"} events={null}/>
+//     </div>
+// )}
