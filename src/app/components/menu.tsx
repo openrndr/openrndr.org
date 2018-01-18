@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Config from "../config";
 
-const Container = styled.div`
+const Container = styled.nav`
   background: orange;
 `;
 

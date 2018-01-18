@@ -14,7 +14,7 @@ export default (props: Props) => {
   return (
     <Container>
       <div>
-        <u>{props.event.title}</u>
+        <h3>{props.event.title}</h3>
       </div>
       <div>{props.event.note}</div>
       <div>

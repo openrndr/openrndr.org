@@ -7,6 +7,8 @@ import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
+import EventSet from "../components/event-set"
+import Footer from "../components/footer";
 
 import {
   Event,
@@ -144,8 +146,11 @@ export default class Home extends React.Component<Props, State> {
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>
-          <SectionBody name={"Calendar"}>WHATEVER CONTENT IS</SectionBody>
+          <SectionBody name={"Calendar"}>
+              <EventSet title={"Events"} events={this.state.data.calendar.events.data}/>
+          </SectionBody>
         </Section>
+        <Footer />
       </div>
     );
   }

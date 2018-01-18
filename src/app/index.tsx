@@ -9,10 +9,6 @@ export default () => (
   <Router>
     <Layout>
       <div>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
         <div className="content">
           <Switch>
             <Route path="/sandbox" component={Sand} />
