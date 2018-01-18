@@ -19,22 +19,16 @@ function unwrapImages(data: Project[]) {
 
 const pageSection = (props: Props) => {
   const {data, loading, loadNext, hasNext} = props;
+
   const galleryItems = unwrapImages(data).map((img, i) => {
     return (
-      <div
-        key={i}
-        style={{
-          height: "300px",
-          width: "300px",
-          padding: "10px",
-          display: "inline-block"
-        }}
-      >
+      <div key={i}>
         <img style={{width: "100%"}} src={img.file.url}/>
         <div>{img.id}</div>
       </div>
     );
   });
+
   return (
     <div>
       <div>loadmore</div>

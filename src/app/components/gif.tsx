@@ -1,5 +1,4 @@
 import React from "react";
-import Imgix from "react-imgix";
 import { Gif as GifType } from "../../types";
 
 interface Props {
@@ -9,6 +8,6 @@ interface Props {
 export default class Gif extends React.Component<Props> {
   render() {
     const { url } = this.props.data;
-    return <Imgix src={url} />;
+    return <img src={url} />;
   }
 }

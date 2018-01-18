@@ -29,6 +29,7 @@ export interface DataProps {
   gettingStarted: GettingStarted;
   landing: Landing;
   showcase: {
+    [index:string]: Paged<Project>;
     gallery: Paged<Project>;
     experiments: Paged<Project>;
     caseStudies: Paged<Project>;
@@ -65,33 +66,44 @@ export default class Home extends React.Component<Props, State> {
   render() {
     if (!this.state.data) return null;
 
-    const { showcase } = this.state.data;
+    const {
+      showcase,
+      landing,
+      gettingStarted,
+        about,
+        calendar,
+        community
+    } = this.state.data;
 
     // use the pathname to set the scroll position
     console.log(this.props.location.pathname);
+    console.log(landing);
+
+    const contentBlocks = gettingStarted.contentBlocks.map(cb => {
+      return <TextBlock data={cb} />
+    });
+
     return (
       <div className="sweet-home">
         <Section name={"intro"}>
           <SectionHeader>
-            <iframe
-              src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0"
-              width="100%"
-              height="300px"
-            />
           </SectionHeader>
           <SectionBody name={"Landing"}>
-            {this.state.data.landing.contentBlocks.map(cb => (
-              <TextBlock data={cb} />
-            ))}
+            {landing.contentBlocks.map(cb => {
+              return <TextBlock data={cb} />
+            })}
           </SectionBody>
         </Section>
 
         <Section name={"getting-started"}>
           <SectionHeader>
-            <h1>Getting started</h1> <a href="https://github.com/">Github</a>
+            <h1>Getting started</h1>
+            <a href="https://github.com/">Github</a>
           </SectionHeader>
           <SectionBody name={"Getting Started"}>
-            WHATEVER CONTENT IS
+            {gettingStarted.contentBlocks.map(cb => {
+              return <TextBlock data={cb} />
+            })}
           </SectionBody>
         </Section>
         <Section name={"Showcase"}>
@@ -99,28 +111,34 @@ export default class Home extends React.Component<Props, State> {
             <h1>Showcase</h1>
           </SectionHeader>
           <SectionBody name={"Showcase"}>
-            <ProjectSet page={showcase.caseStudies} />
-            {/*{*/}
-            {/*Object.keys(showcase).map(title=>*/}
-            {/*<ProjectSet data={{*/}
-            {/*title,*/}
-            {/*items: showcase[title]*/}
-            {/*}}/>*/}
-            {/*)*/}
-            {/*}*/}
+            {
+              Object.keys(showcase).map(name=>
+                  <ProjectSet page={showcase[name]}
+                              title={name}
+                  />
+              )
+            }
           </SectionBody>
         </Section>
         <Section name={"Community"}>
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
-          <SectionBody name={"Community"}>WHATEVER CONTENT IS</SectionBody>
+          <SectionBody name={"Community"}>
+            {community.contentBlocks.map(cb => {
+              return <TextBlock data={cb} />
+            })}
+          </SectionBody>
         </Section>
         <Section name={"About"}>
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
-          <SectionBody name={"About"}>WHATEVER CONTENT IS</SectionBody>
+          <SectionBody name={"About"}>
+            {about.contentBlocks.map(cb => {
+              return <TextBlock data={cb} />
+            })}
+          </SectionBody>
         </Section>
         <Section name={"Calender"}>
           <SectionHeader>

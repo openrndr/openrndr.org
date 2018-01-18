@@ -3,49 +3,66 @@ import styled from "styled-components";
 
 import { Project } from "../../../types/";
 
-import Image from "../image";
-import Gif from "../gif";
+import BgImage from '../background-image';
+import BgGif from '../background-gif';
 import Video from "../video";
 
 interface Props {
   data: Project;
 }
 
-const Wrapper = styled.section`
-  background: blue;
+const Wrapper = styled.div`
+  overflow: hidden;
+  border: 1px solid white;
+  
+  
   display: grid;
+  grid-template-rows: 3fr 1fr;
+  
+  >*{
+    border: 1px solid yellow;
+  }
+  
+  .project-media{
+    
+  }
+  
+  &:nth-child(n+3){
+    .blurb{
+      display: none;
+    }
+  } 
+  .project-media{
+    width: 100%;  
+  }
 `;
 
-const MediaWrapper = styled.div`
-  background: black;
-`;
-
-const InfoWrapper = styled.article`
-  background: pink;
-`;
 
 export default (props: Props) => {
-  console.log("PROJECT PROPS", props);
   const { title, blurb, media } = props.data;
   const thumbnail = media[0];
+
   return (
     <Wrapper>
-      <MediaWrapper>
+      <div className={"project-media"}>
         {(function() {
           switch (thumbnail.itemType) {
             case "image":
-              return <Image data={thumbnail} />;
+              return <BgImage data={thumbnail} />;
             case "gif":
-              return <Gif data={thumbnail} />;
+              return <BgGif data={thumbnail} />;
             case "video":
               return <Video data={thumbnail} />;
           }
         })()}
-      </MediaWrapper>
-      <InfoWrapper>
-        {title && title.length > 0 && <strong>{title}</strong>}
-        {blurb && blurb.length > 0 && <p>{blurb}</p>}
-      </InfoWrapper>
+      </div>
+      <div className={"project-info"}>
+        {title && title.length > 0 && <strong className={"title"}>{title}</strong>}
+        {blurb && blurb.length > 0 && <p className={"blurb"}
+                                         dangerouslySetInnerHTML={{
+                                           __html: blurb
+                                         }}/>}
+      </div>
     </Wrapper>
   );
 };
