@@ -7,7 +7,7 @@ import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
-import EventSet from "../components/event-set"
+import EventSet from "../components/event-set";
 import Footer from "../components/footer";
 
 import {
@@ -31,7 +31,7 @@ export interface DataProps {
   gettingStarted: GettingStarted;
   landing: Landing;
   showcase: {
-    [index:string]: Paged<Project>;
+    [index: string]: Paged<Project>;
     gallery: Paged<Project>;
     experiments: Paged<Project>;
     caseStudies: Paged<Project>;
@@ -74,27 +74,22 @@ export default class Home extends React.Component<Props, State> {
       showcase,
       landing,
       gettingStarted,
-        about,
-        calendar,
-        community
+      about,
+      calendar,
+      community
     } = this.state.data;
 
-    // use the pathname to set the scroll position
-    console.log(this.props.location.pathname);
-    console.log(landing);
-
     const contentBlocks = gettingStarted.contentBlocks.map(cb => {
-      return <TextBlock data={cb} />
+      return <TextBlock data={cb} />;
     });
 
     return (
       <div className="sweet-home">
         <Section name={"intro"}>
-          <SectionHeader>
-          </SectionHeader>
+          <SectionHeader />
           <SectionBody name={"Landing"}>
             {landing.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
+              return <TextBlock data={cb} />;
             })}
           </SectionBody>
         </Section>
@@ -106,7 +101,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionHeader>
           <SectionBody name={"Getting Started"}>
             {gettingStarted.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
+              return <TextBlock data={cb} />;
             })}
           </SectionBody>
         </Section>
@@ -115,13 +110,9 @@ export default class Home extends React.Component<Props, State> {
             <h1>Showcase</h1>
           </SectionHeader>
           <SectionBody name={"Showcase"}>
-            {
-              Object.keys(showcase).map(name=>
-                  <ProjectSet page={showcase[name]}
-                              title={name}
-                  />
-              )
-            }
+            {Object.keys(showcase).map(name => (
+              <ProjectSet page={showcase[name]} title={name} />
+            ))}
           </SectionBody>
         </Section>
         <Section name={"Community"}>
@@ -130,7 +121,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionHeader>
           <SectionBody name={"Community"}>
             {community.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
+              return <TextBlock data={cb} />;
             })}
           </SectionBody>
         </Section>
@@ -140,7 +131,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionHeader>
           <SectionBody name={"About"}>
             {about.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
+              return <TextBlock data={cb} />;
             })}
           </SectionBody>
         </Section>
@@ -149,7 +140,10 @@ export default class Home extends React.Component<Props, State> {
             <h2>Calendar</h2>
           </SectionHeader>
           <SectionBody name={"Calendar"}>
-              <EventSet title={"Events"} events={this.state.data.calendar.events.data}/>
+            <EventSet
+              title={"Events"}
+              events={this.state.data.calendar.events.data}
+            />
           </SectionBody>
         </Section>
         <Footer />
