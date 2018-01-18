@@ -6,16 +6,27 @@ import TextBlock from "../text-block";
 const Container = styled.div`
   background: grey;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  &.columns-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  &.columns-3 {
+    grid-template-columns: 2fr 1fr 1fr;
+    background: blue;
+  }
+  &.columns-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: blue;
+  }
 `;
 
 interface Props {
   data: TextBlockType[];
+  className?: string;
 }
 
 export default (props: Props) => {
   return (
-    <Container>
+    <Container className={props.className}>
       {props.data.map(cb => {
         return <TextBlock data={cb} />;
       })}
