@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import Config from "../config";
 import {TextBlock} from "../../types";
 import {Link} from "react-router-dom";
 
 const Container = styled.div`
   background: purple;
+  padding:20px;
+  h3 {
+    text-transform: uppercase;
+  }
 `;
 
 interface Props {

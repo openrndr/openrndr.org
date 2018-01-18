@@ -4,6 +4,7 @@ import styled from "styled-components";
 const SectionHeader = styled.div`
   width: 100%;
   background: red;
+  text-transform: uppercase;
 
   .header {
     grid-area: header;
