@@ -1,12 +1,15 @@
 import React from "react";
 import { prefetch } from "react-static";
 import { Location } from "history";
+
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
+import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
 import EventSet from "../components/event-set";
 import Footer from "../components/footer";
+import TextSet from "../components/text-set";
 
 import {
   Event,
@@ -19,7 +22,6 @@ import {
   Project
 } from "../../types";
 import "../app.css";
-import Config from "../config";
 
 export interface DataProps {
   calendar: {
@@ -30,6 +32,7 @@ export interface DataProps {
   gettingStarted: GettingStarted;
   landing: Landing;
   showcase: {
+    [index: string]: Paged<Project>;
     gallery: Paged<Project>;
     experiments: Paged<Project>;
     caseStudies: Paged<Project>;
@@ -66,76 +69,85 @@ export default class Home extends React.Component<Props, State> {
   render() {
     if (!this.state.data) return null;
 
+    const {
+      showcase,
+      landing,
+      gettingStarted,
+      about,
+      calendar,
+      community
+    } = this.state.data;
+
     // use the pathname to set the scroll position
     console.log(this.props.location.pathname);
+    console.log(landing);
+
+    const contentBlocks = gettingStarted.contentBlocks.map(cb => {
+      return <TextBlock data={cb} />;
+    });
 
     return (
       <div className="sweet-home">
         <Section>
           <SectionHeader>
-            {/*<iframe*/}
-              {/*src="https://player.vimeo.com/video/97314422?loop=1&title=0&byline=0&portrait=0"*/}
-              {/*width="100%"*/}
-              {/*height="300px"*/}
-            {/*/>*/}
+            sksks
           </SectionHeader>
           <SectionBody name={"Landing"}>
-            {this.state.data.landing.contentBlocks.map(cb => (
-              <TextBlock data={cb} />
-            ))}
+            <TextSet data={landing.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
 
-                <Section>
-                    <SectionHeader>
-                        <h1>Getting started</h1> <a href="https://github.com/">Github</a>
-                    </SectionHeader>
-                    <SectionBody name={"Getting Started"}>
-                        WHATEVER CONTENT IS
-                    </SectionBody>
-                </Section>
-                <Section>
-                    <SectionHeader>
-                        <h1>Showcase</h1>
-                    </SectionHeader>
-                    <SectionBody name={"Showcase"}>
-                        WHATEVER CONTENT IS
-                    </SectionBody>
-                </Section>
-                <Section>
-                    <SectionHeader>
-                        <h2>Community</h2>
-                    </SectionHeader>
-                    <SectionBody name={"Community"}>
-                        WHATEVER CONTENT IS
-                    </SectionBody>
-                </Section>
-                <Section>
-                    <SectionHeader>
-                        <h2>About</h2>
-                    </SectionHeader>
-                    <SectionBody name={"About"}>
-                        WHATEVER CONTENT IS
-                    </SectionBody>
-                </Section>
-                <Section>
-                    <SectionHeader>
-                        <h2>Calendar</h2>
-                    </SectionHeader>
-                    <SectionBody name={"Calendar"}>
-                        <EventSet title={"Events"} events={this.state.data.calendar.events.data}/>
-                    </SectionBody>
-                </Section>
-                <Footer />
-            </div>
-        )
-    }
+        <Section>
+          <SectionHeader>
+            <h1>Getting started</h1>
+            <a href="https://github.com/">Github</a>
+          </SectionHeader>
+          <SectionBody name={"Getting Started"}>
+            <TextSet
+              data={gettingStarted.contentBlocks}
+              className={"columns-4"}
+            />
+          </SectionBody>
+        </Section>
+        <Section>
+          <SectionHeader>
+            <h1>Showcase</h1>
+          </SectionHeader>
+          <SectionBody name={"Showcase"}>
+            {Object.keys(showcase).map(name => (
+              <ProjectSet page={showcase[name]} title={name} />
+            ))}
+          </SectionBody>
+        </Section>
+        <Section>
+          <SectionHeader>
+            <h2>Community</h2>
+          </SectionHeader>
+          <SectionBody name={"Community"}>
+            <TextSet data={community.contentBlocks} className={"columns-3"} />
+          </SectionBody>
+        </Section>
+        <Section>
+          <SectionHeader>
+            <h2>About</h2>
+          </SectionHeader>
+          <SectionBody name={"About"}>
+            <TextSet data={about.contentBlocks} className={"columns-3"} />
+          </SectionBody>
+        </Section>
+        <Section>
+          <SectionHeader>
+            <h2>Calendar</h2>
+          </SectionHeader>
+          <SectionBody name={"Calendar"}>
+            <EventSet
+              title={"Events"}
+              events={this.state.data.calendar.events.data}
+            />
+          </SectionBody>
+        </Section>
+        <Footer />
+      </div>
+    );
+  }
 }
-
-// { this.state.data.calendar.events.data.map((object, i) =>
-//     <div>
-//         <EventSet title={"Events"} events={null}/>
-//         <EventSet title={"Workshops"} events={null}/>
-//         <EventSet title={"Exhibitions"} events={null}/>
-//     </div>
-// )}

@@ -9,6 +9,7 @@ interface Props{
 const SectionHeader = styled.div`
   width: 100%;
   background: red;
+  text-transform: uppercase;
 
   .header {
     grid-area: header;

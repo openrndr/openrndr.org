@@ -1,9 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import Config from "../config";
+import { Link } from "react-static";
 
 const Container = styled.nav`
   background: orange;
+`;
+
+const MenuLink = styled(Link)`
+  color: black;
+  font-weight: normal;
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 `;
 
 interface Props {
@@ -15,15 +25,12 @@ export default (props: Props) => {
     <Container>
       {Config.sections.map((object, i) => (
         <div key={i}>
-          {props.selection === object.title ? (
-            <div>
-              <b>
-                <u>{object.title}</u>
-              </b>
-            </div>
-          ) : (
-            <div>{object.title}</div>
-          )}
+          <MenuLink
+            to={object.path}
+            className={props.selection === object.title ? "active" : null}
+          >
+            {object.title}
+          </MenuLink>
         </div>
       ))}
     </Container>

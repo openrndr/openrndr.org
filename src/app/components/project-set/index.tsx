@@ -16,6 +16,9 @@ interface Props {
 
 const Wrapper = styled.div`
   background: lightblue;
+  h1 {
+    text-transform: uppercase;
+  }
   .load-more{
     cursor: pointer;
   }

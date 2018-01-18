@@ -7,13 +7,27 @@ export default {
     title: "React Static"
   }),
   getRoutes: async () => {
-    return [
+    const data = JSON.parse(
+      fs.readFileSync(path.resolve("data", "home-dataprops.json"))
+    );
+    const appRoutes = [
+      "/",
+      "/gallery",
+      "/getting-started",
+      "/community",
+      "/about",
+      "/calendar"
+    ].map(path => {
+      return {
+        path,
+        component: "src/app/containers/home",
+        getProps: async () => data
+      };
+    });
+    return appRoutes.concat([
       {
         path: "/data",
         getProps: async () => {
-          const data = JSON.parse(
-            fs.readFileSync(path.resolve("data", "home-dataprops.json"))
-          );
           return data;
         }
       },
@@ -21,16 +35,24 @@ export default {
         path: "/sandbox",
         component: "src/app/containers/sandbox",
         getProps: async () => {
-          return {};
+          return data;
         }
       }
-    ];
+    ]);
   },
-  webpack: (config, { defaultLoaders }) => {
+  webpack: (config, { stage, defaultLoaders }) => {
+    console.log(stage);
     // replace context & entry
     const context = path.resolve("src");
     config.context = context;
-    config.entry[config.entry.length - 1] = "index.tsx";
+    console.log("entry:", config.entry);
+    console.log("stage:", stage);
+    if (stage == "dev") {
+      config.entry.pop();
+      config.entry.push("index.tsx");
+    } else {
+      config.entry = "index.tsx";
+    }
 
     // Add .ts and .tsx extension to resolver
     config.resolve.extensions.push(".ts", ".tsx");
@@ -73,3 +95,7 @@ export default {
     return config;
   }
 };
+
+process.on("unhandledRejection", err => {
+  throw err;
+});

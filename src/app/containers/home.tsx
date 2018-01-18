@@ -8,7 +8,8 @@ import SectionHeader from "../components/section/section-header";
 import SectionBody from "../components/section/section-body";
 import ProjectSet from "../components/project-set/index";
 import TextBlock from "../components/text-block";
-import EventSet from "../components/event-set"
+import EventSet from "../components/event-set";
+import TextSet from "../components/text-set";
 import Footer from "../components/footer";
 import Banner from "../components/banner";
 
@@ -69,14 +70,16 @@ export default class Home extends React.Component<Props, State> {
   };
 
   componentWillMount() {
-    console.log("this.props.data", this.props.data);
-    prefetch("/data").then((data: { initialProps: DataProps }) => {
-      console.log("initialProps from prefetch /data", data);
-      this.setState({
-        isInitialDataFetched: true,
-        data: data.initialProps
+    console.log("home.tsx: this.props.data", this.props.data);
+    if ((process as any).browser) {
+      prefetch("/data").then((data: { initialProps: DataProps }) => {
+        console.log("initialProps from prefetch /data", data);
+        this.setState({
+          isInitialDataFetched: true,
+          data: data.initialProps
+        });
       });
-    });
+    }
   }
 
   render() {
@@ -101,9 +104,7 @@ export default class Home extends React.Component<Props, State> {
             <Banner data={landing.banner}/>
           </SectionHeader>
           <SectionBody name={"Landing"}>
-            {landing.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
-            })}
+            <TextSet data={landing.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
 
@@ -113,9 +114,10 @@ export default class Home extends React.Component<Props, State> {
             <a href="https://github.com/">Github</a>
           </SectionHeader>
           <SectionBody name={"Getting Started"}>
-            {gettingStarted.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
-            })}
+            <TextSet
+                data={gettingStarted.contentBlocks}
+                className={"columns-4"}
+            />
           </SectionBody>
         </Section>
         <Section>
@@ -123,13 +125,9 @@ export default class Home extends React.Component<Props, State> {
             <h1>Showcase</h1>
           </SectionHeader>
           <SectionBody name={"Showcase"}>
-            {
-              Object.keys(showcase).map(name=>
-                  <ProjectSet page={showcase[name]}
-                              title={name}
-                  />
-              )
-            }
+            {Object.keys(showcase).map(name => (
+              <ProjectSet page={showcase[name]} title={name} />
+            ))}
           </SectionBody>
         </Section>
         <Section>
@@ -137,9 +135,7 @@ export default class Home extends React.Component<Props, State> {
             <h2>Community</h2>
           </SectionHeader>
           <SectionBody name={"Community"}>
-            {community.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
-            })}
+            <TextSet data={community.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
         <Section>
@@ -147,9 +143,7 @@ export default class Home extends React.Component<Props, State> {
             <h2>About</h2>
           </SectionHeader>
           <SectionBody name={"About"}>
-            {about.contentBlocks.map(cb => {
-              return <TextBlock data={cb} />
-            })}
+            <TextSet data={about.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
         <Section>
@@ -157,7 +151,10 @@ export default class Home extends React.Component<Props, State> {
             <h2>Calendar</h2>
           </SectionHeader>
           <SectionBody name={"Calendar"}>
-              <EventSet title={"Events"} events={calendar.events.data}/>
+            <EventSet
+              title={"Events"}
+              events={this.state.data.calendar.events.data}
+            />
           </SectionBody>
         </Section>
         <Footer />
