@@ -6,7 +6,6 @@
   ],
   "rules": {
     "import-name": false,
-    "variable-name": false,
-    "prettier": false
+    "variable-name": false
   }
 }

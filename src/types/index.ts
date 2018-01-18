@@ -8,7 +8,7 @@ export interface Entity {
 export interface Image extends Entity {
   itemType: "image";
   file: {
-    format: string,
+    format: string;
     size: number;
     url: string;
     width: number;
