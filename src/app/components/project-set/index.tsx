@@ -13,6 +13,7 @@ interface Props {
   loadNext: () => any;
   hasNext: boolean;
 }
+
 const Wrapper = styled.div`
   background: blue;
   display: grid;

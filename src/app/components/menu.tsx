@@ -15,7 +15,7 @@ export default (props: Props) => {
     <Container>
         { Config.sections.map((object, i) =>
             <div key={i}>
-            { (props.selection == object.title) ? (
+            { (props.selection === object.title) ? (
                 <div><b><u>{object.title}</u></b></div>
             ) : (
                 <div>{object.title}</div>
