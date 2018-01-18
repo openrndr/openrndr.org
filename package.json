@@ -8,7 +8,8 @@
         "build": "react-static build",
         "data:fetch": "ts-node data/index",
         "serve": "serve dist -p 3000",
-        "prettier": "prettier './**/*.{js,ts,tsx}' --write"
+        "prettier": "prettier './**/*.{js,ts,tsx}' --write",
+        "lint": "tslint -p . -c tslint.json"
     },
     "dependencies": {
         "axios": "^0.17.0",
