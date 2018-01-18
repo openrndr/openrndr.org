@@ -12,9 +12,9 @@ interface State<T extends Entity> {
   loading: false;
 }
 
-export interface PaginatedProps<T extends Entity> {
+export interface PageProps<T extends Entity> {
   loading: boolean;
-  data: Paged<T>;
+  data: T[];
   loadNext: () => any;
   hasNext: boolean;
 }
