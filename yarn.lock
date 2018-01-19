@@ -54,6 +54,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@ibm/type@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@ibm/type/-/type-0.5.3.tgz#aee7a25e85ba9887b7a6870ec86054f6118a9181"
+
 "@types/axios@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"

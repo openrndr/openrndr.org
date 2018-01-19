@@ -15,7 +15,6 @@ interface Props {
 }
 
 const Wrapper = styled.div`
-  background: lightblue;
   h3 {
     text-transform: uppercase;
   }
@@ -39,7 +38,6 @@ const Grid = styled.div`
 
   .project {
     height: 400px;
-    border: 1px solid black;
   }
   .project:nth-child(n + 3) {
     height: 300px;

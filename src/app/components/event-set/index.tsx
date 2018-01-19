@@ -4,7 +4,6 @@ import { Event } from "../../../types";
 import EventBlock from "../event-block";
 
 const Container = styled.div`
-  background: grey;
   padding: 20px;
   h3 {
     text-transform: uppercase;

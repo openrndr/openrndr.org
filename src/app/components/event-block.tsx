@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Event } from "../../types";
 
-const Container = styled.div`
-  background: pink;
-`;
+const Container = styled.div``;
 
 interface Props {
   event: Event;

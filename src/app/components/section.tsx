@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Menu from "./menu";
 
-const Container = styled.div`
-  background: lightgrey;
-`;
+const Container = styled.div``;
 
 interface Props {
   title: string;
