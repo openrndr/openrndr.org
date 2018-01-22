@@ -3,17 +3,6 @@ import { getRouteProps, prefetch } from "react-static";
 import { Location } from "history";
 import styled from "styled-components";
 import { Events, scrollSpy, scroller } from "react-scroll";
-
-import Section from "../components/section/index";
-import SectionHeader from "../components/section/section-header";
-import SectionBody from "../components/section/section-body";
-import ProjectSet from "../components/project-set/index";
-import EventSet from "../components/event-set";
-import TextSet from "../components/text-set";
-import Footer from "../components/footer";
-import Banner from "../components/banner";
-import LinkBanner from "../components/linkBanner";
-
 import {
   Event,
   About,
@@ -23,6 +12,15 @@ import {
   Paged,
   Project as ProjectType
 } from "../../types";
+import { Banner } from "../components/banner";
+import { SectionHeader } from "../components/section/section-header";
+import { SectionBody } from "../components/section/section-body";
+import { TextSet } from "../components/text-set/index";
+import { LinkBanner } from "../components/linkBanner";
+import { ProjectSet } from "../components/project-set/index";
+import { EventSet } from "../components/event-set/index";
+import { Footer } from "../components/footer";
+import { Section } from "../components/section/index";
 
 export interface DataProps {
   calendar: {

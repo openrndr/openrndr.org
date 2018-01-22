@@ -5,7 +5,7 @@ interface Props {
   data: GifType;
 }
 
-export default class Gif extends React.Component<Props> {
+export class Gif extends React.Component<Props> {
   render() {
     const { url } = this.props.data;
     return <img src={url} />;

@@ -5,7 +5,7 @@ interface Props {
   data: GifType;
 }
 
-export default class BgGif extends React.Component<Props> {
+export class BgGif extends React.Component<Props> {
   render() {
     const { url } = this.props.data;
     return (

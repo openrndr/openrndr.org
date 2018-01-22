@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Event } from "../../../types";
-import EventBlock from "../event-block";
+import { EventBlock } from "../event-block";
 
 const Container = styled.div`
   padding: 20px;
@@ -15,7 +15,7 @@ interface Props {
   events: Event[];
 }
 
-export default (props: Props) => {
+export const EventSet = (props: Props) => {
   return (
     <Container>
       <div>

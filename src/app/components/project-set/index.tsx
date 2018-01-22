@@ -2,8 +2,9 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Paged, Project as ProjectType } from "../../../types/index";
 
-import Project from "../project";
 import { withPagination } from "../paginated";
+import { noOp } from "../../no-op";
+import { Project } from "../project/index";
 
 // type Props = PaginatedProps<ProjectType>;
 interface Props {
@@ -66,7 +67,7 @@ const layoutMode: any = {
   caseStudies: "no-large-thumb"
 };
 
-const ProjectSet = (props: Props) => {
+export const ProjectSet = withPagination((props: Props) => {
   const { hasNext, loadNext } = props;
   return (
     <Wrapper>
@@ -76,11 +77,9 @@ const ProjectSet = (props: Props) => {
           <Project key={project.id} data={project} className={"project"} />
         ))}
       </Grid>
-      <span className={"load-more"} onClick={hasNext ? loadNext : null}>
+      <span className={"load-more"} onClick={hasNext ? loadNext : noOp}>
         {hasNext ? "MORE" : "No more pages to load"}
       </span>
     </Wrapper>
   );
-};
-
-export default withPagination(ProjectSet);
+});

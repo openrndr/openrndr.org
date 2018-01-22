@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-import { Project } from "../../../types/";
+import { Project as ProjectData } from "../../../types/";
+import { BgImage } from "../background-image";
+import { BgGif } from "../background-gif";
+import { Video } from "../video";
 
-import BgImage from "../background-image";
-import BgGif from "../background-gif";
-import Video from "../video";
 
 interface Props {
   data: Project;
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default (props: Props) => {
+export const Project = (props: Props) => {
   const { className } = props;
   const { title, blurb, media } = props.data;
   const thumbnail = media[0];

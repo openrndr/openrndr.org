@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { TextBlock } from "../../types";
+import { TextBlock as TextBlockData } from "../../types";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -11,10 +11,10 @@ const Container = styled.div`
 `;
 
 interface Props {
-  data: TextBlock;
+  data: TextBlockData;
 }
 
-export default (props: Props) => {
+export const TextBlock = (props: Props) => {
   return (
     <Container>
       <h3>{props.data.title}</h3>

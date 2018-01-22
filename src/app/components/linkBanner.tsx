@@ -7,7 +7,7 @@ interface Props {
   linkTitle?: string;
 }
 
-const LinkBannerContainer = styled.div`
+const Container = styled.div`
   text-transform: uppercase;
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -19,15 +19,15 @@ const LinkBannerContainer = styled.div`
   }
 `;
 
-export default (props: Props) => {
+export const LinkBanner = (props: Props) => {
   return (
-    <LinkBannerContainer>
+    <Container>
       <div>{props.children}</div>
       <div className={"button"}>
         <a href={props.link} target="_blank">
           {props.linkTitle}
         </a>
       </div>
-    </LinkBannerContainer>
+    </Container>
   );
 };

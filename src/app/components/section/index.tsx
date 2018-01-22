@@ -15,14 +15,14 @@ interface Props {
   id: string;
 }
 
-const Section = styled.section`
+const Container = styled.section`
   display: grid;
   grid-template-areas:
     "header"
     "body";
 `;
 
-export default (props: Props) => {
+export const Section = (props: Props) => {
   const { id, children, name } = props;
 
   const childrenWithProps = React.Children.map(children, child => {

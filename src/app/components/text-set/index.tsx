@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { TextBlock as TextBlockType } from "../../../types";
-import TextBlock from "../text-block";
+import { TextBlock } from "../text-block";
 
 const Container = styled.div`
   display: grid;
@@ -21,7 +21,7 @@ interface Props {
   className?: string;
 }
 
-export default (props: Props) => {
+export const TextSet = (props: Props) => {
   return (
     <Container className={props.className}>
       {props.data.map(cb => {

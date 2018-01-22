@@ -16,7 +16,7 @@ const BackgroundGrid = styled.div`
   grid-template-columns: repeat(5, 1fr);
 `;
 
-const Layout: StatelessComponent = props => {
+export const Layout: StatelessComponent = props => {
   return (
     <Container>
       {props.children}
@@ -34,5 +34,3 @@ const Layout: StatelessComponent = props => {
     </Container>
   );
 };
-
-export default Layout;

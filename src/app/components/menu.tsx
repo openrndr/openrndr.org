@@ -20,7 +20,7 @@ interface Props {
   selection: string;
 }
 
-export default (props: Props) => {
+export const Menu = (props: Props) => {
   return (
     <Container>
       {Config.sections.map((object, i) => (

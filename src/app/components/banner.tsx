@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { Project } from "../../types/";
 
-import BgImage from "./background-image";
-import BgGif from "./background-gif";
-import Video from "./video";
+import { BgGif } from "./background-gif";
+import { Video } from "./video";
+import { BgImage } from "./background-image";
 
 interface Props {
   data: Project;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-export default (props: Props) => {
+export const Banner = (props: Props) => {
   const { media } = props.data;
   const thumbnail = media[0];
 

@@ -14,7 +14,7 @@ const Container = styled.div`
 
 interface Props {}
 
-export default (props: Props) => {
+export const Footer = (props: Props) => {
   return (
     <Container>
       <div>OPENRNDR</div>

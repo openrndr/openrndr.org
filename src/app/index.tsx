@@ -3,10 +3,10 @@ import { getRouteProps, Router, Switch, Route, Link } from "react-static";
 
 import Home from "./containers/home";
 import Sand from "./containers/sandbox";
-import Layout from "./layout";
 
 import "@ibm/type/css/ibm-type.min.css";
 import "./app.css";
+import { Layout } from "./layout";
 
 export default () => (
   <Router>

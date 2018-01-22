@@ -8,7 +8,7 @@ interface Props {
   event: Event;
 }
 
-export default (props: Props) => {
+export const EventBlock = (props: Props) => {
   return (
     <Container>
       <div>

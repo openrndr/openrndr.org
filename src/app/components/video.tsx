@@ -6,7 +6,7 @@ interface Props {
   data: VideoType;
 }
 
-export default class Video extends React.Component<Props & ReactPlayerProps> {
+export class Video extends React.Component<Props & ReactPlayerProps> {
   render() {
     const { data, ...rest } = this.props;
 

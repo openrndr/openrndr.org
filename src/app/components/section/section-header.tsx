@@ -10,7 +10,7 @@ interface Props {
   linkTitle?: string;
 }
 
-const SectionHeader = styled.div`
+const Container = styled.div`
   width: 100%;
   text-transform: uppercase;
 
@@ -22,11 +22,12 @@ const SectionHeader = styled.div`
   border-bottom: 1px solid;
 `;
 
-export default (props: Props) => {
+export const SectionHeader = (props: Props) => {
   const { className, sectionName } = props;
 
   return (
     <SectionHeader
+    <Container
       className={className}
       style={{
         borderColor: configs.borderColors[sectionName]
@@ -40,6 +41,6 @@ export default (props: Props) => {
           </a>
         </div>
       )}
-    </SectionHeader>
+    </Container>
   );
 };

@@ -6,7 +6,7 @@ interface Props {
   data: ImageType;
 }
 
-export default class BgImage extends React.Component<Props> {
+export class BgImage extends React.Component<Props> {
   render() {
     const { url } = this.props.data.file;
     return (
