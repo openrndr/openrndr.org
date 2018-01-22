@@ -8,23 +8,14 @@ interface Props {
 }
 
 const LinkBannerContainer = styled.div`
-  width: 100%;
-  background: red;
   text-transform: uppercase;
   display: grid;
   grid-template-columns: 3fr 2fr;
 
-  .header {
-    grid-area: header;
-  }
-
   .button {
-    background: pink;
+    display: grid;
+    align-items: center;
     text-align: center;
-    a {
-      padding-top: 35px;
-      display: block;
-    }
   }
 `;
 

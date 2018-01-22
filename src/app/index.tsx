@@ -5,6 +5,9 @@ import Home from "./containers/home";
 import Sand from "./containers/sandbox";
 import Layout from "./layout";
 
+import "@ibm/type/css/ibm-type.min.css";
+import "./app.css";
+
 export default () => (
   <Router>
     <Layout>
@@ -16,6 +19,16 @@ export default () => (
           </Switch>
         </div>
       </div>
+      <div
+        style={{
+          backgroundImage: `url("1x1.png")`,
+          backgroundRepeat: "repeat-y",
+          width: "1px",
+          height: `100%`,
+          position: "fixed",
+          zIndex: 999999999
+        }}
+      />
     </Layout>
   </Router>
 );

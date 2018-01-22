@@ -4,7 +4,6 @@ import Config from "../config";
 import { Link } from "react-static";
 
 const Container = styled.nav`
-  background: orange;
   padding-top: 20px;
 `;
 

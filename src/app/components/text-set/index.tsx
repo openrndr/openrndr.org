@@ -4,18 +4,15 @@ import { TextBlock as TextBlockType } from "../../../types";
 import TextBlock from "../text-block";
 
 const Container = styled.div`
-  background: grey;
   display: grid;
   &.columns-2 {
     grid-template-columns: 1fr 1fr;
   }
   &.columns-3 {
     grid-template-columns: 2fr 1fr 1fr;
-    background: blue;
   }
   &.columns-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    background: blue;
   }
 `;
 

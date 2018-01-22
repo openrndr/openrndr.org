@@ -16,7 +16,6 @@ interface Props {
 }
 
 const Section = styled.section`
-  background: blue;
   display: grid;
   grid-template-areas:
     "header"

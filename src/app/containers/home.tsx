@@ -2,14 +2,7 @@ import React from "react";
 import { getRouteProps, prefetch } from "react-static";
 import { Location } from "history";
 import styled from "styled-components";
-import {
-  Link,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller
-} from "react-scroll";
+import { Events, scrollSpy, scroller } from "react-scroll";
 
 import Section from "../components/section/index";
 import SectionHeader from "../components/section/section-header";
@@ -30,7 +23,6 @@ import {
   Paged,
   Project as ProjectType
 } from "../../types";
-import "../app.css";
 
 export interface DataProps {
   calendar: {
@@ -61,7 +53,6 @@ export interface Props {
 const Layout = styled.div`
   display: grid;
   > div[name="landing"] {
-    height: 100vh;
   }
 `;
 class Home extends React.Component<Props, State> {

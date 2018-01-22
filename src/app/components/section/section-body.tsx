@@ -9,18 +9,13 @@ interface Props {
 
 const SectionBody = styled.div`
   width: 100%;
-  background: blue;
   display: grid;
   grid-template-columns: 1fr 4fr;
 `;
 
-const Left = styled.div`
-  background: green;
-`;
+const Left = styled.div``;
 
-const Right = styled.div`
-  background: orange;
-`;
+const Right = styled.div``;
 
 export default (props: Props) => {
   return (
