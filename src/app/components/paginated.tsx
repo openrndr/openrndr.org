@@ -8,7 +8,7 @@ interface Props<T extends Entity> {
 
 interface State<T extends Entity> {
   data: T[];
-  nextUrl: null;
+  nextUrl: string | null;
   loading: false;
 }
 
@@ -38,21 +38,23 @@ export function withPagination<T extends Entity>(
     }
 
     loadNext = () => {
-      this.setState({
-        loading: true
-      });
-      fetch(this.state.nextUrl)
-        .then(res => {
-          return res.json();
-        })
-        .then((res: Paged<T>) => {
-          const { data, next } = res;
-          this.setState({
-            data: this.state.data.concat(data),
-            nextUrl: next,
-            loading: false
-          });
+      if (this.state.nextUrl) {
+        this.setState({
+          loading: true
         });
+        fetch(this.state.nextUrl)
+          .then(res => {
+            return res.json();
+          })
+          .then((res: Paged<T>) => {
+            const { data, next } = res;
+            this.setState({
+              data: this.state.data.concat(data),
+              nextUrl: next,
+              loading: false
+            });
+          });
+      }
     };
 
     render() {

@@ -26,11 +26,10 @@ export const SectionHeader = (props: Props) => {
   const { className, sectionName } = props;
 
   return (
-    <SectionHeader
     <Container
       className={className}
       style={{
-        borderColor: configs.borderColors[sectionName]
+        borderColor: sectionName ? siteConfig.borderColors[sectionName] : "none"
       }}
     >
       <div>{props.children}</div>

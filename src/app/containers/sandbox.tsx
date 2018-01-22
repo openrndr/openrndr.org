@@ -41,7 +41,7 @@ export interface DataProps {
 
 interface State {
   isInitialDataFetched: boolean;
-  data: DataProps;
+  data: DataProps | null;
 }
 
 export interface Props {

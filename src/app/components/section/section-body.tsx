@@ -14,14 +14,13 @@ const Container = styled.div`
 `;
 
 const Left = styled.div``;
-
 const Right = styled.div``;
 
 export const SectionBody = (props: Props) => {
   return (
     <Container>
       <Left>
-        <Menu selection={props.sectionName} />
+        <Menu selection={props.sectionName || ""} />
       </Left>
       <Right>{props.children}</Right>
     </Container>

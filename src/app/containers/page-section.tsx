@@ -2,6 +2,7 @@ import React from "react";
 import { getRouteProps } from "react-static";
 import { withPagination, PageProps } from "../components/paginated";
 import { Project, Image } from "../../types/index";
+import { noOp } from "../no-op";
 
 interface Props {
   foo: string;
@@ -42,7 +43,7 @@ const pageSection = (props: Props & PageProps<Project>) => {
         <div style={{ paddingTop: "100px" }}>
           <button
             style={{ width: "100px", height: "50px" }}
-            onClick={hasNext ? loadNext : null}
+            onClick={hasNext ? loadNext : noOp}
           >
             {hasNext ? "Load more" : "No more pages to load"}
           </button>

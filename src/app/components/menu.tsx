@@ -27,7 +27,7 @@ export const Menu = (props: Props) => {
         <div key={i}>
           <MenuLink
             to={object.path}
-            className={props.selection === object.title ? "active" : null}
+            className={props.selection === object.title ? "active" : ""}
           >
             {object.title}
           </MenuLink>
