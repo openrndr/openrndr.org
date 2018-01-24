@@ -19,16 +19,6 @@ export default () => (
           </Switch>
         </div>
       </div>
-      <div
-        style={{
-          backgroundImage: `url("1x1.png")`,
-          backgroundRepeat: "repeat-y",
-          width: "1px",
-          height: `100%`,
-          position: "fixed",
-          zIndex: 999999999
-        }}
-      />
     </Layout>
   </Router>
 );

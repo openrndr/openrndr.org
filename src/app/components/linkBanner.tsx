@@ -16,6 +16,7 @@ const Container = styled.div`
     display: grid;
     align-items: center;
     text-align: center;
+    background: pink;
   }
 `;
 

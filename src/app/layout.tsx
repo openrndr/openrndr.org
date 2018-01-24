@@ -14,6 +14,7 @@ const BackgroundGrid = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  z-index: -1;
 `;
 
 export const Layout: StatelessComponent = props => {

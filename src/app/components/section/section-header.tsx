@@ -20,6 +20,7 @@ const Container = styled.div`
 
   border-top: 1px solid;
   border-bottom: 1px solid;
+  padding: 10px 20px;
 `;
 
 export const SectionHeader = (props: Props) => {
@@ -29,7 +30,7 @@ export const SectionHeader = (props: Props) => {
     <Container
       className={className}
       style={{
-        borderColor: sectionName ? siteConfig.borderColors[sectionName] : "none"
+        borderColor: sectionName ? configs.borderColors[sectionName] : "none"
       }}
     >
       <div>{props.children}</div>

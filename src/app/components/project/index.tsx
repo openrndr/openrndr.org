@@ -6,9 +6,8 @@ import { BgImage } from "../background-image";
 import { BgGif } from "../background-gif";
 import { Video } from "../video";
 
-
 interface Props {
-  data: Project;
+  data: ProjectData;
   className?: string;
 }
 

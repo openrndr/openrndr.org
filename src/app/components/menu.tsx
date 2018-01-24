@@ -2,17 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import Config from "../config";
 import { Link } from "react-static";
+import configs from "../../../data/site-configs";
 
 const Container = styled.nav`
-  padding-top: 20px;
+  padding: 20px;
 `;
 
 const MenuLink = styled(Link)`
   color: black;
   font-weight: normal;
   text-transform: uppercase;
-  &.active {
-    font-weight: bold;
+
+  > h3 {
+    font-weight: 100;
+  }
+  &.active > h3 {
+    font-weight: 800;
   }
 `;
 
@@ -27,9 +32,13 @@ export const Menu = (props: Props) => {
         <div key={i}>
           <MenuLink
             to={object.path}
-            className={props.selection === object.title ? "active" : ""}
+            className={
+              props.selection.toLowerCase() === object.path.toLowerCase()
+                ? "active"
+                : ""
+            }
           >
-            {object.title}
+            <h3>{object.title}</h3>
           </MenuLink>
         </div>
       ))}

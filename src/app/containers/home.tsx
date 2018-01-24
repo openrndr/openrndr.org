@@ -41,6 +41,7 @@ export interface DataProps {
 interface State {
   isInitialDataFetched: boolean;
   data: DataProps | null;
+  activeSectionName: string;
 }
 
 export interface Props {
@@ -56,8 +57,21 @@ const Layout = styled.div`
 class Home extends React.Component<Props, State> {
   state: State = {
     isInitialDataFetched: false,
-    data: null
+    data: null,
+    activeSectionName: ""
   };
+
+  componentDidMount() {
+    if ((process as any).browser) {
+      window.addEventListener("hashchange", this.updateActiveSession, false);
+    }
+  }
+
+  componentWillUnmount() {
+    if ((process as any).browser) {
+      window.removeEventListener("hashchange", this.updateActiveSession, false);
+    }
+  }
 
   componentWillMount() {
     console.log("home mounting");
@@ -73,6 +87,12 @@ class Home extends React.Component<Props, State> {
       // });
     }
   }
+
+  updateActiveSession = (e: any) => {
+    this.setState({
+      activeSectionName: window.location.hash
+    });
+  };
 
   // componentDidMount() {
   //   const name = this.getSectionNameFromPath(this.props.location.pathname);
@@ -107,9 +127,15 @@ class Home extends React.Component<Props, State> {
       community
     } = this.props.data;
 
+    const { activeSectionName } = this.state;
+
     return (
       <Layout className="sweet-home" id={"containerElement"}>
-        <Section id="landing" name="landing">
+        <Section
+          activeSectionName={activeSectionName}
+          id="landing"
+          name="landing"
+        >
           <SectionHeader className="banner">
             <Banner data={landing.banner} />
           </SectionHeader>
@@ -118,7 +144,11 @@ class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section id="getting-started" name="getting-started">
+        <Section
+          activeSectionName={activeSectionName}
+          id="getting-started"
+          name="getting-started"
+        >
           <SectionHeader>
             <LinkBanner
               link={"http://github.com"}
@@ -135,7 +165,11 @@ class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section id="showcase" name="showcase">
+        <Section
+          activeSectionName={activeSectionName}
+          id="showcase"
+          name="showcase"
+        >
           <SectionHeader>
             <h1>Showcase</h1>
           </SectionHeader>
@@ -145,7 +179,11 @@ class Home extends React.Component<Props, State> {
             ))}
           </SectionBody>
         </Section>
-        <Section id="community" name="community">
+        <Section
+          activeSectionName={activeSectionName}
+          id="community"
+          name="community"
+        >
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
@@ -154,7 +192,11 @@ class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section id="about" name={"about"}>
+        <Section
+          activeSectionName={activeSectionName}
+          id="about"
+          name={"about"}
+        >
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
@@ -163,7 +205,11 @@ class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section id="calendar" name={"calendar"}>
+        <Section
+          activeSectionName={activeSectionName}
+          id="calendar"
+          name={"calendar"}
+        >
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>
