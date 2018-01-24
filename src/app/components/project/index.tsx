@@ -1,10 +1,8 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Project as ProjectData } from "../../../types/";
-import { BgImage } from "../background-image";
-import { BgGif } from "../background-gif";
-import { Video } from "../video";
+import { ProjectMedia } from "./project-media";
 
 interface Props {
   data: ProjectData;
@@ -37,25 +35,7 @@ export const Project = (props: Props) => {
   const thumbnail = media[0];
   return (
     <Wrapper className={className}>
-      <div className={"project-media"}>
-        {(function() {
-          switch (thumbnail.itemType) {
-            case "image":
-              return <BgImage data={thumbnail} />;
-            case "gif":
-              return <BgGif data={thumbnail} />;
-            case "video":
-              return (
-                <Video
-                  data={thumbnail}
-                  controls={false}
-                  width={`100%`}
-                  height={`100%`}
-                />
-              );
-          }
-        })()}
-      </div>
+      <ProjectMedia thumbnail={thumbnail} />
       <div className={"project-info"}>
         {title && title.length > 0 && <span className={"title"}>{title}</span>}
         {blurb &&
