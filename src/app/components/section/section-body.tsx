@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Menu } from "../menu";
 
-interface Props {
+export interface Props {
   sectionName?: string;
   children: any;
   activeSectionName?: string;

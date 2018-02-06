@@ -143,7 +143,6 @@ class Home extends React.Component<Props, State> {
             <TextSet data={landing.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-
         <Section
           activeSectionName={activeSectionName}
           id="getting-started"
@@ -164,7 +163,6 @@ class Home extends React.Component<Props, State> {
             />
           </SectionBody>
         </Section>
-
         <Section
           activeSectionName={activeSectionName}
           id="showcase"
@@ -191,7 +189,6 @@ class Home extends React.Component<Props, State> {
             <TextSet data={community.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-
         <Section
           activeSectionName={activeSectionName}
           id="about"
@@ -204,7 +201,6 @@ class Home extends React.Component<Props, State> {
             <TextSet data={about.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-
         <Section
           activeSectionName={activeSectionName}
           id="calendar"
@@ -217,7 +213,6 @@ class Home extends React.Component<Props, State> {
             <EventSet title={"Events"} events={calendar.events.data} />
           </SectionBody>
         </Section>
-
         <Footer />
       </Layout>
     );

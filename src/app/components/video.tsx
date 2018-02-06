@@ -2,7 +2,7 @@ import React from "react";
 import ReactPlayer, { ReactPlayerProps } from "react-player";
 import { Video as VideoType } from "../../types";
 
-interface Props {
+export interface Props {
   data: VideoType;
 }
 

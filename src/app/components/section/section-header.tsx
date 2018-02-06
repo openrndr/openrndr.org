@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import configs from "../../../../data/site-configs";
+import { siteConfig } from "../../site-config";
 
-interface Props {
+export interface Props {
   children: ReactNode;
   className?: string;
   sectionName?: string;

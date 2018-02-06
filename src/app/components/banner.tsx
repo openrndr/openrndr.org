@@ -7,7 +7,7 @@ import { BgGif } from "./background-gif";
 import { Video } from "./video";
 import { BgImage } from "./background-image";
 
-interface Props {
+export interface Props {
   data: Project;
 }
 

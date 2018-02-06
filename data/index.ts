@@ -5,7 +5,7 @@ import { DataProps as HomeDataProps } from "../src/app/containers/home";
 import { paginate } from "./paginate";
 import { log } from "util";
 
-(async function() {
+export async function run() {
   const data = await fetchData();
 
   const paginatedEvents = paginate(
@@ -60,7 +60,9 @@ import { log } from "util";
       fs.writeFileSync(filepath, JSON.stringify(page, null, 4));
     });
   });
-})();
+}
+
+run();
 
 process.on("unhandledRejection", e => {
   throw e;

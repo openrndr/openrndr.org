@@ -91,15 +91,9 @@ export interface Calendar extends Entity {
   events: Event[];
 }
 
-export interface Paged<T extends Entity> {
+export interface Paged<T> {
   data: T[];
   current: string;
   prev: string | null;
   next: string | null;
-}
-
-export interface SiteConfigs {
-  borderColors: {
-    [index: string]: string;
-  };
 }
