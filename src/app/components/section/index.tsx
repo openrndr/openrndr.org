@@ -1,18 +1,16 @@
-import React, { ReactElement, ReactNode } from "react";
+import React, { ReactNode } from "react";
+import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import {
-  Link,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller
-} from "react-scroll";
+
+import { SectionMetadata } from "../../../types/index";
 
 interface Props {
   children: ReactNode[];
-  activeSectionName?: string;
-  config?: any;
+  metadata: SectionMetadata;
+}
+
+interface Context {
+  metadata: SectionMetadata;
 }
 
 const Container = styled.section`
@@ -22,15 +20,18 @@ const Container = styled.section`
     "body";
 `;
 
-export const Section = (props: Props) => {
-  const { children, config, activeSectionName } = props;
+export class Section extends React.Component<Props, any> {
+  static childContextTypes = {
+    metadata: PropTypes.object
+  };
 
-  const childrenWithProps = React.Children.map(children, child => {
-    return React.cloneElement(child as ReactElement<any>, {
-      config,
-      activeSectionName
-    });
-  });
+  getChildContext(): Context {
+    return {
+      metadata: this.props.metadata
+    };
+  }
 
-  return <Container>{childrenWithProps}</Container>;
-};
+  render() {
+    return <Container>{this.props.children}</Container>;
+  }
+}

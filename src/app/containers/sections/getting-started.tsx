@@ -1,31 +1,33 @@
 import * as React from "react";
 
 import {
-  Landing as LandingDataType,
+  GettingStarted as GettingStartedDataType,
   SectionMetadata
 } from "../../../types/index";
 
 import { Section } from "../../components/section/index";
 import { SectionHeader } from "../../components/section/section-header";
 import { SectionBody } from "../../components/section/section-body";
-import { Banner } from "../../components/banner";
 import { TextSet } from "../../components/text-set/index";
+import { LinkBanner } from "../../components/linkBanner";
 
 interface Props {
   metadata: SectionMetadata;
-  data: LandingDataType;
+  data: GettingStartedDataType;
 }
 
-export const LandingSection: React.StatelessComponent<Props> = ({
+export const GettingStartedSection: React.StatelessComponent<Props> = ({
   metadata,
   data
 }) => (
   <Section metadata={metadata}>
-    <SectionHeader className="banner">
-      <Banner data={data.banner} />
+    <SectionHeader>
+      <LinkBanner link={"http://github.com"} linkTitle={"Source code Github"}>
+        <h1>metadata.title</h1>
+      </LinkBanner>
     </SectionHeader>
     <SectionBody>
-      <TextSet data={data.contentBlocks} className={"columns-3"} />
+      <TextSet data={data.contentBlocks} className={"columns-4"} />
     </SectionBody>
   </Section>
 );

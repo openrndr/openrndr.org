@@ -1,6 +1,6 @@
 import React, { StatelessComponent } from "react";
 import styled from "styled-components";
-import config from "./config";
+import { siteConfig } from "./config";
 
 const Container = styled.div``;
 
@@ -22,9 +22,9 @@ export const Layout: StatelessComponent = props => {
     <Container>
       {props.children}
       <BackgroundGrid>
-        {config.sections
+        {siteConfig.sections
           .splice(0, 4)
-          .map(({ color }) => (
+          .map(({ metadata: { color } }) => (
             <div style={{ borderRight: `1px solid ${color}` }} />
           ))}
       </BackgroundGrid>

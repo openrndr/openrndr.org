@@ -1,11 +1,16 @@
-import React, { ReactNode } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+
 import { Menu } from "../menu";
+import { HomeContext, SectionMetadata } from "../../../types/index";
 
 interface Props {
-  config?: any;
   children: any;
-  activeSectionName?: string;
+}
+
+interface Context extends HomeContext {
+  metadata: SectionMetadata;
 }
 
 const Container = styled.div`
@@ -17,13 +22,23 @@ const Container = styled.div`
 const Left = styled.div``;
 const Right = styled.div``;
 
-export const SectionBody = (props: Props) => {
-  return (
-    <Container>
-      <Left>
-        <Menu selection={props.config.path || ""} />
-      </Left>
-      <Right>{props.children}</Right>
-    </Container>
-  );
-};
+export class SectionBody extends React.Component<Props, any> {
+  static contextTypes = {
+    activeSectionName: PropTypes.string,
+    metadata: PropTypes.object
+  };
+
+  context: Context;
+
+  render() {
+    console.log("SectionBody activeSectionName", this.context);
+    return (
+      <Container>
+        <Left>
+          <Menu selection={this.context.metadata.path || ""} />
+        </Left>
+        <Right>{this.props.children}</Right>
+      </Container>
+    );
+  }
+}

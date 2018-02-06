@@ -1,3 +1,5 @@
+import { Component, StatelessComponent } from "react";
+
 export interface Entity {
   id: string;
   createdAt: string;
@@ -96,4 +98,28 @@ export interface Paged<T extends Entity> {
   current: string;
   prev: string | null;
   next: string | null;
+}
+
+export interface SectionMetadata {
+  title: string;
+  key: string;
+  path: string;
+  color: string;
+}
+
+export interface SectionConfig {
+  metadata: SectionMetadata;
+  Component: any;
+}
+
+export interface SiteConfig {
+  sections: SectionConfig[];
+  style: {
+    textBlockPadding: number[];
+    menuPadding: number[];
+  };
+}
+
+export interface HomeContext {
+  activeSectionName: string;
 }

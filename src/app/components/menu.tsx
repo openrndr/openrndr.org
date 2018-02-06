@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Config from "../config";
+import { siteConfig } from "../config";
 import { Link } from "react-static";
 
 const Container = styled.nav`
@@ -27,17 +27,17 @@ interface Props {
 export const Menu = (props: Props) => {
   return (
     <Container>
-      {Config.sections.map((object, i) => (
+      {siteConfig.sections.map(({ metadata }, i) => (
         <div key={i}>
           <MenuLink
-            to={object.path}
+            to={metadata.path}
             className={
-              props.selection.toLowerCase() === object.path.toLowerCase()
+              props.selection.toLowerCase() === metadata.path.toLowerCase()
                 ? "active"
                 : ""
             }
           >
-            <h3>{object.title}</h3>
+            <h3>{metadata.title}</h3>
           </MenuLink>
         </div>
       ))}
