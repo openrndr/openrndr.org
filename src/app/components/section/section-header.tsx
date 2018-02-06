@@ -1,11 +1,10 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { siteConfig } from "../../site-config";
 
 export interface Props {
   children: ReactNode;
   className?: string;
-  sectionName?: string;
+  config?: any;
   link?: string;
   linkTitle?: string;
 }
@@ -24,13 +23,13 @@ const Container = styled.div`
 `;
 
 export const SectionHeader = (props: Props) => {
-  const { className, sectionName } = props;
+  const { className, config } = props;
 
   return (
     <Container
       className={className}
       style={{
-        borderColor: sectionName ? configs.borderColors[sectionName] : "none"
+        borderColor: config ? config.color : "none"
       }}
     >
       <div>{props.children}</div>

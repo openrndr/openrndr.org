@@ -1,32 +1,48 @@
+import * as React from "react";
 import { Carousel } from "react-responsive-carousel";
 
-import { Project as ProjectType } from "../../../types/index";
+import { Project as ProjectType, MediaItem } from "../../../types/index";
 import { ProjectMedia } from "../project/project-media";
 import styled from "styled-components";
 
 interface Props {
   data: ProjectType;
+  onClose: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-const Slide = styled.div``;
+const SlideItem = styled.div`
+  background: black;
+`;
 
-export const SlideShow = (props: Props) => {
-  const { media } = this.props.data;
+const Wrapper = styled.div`
+  display: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999999999999;
+  top: 0;
+  left: 0;
+`;
 
-  return (
+export const SlideShow: React.StatelessComponent<Props> = ({
+  data: { media },
+  onClose
+}: Props) => (
+  <Wrapper>
     <Carousel
       showThumbs={false}
       showStatus={false}
       useKeyboardArrows
       emulateTouch
-      selectedItem={selectedItem}
+      selectedItem={0}
       className="presentation-mode"
     >
       {media.map((mediaItem, i) => (
-        <Slide key={`slide-${i}`}>
+        <SlideItem key={`slide-${i}`}>
           <ProjectMedia thumbnail={mediaItem} />
-        </Slide>
+        </SlideItem>
       ))}
     </Carousel>
-  );
-};
+    <div onClick={onClose}>CLOSE</div>
+  </Wrapper>
+);

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Config from "../config";
 import { Link } from "react-static";
-import configs from "../../../data/site-configs";
 
 const Container = styled.nav`
   padding: 20px;

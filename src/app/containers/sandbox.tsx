@@ -97,7 +97,7 @@ export default class Home extends React.Component<Props, State> {
 
     return (
       <Layout className="sweet-home">
-        <Section id="landing" name="landing">
+        <Section>
           <SectionHeader className="banner">
             <Banner data={landing.banner} />
           </SectionHeader>
@@ -106,7 +106,7 @@ export default class Home extends React.Component<Props, State> {
           </SectionBody>
         </Section>
 
-        <Section id="getting-started" name={"Getting Started"}>
+        <Section>
           <SectionHeader>
             <LinkBanner
               link={"http://github.com"}
@@ -122,7 +122,7 @@ export default class Home extends React.Component<Props, State> {
             />
           </SectionBody>
         </Section>
-        <Section id="showcase" name={"Showcase"}>
+        <Section>
           <SectionHeader>
             <h1>Showcase</h1>
           </SectionHeader>
@@ -132,7 +132,7 @@ export default class Home extends React.Component<Props, State> {
             ))}
           </SectionBody>
         </Section>
-        <Section id="community" name={"Community"}>
+        <Section>
           <SectionHeader>
             <h2>Community</h2>
           </SectionHeader>
@@ -140,7 +140,7 @@ export default class Home extends React.Component<Props, State> {
             <TextSet data={community.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-        <Section id="about" name={"About"}>
+        <Section>
           <SectionHeader>
             <h2>About</h2>
           </SectionHeader>
@@ -148,7 +148,7 @@ export default class Home extends React.Component<Props, State> {
             <TextSet data={about.contentBlocks} className={"columns-3"} />
           </SectionBody>
         </Section>
-        <Section id="calendar" name={"Calendar"}>
+        <Section>
           <SectionHeader>
             <h2>Calendar</h2>
           </SectionHeader>

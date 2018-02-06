@@ -11,9 +11,8 @@ import {
 
 interface Props {
   children: ReactNode[];
-  name?: string;
   activeSectionName?: string;
-  id: string;
+  config?: any;
 }
 
 const Container = styled.section`
@@ -24,18 +23,14 @@ const Container = styled.section`
 `;
 
 export const Section = (props: Props) => {
-  const { id, children, name, activeSectionName } = props;
+  const { children, config, activeSectionName } = props;
 
   const childrenWithProps = React.Children.map(children, child => {
     return React.cloneElement(child as ReactElement<any>, {
-      sectionName: name,
+      config,
       activeSectionName
     });
   });
 
-  return (
-    <Element id={id} name={name}>
-      {childrenWithProps}
-    </Element>
-  );
+  return <Container>{childrenWithProps}</Container>;
 };

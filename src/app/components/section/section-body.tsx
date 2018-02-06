@@ -2,8 +2,8 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Menu } from "../menu";
 
-export interface Props {
-  sectionName?: string;
+interface Props {
+  config?: any;
   children: any;
   activeSectionName?: string;
 }
@@ -18,11 +18,10 @@ const Left = styled.div``;
 const Right = styled.div``;
 
 export const SectionBody = (props: Props) => {
-  console.log("activeSectionName", props.activeSectionName);
   return (
     <Container>
       <Left>
-        <Menu selection={props.activeSectionName || ""} />
+        <Menu selection={props.config.path || ""} />
       </Left>
       <Right>{props.children}</Right>
     </Container>

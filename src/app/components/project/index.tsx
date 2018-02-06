@@ -7,6 +7,7 @@ import { ProjectMedia } from "./project-media";
 interface Props {
   data: ProjectData;
   className?: string;
+  onClick?(e: React.MouseEvent<HTMLElement>): void;
 }
 
 const Wrapper = styled.div`
@@ -29,12 +30,15 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Project = (props: Props) => {
-  const { className } = props;
+const noop = (e: React.MouseEvent<HTMLElement>) => {};
+
+export const Project: React.StatelessComponent<Props> = props => {
+  const { className, onClick = noop } = props;
   const { title, blurb, media } = props.data;
   const thumbnail = media[0];
+
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} onClick={onClick}>
       <ProjectMedia thumbnail={thumbnail} />
       <div className={"project-info"}>
         {title && title.length > 0 && <span className={"title"}>{title}</span>}
