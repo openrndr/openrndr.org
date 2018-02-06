@@ -21,6 +21,7 @@ import { ProjectSet } from "../components/project-set/index";
 import { EventSet } from "../components/event-set/index";
 import { Footer } from "../components/footer";
 import { Section } from "../components/section/index";
+import config from "../config";
 
 export interface DataProps {
   calendar: {
@@ -133,8 +134,7 @@ class Home extends React.Component<Props, State> {
       <Layout className="sweet-home" id={"containerElement"}>
         <Section
           activeSectionName={activeSectionName}
-          id="landing"
-          name="landing"
+          config={config.sections[0]}
         >
           <SectionHeader className="banner">
             <Banner data={landing.banner} />
@@ -146,15 +146,14 @@ class Home extends React.Component<Props, State> {
 
         <Section
           activeSectionName={activeSectionName}
-          id="getting-started"
-          name="getting-started"
+          config={config.sections[1]}
         >
           <SectionHeader>
             <LinkBanner
               link={"http://github.com"}
               linkTitle={"Source code Github"}
             >
-              <h1>Getting started</h1>
+              <h1>config.sections[1].title</h1>
             </LinkBanner>
           </SectionHeader>
           <SectionBody>
@@ -167,11 +166,10 @@ class Home extends React.Component<Props, State> {
 
         <Section
           activeSectionName={activeSectionName}
-          id="showcase"
-          name="showcase"
+          config={config.sections[2]}
         >
           <SectionHeader>
-            <h1>Showcase</h1>
+            <h1>{config.sections[2].title}</h1>
           </SectionHeader>
           <SectionBody>
             {Object.keys(showcase).map(name => (
@@ -181,11 +179,10 @@ class Home extends React.Component<Props, State> {
         </Section>
         <Section
           activeSectionName={activeSectionName}
-          id="community"
-          name="community"
+          config={config.sections[3]}
         >
           <SectionHeader>
-            <h2>Community</h2>
+            <h2>{config.sections[3].title}</h2>
           </SectionHeader>
           <SectionBody>
             <TextSet data={community.contentBlocks} className={"columns-3"} />
@@ -194,11 +191,10 @@ class Home extends React.Component<Props, State> {
 
         <Section
           activeSectionName={activeSectionName}
-          id="about"
-          name={"about"}
+          config={config.sections[4]}
         >
           <SectionHeader>
-            <h2>About</h2>
+            <h2>{config.sections[4].title}</h2>
           </SectionHeader>
           <SectionBody>
             <TextSet data={about.contentBlocks} className={"columns-3"} />
@@ -207,11 +203,10 @@ class Home extends React.Component<Props, State> {
 
         <Section
           activeSectionName={activeSectionName}
-          id="calendar"
-          name={"calendar"}
+          config={config.sections[5]}
         >
           <SectionHeader>
-            <h2>Calendar</h2>
+            <h2>{config.sections[5].title}</h2>
           </SectionHeader>
           <SectionBody>
             <EventSet title={"Events"} events={calendar.events.data} />

@@ -97,9 +97,3 @@ export interface Paged<T extends Entity> {
   prev: string | null;
   next: string | null;
 }
-
-export interface SiteConfigs {
-  borderColors: {
-    [index: string]: string;
-  };
-}
