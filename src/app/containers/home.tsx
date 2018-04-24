@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getRouteProps } from "react-static";
+import { withRouteData } from "react-static";
 import { Location } from "history";
 import styled from "styled-components";
 import { Events, scrollSpy, scroller } from "react-scroll";
+
 import {
   Event,
   About,
@@ -32,6 +33,7 @@ export interface DataProps {
     experiments: Paged<ProjectType>;
     caseStudies: Paged<ProjectType>;
   };
+
   [index: string]: object;
 }
 
@@ -46,7 +48,7 @@ export interface Props {
   data: DataProps;
 }
 
-const Layout = styled.div`
+const Wrapper = styled.div`
   display: grid;
   > div[name="landing"] {
   }
@@ -94,9 +96,12 @@ class Home extends React.Component<Props, State> {
 
   render() {
     const { data } = this.props;
+    console.log(data);
+
+    if (!data) return null;
 
     return (
-      <Layout className="sweet-home" id={"containerElement"}>
+      <Wrapper className="sweet-home">
         {siteConfig.sections.map(({ metadata, Component }) =>
           Component({
             metadata: metadata,
@@ -104,9 +109,9 @@ class Home extends React.Component<Props, State> {
           })
         )}
         <Footer />
-      </Layout>
+      </Wrapper>
     );
   }
 }
 
-export default getRouteProps(Home);
+export default withRouteData(Home);

@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { siteConfig } from "./config";
+import styled from "./theme";
 
 const Container = styled.div``;
 

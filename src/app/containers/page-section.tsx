@@ -1,12 +1,8 @@
 import React from "react";
-import { getRouteProps } from "react-static";
+import { withRouteData } from "react-static";
 import { withPagination, PageProps } from "../components/paginated";
 import { Project, Image } from "../../types/index";
 import { noOp } from "../no-op";
-
-interface Props {
-  foo: string;
-}
 
 function unwrapImages(data: Project[]) {
   return data.map(item => {
@@ -15,7 +11,7 @@ function unwrapImages(data: Project[]) {
   });
 }
 
-const pageSection = (props: Props & PageProps<Project>) => {
+const PageSection: React.SFC<PageProps<Project>> = props => {
   const { data, loading, loadNext, hasNext } = props;
   const galleryItems = unwrapImages(data).map((img, i) => {
     return (
@@ -53,4 +49,4 @@ const pageSection = (props: Props & PageProps<Project>) => {
   );
 };
 
-export default getRouteProps(withPagination(pageSection));
+export default withRouteData(withPagination(PageSection));

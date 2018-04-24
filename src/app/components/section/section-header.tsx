@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import configs from "../../config";
 
 interface Props {
   children: ReactNode;
@@ -23,7 +22,7 @@ const Container = styled.div`
   padding: 10px 20px;
 `;
 
-export const SectionHeader = (props: Props) => {
+export const SectionHeader: React.SFC<Props> = props => {
   const { className, config } = props;
 
   return (
