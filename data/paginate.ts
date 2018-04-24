@@ -1,6 +1,7 @@
 import { chunk } from "lodash";
 import { Entity, Paged } from "../src/types/index";
 import * as crypto from "crypto";
+import { LoadResult } from "./fetch";
 
 const digest = (content: any) =>
   crypto
@@ -8,7 +9,11 @@ const digest = (content: any) =>
     .update(JSON.stringify(content))
     .digest("hex");
 
-export function paginate<T extends Entity>(
+const paginationParams = {
+  source: any[]
+};
+
+export function paginate<T>(
   source: T[],
   buildUrl: (hash: string) => string,
   pageSize: number = 8
@@ -31,4 +36,35 @@ export function paginate<T extends Entity>(
       prev: prevChunk ? buildUrl(prevChunk.hash) : null
     };
   });
+}
+
+// interface PaginationRules<T> {
+//     [K in keyof T]: any;
+// }
+
+// interface PaginationRules {
+//     [key in keyof LoadResult]: any;
+// }
+
+// type PaginationRules = {
+//     [key in keyof LoadResult]: {
+//         [k in keyof LoadResult[key]]: boolean;
+//     } | boolean;
+// };
+
+interface PaginationRules {
+  [key: string]: boolean | PaginationRules;
+}
+
+interface Paginatable {
+  [key: string]: any[] | Paginatable;
+}
+
+export function paginateObject(data: Paginatable, rules: PaginationRules) {
+  const result = Object.keys(rules).reduce((acc, key) => {
+    const shouldPaginate = rules[key] === true;
+    if (shouldPaginate) {
+      return paginate(data[key]);
+    }
+  }, {});
 }

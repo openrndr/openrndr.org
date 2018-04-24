@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-interface Props {
+export interface Props {
   children: ReactNode;
   className?: string;
   config?: any;

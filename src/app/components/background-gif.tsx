@@ -1,7 +1,7 @@
 import React from "react";
 import { Gif as GifType } from "../../types";
 
-interface Props {
+export interface Props {
   data: GifType;
 }
 
