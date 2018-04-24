@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getRouteProps, Router, Switch, Route, Link } from "react-static";
+import { Router, Switch, Route } from "react-static";
 
 import Home from "./containers/home";
 import Sand from "./containers/sandbox";

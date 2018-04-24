@@ -1,4 +1,5 @@
 import fetchData, { LoadResult } from "./fetch";
+import { execSync } from "child_process";
 import * as fs from "fs";
 import * as path from "path";
 import { DataProps as HomeDataProps } from "../src/app/containers/home";
@@ -6,7 +7,12 @@ import { paginate } from "./paginate";
 import { log } from "util";
 
 (async function() {
+  const dataPublicPath = path.resolve(path.join("public", "data"));
   const data = await fetchData();
+
+  //create an empty folder for chunks
+  execSync(`rm -rf ${dataPublicPath} && mkdir ${dataPublicPath}`);
+  console.log(`${dataPublicPath} is created`);
 
   const paginatedEvents = paginate(
     data.calendar.events,

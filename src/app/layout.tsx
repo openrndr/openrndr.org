@@ -1,4 +1,4 @@
-import React, { StatelessComponent } from "react";
+import React from "react";
 import styled from "styled-components";
 import { siteConfig } from "./config";
 
@@ -17,7 +17,7 @@ const BackgroundGrid = styled.div`
   z-index: -1;
 `;
 
-export const Layout: StatelessComponent = props => {
+export const Layout: React.SFC<any> = props => {
   return (
     <Container>
       {props.children}

@@ -29,10 +29,10 @@ export const ShowCaseSection: React.StatelessComponent<Props> = ({
     <SectionHeader>
       <h1>{metadata.title}</h1>
     </SectionHeader>
-    <SectionBody>
-      {Object.keys(data).map(name => (
-        <ProjectSet key={name} page={data[name]} title={name} />
-      ))}
-    </SectionBody>
+    {/*<SectionBody>*/}
+    {/*{Object.keys(data).map(name => (*/}
+    {/*<ProjectSet key={name} page={data[name]} title={name} />*/}
+    {/*))}*/}
+    {/*</SectionBody>*/}
   </Section>
 );
