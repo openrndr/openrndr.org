@@ -1,5 +1,3 @@
-import { Component, StatelessComponent } from "react";
-
 export interface Entity {
   id: string;
   createdAt: string;

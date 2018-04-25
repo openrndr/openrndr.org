@@ -1,7 +1,6 @@
 import { chunk } from "lodash";
-import { Entity, Paged } from "../src/types/index";
+import { Paged } from "../src/types/index";
 import * as crypto from "crypto";
-import { LoadResult } from "./fetch";
 
 const digest = (content: any) =>
   crypto
@@ -9,17 +8,12 @@ const digest = (content: any) =>
     .update(JSON.stringify(content))
     .digest("hex");
 
-const paginationParams = {
-  source: any[]
-};
-
 export function paginate<T>(
   source: T[],
   buildUrl: (hash: string) => string,
   pageSize: number = 8
 ): Paged<T>[] {
   const chunkedData = chunk(source, pageSize).map((chunk, i) => {
-    const hashDigest = digest(chunk);
     return {
       data: chunk,
       hash: digest(chunk)
@@ -60,11 +54,11 @@ interface Paginatable {
   [key: string]: any[] | Paginatable;
 }
 
-export function paginateObject(data: Paginatable, rules: PaginationRules) {
-  const result = Object.keys(rules).reduce((acc, key) => {
-    const shouldPaginate = rules[key] === true;
-    if (shouldPaginate) {
-      return paginate(data[key]);
-    }
-  }, {});
-}
+// export function paginateObject(data: Paginatable, rules: PaginationRules) {
+//   // const result = Object.keys(rules).reduce((acc, key) => {
+//     const shouldPaginate = rules[key] === true;
+//     if (shouldPaginate) {
+//       return paginate(data[key]);
+//     }
+//   }, {});
+// }
