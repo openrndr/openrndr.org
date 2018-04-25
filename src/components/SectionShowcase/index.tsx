@@ -9,6 +9,7 @@ interface IProps {
 }
 
 export const SectionShowcase: React.SFC<IProps> = ({data}) => {
+  console.log("oit");
   return (
     <section className={`showcase`}>
       <Gallery title={"gallery"} data={data.gallery} />
