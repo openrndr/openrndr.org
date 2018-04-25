@@ -1,4 +1,5 @@
 import * as React from "react";
+import Scrollchor from "react-scrollchor";
 
 import "./style.css";
 import { IMenuItem } from "../../types/props";
@@ -37,9 +38,9 @@ export const Menu: React.SFC<IProps> = ({ activeKey }) => {
     <nav className={"menu"}>
       {activeItem && <h1>{activeItem.title}</h1>}
       {items.filter(item => item.key !== activeKey).map((item, i) => (
-        <Link key={`menu-link-${i}`} to={`/#${item.key}`}>
-          {item.title}
-        </Link>
+        <Scrollchor key={`menu-link-${i}`} to={`#${item.key}`}>
+          <h3>{item.title}</h3>
+        </Scrollchor>
       ))}
     </nav>
   );

@@ -24,42 +24,37 @@ export interface IProps {
 class HomePage extends React.Component<IProps, IState> {
   render() {
     const { data } = this.props;
-    console.log("Shiwt");
+
     return (
       <div className={"home-page"}>
         <Banner />
         <div className={"content"}>
-          <div className={"section-wrapper"}>
+          <div className={"section-wrapper"} id={"landing"}>
             <Menu activeKey={"landing"} />
             <SectionLanding data={data.landing} />
           </div>
 
-          <div className={"section-wrapper"}>
+          <div className={"section-wrapper"} id={"gettingStarted"}>
             <Menu activeKey={"gettingStarted"} />
             <SectionGettingStarted data={data.gettingStarted} />
           </div>
 
-          <div className={"section-wrapper"}>
-            <Menu activeKey={"showCase"} />
-            <SectionShowcase data={data.showcase} />
-          </div>
+          {/*<div className={"section-wrapper"}>*/}
+          {/*<Menu activeKey={"showCase"} />*/}
+          {/*<SectionShowcase data={data.showcase} />*/}
+          {/*</div>*/}
 
-          <div className={"section-wrapper"}>
-            <Menu activeKey={"showcase"} />
-            <SectionShowcase data={data.showcase} />
-          </div>
-
-          <div className={"section-wrapper"}>
+          <div className={"section-wrapper"} id={"community"}>
             <Menu activeKey={"community"} />
             <SectionCommunity data={data.community} />
           </div>
 
-          <div className={"section-wrapper"}>
+          <div className={"section-wrapper"} id={"about"}>
             <Menu activeKey={"about"} />
             <SectionAbout data={data.about} />
           </div>
 
-          <div className={"section-wrapper"}>
+          <div className={"section-wrapper"} id={"calendar"}>
             <Menu activeKey={"calendar"} />
             <SectionCalendar data={data.calendar} />
           </div>
