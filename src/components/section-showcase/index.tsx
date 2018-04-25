@@ -2,7 +2,7 @@ import * as React from "react";
 
 import "./style.css";
 import { IShowCaseProps } from "../../types/props";
-import { Gallery } from "../Gallery";
+import { Gallery } from "../gallery/index";
 
 interface IProps {
   data: IShowCaseProps;

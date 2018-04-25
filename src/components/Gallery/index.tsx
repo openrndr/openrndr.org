@@ -3,7 +3,7 @@ import * as React from "react";
 import "./style.css";
 import { Project as ProjectType } from "../../types/index";
 import { withPagination } from "../paginated";
-import { GalleryItem } from "../GalleryItem/index";
+import { GalleryItem } from "../gallery-item/index";
 
 interface IProps {
   title: string;
