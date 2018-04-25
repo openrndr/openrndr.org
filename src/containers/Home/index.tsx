@@ -6,6 +6,7 @@ import {IHomeDataProps, IMenuItem} from "../../types/props";
 import {SectionGettingStarted} from "../../components/SectionGetStarted/index";
 import {SectionCommunity} from "../../components/SectionCommunity/index";
 import {SectionAbout} from "../../components/SectionAbout/index";
+import {SectionShowcase} from "../../components/SectionShowcase/index";
 import {Banner} from "../../components/Banner/index";
 import {Menu} from "../../components/Menu/index";
 import {string} from "prop-types";
@@ -27,7 +28,7 @@ class HomePage extends React.Component<IProps, IState> {
 
   render() {
     const {data} = this.props;
-
+    console.log("Shiwt");
     return (
         <div className={"home-page"}>
           <Banner/>
@@ -41,6 +42,12 @@ class HomePage extends React.Component<IProps, IState> {
             <div className={"section-wrapper"}>
               <Menu activeKey={"gettingStarted"}/>
               <SectionGettingStarted data={data.gettingStarted}/>
+            </div>
+
+
+            <div className={"section-wrapper"}>
+              <Menu activeKey={"showCase"}/>
+              <SectionShowcase data={data.showcase}/>
             </div>
 
             <div className={"section-wrapper"}>
