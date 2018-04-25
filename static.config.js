@@ -2,8 +2,6 @@ import React from "react";
 import path from "path";
 import fs from "fs";
 
-const typescriptWebpackPaths = require("./webpack.config.js");
-
 export default {
   entry: path.resolve("src", "index.tsx"),
   // siteRoot: "https://openrndr.org",
@@ -49,21 +47,37 @@ export default {
     }
   },
 
-  webpack: (config, { defaultLoaders }) => {
+  webpack: (config, { stage, defaultLoaders }) => {
     // Add .ts and .tsx extension to resolver
     config.resolve.extensions.push(".ts", ".tsx");
+
     // Add TypeScript Path Mappings (from tsconfig via webpack.config.js)
     // to react-statics alias resolution
-    config.resolve.alias = typescriptWebpackPaths.resolve.alias;
+    // config.resolve.alias = typescriptWebpackPaths.resolve.alias;
+
+    // We replace the existing JS rule with one, that allows us to use
+    // both TypeScript and JavaScript interchangeably
     config.module.rules = [
       {
         oneOf: [
           {
-            test: /\.(ts|tsx)$/,
-            exclude: defaultLoaders.jsLoader.exclude, // as std jsLoader exclude
+            test: /\.tsx?$/,
+            exclude: defaultLoaders.jsLoader.exclude,
             use: [
               {
-                loader: require.resolve("ts-loader")
+                loader: "ts-loader",
+                options: {
+                  configFile: "tsconfig.webpack.json"
+                }
+              }
+            ]
+          },
+          {
+            test: /\.(jsx?)$/,
+            exclude: defaultLoaders.jsLoader.exclude,
+            use: [
+              {
+                loader: "babel-loader"
               }
             ]
           },
