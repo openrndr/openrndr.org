@@ -7,11 +7,12 @@ import {GalleryItem} from "../GalleryItem/index";
 
 
 interface IProps {
-  data: Paged<ProjectType>
   title: string;
-  className?: string;
+  loading: boolean;
+  data: ProjectType[];
   loadNext: () => any;
   hasNext: boolean;
+  className? : string;
 }
 
 const GalleryComponent: React.SFC<IProps> =
