@@ -18,7 +18,7 @@ export default {
     return [
       {
         path: ``,
-        component: "src/containers/Home",
+        component: "src/containers/home",
         getData: async () => dataProps
       },
       {
