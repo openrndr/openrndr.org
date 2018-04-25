@@ -8,7 +8,10 @@
     "stage": "react-static build --staging",
     "build": "yarn data:fetch && react-static build",
     "serve": "serve dist -p 3000",
-    "data:fetch": "ts-node --project tsconfig-data.json data/index"
+    "data:fetch": "ts-node --project tsconfig-data.json data/index",
+    "format": "prettier './**/*.{js,ts,tsx}' --write",
+    "lint": "tslint -p . -c tslint.json",
+    "precommit": "pretty-quick --staged"
   },
   "dependencies": {
     "@ibm/type": "^0.5.3",
