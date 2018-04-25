@@ -5,6 +5,7 @@ import * as path from "path";
 // import { DataProps as HomeDataProps } from "../src/app/containers/home";
 import { paginate } from "./paginate";
 import { digest } from "./digest";
+import { IHomeProps } from "../src/containers/home";
 
 (async function() {
   const dataPublicPath = path.resolve(path.join("public", "data"));
@@ -40,12 +41,28 @@ import { digest } from "./digest";
     }
   };
 
+  const homeProps: IHomeProps = {
+    data: {
+      ...paginatedData,
+      calendar: {
+        ...paginatedData.calendar,
+        events: paginatedData.calendar.events[0]
+      },
+      showcase: {
+        ...paginatedData.showcase,
+        gallery: paginatedData.showcase.gallery[0],
+        experiments: paginatedData.showcase.experiments[0],
+        caseStudies: paginatedData.showcase.caseStudies[0]
+      }
+    }
+  };
+
   const paginatedDataDigest = digest(paginatedData);
   fs.writeFileSync(
     path.resolve(
       path.join("public", "data", `initial-data-${paginatedDataDigest}.json`)
     ),
-    JSON.stringify(paginatedData, null, 4)
+    JSON.stringify(homeProps, null, 4)
   );
 
   const { calendar, showcase } = paginatedData;

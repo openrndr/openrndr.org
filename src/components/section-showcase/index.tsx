@@ -1,14 +1,19 @@
 import * as React from "react";
 
 import "./style.css";
-import { IShowCaseProps } from "../../types/props";
 import { Gallery } from "../gallery/index";
+import { Paged, Project } from "../../types";
 
-interface IProps {
-  data: IShowCaseProps;
+export interface IShowCaseProps {
+  data: {
+    [index: string]: Paged<Project>;
+    gallery: Paged<Project>;
+    experiments: Paged<Project>;
+    caseStudies: Paged<Project>;
+  };
 }
 
-export const SectionShowcase: React.SFC<IProps> = ({ data }) => {
+export const SectionShowcase: React.SFC<IShowCaseProps> = ({ data }) => {
   return (
     <section className={`showcase`}>
       <Gallery

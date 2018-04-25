@@ -2,23 +2,52 @@ import * as React from "react";
 import { withRouteData, withRouter } from "react-static";
 
 import "./style.css";
-import { IHomeDataProps } from "../../types/props";
 import { Banner } from "../../components/banner/index";
 import { Menu } from "../../components/menu/index";
 import { SectionLanding } from "../../components/section-landing/index";
 import { SectionGettingStarted } from "../../components/section-getstarted/index";
 import { SectionCommunity } from "../../components/section-community/index";
 import { SectionAbout } from "../../components/section-about/index";
-import { SectionCalendar } from "../../components/section-calendar/index";
-import { SectionShowcase } from "../../components/section-showcase/index";
+import {
+  SectionCalendar,
+  ICalendarProps
+} from "../../components/section-calendar/index";
+import {
+  SectionShowcase,
+  IShowCaseProps
+} from "../../components/section-showcase/index";
+import {
+  About,
+  Community,
+  GettingStarted,
+  Landing,
+  IDatoEvent,
+  Paged,
+  Project,
+  Entity
+} from "../../types";
 
 interface IState {}
 
-export interface IProps {
-  data: IHomeDataProps;
+export interface IHomeProps {
+  data: {
+    calendar: {
+      events: Paged<IDatoEvent>;
+    } & Entity;
+    about: About;
+    community: Community;
+    gettingStarted: GettingStarted;
+    landing: Landing;
+    showcase: {
+      gallery: Paged<Project>;
+      experiments: Paged<Project>;
+      caseStudies: Paged<Project>;
+    } & Entity;
+    [index: string]: object;
+  };
 }
 
-class HomePage extends React.Component<IProps, IState> {
+class HomePage extends React.Component<IHomeProps, IHomeProps> {
   render() {
     const { data } = this.props;
 

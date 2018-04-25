@@ -2,7 +2,11 @@ import * as React from "react";
 import Scrollchor from "react-scrollchor";
 
 import "./style.css";
-import { IMenuItem } from "../../types/props";
+
+export interface IMenuItem {
+  key: string;
+  title: string;
+}
 
 const items: IMenuItem[] = [
   {

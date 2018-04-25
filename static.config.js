@@ -2,6 +2,8 @@ import React from "react";
 import path from "path";
 import fs from "fs";
 
+const dataDir = path.resolve("public", "data");
+
 export default {
   entry: path.resolve("src", "index.tsx"),
   // siteRoot: "https://openrndr.org",
@@ -10,11 +12,17 @@ export default {
   }),
 
   getRoutes: async () => {
-    const dataProps = {
-      data: JSON.parse(
-        fs.readFileSync(path.resolve("data", "home-dataprops.json"))
-      )
-    };
+    const initialDataFile = fs
+      .readdirSync(dataDir)
+      .find(filename => filename.includes("initial-data"));
+    if (!initialDataFile) {
+      throw new Error(
+        `could not find file containing initial data in ${dataDir}`
+      );
+    }
+    const dataProps = JSON.parse(
+      fs.readFileSync(path.join(dataDir, initialDataFile))
+    );
     return [
       {
         path: ``,

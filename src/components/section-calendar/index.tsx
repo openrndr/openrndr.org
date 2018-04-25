@@ -1,14 +1,16 @@
 import * as React from "react";
 
 import "./style.css";
-import { ICalendarProps } from "../../types/props";
 import { EventBlock } from "../event-block/index";
+import { Paged, IDatoEvent } from "../../types";
 
-interface IProps {
-  data: ICalendarProps;
+export interface ICalendarProps {
+  data: {
+    events: Paged<IDatoEvent>;
+  };
 }
 
-export const SectionCalendar: React.SFC<IProps> = ({ data }) => {
+export const SectionCalendar: React.SFC<ICalendarProps> = ({ data }) => {
   const { events } = data;
 
   return (
