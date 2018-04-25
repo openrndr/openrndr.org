@@ -11,7 +11,6 @@ interface Props {
 import "./style.css";
 
 export const TextBlock: React.SFC<Props> = ({data}) => {
-  console.log(data);
   return (
     <div className={"text-block"}>
       <h3>{data.title}</h3>

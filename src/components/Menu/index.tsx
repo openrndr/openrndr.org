@@ -33,8 +33,6 @@ interface IProps {
 
 export const Menu: React.SFC<IProps> = ({activeKey}) => {
   const activeItem = items.find((item) => item.key === activeKey);
-
-  console.log(activeKey, activeItem)
   return (
       <nav className={"menu"}>
         {

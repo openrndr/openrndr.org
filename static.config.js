@@ -82,7 +82,7 @@ export default {
           defaultLoaders.fileLoader,
         ],
       },
-    ]
+    ];
     return config
   },
 }

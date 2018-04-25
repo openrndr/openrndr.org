@@ -12,6 +12,7 @@ import {string} from "prop-types";
 import {withRouter} from "react-router";
 import {SectionLanding} from "../../components/SectionLanding/index";
 import {SectionCalendar} from "../../components/SectionCalendar/index";
+import {SectionShowcase} from "../../components/SectionShowcase/index";
 
 
 interface IState {
@@ -40,6 +41,11 @@ class HomePage extends React.Component<IProps, IState> {
             <div className={"section-wrapper"}>
               <Menu activeKey={"gettingStarted"}/>
               <SectionGettingStarted data={data.gettingStarted}/>
+            </div>
+
+            <div className={"section-wrapper"}>
+              <Menu activeKey={"showcase"}/>
+              <SectionShowcase data={data.showcase}/>
             </div>
 
             <div className={"section-wrapper"}>

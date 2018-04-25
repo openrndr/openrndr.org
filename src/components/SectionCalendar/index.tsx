@@ -15,7 +15,7 @@ export const SectionCalendar: React.SFC<IProps> = ({data}) => {
       <section className={`xx-x-x`}>
         {
           events.data.map((event, i) => (
-              <EventBlock event={event}>{i}</EventBlock>
+              <EventBlock key={`event-${i}`} event={event}/>
           ))
         }
       </section>
