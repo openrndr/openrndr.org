@@ -23,14 +23,13 @@ export function withPagination<T extends Entity>(
   Comp: React.ComponentClass<any> | React.StatelessComponent<any>
 ) {
   return class Paginated extends React.Component<Props<T>, State<T>> {
-
-    constructor(props: Props<T>){
+    constructor(props: Props<T>) {
       super(props);
       this.state = {
         data: [],
         nextUrl: null,
         loading: false
-      }
+      };
     }
 
     componentWillMount() {

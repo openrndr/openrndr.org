@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-
 import { TextBlock as TextBlockData } from "../types";
 
 interface Props {
@@ -10,7 +9,7 @@ interface Props {
 
 import "./style.css";
 
-export const TextBlock: React.SFC<Props> = ({data}) => {
+export const TextBlock: React.SFC<Props> = ({ data }) => {
   return (
     <div className={"text-block"}>
       <h3>{data.title}</h3>

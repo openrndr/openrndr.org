@@ -1,15 +1,15 @@
 import * as React from "react";
 
 import { MediaItem } from "../../types";
-import {BackgroundImage} from "../BackgroundImage/BackgroundImage";
-import {Video} from "../Video/index";
+import { BackgroundImage } from "../BackgroundImage/BackgroundImage";
+import { Video } from "../Video/index";
 
 interface Props {
   thumbnail: MediaItem;
   className?: string;
 }
 
-export const GalleryMediaItem: React.SFC<Props> = ({thumbnail}) => {
+export const GalleryMediaItem: React.SFC<Props> = ({ thumbnail }) => {
   return (
     <div>
       {(function() {

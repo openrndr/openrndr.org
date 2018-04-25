@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Router, withSiteData } from 'react-static'
-import { hot } from 'react-hot-loader'
+import * as React from "react";
+import { Router, withSiteData } from "react-static";
+import { hot } from "react-hot-loader";
 
-import Routes from 'react-static-routes'
+import Routes from "react-static-routes";
 
-import '@ibm/type/css/ibm-type.min.css'
-import './app.css'
+import "@ibm/type/css/ibm-type.min.css";
+import "./app.css";
 
 const App: React.SFC<any> = () => (
   <Router>
@@ -15,6 +15,6 @@ const App: React.SFC<any> = () => (
       </div>
     </div>
   </Router>
-)
+);
 
-export default hot(module)(withSiteData(App))
+export default hot(module)(withSiteData(App));

@@ -6,7 +6,10 @@ export interface Props {
   data: VideoType;
 }
 
-export const Video: React.SFC<Props & ReactPlayerProps> = ({data, ...rest}) =>  {
+export const Video: React.SFC<Props & ReactPlayerProps> = ({
+  data,
+  ...rest
+}) => {
   const { url } = data.file;
   return <ReactPlayer url={url} controls={false} muted={true} {...rest} />;
 };

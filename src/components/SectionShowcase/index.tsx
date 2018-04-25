@@ -1,18 +1,18 @@
 import * as React from "react";
 
 import "./style.css";
-import {IShowCaseProps} from "../../types/props";
-import {Gallery} from "../Gallery";
+import { IShowCaseProps } from "../../types/props";
+import { Gallery } from "../Gallery";
 
 interface IProps {
-  data: IShowCaseProps
+  data: IShowCaseProps;
 }
 
-export const SectionShowcase: React.SFC<IProps> = ({data}) => {
+export const SectionShowcase: React.SFC<IProps> = ({ data }) => {
   console.log("oit");
   return (
     <section className={`showcase`}>
       <Gallery title={"gallery"} data={data.gallery} />
     </section>
-  )
+  );
 };

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Project as ProjectData } from "../../types";
-import {GalleryMediaItem} from "../GalleryMediaItem/index";
+import { GalleryMediaItem } from "../GalleryMediaItem/index";
 
 interface Props {
   data: ProjectData;
@@ -11,7 +11,10 @@ interface Props {
 
 const noop = (e: React.MouseEvent<HTMLElement>) => {};
 
-export const GalleryItem: React.SFC<Props> = ({ className, onClick = noop }) => {
+export const GalleryItem: React.SFC<Props> = ({
+  className,
+  onClick = noop
+}) => {
   const { title, blurb, media } = props.data;
   const thumbnail = media[0];
 

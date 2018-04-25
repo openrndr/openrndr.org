@@ -1,5 +1,11 @@
-import {About, Community, GettingStarted, Landing, Paged, Project as ProjectType} from "./index";
-
+import {
+  About,
+  Community,
+  GettingStarted,
+  Landing,
+  Paged,
+  Project as ProjectType
+} from "./index";
 
 export interface IShowCaseProps {
   [index: string]: Paged<ProjectType>;
@@ -21,7 +27,6 @@ export interface IHomeDataProps {
   showcase: IShowCaseProps;
   [index: string]: object;
 }
-
 
 export interface IMenuItem {
   key: string;

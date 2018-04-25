@@ -1,8 +1,7 @@
 import * as React from "react";
 
-import {TextBlock as TextBlockType} from "../../types";
-import {TextBlock} from "../TextBlock";
-
+import { TextBlock as TextBlockType } from "../../types";
+import { TextBlock } from "../TextBlock";
 
 interface Props {
   blocks: TextBlockType[];
@@ -11,15 +10,12 @@ interface Props {
 
 import "./style.css";
 
-export const TextSet: React.SFC<Props> = ({blocks, className = ""}) => {
+export const TextSet: React.SFC<Props> = ({ blocks, className = "" }) => {
   return (
-      <div className={`text-set ${className}`}>
-        {
-          blocks.map((cb, i) => {
-            return <TextBlock key={`text-block${i}`}
-                              data={cb}/>;
-          })
-        }
-      </div>
+    <div className={`text-set ${className}`}>
+      {blocks.map((cb, i) => {
+        return <TextBlock key={`text-block${i}`} data={cb} />;
+      })}
+    </div>
   );
 };

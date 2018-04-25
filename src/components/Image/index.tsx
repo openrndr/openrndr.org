@@ -6,7 +6,7 @@ interface Props {
   data: ImageType;
 }
 
-export const Image: React.SFC<Props> = ({data}) =>  {
+export const Image: React.SFC<Props> = ({ data }) => {
   const { url } = data;
   return <Imgix src={url} />;
 };

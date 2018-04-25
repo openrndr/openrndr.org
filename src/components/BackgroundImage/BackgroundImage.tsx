@@ -6,21 +6,21 @@ interface Props {
   data: ImageType;
 }
 
-export const BackgroundImage: React.SFC<Props> = ({data}) =>  {
+export const BackgroundImage: React.SFC<Props> = ({ data }) => {
   const { url } = data;
   return (
-      <Imgix
-          type="bg"
-          imgProps={{
-            style: {
-              backgroundSize: "fill",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              width: `100%`,
-              height: `100%`
-            }
-          }}
-          src={url}
-      />
+    <Imgix
+      type="bg"
+      imgProps={{
+        style: {
+          backgroundSize: "fill",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          width: `100%`,
+          height: `100%`
+        }
+      }}
+      src={url}
+    />
   );
 };

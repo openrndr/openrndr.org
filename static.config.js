@@ -1,10 +1,8 @@
-import React from 'react';
-import path from 'path';
+import React from "react";
+import path from "path";
 import fs from "fs";
 
-
-const typescriptWebpackPaths = require('./webpack.config.js');
-
+const typescriptWebpackPaths = require("./webpack.config.js");
 
 export default {
   entry: path.resolve("src", "index.tsx"),
@@ -16,47 +14,48 @@ export default {
   getRoutes: async () => {
     const dataProps = {
       data: JSON.parse(
-          fs.readFileSync(path.resolve("data", "home-dataprops.json"))
+        fs.readFileSync(path.resolve("data", "home-dataprops.json"))
       )
     };
     return [
       {
         path: ``,
-        component: 'src/containers/Home',
+        component: "src/containers/Home",
         getData: async () => dataProps
       },
       {
         is404: true,
-        component: 'src/containers/404',
+        component: "src/containers/404"
       }
     ];
   },
   Document: class CustomHtml extends React.Component {
     render() {
-      const {
-        Html, Head, Body, children, renderMeta,
-      } = this.props;
+      const { Html, Head, Body, children, renderMeta } = this.props;
 
       return (
-          <Html>
+        <Html>
           <Head>
-            <meta charSet="UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta charSet="UTF-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
             {renderMeta.styleTags}
           </Head>
           <Body>{children}</Body>
-          </Html>
-      )
+        </Html>
+      );
     }
   },
 
-  webpack: (config, {defaultLoaders}) => {
+  webpack: (config, { defaultLoaders }) => {
     // Add .ts and .tsx extension to resolver
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.extensions.push(".ts", ".tsx");
 
     // Add TypeScript Path Mappings (from tsconfig via webpack.config.js)
     // to react-statics alias resolution
-    config.resolve.alias = typescriptWebpackPaths.resolve.alias
+    config.resolve.alias = typescriptWebpackPaths.resolve.alias;
 
     // We replace the existing JS rule with one, that allows us to use
     // both TypeScript and JavaScript interchangeably
@@ -68,21 +67,21 @@ export default {
             exclude: defaultLoaders.jsLoader.exclude, // as std jsLoader exclude
             use: [
               {
-                loader: 'babel-loader',
+                loader: "babel-loader"
               },
               {
-                loader: require.resolve('ts-loader'),
+                loader: require.resolve("ts-loader"),
                 options: {
-                  transpileOnly: true,
-                },
-              },
-            ],
+                  transpileOnly: true
+                }
+              }
+            ]
           },
           defaultLoaders.cssLoader,
-          defaultLoaders.fileLoader,
-        ],
-      },
+          defaultLoaders.fileLoader
+        ]
+      }
     ];
-    return config
-  },
-}
+    return config;
+  }
+};
