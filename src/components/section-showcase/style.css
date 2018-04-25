@@ -7,5 +7,43 @@
 }
 
 .xx-xx-x-x-x-x > *:nth-child(2) {
-  grid-column: 2/4;
+  grid-column: 3/5;
+}
+
+.xx-xx {
+  grid-template-columns: repeat(2, 50fr);
+}
+
+.x-x-x-x > * .media-item,
+.xx-xx-x-x-x-x > * .media-item {
+  height: 10vw;
+}
+
+.xx-xx-x-x-x-x > *:first-child .media-item,
+.xx-xx-x-x-x-x > *:nth-child(2) .media-item,
+.xx-xx .media-item {
+  height: 20vw;
+}
+
+.xx-xx-x-x-x-x > *:first-child .item-info,
+.xx-xx-x-x-x-x > *:nth-child(2) .item-info,
+.xx-xx .item-info {
+  height: 10vw;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.x-x-x-x > * .item-info .blurb,
+.xx-xx-x-x-x-x > *:nth-child(n + 3) .item-info .blurb {
+  display: none;
+}
+
+.gallery:not(.load-more) .xx-xx-x-x-x-x > *:nth-child(n + 7),
+.gallery:not(.load-more) .xx-xx > *:nth-child(n + 3),
+.gallery:not(.load-more) .x-x-x-x > *:nth-child(n + 5) {
+  display: none;
+}
+
+.gallery-item {
+  padding: 20px 0;
 }
