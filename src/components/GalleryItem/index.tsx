@@ -9,13 +9,12 @@ interface Props {
   onClick?(e: React.MouseEvent<HTMLElement>): void;
 }
 
-const noop = (e: React.MouseEvent<HTMLElement>) => {};
-
 export const GalleryItem: React.SFC<Props> = ({
+  data,
   className,
-  onClick = noop
+  onClick = () => {}
 }) => {
-  const { title, blurb, media } = props.data;
+  const { title, blurb, media } = data;
   const thumbnail = media[0];
 
   return (

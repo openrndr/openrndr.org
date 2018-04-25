@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const BackgroundImage: React.SFC<Props> = ({ data }) => {
-  const { url } = data;
+  const { file: { url } } = data;
   return (
     <Imgix
       type="bg"

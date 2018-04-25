@@ -1,10 +1,8 @@
-import fetchData, { LoadResult } from "./fetch";
+import fetchData from "./fetch";
 import { execSync } from "child_process";
 import * as fs from "fs";
 import * as path from "path";
-import { DataProps as HomeDataProps } from "../src/containers/home";
 import { paginate } from "./paginate";
-import { log } from "util";
 
 (async function() {
   const dataPublicPath = path.resolve(path.join("public", "data"));

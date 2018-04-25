@@ -1,9 +1,8 @@
 import * as React from "react";
-
-import { Event } from "../types";
+import { IDatoEvent } from "../../types/index";
 
 interface IProps {
-  event: Event;
+  event: IDatoEvent;
 }
 
 export const EventBlock: React.SFC<IProps> = ({ event }) => (

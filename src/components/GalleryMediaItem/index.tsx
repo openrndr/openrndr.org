@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { MediaItem } from "../../types";
 import { BackgroundImage } from "../BackgroundImage/BackgroundImage";
+import { BackgroundGif } from "../BackgroundGif";
 import { Video } from "../Video/index";
 
 interface Props {
@@ -17,7 +18,7 @@ export const GalleryMediaItem: React.SFC<Props> = ({ thumbnail }) => {
           case "image":
             return <BackgroundImage data={thumbnail} />;
           case "gif":
-            return <BackgroundImage data={thumbnail} />;
+            return <BackgroundGif data={thumbnail} />;
           case "video":
             return (
               <Video

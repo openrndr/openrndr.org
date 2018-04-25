@@ -51,7 +51,7 @@ export interface Showcase extends Entity {
   caseStudies: Project[];
 }
 
-export interface Event extends Entity {
+export interface IDatoEvent extends Entity {
   eventType: "exhibition" | "workshop" | "event";
   title: string;
   endDate?: string;
@@ -88,7 +88,7 @@ export interface Landing extends Entity {
 }
 
 export interface Calendar extends Entity {
-  events: Event[];
+  events: IDatoEvent[];
 }
 
 export interface Paged<T> {

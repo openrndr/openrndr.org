@@ -11,7 +11,7 @@
 }
 
 .section-wrapper {
-  margin-top: -51px;
+  margin-top: -53px;
   padding-top: 100px;
   padding-bottom: 100px;
   border-top: 1px solid blue;
@@ -19,6 +19,6 @@
 }
 
 .section-wrapper:first-child {
-  padding-top: 20px;
+  padding-top: 40px;
   border-top: none;
 }

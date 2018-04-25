@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Landing } from "../../types";
 import "./style.css";
-import { TextSet } from "../TextSet/index";
 import { TextBlock } from "../TextBlock/index";
 
 interface IProps {

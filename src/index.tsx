@@ -12,7 +12,7 @@ if (typeof document !== "undefined") {
   const renderMethod = module.hot
     ? ReactDOM.render
     : ReactDOM.hydrate || ReactDOM.render;
-  const render = Comp => {
+  const render = (Comp: React.ComponentClass<any>) => {
     renderMethod(<Comp />, document.getElementById("root"));
   };
 

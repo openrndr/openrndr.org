@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import "./style.css";
-import { Paged, Project as ProjectType } from "../../types/index";
+import { Project as ProjectType } from "../../types/index";
 import { withPagination } from "../paginated";
 import { GalleryItem } from "../GalleryItem/index";
 

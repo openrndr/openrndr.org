@@ -3,7 +3,6 @@ import Scrollchor from "react-scrollchor";
 
 import "./style.css";
 import { IMenuItem } from "../../types/props";
-import { Link } from "react-static";
 
 const items: IMenuItem[] = [
   {
@@ -35,7 +34,7 @@ interface IProps {
 export const Menu: React.SFC<IProps> = ({ activeKey }) => {
   const activeItem = items.find(item => item.key === activeKey);
   return (
-    <nav className={"menu"}>
+    <nav className={`menu ${!activeItem ? "with-all-items" : ""}`}>
       {activeItem && <h1>{activeItem.title}</h1>}
       {items.filter(item => item.key !== activeKey).map((item, i) => (
         <Scrollchor key={`menu-link-${i}`} to={`#${item.key}`}>

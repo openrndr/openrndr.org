@@ -2,6 +2,7 @@ import {
   About,
   Community,
   GettingStarted,
+  IDatoEvent,
   Landing,
   Paged,
   Project as ProjectType
@@ -15,7 +16,7 @@ export interface IShowCaseProps {
 }
 
 export interface ICalendarProps {
-  events: Paged<Event>;
+  events: Paged<IDatoEvent>;
 }
 
 export interface IHomeDataProps {

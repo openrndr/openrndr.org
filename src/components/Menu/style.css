@@ -6,6 +6,10 @@
   display: block;
 }
 
+.menu.with-all-items {
+  padding-top: 40px;
+}
+
 .menu h3 {
   font-weight: 100;
 }

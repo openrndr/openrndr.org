@@ -7,6 +7,6 @@ interface Props {
 }
 
 export const Image: React.SFC<Props> = ({ data }) => {
-  const { url } = data;
+  const { file: { url } } = data;
   return <Imgix src={url} />;
 };

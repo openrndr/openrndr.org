@@ -1,13 +1,12 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { TextBlock as TextBlockData } from "../types";
+import { TextBlock as TextBlockType } from "../../types/index";
+import "./style.css";
 
 interface Props {
-  data: TextBlockData;
+  data: TextBlockType;
 }
-
-import "./style.css";
 
 export const TextBlock: React.SFC<Props> = ({ data }) => {
   return (
