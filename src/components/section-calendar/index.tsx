@@ -2,7 +2,7 @@ import * as React from "react";
 
 import "./style.css";
 import { ICalendarProps } from "../../types/props";
-import { EventBlock } from "../EventBlock/index";
+import { EventBlock } from "../event-block/index";
 
 interface IProps {
   data: ICalendarProps;

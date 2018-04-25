@@ -1,17 +1,15 @@
 import * as React from "react";
-import { withRouteData } from "react-static";
+import { withRouteData, withRouter } from "react-static";
 
 import "./style.css";
 import { IHomeDataProps } from "../../types/props";
-import { SectionGettingStarted } from "../../components/SectionGetStarted";
-import { SectionCommunity } from "../../components/SectionCommunity";
-import { SectionAbout } from "../../components/SectionAbout";
-import { Banner } from "../../components/Banner";
-import { Menu } from "../../components/Menu";
-import { withRouter } from "react-router";
-import { SectionLanding } from "../../components/SectionLanding";
-import { SectionCalendar } from "../../components/SectionCalendar";
-// import { SectionShowcase } from "../../components/SectionShowcase";
+import { Banner } from "../../components/banner/index";
+import { Menu } from "../../components/menu/index";
+import { SectionLanding } from "../../components/sectionlanding/index";
+import { SectionGettingStarted } from "../../components/section-getstarted/index";
+import { SectionCommunity } from "../../components/section-community/index";
+import { SectionAbout } from "../../components/section-about/index";
+import { SectionCalendar } from "../../components/section-calendar/index";
 
 interface IState {}
 

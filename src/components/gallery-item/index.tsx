@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Project as ProjectData } from "../../types";
-import { GalleryMediaItem } from "../GalleryMediaItem/index";
+import { GalleryMediaItem } from "../gallery-mediaItem/index";
 
 interface Props {
   data: ProjectData;

@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { MediaItem } from "../../types";
-import { BackgroundImage } from "../BackgroundImage/BackgroundImage";
-import { BackgroundGif } from "../BackgroundGif";
-import { Video } from "../Video/index";
+import { BackgroundImage } from "../background-image/BackgroundImage";
+import { BackgroundGif } from "../background-gif/index";
+import { Video } from "../video/index";
 
 interface Props {
   thumbnail: MediaItem;

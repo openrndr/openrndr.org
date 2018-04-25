@@ -1,14 +1,14 @@
 import * as React from "react";
 
-import { Community } from "../../types";
+import { About } from "../../types";
 import "./style.css";
-import { TextBlock } from "../TextBlock/index";
+import { TextBlock } from "../text-block/index";
 
 interface IProps {
-  data: Community;
+  data: About;
 }
 
-export const SectionCommunity: React.SFC<IProps> = ({ data }) => {
+export const SectionAbout: React.SFC<IProps> = ({ data }) => {
   return (
     <section className={`xx-x-x`}>
       {data.contentBlocks.map((cb, i) => (

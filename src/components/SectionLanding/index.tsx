@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Landing } from "../../types";
 import "./style.css";
-import { TextBlock } from "../TextBlock/index";
+import { TextBlock } from "../text-block/index";
 
 interface IProps {
   data: Landing;

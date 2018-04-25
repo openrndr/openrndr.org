@@ -2,15 +2,11 @@ import * as React from "react";
 
 import "./style.css";
 import { Project as ProjectType } from "../../types/index";
-import { withPagination } from "../paginated";
-import { GalleryItem } from "../GalleryItem/index";
+import { PageProps, withPagination } from "../paginated";
+import { GalleryItem } from "../gallery-item/index";
 
-interface IProps {
+interface IProps extends PageProps<ProjectType> {
   title: string;
-  loading: boolean;
-  data: ProjectType[];
-  loadNext: () => any;
-  hasNext: boolean;
   className?: string;
 }
 
@@ -30,7 +26,6 @@ const GalleryComponent: React.SFC<IProps> = ({
       </div>
 
       <div className={"load-more"}>
-        <span className={"gap"} />
         <span onClick={hasNext ? loadNext : () => {}}>
           {hasNext ? "MORE" : "No more pages to load"}
         </span>
