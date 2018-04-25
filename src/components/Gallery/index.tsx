@@ -18,10 +18,10 @@ const GalleryComponent: React.SFC<IProps> = ({
   loadNext
 }) => {
   return (
-    <section className={`gallery ${className}`}>
+    <section className={`gallery`}>
       <h3>{title}</h3>
 
-      <div className={"grid"}>
+      <div className={`grid ${className}`}>
         {data.map(item => <GalleryItem data={item} />)}
       </div>
 

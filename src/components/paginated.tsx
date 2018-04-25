@@ -4,6 +4,7 @@ import { Entity, Paged } from "../types/index";
 interface Props<T extends Entity> {
   page: Paged<T>;
   title: string;
+  className?: string;
 }
 
 interface State<T extends Entity> {
