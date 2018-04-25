@@ -11,7 +11,7 @@ interface IProps {
 export const SectionShowcase: React.SFC<IProps> = ({ data }) => {
   return (
     <section className={`showcase`}>
-      <Gallery title={"gallery"} data={data.gallery} />
+      <Gallery title={"gallery"} page={data.gallery} />
     </section>
   );
 };

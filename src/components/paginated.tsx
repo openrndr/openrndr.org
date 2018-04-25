@@ -9,7 +9,7 @@ interface Props<T extends Entity> {
 interface State<T extends Entity> {
   data: T[];
   nextUrl: string | null;
-  loading: false;
+  loading: boolean;
 }
 
 export interface PageProps<T extends Entity> {
