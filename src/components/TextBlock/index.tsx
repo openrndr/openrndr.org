@@ -13,6 +13,7 @@ export const TextBlock: React.SFC<Props> = ({ data }) => {
   return (
     <div className={"text-block"}>
       <h3>{data.title}</h3>
+      <br />
       <p
         dangerouslySetInnerHTML={{
           __html: data.bodyText

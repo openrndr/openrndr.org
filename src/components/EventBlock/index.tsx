@@ -10,6 +10,7 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
   <div>
     <div>
       <h3>{event.title}</h3>
+      <br />
     </div>
     <div>{event.note}</div>
     <div>

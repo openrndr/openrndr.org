@@ -1,12 +1,17 @@
-.menu{
-    position: relative;
+.menu {
+  position: relative;
+  padding-top: 20px;
 }
 .menu > * {
-    display: block;
+  display: block;
+}
+
+.menu h3 {
+  font-weight: 100;
 }
 
 h1 {
-    position: absolute;
-    top: -93px;
-    white-space: pre;
+  position: absolute;
+  top: -93px;
+  white-space: pre;
 }

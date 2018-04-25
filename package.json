@@ -25,6 +25,7 @@
     "react-imgix": "^7.1.1",
     "react-player": "^1.4.0",
     "react-router": "^4.2.0",
+    "react-scrollchor": "^5.0.2",
     "react-static": "^5.5.14"
   },
   "devDependencies": {
