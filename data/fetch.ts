@@ -13,6 +13,7 @@ const client = new SiteClient(process.env.DATO_API_TOKEN);
 const loader = new Loader(client);
 
 export interface LoadResult {
+  [key: string]: Entity;
   showcase: Showcase;
   calendar: Calendar;
   about: About;
@@ -21,20 +22,20 @@ export interface LoadResult {
   landing: Landing;
 }
 
-function multiple(entities: Entity[]): Entity[] {
-  return entities
-    .concat(entities)
-    .concat(entities)
-    .concat(entities)
-    .concat(entities)
-    .concat(entities)
-    .map(e => {
-      return {
-        ...e,
-        id: `${Math.floor(Math.random() * 20000)}`
-      };
-    });
-}
+// function multiple(entities: Entity[]): Entity[] {
+//   return entities
+//     .concat(entities)
+//     .concat(entities)
+//     .concat(entities)
+//     .concat(entities)
+//     .concat(entities)
+//     .map(e => {
+//       return {
+//         ...e,
+//         id: `${Math.floor(Math.random() * 20000)}`
+//       };
+//     });
+// }
 
 export default async function(): Promise<LoadResult> {
   await loader.load();

@@ -2,7 +2,9 @@ import fetchData from "./fetch";
 import { execSync } from "child_process";
 import * as fs from "fs";
 import * as path from "path";
+// import { DataProps as HomeDataProps } from "../src/app/containers/home";
 import { paginate } from "./paginate";
+import { digest } from "./digest";
 
 (async function() {
   const dataPublicPath = path.resolve(path.join("public", "data"));
@@ -12,52 +14,47 @@ import { paginate } from "./paginate";
   execSync(`rm -rf ${dataPublicPath} && mkdir ${dataPublicPath}`);
   console.log(`${dataPublicPath} is created`);
 
-  const paginatedEvents = paginate(
-    data.calendar.events,
-    hash => `/data/event-${hash}.json`,
-    4
-  );
-  const paginatedGallery = paginate(
-    data.showcase.gallery,
-    hash => `/data/project-${hash}.json`,
-    6
-  );
-  const paginatedExperiments = paginate(
-    data.showcase.experiments,
-    hash => `/data/project-${hash}.json`,
-    2
-  );
-  const paginatedCaseStudies = paginate(
-    data.showcase.caseStudies,
-    hash => `/data/case-study-${hash}.json`,
-    4
-  );
-
-  const result = {
+  const paginatedData = {
     ...data,
     calendar: {
-      events: paginatedEvents[0]
+      ...data.calendar,
+      events: paginate(data.calendar.events, {
+        buildUrl: hash => `/data/event-${hash}.json`,
+        pageSize: 4
+      })
     },
     showcase: {
-      gallery: paginatedGallery[0],
-      experiments: paginatedExperiments[0],
-      caseStudies: paginatedCaseStudies[0]
+      ...data.showcase,
+      gallery: paginate(data.showcase.gallery, {
+        buildUrl: hash => `/data/project-${hash}.json`,
+        pageSize: 6
+      }),
+      experiments: paginate(data.showcase.experiments, {
+        buildUrl: hash => `/data/project-${hash}.json`,
+        pageSize: 2
+      }),
+      caseStudies: paginate(data.showcase.caseStudies, {
+        buildUrl: hash => `/data/case-study-${hash}.json`,
+        pageSize: 4
+      })
     }
   };
-  console.log("paginatedGallery next", paginatedGallery.map(p => p.next));
-  const filepath = path.resolve(__dirname, "dato-dump.json");
-  fs.writeFileSync(filepath, JSON.stringify(data, null, 4));
 
+  const paginatedDataDigest = digest(paginatedData);
   fs.writeFileSync(
-    path.resolve(__dirname, "home-dataprops.json"),
-    JSON.stringify(result, null, 4)
+    path.resolve(
+      path.join("public", "data", `initial-data-${paginatedDataDigest}.json`)
+    ),
+    JSON.stringify(paginatedData, null, 4)
   );
 
+  const { calendar, showcase } = paginatedData;
+
   [
-    paginatedEvents,
-    paginatedGallery,
-    paginatedExperiments,
-    paginatedCaseStudies
+    calendar.events,
+    showcase.gallery,
+    showcase.experiments,
+    showcase.caseStudies
   ].forEach(paginatedData => {
     (paginatedData as { current: string }[]).forEach(page => {
       const filepath = path.resolve(path.join("public", page.current));

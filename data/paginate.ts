@@ -1,17 +1,15 @@
 import { chunk } from "lodash";
 import { Paged } from "../src/types/index";
-import * as crypto from "crypto";
+import { digest } from "./digest";
 
-const digest = (content: any) =>
-  crypto
-    .createHash("md5")
-    .update(JSON.stringify(content))
-    .digest("hex");
+export interface PaginationRule {
+  buildUrl: (key: string) => string;
+  pageSize: number;
+}
 
 export function paginate<T>(
   source: T[],
-  buildUrl: (hash: string) => string,
-  pageSize: number = 8
+  { buildUrl, pageSize }: PaginationRule
 ): Paged<T>[] {
   const chunkedData = chunk(source, pageSize).map((chunk, i) => {
     return {
@@ -31,34 +29,3 @@ export function paginate<T>(
     };
   });
 }
-
-// interface PaginationRules<T> {
-//     [K in keyof T]: any;
-// }
-
-// interface PaginationRules {
-//     [key in keyof LoadResult]: any;
-// }
-
-// type PaginationRules = {
-//     [key in keyof LoadResult]: {
-//         [k in keyof LoadResult[key]]: boolean;
-//     } | boolean;
-// };
-
-interface PaginationRules {
-  [key: string]: boolean | PaginationRules;
-}
-
-interface Paginatable {
-  [key: string]: any[] | Paginatable;
-}
-
-// export function paginateObject(data: Paginatable, rules: PaginationRules) {
-//   // const result = Object.keys(rules).reduce((acc, key) => {
-//     const shouldPaginate = rules[key] === true;
-//     if (shouldPaginate) {
-//       return paginate(data[key]);
-//     }
-//   }, {});
-// }
