@@ -31,7 +31,7 @@ const GalleryComponent: React.SFC<IProps> =
 
             <div className={"grid"}>
               {
-                data.data.map(item =>
+                data.map(item =>
                     <GalleryItem data={item}/>
                 )
               }
