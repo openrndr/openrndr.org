@@ -10,9 +10,11 @@ interface Props {
   className?: string;
 }
 
+import "./style.css";
+
 export const GalleryMediaItem: React.SFC<Props> = ({ thumbnail }) => {
   return (
-    <div>
+    <div className={"media-item"}>
       {(function() {
         switch (thumbnail.itemType) {
           case "image":

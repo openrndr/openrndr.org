@@ -1,0 +1,7 @@
+.gallery-item .item-info > * {
+  padding: 20px;
+}
+
+.gallery-item .item-info .blurb {
+  font-size: 10px;
+}
