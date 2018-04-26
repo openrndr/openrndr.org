@@ -1,5 +1,5 @@
 import * as React from "react";
-import Scrollchor from "react-scrollchor";
+import { HashLink as Link } from "react-router-hash-link";
 
 import "./style.css";
 
@@ -41,9 +41,13 @@ export const Menu: React.SFC<IProps> = ({ activeKey }) => {
     <nav className={`menu ${!activeItem ? "with-all-items" : ""}`}>
       {activeItem && <h1>{activeItem.title}</h1>}
       {items.filter(item => item.key !== activeKey).map((item, i) => (
-        <Scrollchor key={`menu-link-${i}`} to={`#${item.key}`}>
+        <Link
+          key={`menu-link-${i}`}
+          to={`#${item.key}`}
+          scroll={(el: Element) => el.scrollIntoView()}
+        >
           <h3>{item.title}</h3>
-        </Scrollchor>
+        </Link>
       ))}
     </nav>
   );
