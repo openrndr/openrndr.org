@@ -58,6 +58,24 @@ import { IHomeProps } from "../src/containers/home";
   };
 
   const paginatedDataDigest = digest(paginatedData);
+
+  console.log("__dirname", __dirname);
+  console.log(
+    path.join(__dirname, "public", `initial-data-${paginatedDataDigest}.json`)
+  );
+  console.log(
+    fs.existsSync(
+      path.join(__dirname, "public", `initial-data-${paginatedDataDigest}.json`)
+    )
+  );
+  console.log(
+    fs.existsSync(
+      path.resolve(
+        path.join("public", `initial-data-${paginatedDataDigest}.json`)
+      )
+    )
+  );
+
   fs.writeFileSync(
     path.resolve(
       path.join("public", `initial-data-${paginatedDataDigest}.json`)
