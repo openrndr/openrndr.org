@@ -18,29 +18,10 @@ interface IState {
 }
 
 class GalleryComponent extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      hasLoadedMore: false
-    };
-  }
-
-  onLoadMoreClick = () => {
-    if (!this.state.hasLoadedMore) {
-      this.setState({
-        hasLoadedMore: true
-      });
-    }
-    this.props.loadNext();
-  };
-
   render() {
     const { data, title, className = "", hasNext, color } = this.props;
-
-    const { hasLoadedMore } = this.state;
-
     return (
-      <section className={`gallery ${hasLoadedMore ? "loaded-more" : ""}`}>
+      <section className={`gallery`}>
         <h3 className={"gallery-title"}>{title}</h3>
 
         <div className={`grid ${className}`}>
@@ -56,7 +37,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
           }}
         >
           {hasNext && (
-            <span onClick={hasNext ? this.onLoadMoreClick : () => {}}>
+            <span onClick={hasNext ? this.props.loadNext : () => null}>
               More
             </span>
           )}
