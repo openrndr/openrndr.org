@@ -1,6 +1,20 @@
 // keeping these colors around for now
-//  "#f7f7f7"
-//  "#000000"
-export const uiConfigs = {
-  colors: ["#ffbdff", "#24b874", "#ac00ce", "#00bdfb"]
+//
+//
+
+interface Theme {
+  colors: {
+    [key: string]: string;
+  };
+}
+
+export const theme: Theme = {
+  colors: {
+    pink: "#ffbdff",
+    green: "#24b874",
+    purple: "#ac00ce",
+    cyan: "#00bdfb",
+    grey: "#f7f7f7",
+    black: "#000000"
+  }
 };
