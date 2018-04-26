@@ -1,4 +1,5 @@
 import * as React from "react";
+import { groupBy } from "lodash";
 
 import "./style.css";
 import { EventBlock } from "../event-block/index";
@@ -12,11 +13,18 @@ export interface ICalendarProps {
 
 export const SectionCalendar: React.SFC<ICalendarProps> = ({ data }) => {
   const { events } = data;
+  const groups = groupBy(events.data, "eventType");
 
   return (
     <section className={`xx-x-x`}>
-      {events.data.map((event, i) => (
-        <EventBlock key={`event-${i}`} event={event} />
+      {Object.keys(groups).map(groupKey => (
+        <div key={`event-group-${groupKey}`}>
+          <h3>{groupKey}</h3>
+          <br />
+          {groups[groupKey].map((event, i) => (
+            <EventBlock key={`event-${i}`} event={event} />
+          ))}
+        </div>
       ))}
     </section>
   );
