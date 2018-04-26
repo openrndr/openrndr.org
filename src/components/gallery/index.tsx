@@ -1,4 +1,9 @@
 import * as React from "react";
+import {
+  CSSTransition,
+  TransitionGroup,
+  Transition
+} from "react-transition-group";
 
 import "./style.css";
 
@@ -17,6 +22,19 @@ interface IState {
   hasLoadedMore: boolean;
 }
 
+const defaultStyle = {
+  transition: `opacity ${500}ms ease-in-out`,
+  opacity: 0
+};
+
+interface TransitionStyles {
+  [key: string]: React.CSSProperties;
+}
+const transitionStyles: TransitionStyles = {
+  entering: { opacity: 0 },
+  entered: { opacity: 1 }
+};
+
 class GalleryComponent extends React.Component<IProps, IState> {
   render() {
     const { data, title, className = "", hasNext, color } = this.props;
@@ -24,9 +42,22 @@ class GalleryComponent extends React.Component<IProps, IState> {
       <section className={`gallery`}>
         <h3 className={"gallery-title"}>{title}</h3>
 
-        <div className={`grid ${className}`}>
-          {data.map(item => <GalleryItem key={item.id} data={item} />)}
-        </div>
+        <TransitionGroup className={`grid ${className}`}>
+          {data.map((item, i) => {
+            return (
+              <Transition key={item.id} timeout={100}>
+                {(state: "entering" | "entered" | "exited") => {
+                  return (
+                    <GalleryItem
+                      style={{ ...defaultStyle, ...transitionStyles[state] }}
+                      data={item}
+                    />
+                  );
+                }}
+              </Transition>
+            );
+          })}
+        </TransitionGroup>
 
         <div
           className={`load-more ${hasNext ? "" : "disabled"}`}

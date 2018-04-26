@@ -29,12 +29,14 @@
     "npm": "^5.6.0",
     "nuka-carousel": "^4.0.3",
     "prop-types": "^15.6.1",
+    "pure-react-carousel": "^1.12.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-imgix": "^7.1.1",
     "react-player": "^1.4.0",
     "react-router": "^4.2.0",
-    "react-static": "^5.5.14"
+    "react-static": "^5.5.14",
+    "react-transition-group": "^2.3.1"
   },
   "devDependencies": {
     "@types/jest": "^22.1.1",
@@ -46,6 +48,7 @@
     "@types/react-hot-loader": "^3.0.5",
     "@types/react-router": "^4.0.16",
     "@types/react-router-dom": "^4.2.6",
+    "@types/react-transition-group": "^2.0.8",
     "@types/webpack-env": "^1.13.6",
     "babel-eslint": "^8.2.1",
     "convert-tsconfig-paths-to-webpack-aliases": "^0.9.2",

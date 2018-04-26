@@ -5,20 +5,18 @@ import { GalleryMediaItem } from "../gallery-mediaItem/index";
 
 interface IProps {
   data: ProjectData;
-  onClick?(e: React.MouseEvent<HTMLElement>): void;
+  style: React.CSSProperties;
 }
 
 import "./style.css";
 
-export const GalleryItem: React.SFC<IProps> = ({
-  data,
-  onClick = () => {}
-}) => {
+export const GalleryItem: React.SFC<IProps> = props => {
+  const { data, style } = props;
   const { title, blurb, media } = data;
   const thumbnail = media[0];
 
   return (
-    <div className={"gallery-item"} onClick={onClick}>
+    <div style={style} className={"gallery-item"}>
       <GalleryMediaItem thumbnail={thumbnail} />
       <div className={"item-info"}>
         {title && title.length > 0 && <h3 className={"title"}>{title}</h3>}
