@@ -7,8 +7,6 @@ interface IProps {
 }
 
 export const Image: React.SFC<IProps> = ({ data }) => {
-  const {
-    file: { url }
-  } = data;
+  const { file: { url } } = data;
   return <Imgix src={url} />;
 };
