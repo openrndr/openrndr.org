@@ -12,31 +12,31 @@ import { IHomeProps } from "../src/containers/home";
   const data = await fetchData();
 
   //create an empty folder for chunks
-  execSync(`rm -rf ${dataPublicPath} && mkdir ${dataPublicPath}`);
-  console.log(`${dataPublicPath} is created`);
+  // execSync(`rm -rf ${dataPublicPath} && mkdir ${dataPublicPath}`);
+  // console.log(`${dataPublicPath} is created`);
 
   const paginatedData = {
     ...data,
     calendar: {
       ...data.calendar,
       events: paginate(data.calendar.events, {
-        buildUrl: hash => `/data/event-${hash}.json`,
+        buildUrl: hash => `/event-${hash}.json`,
         pageSize: 4
       })
     },
     showcase: {
       ...data.showcase,
       gallery: paginate(data.showcase.gallery, {
-        buildUrl: hash => `/data/project-${hash}.json`,
+        buildUrl: hash => `/project-${hash}.json`,
         pageSize: 4,
         initialPageSize: 6
       }),
       experiments: paginate(data.showcase.experiments, {
-        buildUrl: hash => `/data/project-${hash}.json`,
+        buildUrl: hash => `/project-${hash}.json`,
         pageSize: 4
       }),
       caseStudies: paginate(data.showcase.caseStudies, {
-        buildUrl: hash => `/data/case-study-${hash}.json`,
+        buildUrl: hash => `/case-study-${hash}.json`,
         pageSize: 2
       })
     }
@@ -59,9 +59,15 @@ import { IHomeProps } from "../src/containers/home";
   };
 
   const paginatedDataDigest = digest(paginatedData);
+
+  const publicDir = path.resolve("public");
+  console.log(`public dir: ${publicDir}`);
+  console.log(path.dirname(publicDir));
+  execSync(`ls ${path.dirname(publicDir)}`);
+
   fs.writeFileSync(
     path.resolve(
-      path.join("public", "data", `initial-data-${paginatedDataDigest}.json`)
+      path.join("public", `initial-data-${paginatedDataDigest}.json`)
     ),
     JSON.stringify(homeProps, null, 4)
   );

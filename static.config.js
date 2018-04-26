@@ -2,7 +2,9 @@ import React from "react";
 import path from "path";
 import fs from "fs";
 
-const dataDir = path.resolve("public", "data");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const dataDir = path.resolve("public", "");
 
 export default {
   entry: path.resolve("src", "index.tsx"),
@@ -65,9 +67,18 @@ export default {
 
     // We replace the existing JS rule with one, that allows us to use
     // both TypeScript and JavaScript interchangeably
+
     config.module.rules = [
       {
         oneOf: [
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: "css-loader"
+            })
+          },
+
           {
             test: /\.tsx?$/,
             exclude: defaultLoaders.jsLoader.exclude,
@@ -89,11 +100,13 @@ export default {
               }
             ]
           },
-          defaultLoaders.cssLoader,
           defaultLoaders.fileLoader
         ]
       }
     ];
+
+    config.plugins.push(new ExtractTextPlugin("styles.css"));
+
     return config;
   }
 };
