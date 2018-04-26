@@ -1,4 +1,4 @@
-import { paginate } from "../paginate";
+import { paginate, split } from "../paginate";
 
 describe("paginate", () => {
   const itemCount = 100;
@@ -35,6 +35,50 @@ describe("paginate", () => {
     const [_, ...tail] = result;
     tail.forEach((page, i) => {
       expect(page.prev).toEqual(result[i].current);
+    });
+  });
+
+  describe("when initialPageSize is supplied", () => {
+    const initialPageSize = 6;
+    const result = paginate(items, { buildUrl, pageSize, initialPageSize });
+    test("the first page has length of initialPageSize", () => {
+      expect(result[0].data).toHaveLength(initialPageSize);
+    });
+    test("the length of the rest of the pages is 'pageSize' or less", () => {
+      const restOfLenghts = result
+        .slice(1, result.length)
+        .map(p => p.data.length);
+      const largerThanPageSize = restOfLenghts.find(l => l > pageSize);
+      expect(largerThanPageSize).not.toBeDefined();
+    });
+  });
+});
+
+describe("split", () => {
+  describe("given usual input", () => {
+    const index = 1;
+    const list = [1, 2, 3];
+    test("it works correctly", () => {
+      const result = split(list, index);
+      expect(result).toEqual([[1], [2, 3]]);
+    });
+  });
+  describe("given input where index >= list.length-1 ", () => {
+    test("it returns a list where result[0] is the input list and result[1] is empty", () => {
+      const result = split([1, 2, 3], 10);
+      expect(result).toEqual([[1, 2, 3], []]);
+    });
+  });
+  describe("given input where index < 0", () => {
+    test("it splits the list from the right hand side", () => {
+      const result = split([1, 2, 3], -1);
+      expect(result).toEqual([[1, 2], [3]]);
+    });
+  });
+  describe("given input where list is empty", () => {
+    test("it returns a list of two empty lists", () => {
+      const result = split([], 1);
+      expect(result).toEqual([[], []]);
     });
   });
 });
