@@ -61,7 +61,8 @@ import { IHomeProps } from "../src/containers/home";
 
   const publicDir = path.resolve("public");
   console.log(`public dir: ${publicDir}`);
-  execSync(`ls -la ..${publicDir}`);
+  console.log(path.dirname(publicDir));
+  execSync(`ls ${path.dirname(publicDir)}`);
 
   fs.writeFileSync(
     path.resolve(
