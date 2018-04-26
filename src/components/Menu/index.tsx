@@ -1,7 +1,8 @@
 import * as React from "react";
-import { HashLink as Link } from "react-router-hash-link";
+// import { HashLink as Link } from "react-router-hash-link";
 
 import "./style.css";
+import { Link } from "react-static";
 
 export interface IMenuItem {
   key: string;
@@ -41,11 +42,7 @@ export const Menu: React.SFC<IProps> = ({ activeKey }) => {
     <nav className={`menu ${!activeItem ? "with-all-items" : ""}`}>
       {activeItem && <h1>{activeItem.title}</h1>}
       {items.filter(item => item.key !== activeKey).map((item, i) => (
-        <Link
-          key={`menu-link-${i}`}
-          to={`#${item.key}`}
-          scroll={(el: Element) => el.scrollIntoView()}
-        >
+        <Link key={`menu-link-${i}`} to={`#${item.key}`}>
           <h3>{item.title}</h3>
         </Link>
       ))}
