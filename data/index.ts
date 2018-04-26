@@ -28,11 +28,12 @@ import { IHomeProps } from "../src/containers/home";
       ...data.showcase,
       gallery: paginate(data.showcase.gallery, {
         buildUrl: hash => `/project-${hash}.json`,
-        pageSize: 4
+        pageSize: 4,
+        initialPageSize: 6
       }),
       experiments: paginate(data.showcase.experiments, {
         buildUrl: hash => `/project-${hash}.json`,
-        pageSize: 2
+        pageSize: 4
       }),
       caseStudies: paginate(data.showcase.caseStudies, {
         buildUrl: hash => `/case-study-${hash}.json`,
