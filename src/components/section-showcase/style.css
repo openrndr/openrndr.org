@@ -37,9 +37,3 @@
 .xx-xx-x-x-x-x > *:nth-child(n + 3) .item-info .blurb {
   display: none;
 }
-
-.gallery:not(.loaded-more) .xx-xx-x-x-x-x > *:nth-child(n + 7),
-.gallery:not(.loaded-more) .xx-xx > *:nth-child(n + 3),
-.gallery:not(.loaded-more) .x-x-x-x > *:nth-child(n + 5) {
-  display: none;
-}
