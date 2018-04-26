@@ -5,6 +5,7 @@ interface Props<T extends Entity> {
   page: Paged<T>;
   title: string;
   className?: string;
+  color?: string;
 }
 
 interface State<T extends Entity> {

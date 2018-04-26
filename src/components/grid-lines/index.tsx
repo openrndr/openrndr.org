@@ -3,6 +3,7 @@ import * as React from "react";
 import { uiConfigs } from "../../configs";
 
 import "./style.css";
+import { calcColumnLeftPosition } from "../../utils/index";
 
 export const GridLines: React.SFC<any> = () => (
   <div className={"grid-lines"}>
@@ -12,7 +13,7 @@ export const GridLines: React.SFC<any> = () => (
         className={"color-bar"}
         style={{
           background: color,
-          left: `calc(calc(${i * 0.2} * calc(100vw - 40px)) + 20px)`
+          left: calcColumnLeftPosition(i)
         }}
       />
     ))}

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { TextBlock as TextBlockType } from "../../types/index";
 import "./style.css";
 
-interface Props {
+interface IProps {
   data: TextBlockType;
 }
 
-export const TextBlock: React.SFC<Props> = ({ data }) => {
+export const TextBlock: React.SFC<IProps> = ({ data }) => {
   return (
     <div className={"text-block"}>
       <h3>{data.title}</h3>

@@ -8,14 +8,8 @@ import { SectionLanding } from "../../components/section-landing/index";
 import { SectionGettingStarted } from "../../components/section-getstarted/index";
 import { SectionCommunity } from "../../components/section-community/index";
 import { SectionAbout } from "../../components/section-about/index";
-import {
-  SectionCalendar,
-  ICalendarProps
-} from "../../components/section-calendar/index";
-import {
-  SectionShowcase,
-  IShowCaseProps
-} from "../../components/section-showcase/index";
+import { SectionCalendar } from "../../components/section-calendar/index";
+import { SectionShowcase } from "../../components/section-showcase/index";
 import {
   About,
   Community,

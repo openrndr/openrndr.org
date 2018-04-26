@@ -2,11 +2,11 @@ import React from "react";
 import Imgix from "react-imgix";
 import { Image as ImageType } from "../../types";
 
-interface Props {
+interface IProps {
   data: ImageType;
 }
 
-export const Image: React.SFC<Props> = ({ data }) => {
+export const Image: React.SFC<IProps> = ({ data }) => {
   const { file: { url } } = data;
   return <Imgix src={url} />;
 };

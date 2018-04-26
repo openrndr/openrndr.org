@@ -1,3 +1,19 @@
 .grid {
   display: grid;
 }
+
+.load-more {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  display: grid;
+  cursor: pointer;
+}
+
+.load-more > * {
+  padding: 20px;
+  align-self: center;
+}
+
+.gallery-title {
+  padding: 20px;
+}

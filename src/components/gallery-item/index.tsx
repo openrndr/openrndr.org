@@ -3,14 +3,17 @@ import * as React from "react";
 import { Project as ProjectData } from "../../types";
 import { GalleryMediaItem } from "../gallery-mediaItem/index";
 
-interface Props {
+interface IProps {
   data: ProjectData;
   onClick?(e: React.MouseEvent<HTMLElement>): void;
 }
 
 import "./style.css";
 
-export const GalleryItem: React.SFC<Props> = ({ data, onClick = () => {} }) => {
+export const GalleryItem: React.SFC<IProps> = ({
+  data,
+  onClick = () => {}
+}) => {
   const { title, blurb, media } = data;
   const thumbnail = media[0];
 

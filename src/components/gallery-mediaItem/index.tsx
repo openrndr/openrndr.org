@@ -5,14 +5,14 @@ import { BackgroundImage } from "../background-image/BackgroundImage";
 import { BackgroundGif } from "../background-gif/index";
 import { Video } from "../video/index";
 
-interface Props {
+interface IProps {
   thumbnail: MediaItem;
   className?: string;
 }
 
 import "./style.css";
 
-export const GalleryMediaItem: React.SFC<Props> = ({ thumbnail }) => {
+export const GalleryMediaItem: React.SFC<IProps> = ({ thumbnail }) => {
   return (
     <div className={"media-item"}>
       {(function() {

@@ -38,12 +38,8 @@
   display: none;
 }
 
-.gallery:not(.load-more) .xx-xx-x-x-x-x > *:nth-child(n + 7),
-.gallery:not(.load-more) .xx-xx > *:nth-child(n + 3),
-.gallery:not(.load-more) .x-x-x-x > *:nth-child(n + 5) {
+.gallery:not(.loaded-more) .xx-xx-x-x-x-x > *:nth-child(n + 7),
+.gallery:not(.loaded-more) .xx-xx > *:nth-child(n + 3),
+.gallery:not(.loaded-more) .x-x-x-x > *:nth-child(n + 5) {
   display: none;
-}
-
-.gallery-item {
-  padding: 20px 0;
 }

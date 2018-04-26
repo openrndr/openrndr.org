@@ -28,7 +28,7 @@ import { IHomeProps } from "../src/containers/home";
       ...data.showcase,
       gallery: paginate(data.showcase.gallery, {
         buildUrl: hash => `/data/project-${hash}.json`,
-        pageSize: 6
+        pageSize: 4
       }),
       experiments: paginate(data.showcase.experiments, {
         buildUrl: hash => `/data/project-${hash}.json`,
@@ -36,7 +36,7 @@ import { IHomeProps } from "../src/containers/home";
       }),
       caseStudies: paginate(data.showcase.caseStudies, {
         buildUrl: hash => `/data/case-study-${hash}.json`,
-        pageSize: 4
+        pageSize: 2
       })
     }
   };

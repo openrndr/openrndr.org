@@ -1,11 +1,11 @@
 import React from "react";
 import { Gif as GifType } from "../../types";
 
-export interface Props {
+interface IProps {
   data: GifType;
 }
 
-export const BackgroundGif: React.SFC<Props> = ({ data }) => {
+export const BackgroundGif: React.SFC<IProps> = ({ data }) => {
   const { url } = data;
   return (
     <div

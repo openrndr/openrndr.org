@@ -2,11 +2,11 @@ import React from "react";
 import ReactPlayer, { ReactPlayerProps } from "react-player";
 import { Video as VideoType } from "../../types";
 
-export interface Props {
+export interface IProps {
   data: VideoType;
 }
 
-export const Video: React.SFC<Props & ReactPlayerProps> = ({
+export const Video: React.SFC<IProps & ReactPlayerProps> = ({
   data,
   ...rest
 }) => {
