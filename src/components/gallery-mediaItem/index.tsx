@@ -8,11 +8,15 @@ import { Video } from "../video/index";
 interface IProps {
   thumbnail: MediaItem;
   className?: string;
+  autoPlay?: boolean;
 }
 
 import "./style.css";
 
-export const GalleryMediaItem: React.SFC<IProps> = ({ thumbnail }) => {
+export const GalleryMediaItem: React.SFC<IProps> = ({
+  thumbnail,
+  autoPlay = false
+}) => {
   return (
     <div className={"media-item"}>
       {(function() {
@@ -28,6 +32,7 @@ export const GalleryMediaItem: React.SFC<IProps> = ({ thumbnail }) => {
                 controls={false}
                 width={`100%`}
                 height={`100%`}
+                playing={autoPlay}
               />
             );
         }

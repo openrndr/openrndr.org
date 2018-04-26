@@ -1,5 +1,6 @@
 .menu {
-  position: relative;
+  position: absolute;
+  padding: 20px;
 }
 .menu > * {
   display: block;
@@ -13,8 +14,11 @@
   font-weight: 100;
 }
 
-h1 {
-  position: absolute;
-  top: -93px;
-  white-space: pre;
+.menu.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.menu h1 {
+  height: 60px;
 }
