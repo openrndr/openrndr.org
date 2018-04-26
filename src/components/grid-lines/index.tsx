@@ -13,7 +13,7 @@ export const GridLines: React.SFC<any> = () => (
         className={"color-bar"}
         style={{
           background: color,
-          left: calcColumnLeftPosition(i)
+          left: calcColumnLeftPosition(i + 1)
         }}
       />
     ))}
