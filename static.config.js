@@ -4,7 +4,7 @@ import fs from "fs";
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const dataDir = path.resolve("public", "data");
+const dataDir = path.resolve("public", "");
 
 export default {
   entry: path.resolve("src", "index.tsx"),
