@@ -20,6 +20,7 @@ import {
   Project,
   Entity
 } from "../../types";
+import { theme } from "../../configs";
 
 interface IState {}
 
@@ -41,6 +42,23 @@ export interface IHomeProps {
   };
 }
 
+const SectionWrapper: React.SFC<{ id: string; color: string }> = props => {
+  const { children, id, color } = props;
+  return (
+    <section
+      style={{
+        borderBottom: `1px solid ${color}`,
+        borderTop: `1px solid ${color}`
+      }}
+      className="section-wrapper"
+      id={id}
+    >
+      <Menu activeKey={id} />
+      {children}
+    </section>
+  );
+};
+
 class HomePage extends React.Component<IHomeProps, IHomeProps> {
   render() {
     const { data } = this.props;
@@ -49,35 +67,29 @@ class HomePage extends React.Component<IHomeProps, IHomeProps> {
       <div className={"home-page"}>
         <Banner />
         <div className={"content"}>
-          <div className={"section-wrapper"} id={"landing"}>
-            <Menu activeKey={"landing"} />
+          <SectionWrapper id="landing" color={theme.colors.pink}>
             <SectionLanding data={data.landing} />
-          </div>
+          </SectionWrapper>
 
-          <div className={"section-wrapper"} id={"gettingStarted"}>
-            <Menu activeKey={"gettingStarted"} />
+          <SectionWrapper id="gettingStarted" color={theme.colors.pink}>
             <SectionGettingStarted data={data.gettingStarted} />
-          </div>
+          </SectionWrapper>
 
-          <div className={"section-wrapper"} id={"showcase"}>
-            <Menu activeKey={"showcase"} />
+          <SectionWrapper id="showcase" color={theme.colors.green}>
             <SectionShowcase data={data.showcase} />
-          </div>
+          </SectionWrapper>
 
-          <div className={"section-wrapper"} id={"community"}>
-            <Menu activeKey={"community"} />
+          <SectionWrapper id="community" color={theme.colors.cyan}>
             <SectionCommunity data={data.community} />
-          </div>
+          </SectionWrapper>
 
-          <div className={"section-wrapper"} id={"about"}>
-            <Menu activeKey={"about"} />
+          <SectionWrapper id="about" color={theme.colors.purple}>
             <SectionAbout data={data.about} />
-          </div>
+          </SectionWrapper>
 
-          <div className={"section-wrapper"} id={"calendar"}>
-            <Menu activeKey={"calendar"} />
+          <SectionWrapper id="calendar" color={theme.colors.pink}>
             <SectionCalendar data={data.calendar} />
-          </div>
+          </SectionWrapper>
         </div>
       </div>
     );
