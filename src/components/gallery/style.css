@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.load-more.disabled {
+  cursor: initial;
+}
+
 .load-more > * {
   padding: 20px;
   align-self: center;

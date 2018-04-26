@@ -25,22 +25,23 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <h3 className={"gallery-title"}>{title}</h3>
 
         <div className={`grid ${className}`}>
-          {data.map(item => <GalleryItem data={item} />)}
+          {data.map(item => <GalleryItem key={item.id} data={item} />)}
         </div>
 
         <div
-          className={"load-more"}
+          className={`load-more ${hasNext ? "" : "disabled"}`}
           style={{
             marginLeft: `calc(-1 * ${calcColumnLeftPosition(1)})`,
             paddingLeft: calcColumnLeftPosition(1),
             color
           }}
         >
-          {hasNext && (
-            <span onClick={hasNext ? this.props.loadNext : () => null}>
-              More
-            </span>
-          )}
+          <span
+            style={{ visibility: hasNext ? "initial" : "hidden" }}
+            onClick={hasNext ? this.props.loadNext : () => null}
+          >
+            More
+          </span>
         </div>
       </section>
     );
