@@ -34,8 +34,8 @@ h1 {
   line-height: 1em;
 }
 
-.small,
-.small * {
+p,
+p * {
   font-size: 12px;
 }
 
@@ -46,4 +46,36 @@ h1 {
 
 .x-x-x-x {
   grid-template-columns: 25% 25% 25% 25%;
+}
+
+.mobile-header {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+  .section-wrapper {
+    grid-template-columns: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid blue;
+  }
+
+  .xx-x-x {
+    grid-template-columns: 100%;
+  }
+  .x-x-x-x {
+    grid-template-columns: 100%;
+  }
+
+  .menu h1 {
+    position: unset;
+  }
+  .menu > a {
+    display: none;
+  }
+
+  .section-wrapper > section {
+    display: none;
+  }
 }

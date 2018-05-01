@@ -5,10 +5,12 @@ interface IProps {
   event: IDatoEvent;
 }
 
+import "./style.css";
+
 export const EventBlock: React.SFC<IProps> = ({ event }) => (
   <div>
     <div>
-      <h3>{event.title}</h3>
+      <strong>{event.title}</strong>
       <br />
     </div>
     <div>{event.note}</div>

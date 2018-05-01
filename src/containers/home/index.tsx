@@ -21,8 +21,16 @@ import {
   Entity
 } from "../../types";
 import { theme } from "../../configs";
+import { closest } from "../../utils/index";
+import { Footer } from "../../components/footer/index";
 
-interface IState {}
+interface IState {
+  scrollY: number;
+  sectionOffsets: number[];
+  firstSectionHeight: number;
+  stickyMenu: boolean;
+  activeSectionIndex: number;
+}
 
 export interface IHomeProps {
   data: {
@@ -42,6 +50,31 @@ export interface IHomeProps {
   };
 }
 
+interface IVisibilityShape {
+  top?: number;
+  left?: number;
+  bottom?: number;
+  right?: number;
+}
+
+interface IVisibility {
+  onChange: (isVisible: boolean, visibilityRect?: IVisibilityShape) => void;
+  active?: boolean;
+  partialVisibility?: boolean;
+  offset?: IVisibilityShape;
+  minTopValue?: number;
+  intervalCheck?: boolean;
+  intervalDelay?: number;
+  scrollCheck?: boolean;
+  scrollDelay?: number;
+  scrollThrottle?: number;
+  resizeCheck?: boolean;
+  resizeDelay?: number;
+  resizeThrottle?: number;
+  containment?: any;
+  delayedCall?: boolean;
+}
+
 const SectionWrapper: React.SFC<{ id: string; color: string }> = props => {
   const { children, id, color } = props;
   return (
@@ -53,20 +86,107 @@ const SectionWrapper: React.SFC<{ id: string; color: string }> = props => {
       className="section-wrapper"
       id={id}
     >
-      <Menu activeKey={id} />
+      <div className={"gap"} />
       {children}
     </section>
   );
 };
 
-class HomePage extends React.Component<IHomeProps, IHomeProps> {
+class HomePage extends React.Component<IHomeProps, IState> {
+  private wrapper: HTMLElement | null;
+
+  constructor(props: IHomeProps) {
+    super(props);
+    this.state = {
+      scrollY: 0,
+      sectionOffsets: [],
+      firstSectionHeight: 0,
+      stickyMenu: false,
+      activeSectionIndex: -1
+    };
+  }
+
+  componentDidMount() {
+    this.calcOffsetTops();
+    document.addEventListener("scroll", this.onScroll);
+  }
+
+  componentWillUnmount() {
+    if (typeof document !== "undefined") {
+      document.addEventListener("scroll", this.onScroll);
+    }
+  }
+
+  onScroll = () => {
+    if (typeof document !== "undefined") {
+      const { sectionOffsets, stickyMenu, firstSectionHeight } = this.state;
+
+      const { scrollY } = window;
+
+      console.log(window.location.hash);
+
+      const closetsIndex = sectionOffsets.findIndex(
+        (offset, i) =>
+          scrollY >= offset && scrollY <= (sectionOffsets[i + 1] | 0)
+      );
+
+      this.setState({
+        activeSectionIndex: closetsIndex
+      });
+
+      if (scrollY >= firstSectionHeight) {
+        if (closetsIndex === -1) {
+          this.setState({
+            stickyMenu: true,
+            activeSectionIndex: 0
+          });
+        } else {
+          this.setState({
+            stickyMenu: true
+          });
+        }
+      } else if (stickyMenu) {
+        this.setState({
+          stickyMenu: false
+        });
+      }
+    }
+  };
+
+  calcOffsetTops = () => {
+    if (typeof document !== "undefined") {
+      if (this.wrapper) {
+        const sections = [].slice.call(
+          this.wrapper.querySelectorAll(".section-wrapper")
+        );
+        const firstSection: HTMLElement | null = document.querySelector(
+          ".banner"
+        );
+        this.setState({
+          sectionOffsets: sections.map(
+            (section: HTMLElement) =>
+              section.offsetTop + section.offsetHeight * 0.5
+          ),
+          firstSectionHeight: firstSection ? firstSection.offsetHeight : 0
+        });
+      }
+    }
+  };
+
   render() {
     const { data } = this.props;
+    const { activeSectionIndex, stickyMenu } = this.state;
 
     return (
       <div className={"home-page"}>
-        <Banner />
-        <div className={"content"}>
+        <Banner data={data.landing.banner} />
+
+        <Menu
+          activeIndex={activeSectionIndex}
+          className={stickyMenu ? "sticky" : ""}
+        />
+
+        <div className={"content"} ref={ref => (this.wrapper = ref)}>
           <SectionWrapper id="landing" color={theme.colors.pink}>
             <SectionLanding data={data.landing} />
           </SectionWrapper>
@@ -91,6 +211,7 @@ class HomePage extends React.Component<IHomeProps, IHomeProps> {
             <SectionCalendar data={data.calendar} />
           </SectionWrapper>
         </div>
+        <Footer />
       </div>
     );
   }

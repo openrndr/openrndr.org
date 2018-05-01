@@ -1,0 +1,11 @@
+.mobile-header {
+  position: fixed;
+  width: calc(100vw - 40px);
+  left: 20px;
+  z-index: 99999;
+  height: 50px;
+}
+
+.mobile-header > *:nth-child(2) {
+  float: right;
+}

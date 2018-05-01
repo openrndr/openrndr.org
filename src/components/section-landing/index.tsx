@@ -3,6 +3,7 @@ import * as React from "react";
 import { Landing } from "../../types";
 import "./style.css";
 import { TextBlock } from "../text-block/index";
+import { Banner } from "../banner/index";
 
 interface IProps {
   data: Landing;

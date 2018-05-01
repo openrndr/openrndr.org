@@ -14,9 +14,15 @@
   margin-top: -53px;
   padding-top: 100px;
   padding-bottom: 100px;
+  border-top: 1px solid blue;
+  border-bottom: 1px solid red;
 }
 
 .section-wrapper:first-child {
   padding-top: 40px;
   border-top: none;
+}
+
+.content {
+  margin-top: 20px;
 }
