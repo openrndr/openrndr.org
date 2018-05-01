@@ -32,6 +32,11 @@ export default {
         getData: async () => dataProps
       },
       {
+        path: `/sandbox`,
+        component: "src/containers/sandbox",
+        getData: async () => {}
+      },
+      {
         is404: true,
         component: "src/containers/404"
       }
