@@ -9,12 +9,13 @@ interface IProps {
   className?: string;
 }
 
-export const Menu: React.SFC<IProps> = ({ activeIndex, className }) => {
-  // const activeItem = menuItems.find(item => item.key === activeKey);
+export const MenuHeader: React.SFC<IProps> = ({ activeIndex }) => {
   const activeItem = menuItems[activeIndex];
+};
 
+export const Menu: React.SFC<IProps> = ({ className }) => {
   return (
-    <nav className={`menu ${!activeItem ? "with-all-items" : ""} ${className}`}>
+    <nav className={`menu ${className}`}>
       {activeItem && <h1>{activeItem.title}</h1>}
       {menuItems
         // .filter((item, index) => index !== activeIndex)

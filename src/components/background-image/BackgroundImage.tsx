@@ -7,10 +7,13 @@ interface IProps {
 }
 
 export const BackgroundImage: React.SFC<IProps> = ({ data }) => {
-  const { file: { url } } = data;
+  const {
+    file: { url }
+  } = data;
   return (
     <Imgix
       type="bg"
+      fit={"crop"}
       imgProps={{
         style: {
           backgroundSize: "fill",
