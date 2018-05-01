@@ -110,9 +110,11 @@ class HomePage extends React.Component<IHomeProps, IState> {
 
   onScrollStop = (closetsIndex: number) => {
     if (typeof document !== "undefined") {
-      this.setState({
-        activeSectionIndex: closetsIndex
-      });
+      window.location.hash = `#${menuItems[Math.max(closetsIndex, 0)].key}`;
+
+      // this.setState({
+      //   activeSectionIndex: closetsIndex
+      // });
     }
   };
 
@@ -126,11 +128,11 @@ class HomePage extends React.Component<IHomeProps, IState> {
           scrollY >= offset && scrollY <= (sectionOffsets[i + 1] | 0)
       );
 
-      // setTimeout(() => {
-      //   if (window.scrollY === scrollY) {
-      //     this.onScrollStop(closetsIndex);
-      //   }
-      // }, 200);
+      setTimeout(() => {
+        if (window.scrollY === scrollY) {
+          this.onScrollStop(closetsIndex);
+        }
+      }, 200);
 
       this.setState({
         activeSectionIndex: closetsIndex
@@ -139,8 +141,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
       if (scrollY >= firstSectionHeight) {
         if (closetsIndex === -1) {
           this.setState({
-            stickyMenu: true,
-            activeSectionIndex: 0
+            stickyMenu: true
           });
         } else {
           this.setState({

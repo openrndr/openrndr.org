@@ -17,6 +17,7 @@
 .menu.sticky {
   position: fixed;
   top: 0;
+  padding-top: 32px;
 }
 
 .menu h1 {
