@@ -14,10 +14,15 @@
 }
 
 .load-more > * {
-  padding: 20px;
+  padding: 10px;
   align-self: center;
+  text-transform: uppercase;
 }
 
 .gallery-title {
   padding: 20px;
+}
+
+.gallery:last-child .load-more {
+  border-bottom: none;
 }

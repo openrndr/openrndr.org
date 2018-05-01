@@ -6,6 +6,7 @@ interface Props<T extends Entity> {
   title: string;
   className?: string;
   color?: string;
+  onLoadMore: () => void;
 }
 
 interface State<T extends Entity> {

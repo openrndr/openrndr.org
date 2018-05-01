@@ -14,27 +14,45 @@ export interface IShowCaseProps {
   };
 }
 
-export const SectionShowcase: React.SFC<IShowCaseProps> = ({ data }) => {
-  return (
-    <section className={`showcase`}>
-      <Gallery
-        title={"gallery"}
-        page={data.gallery}
-        className={"xx-xx-x-x-x-x"}
-        color={theme.colors.green}
-      />
-      <Gallery
-        title={"case studies"}
-        page={data.caseStudies}
-        className={"xx-xx"}
-        color={theme.colors.green}
-      />
-      <Gallery
-        title={"experiments"}
-        page={data.experiments}
-        className={"x-x-x-x"}
-        color={theme.colors.green}
-      />
-    </section>
-  );
-};
+export class SectionShowcase extends React.Component<IShowCaseProps, any> {
+  constructor(props: IShowCaseProps) {
+    super(props);
+  }
+
+  onLoadMore = () => {
+    if (typeof document !== "undefined") {
+      console.log("distpach resize");
+      window.dispatchEvent(new Event("resize"));
+    }
+  };
+
+  render() {
+    const { data } = this.props;
+
+    return (
+      <section className={`showcase`}>
+        <Gallery
+          title={"gallery"}
+          page={data.gallery}
+          className={"xx-xx-x-x-x-x"}
+          color={theme.colors.green}
+          onLoadMore={this.onLoadMore}
+        />
+        <Gallery
+          title={"case studies"}
+          page={data.caseStudies}
+          className={"xx-xx"}
+          color={theme.colors.green}
+          onLoadMore={this.onLoadMore}
+        />
+        <Gallery
+          title={"experiments"}
+          page={data.experiments}
+          className={"x-x-x-x"}
+          color={theme.colors.green}
+          onLoadMore={this.onLoadMore}
+        />
+      </section>
+    );
+  }
+}

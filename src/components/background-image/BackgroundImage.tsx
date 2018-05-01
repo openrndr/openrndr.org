@@ -4,21 +4,28 @@ import { Image as ImageType } from "../../types";
 
 interface IProps {
   data: ImageType;
+  crop?: string;
+  fit?: string;
 }
 
-export const BackgroundImage: React.SFC<IProps> = ({ data }) => {
+export const BackgroundImage: React.SFC<IProps> = ({
+  data,
+  crop = "fit",
+  fit = "fill"
+}) => {
   const {
     file: { url }
   } = data;
   return (
     <Imgix
       type="bg"
-      fit={"crop"}
+      fit={"clamp"}
       imgProps={{
         style: {
-          backgroundSize: "fill",
+          // backgroundSize: "fill",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           width: `100%`,
           height: `100%`
         }

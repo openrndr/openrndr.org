@@ -16,6 +16,7 @@ interface IProps extends PageProps<ProjectType> {
   title: string;
   className?: string;
   color: string;
+  onLoadMore: () => void;
 }
 
 interface IState {
@@ -71,7 +72,14 @@ class GalleryComponent extends React.Component<IProps, IState> {
         >
           <span
             style={{ visibility: hasNext ? "initial" : "hidden" }}
-            onClick={hasNext ? this.props.loadNext : () => null}
+            onClick={
+              hasNext
+                ? () => {
+                    this.props.loadNext();
+                    this.props.onLoadMore();
+                  }
+                : () => null
+            }
           >
             More
           </span>

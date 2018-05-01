@@ -100,21 +100,24 @@ class HomePage extends React.Component<IHomeProps, IState> {
   componentDidMount() {
     this.updateOffsetTops();
     document.addEventListener("scroll", this.onScroll);
+    window.addEventListener("resize", this.onResize);
   }
 
   componentWillUnmount() {
     if (typeof document !== "undefined") {
-      document.addEventListener("scroll", this.onScroll);
+      document.removeEventListener("scroll", this.onScroll);
+      window.removeEventListener("resize", this.onResize);
     }
   }
 
+  onResize = () => {
+    this.updateOffsetTops();
+  };
+
   onScrollStop = (closetsIndex: number) => {
     if (typeof document !== "undefined") {
-      window.location.hash = `#${menuItems[Math.max(closetsIndex, 0)].key}`;
-
-      // this.setState({
-      //   activeSectionIndex: closetsIndex
-      // });
+      window.location.hash =
+        closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
     }
   };
 

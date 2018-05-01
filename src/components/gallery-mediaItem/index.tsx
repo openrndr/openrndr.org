@@ -24,7 +24,7 @@ export const GalleryMediaItem: React.SFC<IProps> = ({
       {(function() {
         switch (thumbnail.itemType) {
           case "image":
-            return <BackgroundImage data={thumbnail} />;
+            return <BackgroundImage data={thumbnail} crop={"fit"} />;
           case "gif":
             return <BackgroundGif data={thumbnail} />;
           case "video":
