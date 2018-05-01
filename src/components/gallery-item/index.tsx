@@ -1,12 +1,9 @@
 import * as React from "react";
-import Carousel from "nuka-carousel";
 
 import "./style.css";
-import { Project as ProjectData, MediaItem } from "../../types";
+import { Project as ProjectData } from "../../types";
 import { GalleryMediaItem } from "../gallery-mediaItem/index";
-import { Video } from "../video";
-import { Image } from "../image";
-import { MouseEvent } from "react";
+import { LightBox } from "./light-box";
 
 interface IProps {
   data: ProjectData;
@@ -17,60 +14,6 @@ interface IProps {
 interface IState {
   showLightBox: boolean;
 }
-
-interface ButtonControlProps {
-  [key: string]: () => any;
-  previouseSlide: () => any;
-  nextSlide: () => any;
-}
-
-const Media: React.SFC<{ data: MediaItem }> = props => {
-  const { data } = props;
-  const item = (function() {
-    switch (data.itemType) {
-      case "image":
-        return <Image data={data} />;
-      case "gif":
-        return <img src={data.url} />;
-      case "video":
-        return (
-          <Video data={data} controls={false} width={`100%`} height={`100%`} />
-        );
-    }
-  })();
-  return <div className="media-item-container">{item}</div>;
-};
-
-const LightBox: React.SFC<{
-  data: ProjectData;
-  onClose: (e: MouseEvent<HTMLDivElement>) => void;
-}> = props => {
-  const { data, onClose } = props;
-
-  return (
-    <div className="gallery-lightbox">
-      <div className={"carousel-close-btn control"} onClick={onClose}>
-        X
-      </div>
-      <div className="carousel-container">
-        <Carousel
-          renderCenterLeftControls={({ previousSlide }: ButtonControlProps) => (
-            <div className="control" onClick={previousSlide}>
-              {"<"}
-            </div>
-          )}
-          renderCenterRightControls={({ nextSlide }: ButtonControlProps) => (
-            <div className="control" onClick={nextSlide}>
-              {">"}
-            </div>
-          )}
-        >
-          {data.media.map(m => <Media key={m.id} data={m} />)}
-        </Carousel>
-      </div>
-    </div>
-  );
-};
 
 export class GalleryItem extends React.Component<IProps, IState> {
   state = {
