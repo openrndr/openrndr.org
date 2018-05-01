@@ -25,3 +25,54 @@
 .content {
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .home-page {
+    margin-top: 70px;
+  }
+
+  .section-body,
+  .section-title {
+    grid-template-columns: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid blue;
+    width: 100%;
+  }
+
+  .section-title > * {
+    text-align: center;
+  }
+
+  .home-page > .section-wrapper .section-body {
+    display: block;
+  }
+
+  .sections {
+    width: 100vw;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: black;
+    color: white;
+    display: none;
+  }
+
+  .sections.show {
+    display: block;
+  }
+
+  .sections .section-wrapper .section-body {
+    display: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .sections .section-wrapper.open .section-body {
+    display: block;
+  }
+
+  .sections .section-title {
+    height: calc(calc(100vh - 70px) / 5);
+  }
+}
