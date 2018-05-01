@@ -45,13 +45,13 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <TransitionGroup className={`grid ${className}`}>
           {data.map((item, i) => {
             return (
-              <Transition key={item.id} timeout={100}>
+              <Transition key={item.id} timeout={300}>
                 {(state: "entering" | "entered" | "exited") => {
                   // item.media.length > 3 line is only for debugging, remove it when gallery is done
                   return (
                     <GalleryItem
                       style={{ ...defaultStyle, ...transitionStyles[state] }}
-                      open={item.media.length > 3}
+                      open={false}
                       data={item}
                     />
                   );

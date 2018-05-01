@@ -9,16 +9,18 @@ interface IProps {
   thumbnail: MediaItem;
   className?: string;
   autoPlay?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 import "./style.css";
 
 export const GalleryMediaItem: React.SFC<IProps> = ({
   thumbnail,
-  autoPlay = false
+  autoPlay = false,
+  onClick = () => {}
 }) => {
   return (
-    <div className={"media-item"}>
+    <div className={"media-item"} onClick={onClick}>
       {(function() {
         switch (thumbnail.itemType) {
           case "image":

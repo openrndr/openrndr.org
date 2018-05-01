@@ -1,15 +1,4 @@
 import * as React from "react";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-  DotGroup,
-  WithStore,
-  CarouselInjectedProps
-} from "pure-react-carousel";
-
 import Carousel from "nuka-carousel";
 
 import "./style.css";
@@ -17,6 +6,7 @@ import { Project as ProjectData, MediaItem } from "../../types";
 import { GalleryMediaItem } from "../gallery-mediaItem/index";
 import { Video } from "../video";
 import { Image } from "../image";
+import { MouseEvent } from "react";
 
 interface IProps {
   data: ProjectData;
@@ -51,11 +41,17 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
   return <div className="media-item-container">{item}</div>;
 };
 
-const LightBox: React.SFC<{ data: ProjectData }> = props => {
-  const { data } = props;
-  console.log("lightbox props", props);
+const LightBox: React.SFC<{
+  data: ProjectData;
+  onClose: (e: MouseEvent<HTMLDivElement>) => void;
+}> = props => {
+  const { data, onClose } = props;
+
   return (
     <div className="gallery-lightbox">
+      <div className={"carousel-close-btn control"} onClick={onClose}>
+        X
+      </div>
       <div className="carousel-container">
         <Carousel
           renderCenterLeftControls={({ previousSlide }: ButtonControlProps) => (
@@ -100,9 +96,9 @@ export class GalleryItem extends React.Component<IProps, IState> {
     const thumbnail = media[0];
 
     return (
-      <div style={style} className={"gallery-item"} onClick={this.showLightBox}>
-        {showLightBox && <LightBox data={data} />}
-        <GalleryMediaItem thumbnail={thumbnail} />
+      <div style={style} className={"gallery-item"}>
+        {showLightBox && <LightBox data={data} onClose={this.hideLightBox} />}
+        <GalleryMediaItem onClick={this.showLightBox} thumbnail={thumbnail} />
         <div className={"item-info"}>
           {title && title.length > 0 && <h3 className={"title"}>{title}</h3>}
           {blurb &&

@@ -17,7 +17,7 @@ export const Menu: React.SFC<IProps> = ({ activeIndex, className }) => {
     <nav className={`menu ${!activeItem ? "with-all-items" : ""} ${className}`}>
       {activeItem && <h1>{activeItem.title}</h1>}
       {menuItems
-        .filter((item, index) => index !== activeIndex)
+        // .filter((item, index) => index !== activeIndex)
         .map((item, i) => (
           <Link key={`menu-link-${i}`} to={`#${item.key}`}>
             <h3>{item.title}</h3>
