@@ -47,9 +47,11 @@ class GalleryComponent extends React.Component<IProps, IState> {
             return (
               <Transition key={item.id} timeout={100}>
                 {(state: "entering" | "entered" | "exited") => {
+                  // item.media.length > 3 line is only for debugging, remove it when gallery is done
                   return (
                     <GalleryItem
                       style={{ ...defaultStyle, ...transitionStyles[state] }}
+                      open={item.media.length > 3}
                       data={item}
                     />
                   );

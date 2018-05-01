@@ -9,3 +9,48 @@
 .gallery-item .item-info h3 {
   font-weight: 100;
 }
+
+.gallery-lightbox {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 5rem;
+}
+
+.gallery-lightbox .carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-lightbox .media-item-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox .carousel-container .slider,
+.slider-frame,
+.slider-list,
+.slider-slide {
+  height: 100% !important;
+}
+
+.gallery-lightbox .control {
+  color: white;
+  font-size: 5rem;
+}
+
+.gallery-lightbox .control:hover {
+  cursor: pointer;
+  color: springgreen;
+}
