@@ -42,10 +42,15 @@
 
   .section-title > * {
     text-align: center;
+    align-self: center;
   }
 
   .home-page > .section-wrapper .section-body {
     display: block;
+  }
+
+  .home-page > .section-wrapper.close {
+    display: none;
   }
 
   .sections {
@@ -73,6 +78,6 @@
   }
 
   .sections .section-title {
-    height: calc(calc(100vh - 70px) / 5);
+    height: calc(calc(100vh - 70px - 11px) / 5);
   }
 }

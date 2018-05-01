@@ -242,7 +242,11 @@ class HomePage extends React.Component<IHomeProps, IState> {
           className={stickyMenu ? "sticky" : ""}
         />
 
-        <SectionWrapper id="landing" color={theme.colors.pink}>
+        <SectionWrapper
+          className={`${isMobileMenuOpen ? "close" : ""}`}
+          id="landing"
+          color={theme.colors.pink}
+        >
           <SectionLanding data={data.landing} />
         </SectionWrapper>
 
