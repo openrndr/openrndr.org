@@ -61,8 +61,6 @@ import { IHomeProps } from "../src/containers/home";
   const paginatedDataDigest = digest(paginatedData);
 
   const publicDir = path.resolve("public");
-  console.log(`public dir: ${publicDir}`);
-  console.log(path.dirname(publicDir));
   execSync(`ls ${path.dirname(publicDir)}`);
 
   fs.writeFileSync(

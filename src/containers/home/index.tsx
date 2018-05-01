@@ -20,8 +20,7 @@ import {
   Project,
   Entity
 } from "../../types";
-import { theme } from "../../configs";
-import { closest } from "../../utils/index";
+import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
 
 interface IState {
@@ -30,7 +29,6 @@ interface IState {
   firstSectionHeight: number;
   stickyMenu: boolean;
   activeSectionIndex: number;
-  isScrolling: boolean;
 }
 
 export interface IHomeProps {
@@ -51,19 +49,36 @@ export interface IHomeProps {
   };
 }
 
-const SectionWrapper: React.SFC<{ id: string; color: string }> = props => {
-  const { children, id, color } = props;
+const SectionWrapper: React.SFC<{
+  id: string;
+  color: string;
+  title?: string;
+}> = props => {
+  const { children, id, color, title } = props;
   return (
     <section
-      style={{
-        borderBottom: `1px solid ${color}`,
-        borderTop: `1px solid ${color}`
-      }}
       className="section-wrapper"
       id={id}
+      style={{
+        borderBottom: id === "calendar" ? `1px solid ${color}` : "none"
+      }}
     >
-      <div className={"gap"} />
-      {children}
+      {title && (
+        <div
+          className={"section-title"}
+          style={{
+            borderBottom: `1px solid ${color}`,
+            borderTop: `1px solid ${color}`
+          }}
+        >
+          <div className={"gap"} />
+          <h1>{title}</h1>
+        </div>
+      )}
+      <div className={"section-body"}>
+        <div className={"gap"} />
+        {children}
+      </div>
     </section>
   );
 };
@@ -75,7 +90,6 @@ class HomePage extends React.Component<IHomeProps, IState> {
     super(props);
     this.state = {
       scrollY: 0,
-      isScrolling: false,
       sectionOffsets: [],
       firstSectionHeight: 0,
       stickyMenu: false,
@@ -84,7 +98,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
   }
 
   componentDidMount() {
-    this.calcOffsetTops();
+    this.updateOffsetTops();
     document.addEventListener("scroll", this.onScroll);
   }
 
@@ -112,11 +126,15 @@ class HomePage extends React.Component<IHomeProps, IState> {
           scrollY >= offset && scrollY <= (sectionOffsets[i + 1] | 0)
       );
 
-      setTimeout(() => {
-        if (window.scrollY === scrollY) {
-          this.onScrollStop(closetsIndex);
-        }
-      }, 200);
+      // setTimeout(() => {
+      //   if (window.scrollY === scrollY) {
+      //     this.onScrollStop(closetsIndex);
+      //   }
+      // }, 200);
+
+      this.setState({
+        activeSectionIndex: closetsIndex
+      });
 
       if (scrollY >= firstSectionHeight) {
         if (closetsIndex === -1) {
@@ -137,7 +155,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
     }
   };
 
-  calcOffsetTops = () => {
+  updateOffsetTops = () => {
     if (typeof document !== "undefined") {
       if (this.wrapper) {
         const sections = [].slice.call(
@@ -149,7 +167,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
         this.setState({
           sectionOffsets: sections.map(
             (section: HTMLElement) =>
-              section.offsetTop + section.offsetHeight * 0.5
+              section.offsetTop + section.offsetHeight * 0.8
           ),
           firstSectionHeight: firstSection ? firstSection.offsetHeight : 0
         });
@@ -175,23 +193,43 @@ class HomePage extends React.Component<IHomeProps, IState> {
             <SectionLanding data={data.landing} />
           </SectionWrapper>
 
-          <SectionWrapper id="gettingStarted" color={theme.colors.pink}>
+          <SectionWrapper
+            id="gettingStarted"
+            color={theme.colors.pink}
+            title={menuItems[0].title}
+          >
             <SectionGettingStarted data={data.gettingStarted} />
           </SectionWrapper>
 
-          <SectionWrapper id="showcase" color={theme.colors.green}>
+          <SectionWrapper
+            id="showcase"
+            color={theme.colors.green}
+            title={menuItems[1].title}
+          >
             <SectionShowcase data={data.showcase} />
           </SectionWrapper>
 
-          <SectionWrapper id="community" color={theme.colors.cyan}>
+          <SectionWrapper
+            id="community"
+            color={theme.colors.cyan}
+            title={menuItems[2].title}
+          >
             <SectionCommunity data={data.community} />
           </SectionWrapper>
 
-          <SectionWrapper id="about" color={theme.colors.purple}>
+          <SectionWrapper
+            id="about"
+            color={theme.colors.purple}
+            title={menuItems[3].title}
+          >
             <SectionAbout data={data.about} />
           </SectionWrapper>
 
-          <SectionWrapper id="calendar" color={theme.colors.pink}>
+          <SectionWrapper
+            id="calendar"
+            color={theme.colors.pink}
+            title={menuItems[4].title}
+          >
             <SectionCalendar data={data.calendar} />
           </SectionWrapper>
         </div>

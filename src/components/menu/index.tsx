@@ -15,15 +15,6 @@ export const Menu: React.SFC<IProps> = ({ activeIndex, className }) => {
 
   return (
     <nav className={`menu ${!activeItem ? "with-all-items" : ""} ${className}`}>
-      {activeItem ? (
-        <h1>{activeItem.title}</h1>
-      ) : (
-        <h1
-          style={{
-            height: 0
-          }}
-        />
-      )}
       {menuItems
         // .filter((item, index) => index !== activeIndex)
         .map((item, i) => (
