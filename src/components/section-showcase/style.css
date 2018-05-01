@@ -28,7 +28,7 @@
 .xx-xx-x-x-x-x > *:first-child .item-info,
 .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
 .xx-xx .item-info {
-  height: 10vw;
+  min-height: 10vw;
   display: grid;
   grid-template-columns: 50% 50%;
 }
