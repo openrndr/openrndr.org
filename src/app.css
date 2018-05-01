@@ -85,3 +85,36 @@ p * {
     grid-column: 1/4 !important;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .xx-x-x,
+  .x-x-x-x,
+  .xx-xx-x-x-x-x {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .xx-xx {
+    grid-template-columns: 100%;
+  }
+
+  .xx-xx-x-x-x-x > *:nth-child(even) {
+    grid-column: 1/2;
+  }
+  .xx-xx-x-x-x-x > *:nth-child(odd) {
+    grid-column: 2/3;
+  }
+
+  .item-info {
+    grid-template-columns: 100% !important;
+  }
+
+  .xx-x-x > *:first-child,
+  .xx-xx-x-x-x-x > *:first-child {
+    grid-column: 1/3 !important;
+  }
+
+  .gallery .xx-x-x > *:first-child .item-info,
+  .gallery .xx-xx-x-x-x-x > *:first-child .item-info {
+    grid-template-columns: 1fr 1fr;
+  }
+}
