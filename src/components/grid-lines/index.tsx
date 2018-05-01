@@ -9,6 +9,7 @@ export const GridLines: React.SFC<any> = () => (
   <div className={"grid-lines"}>
     {Object.keys(theme.colors)
       .map(key => theme.colors[key])
+      .slice(0, Object.keys(theme.colors).length - 2)
       .map((color: string, i) => (
         <div
           key={`color-bar-${i}`}

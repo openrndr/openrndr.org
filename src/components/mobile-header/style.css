@@ -1,9 +1,11 @@
 .mobile-header {
   position: fixed;
   width: calc(100vw - 40px);
-  left: 20px;
+  left: 0;
+  top: 0;
+  padding: 20px;
   z-index: 99999;
-  height: 50px;
+  height: 30px;
 }
 
 .mobile-header > *:nth-child(2) {

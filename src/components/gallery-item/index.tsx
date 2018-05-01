@@ -21,6 +21,12 @@ export class GalleryItem extends React.Component<IProps, IState> {
   };
 
   showLightBox = () => {
+    if (typeof document !== "undefined") {
+      if (window.innerWidth <= 760) {
+        return;
+      }
+    }
+
     this.setState({
       showLightBox: true
     });

@@ -11,20 +11,15 @@
 }
 
 .section-body {
-  /*margin-top: -53px;*/
   padding-top: 50px;
-  /*padding-bottom: 100px;*/
-  /*border-top: 1px solid blue;*/
-  /*border-bottom: 1px solid red;*/
 }
 
 .section-title h1 {
   padding: 20px;
 }
 
-.section-wrapper:first-child .section-body {
+.home-page > .section-wrapper .section-body {
   padding-top: 0;
-  margin-top: -20px;
 }
 
 .content {

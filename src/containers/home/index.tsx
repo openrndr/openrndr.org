@@ -22,6 +22,7 @@ import {
 } from "../../types";
 import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
+import { MobileHeader } from "../../components/mobile-header/index";
 
 interface IState {
   scrollY: number;
@@ -29,6 +30,8 @@ interface IState {
   firstSectionHeight: number;
   stickyMenu: boolean;
   activeSectionIndex: number;
+  isMobileMenuOpen: boolean;
+  openMobileSectionIndex: number;
 }
 
 export interface IHomeProps {
@@ -53,11 +56,20 @@ const SectionWrapper: React.SFC<{
   id: string;
   color: string;
   title?: string;
+  onTitleClick?: () => void;
+  className?: string;
 }> = props => {
-  const { children, id, color, title } = props;
+  const {
+    children,
+    id,
+    color,
+    title,
+    onTitleClick = () => {},
+    className = ""
+  } = props;
   return (
     <section
-      className="section-wrapper"
+      className={`section-wrapper ${className}`}
       id={id}
       style={{
         borderBottom: id === "calendar" ? `1px solid ${color}` : "none"
@@ -72,7 +84,7 @@ const SectionWrapper: React.SFC<{
           }}
         >
           <div className={"gap"} />
-          <h1>{title}</h1>
+          <h1 onClick={onTitleClick}>{title}</h1>
         </div>
       )}
       <div className={"section-body"}>
@@ -93,7 +105,9 @@ class HomePage extends React.Component<IHomeProps, IState> {
       sectionOffsets: [],
       firstSectionHeight: 0,
       stickyMenu: false,
-      activeSectionIndex: -1
+      activeSectionIndex: -1,
+      isMobileMenuOpen: false,
+      openMobileSectionIndex: -1
     };
   }
 
@@ -116,8 +130,10 @@ class HomePage extends React.Component<IHomeProps, IState> {
 
   onScrollStop = (closetsIndex: number) => {
     if (typeof document !== "undefined") {
-      window.location.hash =
-        closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
+      if (window.innerWidth >= 1200) {
+        window.location.hash =
+          closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
+      }
     }
   };
 
@@ -179,12 +195,46 @@ class HomePage extends React.Component<IHomeProps, IState> {
     }
   };
 
+  toggleMobileMenu = () => {
+    this.setState({
+      isMobileMenuOpen: !this.state.isMobileMenuOpen
+    });
+  };
+
+  toggleSection = (index: number) => {
+    if (typeof document !== "undefined") {
+      if (window.innerWidth > 760) {
+        return;
+      }
+
+      if (index === this.state.openMobileSectionIndex) {
+        this.setState({
+          openMobileSectionIndex: -1
+        });
+      } else if (index !== -1) {
+        this.setState({
+          openMobileSectionIndex: index
+        });
+      }
+    }
+  };
+
   render() {
     const { data } = this.props;
-    const { activeSectionIndex, stickyMenu } = this.state;
+    const {
+      activeSectionIndex,
+      stickyMenu,
+      openMobileSectionIndex,
+      isMobileMenuOpen
+    } = this.state;
 
     return (
       <div className={"home-page"}>
+        <MobileHeader
+          isMenuOpen={this.state.isMobileMenuOpen}
+          onClick={this.toggleMobileMenu}
+        />
+
         <Banner data={data.landing.banner} />
 
         <Menu
@@ -192,15 +242,20 @@ class HomePage extends React.Component<IHomeProps, IState> {
           className={stickyMenu ? "sticky" : ""}
         />
 
-        <div className={"content"} ref={ref => (this.wrapper = ref)}>
-          <SectionWrapper id="landing" color={theme.colors.pink}>
-            <SectionLanding data={data.landing} />
-          </SectionWrapper>
+        <SectionWrapper id="landing" color={theme.colors.pink}>
+          <SectionLanding data={data.landing} />
+        </SectionWrapper>
 
+        <div
+          className={`sections ${isMobileMenuOpen ? "show" : ""}`}
+          ref={ref => (this.wrapper = ref)}
+        >
           <SectionWrapper
             id="gettingStarted"
             color={theme.colors.pink}
             title={menuItems[0].title}
+            onTitleClick={() => this.toggleSection(0)}
+            className={openMobileSectionIndex === 0 ? "open" : ""}
           >
             <SectionGettingStarted data={data.gettingStarted} />
           </SectionWrapper>
@@ -209,6 +264,8 @@ class HomePage extends React.Component<IHomeProps, IState> {
             id="showcase"
             color={theme.colors.green}
             title={menuItems[1].title}
+            onTitleClick={() => this.toggleSection(1)}
+            className={openMobileSectionIndex === 1 ? "open" : ""}
           >
             <SectionShowcase data={data.showcase} />
           </SectionWrapper>
@@ -217,6 +274,8 @@ class HomePage extends React.Component<IHomeProps, IState> {
             id="community"
             color={theme.colors.cyan}
             title={menuItems[2].title}
+            onTitleClick={() => this.toggleSection(2)}
+            className={openMobileSectionIndex === 2 ? "open" : ""}
           >
             <SectionCommunity data={data.community} />
           </SectionWrapper>
@@ -225,6 +284,8 @@ class HomePage extends React.Component<IHomeProps, IState> {
             id="about"
             color={theme.colors.purple}
             title={menuItems[3].title}
+            onTitleClick={() => this.toggleSection(3)}
+            className={openMobileSectionIndex === 3 ? "open" : ""}
           >
             <SectionAbout data={data.about} />
           </SectionWrapper>
@@ -233,6 +294,8 @@ class HomePage extends React.Component<IHomeProps, IState> {
             id="calendar"
             color={theme.colors.pink}
             title={menuItems[4].title}
+            onTitleClick={() => this.toggleSection(4)}
+            className={openMobileSectionIndex === 4 ? "open" : ""}
           >
             <SectionCalendar data={data.calendar} />
           </SectionWrapper>
