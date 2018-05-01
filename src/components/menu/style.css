@@ -22,3 +22,8 @@
 .menu h1 {
   height: 60px;
 }
+
+.menu .disable {
+  opacity: 0.5;
+  cursor: auto;
+}

@@ -30,6 +30,7 @@ interface IState {
   firstSectionHeight: number;
   stickyMenu: boolean;
   activeSectionIndex: number;
+  isScrolling: boolean;
 }
 
 export interface IHomeProps {
@@ -48,31 +49,6 @@ export interface IHomeProps {
     } & Entity;
     [index: string]: object;
   };
-}
-
-interface IVisibilityShape {
-  top?: number;
-  left?: number;
-  bottom?: number;
-  right?: number;
-}
-
-interface IVisibility {
-  onChange: (isVisible: boolean, visibilityRect?: IVisibilityShape) => void;
-  active?: boolean;
-  partialVisibility?: boolean;
-  offset?: IVisibilityShape;
-  minTopValue?: number;
-  intervalCheck?: boolean;
-  intervalDelay?: number;
-  scrollCheck?: boolean;
-  scrollDelay?: number;
-  scrollThrottle?: number;
-  resizeCheck?: boolean;
-  resizeDelay?: number;
-  resizeThrottle?: number;
-  containment?: any;
-  delayedCall?: boolean;
 }
 
 const SectionWrapper: React.SFC<{ id: string; color: string }> = props => {
@@ -99,6 +75,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
     super(props);
     this.state = {
       scrollY: 0,
+      isScrolling: false,
       sectionOffsets: [],
       firstSectionHeight: 0,
       stickyMenu: false,
@@ -117,22 +94,29 @@ class HomePage extends React.Component<IHomeProps, IState> {
     }
   }
 
+  onScrollStop = (closetsIndex: number) => {
+    if (typeof document !== "undefined") {
+      this.setState({
+        activeSectionIndex: closetsIndex
+      });
+    }
+  };
+
   onScroll = () => {
     if (typeof document !== "undefined") {
-      const { sectionOffsets, stickyMenu, firstSectionHeight } = this.state;
-
+      const { stickyMenu, firstSectionHeight, sectionOffsets } = this.state;
       const { scrollY } = window;
-
-      console.log(window.location.hash);
 
       const closetsIndex = sectionOffsets.findIndex(
         (offset, i) =>
           scrollY >= offset && scrollY <= (sectionOffsets[i + 1] | 0)
       );
 
-      this.setState({
-        activeSectionIndex: closetsIndex
-      });
+      setTimeout(() => {
+        if (window.scrollY === scrollY) {
+          this.onScrollStop(closetsIndex);
+        }
+      }, 200);
 
       if (scrollY >= firstSectionHeight) {
         if (closetsIndex === -1) {
