@@ -61,6 +61,9 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
       case 39:
         this.goNext();
         break;
+      case 27:
+        this.props.onClose(e);
+        break;
       default:
         break;
     }

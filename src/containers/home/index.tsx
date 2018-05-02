@@ -145,8 +145,6 @@ class HomePage extends React.Component<IHomeProps, IState> {
           scrollY >= offset && scrollY <= (sectionOffsets[i + 1] | 0)
       );
 
-      console.log(scrollY, closetsIndex, sectionOffsets);
-
       setTimeout(() => {
         if (window.scrollY === scrollY) {
           this.onScrollStop(closetsIndex);
@@ -180,8 +178,6 @@ class HomePage extends React.Component<IHomeProps, IState> {
       const sections = [].slice
         .call(document.body.querySelectorAll(".section-wrapper"))
         .concat(document.body.querySelector("footer"));
-
-      console.log(sections);
 
       const banner: HTMLElement | null = document.querySelector(".banner");
 
