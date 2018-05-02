@@ -27,8 +27,8 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .home-page {
-    margin-top: 70px;
+  .content {
+    /*margin-top: 70px;*/
   }
 
   .section-body,
@@ -45,26 +45,10 @@
     align-self: center;
   }
 
-  .landing-section .section-body {
-    display: block;
-  }
-
-  .landing-section .section-wrapper.close {
-    display: none;
-  }
-
   .sections {
     width: 100vw;
-    position: absolute;
-    top: 70px;
-    left: 0;
     background: black;
     color: white;
-    display: none;
-  }
-
-  .sections.show {
-    display: block;
   }
 
   .sections .section-wrapper .section-body {

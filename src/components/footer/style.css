@@ -17,6 +17,6 @@ footer > * > *:first-child h3 {
 
 @media only screen and (max-width: 600px) {
   footer {
-    display: none;
+    /*display: none;*/
   }
 }

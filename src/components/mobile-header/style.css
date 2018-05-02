@@ -8,6 +8,10 @@
   height: 30px;
 }
 
+.mobile-header * {
+  color: white;
+}
+
 .mobile-header > *:nth-child(2) {
   float: right;
 }

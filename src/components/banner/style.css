@@ -8,6 +8,7 @@
 @media only screen and (max-width: 600px) {
   .banner {
     height: 35vh;
+    padding-top: 50px;
   }
 }
 

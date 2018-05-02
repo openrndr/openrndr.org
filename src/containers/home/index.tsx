@@ -1,5 +1,5 @@
 import * as React from "react";
-import { withRouteData, withRouter } from "react-static";
+import { withRouteData, withRouter, RouteComponentProps } from "react-static";
 
 import "./style.css";
 import { Banner } from "../../components/banner/index";
@@ -95,8 +95,11 @@ const SectionWrapper: React.SFC<{
   );
 };
 
-class HomePage extends React.Component<IHomeProps, IState> {
-  constructor(props: IHomeProps) {
+class HomePage extends React.Component<
+  IHomeProps & RouteComponentProps<any>,
+  IState
+> {
+  constructor(props: IHomeProps & RouteComponentProps<any>) {
     super(props);
     this.state = {
       scrollY: 0,
@@ -181,27 +184,57 @@ class HomePage extends React.Component<IHomeProps, IState> {
 
       const banner: HTMLElement | null = document.querySelector(".banner");
 
+      const isMobile = window.innerWidth <= 600;
+
       this.setState({
         sectionOffsets: sections.map(
           (section: HTMLElement) =>
-            section.offsetTop + section.offsetHeight * 0.8
+            isMobile
+              ? section.offsetTop + section.offsetHeight
+              : section.offsetTop + section.offsetHeight * 0.8
         ),
         bannerHeight: banner ? banner.offsetHeight : 0
       });
     }
   };
 
+  getIndexForHash = (hash: string) => {
+    return menuItems.findIndex(item => `#${item.key}` === hash);
+  };
+
   toggleMobileMenu = () => {
+    this.updateOffsetTops();
+    const { isMobileMenuOpen } = this.state;
     this.setState({
-      isMobileMenuOpen: !this.state.isMobileMenuOpen
+      isMobileMenuOpen: !isMobileMenuOpen
     });
+    //if it is not open scroll to first section
+    //otherwise send -1 to reset scroll
+    this.scrollToSection(isMobileMenuOpen ? -1 : 0);
+  };
+
+  scrollToSection = (index: number) => {
+    if (typeof document !== "undefined") {
+      const { sectionOffsets } = this.state;
+
+      console.log("scrol to ", index, sectionOffsets[index]);
+
+      if (index === -1) {
+        window.scrollTo(0, 0);
+      } else {
+        //50px is header height and 20px is home-page margin top = 70px
+        window.scrollTo(0, sectionOffsets[index] - 70);
+      }
+    }
   };
 
   toggleSection = (index: number) => {
     if (typeof document !== "undefined") {
-      if (window.innerWidth > 760) {
+      if (window.innerWidth > 600) {
         return;
       }
+
+      this.scrollToSection(index);
 
       if (index === this.state.openMobileSectionIndex) {
         this.setState({
