@@ -8,7 +8,7 @@ interface IProps {
 import "./style.css";
 
 export const EventBlock: React.SFC<IProps> = ({ event }) => (
-  <div>
+  <div className={"event-block"}>
     <div>
       <strong>{event.title}</strong>
       <br />

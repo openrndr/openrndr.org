@@ -1,0 +1,20 @@
+.event-group {
+  padding: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .calendar-section {
+    padding-bottom: 50px;
+  }
+
+  .calendar-section .xx-x-x {
+    grid-template-columns: 100%;
+  }
+
+  .event-group {
+    grid-column: 1/2 !important;
+  }
+  .event-group + .event-group {
+    margin-top: 50px;
+  }
+}

@@ -18,7 +18,7 @@
   padding: 20px;
 }
 
-.home-page > .section-wrapper .section-body {
+.landing-section .section-body {
   padding-top: 0;
 }
 
@@ -87,5 +87,9 @@
   .section-title {
     display: grid;
     grid-template-columns: 1fr 2fr;
+  }
+
+  #landing .text-block:first-child {
+    font-size: 28px;
   }
 }

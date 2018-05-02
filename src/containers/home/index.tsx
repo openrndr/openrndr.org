@@ -130,7 +130,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
 
   onScrollStop = (closetsIndex: number) => {
     if (typeof document !== "undefined") {
-      if (window.innerWidth >= 1200) {
+      if (window.innerWidth > 600) {
         window.location.hash =
           closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
       }
@@ -177,21 +177,20 @@ class HomePage extends React.Component<IHomeProps, IState> {
 
   updateOffsetTops = () => {
     if (typeof document !== "undefined") {
-      if (this.wrapper) {
-        const sections = [].slice.call(
-          this.wrapper.querySelectorAll(".section-wrapper")
-        );
-        const firstSection: HTMLElement | null = document.querySelector(
-          ".banner"
-        );
-        this.setState({
-          sectionOffsets: sections.map(
-            (section: HTMLElement) =>
-              section.offsetTop + section.offsetHeight * 0.8
-          ),
-          firstSectionHeight: firstSection ? firstSection.offsetHeight : 0
-        });
-      }
+      const sections = [].slice.call(
+        document.body.querySelectorAll(".section-wrapper")
+      );
+      const firstSection: HTMLElement | null = document.querySelector(
+        ".banner"
+      );
+
+      this.setState({
+        sectionOffsets: sections.map(
+          (section: HTMLElement) =>
+            section.offsetTop + section.offsetHeight * 0.8
+        ),
+        firstSectionHeight: firstSection ? firstSection.offsetHeight : 0
+      });
     }
   };
 
@@ -235,25 +234,22 @@ class HomePage extends React.Component<IHomeProps, IState> {
           onClick={this.toggleMobileMenu}
         />
 
-        <Banner data={data.landing.banner} />
+        <div className={"landing-section"}>
+          <Banner data={data.landing.banner} />
+          <SectionWrapper
+            className={`${isMobileMenuOpen ? "close" : ""}`}
+            id="landing"
+            color={theme.colors.pink}
+          >
+            <Menu
+              activeIndex={activeSectionIndex}
+              className={stickyMenu ? "sticky" : ""}
+            />
+            <SectionLanding data={data.landing} />
+          </SectionWrapper>
+        </div>
 
-        <Menu
-          activeIndex={activeSectionIndex}
-          className={stickyMenu ? "sticky" : ""}
-        />
-
-        <SectionWrapper
-          className={`${isMobileMenuOpen ? "close" : ""}`}
-          id="landing"
-          color={theme.colors.pink}
-        >
-          <SectionLanding data={data.landing} />
-        </SectionWrapper>
-
-        <div
-          className={`sections ${isMobileMenuOpen ? "show" : ""}`}
-          ref={ref => (this.wrapper = ref)}
-        >
+        <div className={`sections ${isMobileMenuOpen ? "show" : ""}`}>
           <SectionWrapper
             id="gettingStarted"
             color={theme.colors.pink}

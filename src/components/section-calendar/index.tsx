@@ -16,9 +16,9 @@ export const SectionCalendar: React.SFC<ICalendarProps> = ({ data }) => {
   const groups = groupBy(events.data, "eventType");
 
   return (
-    <section className={`xx-x-x`}>
+    <section className={`calendar-section xx-x-x`}>
       {Object.keys(groups).map(groupKey => (
-        <div key={`event-group-${groupKey}`}>
+        <div key={`event-group-${groupKey}`} className={"event-group"}>
           <h3>{groupKey}</h3>
           <br />
           {groups[groupKey].map((event, i) => (

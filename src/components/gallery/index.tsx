@@ -20,7 +20,7 @@ interface IProps extends PageProps<ProjectType> {
 }
 
 interface IState {
-  hasLoadedMore: boolean;
+  numberOfColumns: number;
 }
 
 const defaultStyle = {
@@ -37,8 +37,34 @@ const transitionStyles: TransitionStyles = {
 };
 
 class GalleryComponent extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      numberOfColumns: 5
+    };
+  }
+
+  componentDidMount() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  componentWillUnmount() {
+    if (typeof document !== "undefined") {
+      window.removeEventListener("resize", this.onResize);
+    }
+  }
+
+  onResize = () => {
+    this.setState({
+      numberOfColumns: window.innerWidth <= 1024 ? 3 : 5
+    });
+  };
+
   render() {
     const { data, title, className = "", hasNext, color } = this.props;
+    const { numberOfColumns } = this.state;
+
     return (
       <section className={`gallery`}>
         <h3 className={"gallery-title"}>{title}</h3>
@@ -65,8 +91,11 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <div
           className={`load-more ${hasNext ? "" : "disabled"}`}
           style={{
-            marginLeft: `calc(-1 * ${calcColumnLeftPosition(1)})`,
-            paddingLeft: calcColumnLeftPosition(1),
+            marginLeft: `calc(-1 * ${calcColumnLeftPosition(
+              1,
+              numberOfColumns
+            )})`,
+            paddingLeft: calcColumnLeftPosition(1, numberOfColumns),
             color
           }}
         >
