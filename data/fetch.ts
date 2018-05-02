@@ -14,6 +14,7 @@ const loader = new Loader(client);
 
 export interface LoadResult {
   [key: string]: Entity;
+
   showcase: Showcase;
   calendar: Calendar;
   about: About;
@@ -47,8 +48,11 @@ export default async function(): Promise<LoadResult> {
     community,
     gettingStarted,
     landing,
-    showcase
+    showcase,
+    site
   } = result;
+
+  console.log(JSON.stringify(site.toMap(), null, 2));
 
   return {
     calendar: calendar.toMap(),

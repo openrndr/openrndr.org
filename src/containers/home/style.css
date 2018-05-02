@@ -45,11 +45,11 @@
     align-self: center;
   }
 
-  .home-page > .section-wrapper .section-body {
+  .landing-section .section-body {
     display: block;
   }
 
-  .home-page > .section-wrapper.close {
+  .landing-section .section-wrapper.close {
     display: none;
   }
 
@@ -82,7 +82,7 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
   .section-body,
   .section-title {
     display: grid;

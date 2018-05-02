@@ -86,7 +86,7 @@ p * {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
   .xx-x-x,
   .x-x-x-x,
   .xx-xx-x-x-x-x {

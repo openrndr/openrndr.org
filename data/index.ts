@@ -8,7 +8,6 @@ import { digest } from "./digest";
 import { IHomeProps } from "../src/containers/home";
 
 (async function() {
-  const dataPublicPath = path.resolve(path.join("public", "data"));
   const data = await fetchData();
 
   //create an empty folder for chunks
@@ -59,9 +58,6 @@ import { IHomeProps } from "../src/containers/home";
   };
 
   const paginatedDataDigest = digest(paginatedData);
-
-  const publicDir = path.resolve("public");
-  execSync(`ls ${path.dirname(publicDir)}`);
 
   fs.writeFileSync(
     path.resolve(
