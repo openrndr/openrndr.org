@@ -2,9 +2,8 @@ footer {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  height: 300px;
+  height: calc(300px + 50vh);
   text-align: center;
-  margin-bottom: 50vh;
 }
 
 footer > * {
