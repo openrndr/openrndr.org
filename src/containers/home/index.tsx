@@ -159,19 +159,9 @@ class HomePage extends React.Component<
       });
 
       if (scrollY >= bannerHeight) {
-        if (closetsIndex === -1) {
-          this.setState({
-            stickyMenu: true
-          });
-        } else {
-          this.setState({
-            stickyMenu: true
-          });
-        }
+        this.setState({ stickyMenu: true });
       } else if (stickyMenu) {
-        this.setState({
-          stickyMenu: false
-        });
+        this.setState({ stickyMenu: false });
       }
     }
   };
@@ -183,7 +173,6 @@ class HomePage extends React.Component<
         .concat(document.body.querySelector("footer"));
 
       const banner: HTMLElement | null = document.querySelector(".banner");
-
       const isMobile = window.innerWidth <= 600;
 
       this.setState({
@@ -196,10 +185,6 @@ class HomePage extends React.Component<
         bannerHeight: banner ? banner.offsetHeight : 0
       });
     }
-  };
-
-  getIndexForHash = (hash: string) => {
-    return menuItems.findIndex(item => `#${item.key}` === hash);
   };
 
   toggleMobileMenu = () => {
@@ -233,6 +218,7 @@ class HomePage extends React.Component<
 
       this.scrollToSection(index);
 
+      //if it is already open
       if (index === this.state.openMobileSectionIndex) {
         this.setState({
           openMobileSectionIndex: -1

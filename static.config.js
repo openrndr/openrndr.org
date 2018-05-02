@@ -9,9 +9,14 @@ const dataDir = path.resolve("public", "");
 export default {
   entry: path.resolve("src", "index.tsx"),
   // siteRoot: "https://openrndr.org",
-  getSiteProps: () => ({
-    title: "React Static"
-  }),
+  getSiteData: async () => {
+    const data = await JSON.parse(
+      fs.readFileSync(path.join(dataDir, "site-data.json"))
+    );
+    return {
+      data
+    };
+  },
 
   getRoutes: async () => {
     const initialDataFile = fs

@@ -5,29 +5,33 @@ export interface Entity {
   itemType: string;
 }
 
+export interface IDatoImageFile {
+  format: string;
+  size: number;
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+  title: string;
+}
+
+export interface IDatoVideoFile {
+  url: string;
+  title: string;
+  provider: string;
+  thumbnailUrl: string;
+}
+
 export interface Image extends Entity {
   itemType: "image";
-  file: {
-    format: string;
-    size: number;
-    url: string;
-    width: number;
-    height: number;
-    alt: string;
-    title: string;
-  };
+  file: IDatoImageFile;
   caption: string;
 }
 
 export interface Video extends Entity {
   itemType: "video";
   caption: string;
-  file: {
-    url: string;
-    title: string;
-    provider: string;
-    thumbnailUrl: string;
-  };
+  file: IDatoVideoFile;
 }
 
 export interface Gif extends Entity {

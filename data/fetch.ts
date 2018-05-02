@@ -8,19 +8,23 @@ import {
   GettingStarted,
   Landing
 } from "../src/types";
+import { IDatoSiteData } from "../src/types/site";
 // import {Paged, paginate} from "./paginate";
 const client = new SiteClient(process.env.DATO_API_TOKEN);
 const loader = new Loader(client);
 
 export interface LoadResult {
-  [key: string]: Entity;
+  pages: {
+    [key: string]: Entity;
 
-  showcase: Showcase;
-  calendar: Calendar;
-  about: About;
-  community: Community;
-  gettingStarted: GettingStarted;
-  landing: Landing;
+    showcase: Showcase;
+    calendar: Calendar;
+    about: About;
+    community: Community;
+    gettingStarted: GettingStarted;
+    landing: Landing;
+  };
+  site: IDatoSiteData;
 }
 
 // function multiple(entities: Entity[]): Entity[] {
@@ -52,14 +56,15 @@ export default async function(): Promise<LoadResult> {
     site
   } = result;
 
-  console.log(JSON.stringify(site.toMap(), null, 2));
-
   return {
-    calendar: calendar.toMap(),
-    about: about.toMap(),
-    community: community.toMap(),
-    gettingStarted: gettingStarted.toMap(),
-    landing: landing.toMap(),
-    showcase: showcase.toMap()
+    pages: {
+      calendar: calendar.toMap(),
+      about: about.toMap(),
+      community: community.toMap(),
+      gettingStarted: gettingStarted.toMap(),
+      landing: landing.toMap(),
+      showcase: showcase.toMap()
+    },
+    site: site.toMap()
   };
 }
