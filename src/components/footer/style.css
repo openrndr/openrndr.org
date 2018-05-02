@@ -17,6 +17,9 @@ footer > * > *:first-child h3 {
 
 @media only screen and (max-width: 600px) {
   footer {
-    /*display: none;*/
+    grid-template-columns: repeat(2, 1fr);
+  }
+  footer * {
+    color: white;
   }
 }

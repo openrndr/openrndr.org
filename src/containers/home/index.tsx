@@ -203,7 +203,6 @@ class HomePage extends React.Component<
   };
 
   toggleMobileMenu = () => {
-    this.updateOffsetTops();
     const { isMobileMenuOpen } = this.state;
     this.setState({
       isMobileMenuOpen: !isMobileMenuOpen
@@ -216,9 +215,6 @@ class HomePage extends React.Component<
   scrollToSection = (index: number) => {
     if (typeof document !== "undefined") {
       const { sectionOffsets } = this.state;
-
-      console.log("scrol to ", index, sectionOffsets[index]);
-
       if (index === -1) {
         window.scrollTo(0, 0);
       } else {
@@ -230,6 +226,7 @@ class HomePage extends React.Component<
 
   toggleSection = (index: number) => {
     if (typeof document !== "undefined") {
+      //mobile only
       if (window.innerWidth > 600) {
         return;
       }

@@ -6,10 +6,23 @@ import { Link } from "react-static";
 interface IProps {}
 
 export const Footer: React.SFC<IProps> = props => {
+  const resetScroll = () => {
+    if (typeof document !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
     <footer>
-      <Link to={"/"}>
-        <h3>OPENRNDR</h3>
+      <Link
+        to={"/"}
+        onClick={() => {
+          resetScroll();
+        }}
+      >
+        <h3>
+          <span dangerouslySetInnerHTML={{ __html: "&uarr;" }} />
+        </h3>
       </Link>
       <a href={"/"}>
         <h3>CONTACT</h3>
