@@ -1,5 +1,6 @@
 import * as React from "react";
 import { withRouteData, withRouter, RouteComponentProps } from "react-static";
+import animateScrollTo from "animated-scroll-to";
 
 import "./style.css";
 import { Banner } from "../../components/banner/index";
@@ -51,6 +52,11 @@ export interface IHomeProps {
     [index: string]: object;
   };
 }
+
+const mobileScrollOptions = {
+  speed: 1000,
+  minDuration: 500
+};
 
 const SectionWrapper: React.SFC<{
   id: string;
@@ -201,10 +207,12 @@ class HomePage extends React.Component<
     if (typeof document !== "undefined") {
       const { sectionOffsets } = this.state;
       if (index === -1) {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
+        animateScrollTo(0, mobileScrollOptions);
       } else {
         //50px is header height and 20px is home-page margin top = 70px
-        window.scrollTo(0, sectionOffsets[index] - 70);
+        // window.scrollTo(0, sectionOffsets[index] - 70);
+        animateScrollTo(sectionOffsets[index] - 70, mobileScrollOptions);
       }
     }
   };

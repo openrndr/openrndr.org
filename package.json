@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@ibm/type": "^0.5.3",
+    "animated-scroll-to": "^1.2.0",
     "datocms-client": "^0.3.41",
     "install": "^0.10.4",
     "lodash": "^4.17.4",

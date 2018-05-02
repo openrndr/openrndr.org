@@ -121,7 +121,11 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
               </div>
             )}
           >
-            {data.media.map(m => <Media key={m.id} data={m} />)}
+            {data.media.map(m => (
+              <div key={`slide-${m.id}`}>
+                <Media key={m.id} data={m} />
+              </div>
+            ))}
           </Carousel>
         </div>
       </div>

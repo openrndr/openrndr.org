@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.media-item:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .media-item {
     height: 35vh !important;
