@@ -27,7 +27,7 @@ import { MobileHeader } from "../../components/mobile-header/index";
 interface IState {
   scrollY: number;
   sectionOffsets: number[];
-  firstSectionHeight: number;
+  bannerHeight: number;
   stickyMenu: boolean;
   activeSectionIndex: number;
   isMobileMenuOpen: boolean;
@@ -96,14 +96,12 @@ const SectionWrapper: React.SFC<{
 };
 
 class HomePage extends React.Component<IHomeProps, IState> {
-  private wrapper: HTMLElement | null;
-
   constructor(props: IHomeProps) {
     super(props);
     this.state = {
       scrollY: 0,
       sectionOffsets: [],
-      firstSectionHeight: 0,
+      bannerHeight: 0,
       stickyMenu: false,
       activeSectionIndex: -1,
       isMobileMenuOpen: false,
@@ -131,15 +129,15 @@ class HomePage extends React.Component<IHomeProps, IState> {
   onScrollStop = (closetsIndex: number) => {
     if (typeof document !== "undefined") {
       if (window.innerWidth > 600) {
-        window.location.hash =
-          closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
+        // window.location.hash =
+        //   closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
       }
     }
   };
 
   onScroll = () => {
     if (typeof document !== "undefined") {
-      const { stickyMenu, firstSectionHeight, sectionOffsets } = this.state;
+      const { stickyMenu, bannerHeight, sectionOffsets } = this.state;
       const { scrollY } = window;
 
       const closetsIndex = sectionOffsets.findIndex(
@@ -157,7 +155,7 @@ class HomePage extends React.Component<IHomeProps, IState> {
         activeSectionIndex: closetsIndex
       });
 
-      if (scrollY >= firstSectionHeight) {
+      if (scrollY >= bannerHeight) {
         if (closetsIndex === -1) {
           this.setState({
             stickyMenu: true
@@ -180,16 +178,14 @@ class HomePage extends React.Component<IHomeProps, IState> {
       const sections = [].slice.call(
         document.body.querySelectorAll(".section-wrapper")
       );
-      const firstSection: HTMLElement | null = document.querySelector(
-        ".banner"
-      );
+      const banner: HTMLElement | null = document.querySelector(".banner");
 
       this.setState({
         sectionOffsets: sections.map(
           (section: HTMLElement) =>
             section.offsetTop + section.offsetHeight * 0.8
         ),
-        firstSectionHeight: firstSection ? firstSection.offsetHeight : 0
+        bannerHeight: banner ? banner.offsetHeight : 0
       });
     }
   };
