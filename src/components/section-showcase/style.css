@@ -16,7 +16,7 @@
 
 .x-x-x-x > * .media-item,
 .xx-xx-x-x-x-x > * .media-item {
-  height: 10vw;
+  height: 20vw;
 }
 
 .xx-xx-x-x-x-x > *:first-child .media-item,

@@ -21,6 +21,7 @@ interface IProps extends PageProps<ProjectType> {
 
 interface IState {
   numberOfColumns: number;
+  isMobile: boolean;
 }
 
 const defaultStyle = {
@@ -40,7 +41,8 @@ class GalleryComponent extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      numberOfColumns: 5
+      numberOfColumns: 5,
+      isMobile: false
     };
   }
 
@@ -57,7 +59,8 @@ class GalleryComponent extends React.Component<IProps, IState> {
 
   onResize = () => {
     this.setState({
-      numberOfColumns: window.innerWidth <= 1024 ? 3 : 5
+      numberOfColumns: window.innerWidth <= 1024 ? 3 : 5,
+      isMobile: window.innerWidth <= 768
     });
   };
 
@@ -80,6 +83,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
                       style={{ ...defaultStyle, ...transitionStyles[state] }}
                       open={false}
                       data={item}
+                      isMobile={this.state.isMobile}
                     />
                   );
                 }}

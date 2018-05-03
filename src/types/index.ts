@@ -20,6 +20,8 @@ export interface IDatoVideoFile {
   title: string;
   provider: string;
   thumbnailUrl: string;
+  width: number;
+  height: number;
 }
 
 export interface Image extends Entity {
@@ -38,6 +40,7 @@ export interface Gif extends Entity {
   itemType: "gif";
   url: string;
   caption: string;
+  file: IDatoImageFile;
 }
 
 export type MediaItem = Image | Video | Gif;

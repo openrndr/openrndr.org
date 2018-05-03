@@ -9,6 +9,7 @@ interface IProps {
   data: ProjectData;
   style: React.CSSProperties;
   open: boolean;
+  isMobile: boolean;
 }
 
 interface IState {
@@ -22,9 +23,9 @@ export class GalleryItem extends React.Component<IProps, IState> {
 
   showLightBox = () => {
     if (typeof document !== "undefined") {
-      if (window.innerWidth <= 760) {
-        return;
-      }
+      // if (window.innerWidth <= 760) {
+      //   return;
+      // }
     }
 
     this.setState({
@@ -39,14 +40,20 @@ export class GalleryItem extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { data, style } = this.props;
+    const { data, style, isMobile } = this.props;
     const { showLightBox } = this.state;
     const { title, blurb, media } = data;
     const thumbnail = media[0];
 
     return (
       <div style={style} className={"gallery-item"}>
-        {showLightBox && <LightBox data={data} onClose={this.hideLightBox} />}
+        {showLightBox && (
+          <LightBox
+            data={data}
+            onClose={this.hideLightBox}
+            isMobile={isMobile}
+          />
+        )}
         <GalleryMediaItem onClick={this.showLightBox} thumbnail={thumbnail} />
         <div className={"item-info"}>
           {title && title.length > 0 && <h3 className={"title"}>{title}</h3>}

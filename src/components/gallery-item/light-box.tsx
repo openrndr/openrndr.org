@@ -21,7 +21,13 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
         return <img src={data.url} />;
       case "video":
         return (
-          <Video data={data} controls={false} width={`100%`} height={`100%`} />
+          <Video
+            data={data}
+            controls={false}
+            width={`100%`}
+            height={`450px`}
+            playing={true}
+          />
         );
     }
   })();
@@ -31,6 +37,7 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
 interface ILightBoxProps {
   data: ProjectData;
   onClose: (e: any) => void;
+  isMobile: boolean;
 }
 
 interface ILightBoxState {
@@ -71,7 +78,7 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
 
   goNext = () => {
     const next = this.state.slideIndex + 1;
-    if (next > this.props.data.media.length) {
+    if (next >= this.props.data.media.length) {
       return;
     }
     this.setState({
@@ -99,31 +106,72 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, isMobile } = this.props;
+    const currentMedia = data.media[this.state.slideIndex];
+    console.log(data.media.length, this.state.slideIndex);
+
+    const orientation = currentMedia.file
+      ? currentMedia.file.width > currentMedia.file.height
+        ? "horizontal"
+        : "vertical"
+      : "horizontal";
 
     return (
-      <div className="gallery-lightbox" onClick={this.onClose}>
+      <div className={`gallery-lightbox`} onClick={this.onClose}>
         <div className={"carousel-close-btn control"}>X</div>
         <div className="carousel-container">
           <Carousel
             slideIndex={this.state.slideIndex}
             afterSlide={(slideIndex: number) => this.setState({ slideIndex })}
-            renderCenterLeftControls={({
-              previousSlide
-            }: ButtonControlProps) => (
-              <div className="control" onClick={previousSlide}>
-                {"<"}
-              </div>
-            )}
-            renderCenterRightControls={({ nextSlide }: ButtonControlProps) => (
-              <div className="control" onClick={nextSlide}>
-                {">"}
-              </div>
-            )}
+            renderCenterLeftControls={({ previousSlide }: ButtonControlProps) =>
+              this.state.slideIndex - 1 === -1 || isMobile ? null : (
+                <div className="control" onClick={previousSlide}>
+                  {"<"}
+                </div>
+              )
+            }
+            renderCenterRightControls={({ nextSlide }: ButtonControlProps) =>
+              this.state.slideIndex + 1 === data.media.length ||
+              isMobile ? null : (
+                <div className="control" onClick={nextSlide}>
+                  {">"}
+                </div>
+              )
+            }
+            renderBottomLeftControls={({ previousSlide }: ButtonControlProps) =>
+              this.state.slideIndex - 1 === -1 || !isMobile ? null : (
+                <div className="control" onClick={previousSlide}>
+                  {"<"}
+                </div>
+              )
+            }
+            renderBottomRightControls={({ nextSlide }: ButtonControlProps) =>
+              this.state.slideIndex + 1 === data.media.length ||
+              !isMobile ? null : (
+                <div className="control" onClick={nextSlide}>
+                  {">"}
+                </div>
+              )
+            }
           >
             {data.media.map(m => (
-              <div key={`slide-${m.id}`}>
-                <Media key={m.id} data={m} />
+              <div
+                className={`slide-wrapper ${orientation} ${
+                  currentMedia.itemType
+                }`}
+                key={`slide-${m.id}`}
+              >
+                <div className={"gap"} />
+                <div className={"slide-content-column"}>
+                  <Media key={m.id} data={m} />
+                  <figcaption>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: m.caption
+                      }}
+                    />
+                  </figcaption>
+                </div>
               </div>
             ))}
           </Carousel>
