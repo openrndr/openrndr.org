@@ -97,9 +97,11 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   };
 
   onClose = (e: any) => {
+    console.log(e.target.classList);
     if (
       e.target.classList.contains("media-item-container") ||
-      e.target.classList.contains("carousel-close-btn")
+      e.target.classList.contains("carousel-close-btn") ||
+      e.target.classList.contains("slide-wrapper")
     ) {
       this.props.onClose(e);
     }
@@ -108,7 +110,6 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   render() {
     const { data, isMobile } = this.props;
     const currentMedia = data.media[this.state.slideIndex];
-    console.log(data.media.length, this.state.slideIndex);
 
     const orientation = currentMedia.file
       ? currentMedia.file.width > currentMedia.file.height

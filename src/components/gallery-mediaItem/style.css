@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+.media-item {
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 600px) {
   .media-item {
     height: 35vh !important;

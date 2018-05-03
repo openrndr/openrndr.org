@@ -60,7 +60,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
   onResize = () => {
     this.setState({
       numberOfColumns: window.innerWidth <= 1024 ? 3 : 5,
-      isMobile: window.innerWidth <= 768
+      isMobile: window.innerWidth < 768
     });
   };
 
@@ -73,11 +73,18 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <h3 className={"gallery-title"}>{title}</h3>
 
         <TransitionGroup className={`grid ${className}`}>
-          {data.map((item, i) => {
+          {data.map(item => {
             return (
-              <Transition key={item.id} timeout={300}>
+              <Transition key={item.id} timeout={500}>
                 {(state: "entering" | "entered" | "exited") => {
                   // item.media.length > 3 line is only for debugging, remove it when gallery is done
+                  if (state === "entering") {
+                    return (
+                      <div className={`load-more-loading-icon`}>
+                        <img src={"loading-black.gif"} />
+                      </div>
+                    );
+                  }
                   return (
                     <GalleryItem
                       style={{ ...defaultStyle, ...transitionStyles[state] }}
@@ -114,7 +121,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
                 : () => null
             }
           >
-            More
+            <span>MORE</span>
           </span>
         </div>
       </section>
