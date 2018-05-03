@@ -15,23 +15,23 @@ import { IHomeProps } from "../src/containers/home";
     calendar: {
       ...pages.calendar,
       events: paginate(pages.calendar.events, {
-        buildUrl: hash => `/event-${hash}.json`,
+        buildUrl: hash => `/data/event-${hash}.json`,
         pageSize: 4
       })
     },
     showcase: {
       ...pages.showcase,
       gallery: paginate(pages.showcase.gallery, {
-        buildUrl: hash => `/project-${hash}.json`,
+        buildUrl: hash => `/data/project-${hash}.json`,
         pageSize: 4,
         initialPageSize: 6
       }),
       experiments: paginate(pages.showcase.experiments, {
-        buildUrl: hash => `/project-${hash}.json`,
+        buildUrl: hash => `/data/project-${hash}.json`,
         pageSize: 4
       }),
       caseStudies: paginate(pages.showcase.caseStudies, {
-        buildUrl: hash => `/case-study-${hash}.json`,
+        buildUrl: hash => `/data/case-study-${hash}.json`,
         pageSize: 2
       })
     }
@@ -57,13 +57,13 @@ import { IHomeProps } from "../src/containers/home";
 
   fs.writeFileSync(
     path.resolve(
-      path.join("public", `initial-data-${paginatedDataDigest}.json`)
+      path.join("public", "data", `initial-data-${paginatedDataDigest}.json`)
     ),
     JSON.stringify(homeProps, null, 4)
   );
 
   fs.writeFileSync(
-    path.resolve(path.join("public", `site-data.json`)),
+    path.resolve(path.join("public", "data", `site-data.json`)),
     JSON.stringify(site, null, 4)
   );
 

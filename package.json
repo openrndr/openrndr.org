@@ -6,10 +6,12 @@
   "scripts": {
     "start": "react-static start",
     "stage": "react-static build --staging",
-    "build": "mkdir -p public && yarn data:fetch && react-static build",
+    "build":
+      "mkdir -p public && mkdir -p public/data && yarn data:fetch && react-static build",
     "test": "jest --watch",
     "serve": "serve dist -p 3000",
-    "data:fetch": "ts-node --project tsconfig-data.json data/index",
+    "data:fetch":
+      "rm -rf public/data/*.json && ts-node --project tsconfig-data.json data/index",
     "format": "prettier './**/*.{js,ts,tsx}' --write",
     "lint": "tslint -p . -c tslint.json",
     "precommit": "pretty-quick --staged"

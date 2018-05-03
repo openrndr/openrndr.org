@@ -21,7 +21,6 @@ export class SectionShowcase extends React.Component<IShowCaseProps, any> {
 
   onLoadMore = () => {
     if (typeof document !== "undefined") {
-      console.log("distpach resize");
       window.dispatchEvent(new Event("resize"));
     }
   };

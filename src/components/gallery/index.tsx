@@ -1,9 +1,5 @@
 import * as React from "react";
-import {
-  CSSTransition,
-  TransitionGroup,
-  Transition
-} from "react-transition-group";
+import { TransitionGroup, Transition } from "react-transition-group";
 
 import "./style.css";
 
