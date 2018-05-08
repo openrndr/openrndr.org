@@ -9,14 +9,12 @@ import {
   Landing
 } from "../src/types";
 import { IDatoSiteData } from "../src/types/site";
-// import {Paged, paginate} from "./paginate";
-const client = new SiteClient(process.env.DATO_API_TOKEN);
-const loader = new Loader(client);
+
+const dato = new Loader(new SiteClient(process.env.DATO_API_TOKEN));
 
 export interface LoadResult {
   pages: {
     [key: string]: Entity;
-
     showcase: Showcase;
     calendar: Calendar;
     about: About;
@@ -27,24 +25,11 @@ export interface LoadResult {
   site: IDatoSiteData;
 }
 
-// function multiple(entities: Entity[]): Entity[] {
-//   return entities
-//     .concat(entities)
-//     .concat(entities)
-//     .concat(entities)
-//     .concat(entities)
-//     .concat(entities)
-//     .map(e => {
-//       return {
-//         ...e,
-//         id: `${Math.floor(Math.random() * 20000)}`
-//       };
-//     });
-// }
+export type Loader = () => Promise<LoadResult>;
 
-export default async function(): Promise<LoadResult> {
-  await loader.load();
-  const result: any = loader.itemsRepo;
+const loader: Loader = async () => {
+  await dato.load();
+  const result: any = dato.itemsRepo;
 
   const {
     calendar,
@@ -67,4 +52,6 @@ export default async function(): Promise<LoadResult> {
     },
     site: site.toMap()
   };
-}
+};
+
+export { loader };

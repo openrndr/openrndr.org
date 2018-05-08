@@ -3,36 +3,32 @@ import path from "path";
 import fs from "fs";
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 const dataDir = path.resolve("public", "data");
+const siteDataFile = path.join(dataDir, "site-data.json");
+const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
+
+//check if necessary files exist 
+[dataDir, siteDataFile, homeDataPropsFile].forEach(path => {
+  if (!fs.existsSync(path)) {
+    console.log(
+      `Expected ${path} to exist but it doesn't. You might need to run yarn:data:fetch.`
+    );
+    process.exit(1);
+  }
+});
 
 export default {
   entry: path.resolve("src", "index.tsx"),
   // siteRoot: "https://openrndr.org",
   getSiteData: async () => {
-    const data = await JSON.parse(
-      fs.readFileSync(path.join(dataDir, "site-data.json"))
-    );
+    const data = JSON.parse(fs.readFileSync(siteDataFile));
     return {
       data
     };
   },
 
   getRoutes: async () => {
-    const initialDataFile = fs
-      .readdirSync(dataDir)
-      .find(filename => filename.includes("initial-data"));
-
-    if (!initialDataFile) {
-      throw new Error(
-        `could not find file containing initial data in ${dataDir}`
-      );
-    }
-
-    const dataProps = JSON.parse(
-      fs.readFileSync(path.join(dataDir, initialDataFile))
-    );
-
+    const dataProps = JSON.parse(fs.readFileSync(homeDataPropsFile));
     return [
       {
         path: ``,
