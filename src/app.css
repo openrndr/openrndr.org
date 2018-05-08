@@ -46,8 +46,13 @@ strong {
 }
 
 h1 {
-  font-size: 36px;
-  line-height: 1em;
+  font-size: 2.2vw;
+  line-height: 1.2em;
+}
+
+h3 {
+  font-size: 1vw;
+  line-height: 1.2em;
 }
 
 p,
@@ -134,3 +139,14 @@ p * {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+
+@media only screen and (max-width: 1024px) {
+  h1 {
+    font-size: 36px;
+  }
+  h3{
+    font-size: 16px;
+  }
+}
+

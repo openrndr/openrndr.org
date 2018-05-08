@@ -40,14 +40,13 @@ export class GridLines extends React.Component<any, IState> {
       <div className={"grid-lines"}>
         {Object.keys(theme.colors)
           .map(key => theme.colors[key])
-          .slice(0, this.state.numberOfColumns - 1)
           .map((color: string, i) => (
             <div
               key={`color-bar-${i}`}
               className={"color-bar"}
               style={{
                 background: color,
-                left: calcColumnLeftPosition(i + 1, this.state.numberOfColumns)
+                left: calcColumnLeftPosition(i, this.state.numberOfColumns)
               }}
             />
           ))}

@@ -28,9 +28,14 @@
 .xx-xx-x-x-x-x > *:first-child .item-info,
 .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
 .xx-xx .item-info {
-  min-height: 10vw;
+  height: 10vw;
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+.item-info .blurb{
+  height: 200px;
+  text-overflow: ellipsis;
 }
 
 .x-x-x-x > * .item-info .blurb,
