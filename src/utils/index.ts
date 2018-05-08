@@ -3,8 +3,9 @@ export const calcColumnLeftPosition = (
   numberOfItems: number = 5
 ) => {
   const unit = `calc(calc(100vw - 40px) * 0.1)`;
-  return `calc(20px + ${unit} + calc(${colIndex} * 2 * ${unit}) )`;
-  // return `calc(calc(${z} * calc(80vw - 40px)) + 20px)`;
+  return numberOfItems >=5 ?
+      `calc(20px + ${unit} + calc(${colIndex} * 2 * ${unit}) )`
+          : `calc(calc(${(colIndex+1) * (1 / numberOfItems)} * calc(100vw - 40px)) + 20px)`;
 };
 
 export const closest = (item: number, items: number[]) =>

@@ -1,3 +1,7 @@
+.item-info{
+  overflow: hidden;
+}
+
 .gallery-item .item-info > * {
   padding: 10px 20px 20px 20px;
 }

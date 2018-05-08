@@ -30,13 +30,13 @@ export const GalleryMediaItem: React.SFC<IProps> = ({
             return <BackgroundGif data={thumbnail} />;
           case "video":
             return (
-              <Video
-                data={thumbnail}
-                controls={false}
-                width={`100%`}
-                height={`100%`}
-                playing={autoPlay}
-              />
+                <div style={{
+                  background: `url(${thumbnail.file.thumbnailUrl})`,
+                  width: `100%`,
+                  height: `100%`,
+                  backgroundPosition: "center",
+                  backgroundSize: "fill"
+                }}/>
             );
         }
       })()}

@@ -19,7 +19,7 @@ export const BackgroundImage: React.SFC<IProps> = ({
   return (
     <Imgix
       type="bg"
-      fit={"clamp"}
+      fit={"fill"}
       imgProps={{
         style: {
           // backgroundSize: "fill",
