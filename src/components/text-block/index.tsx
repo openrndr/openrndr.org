@@ -6,11 +6,12 @@ import "./style.css";
 
 interface IProps {
   data: TextBlockType;
+  className?: string;
 }
 
-export const TextBlock: React.SFC<IProps> = ({ data }) => {
+export const TextBlock: React.SFC<IProps> = ({ data, className = "" }) => {
   return (
-    <div className={"text-block"}>
+    <div className={`text-block ${className}`}>
       <h3>{data.title}</h3>
       <br />
       <article

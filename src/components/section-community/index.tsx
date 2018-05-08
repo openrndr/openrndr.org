@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Community } from "../../types";
+import { Community, Question } from "../../types";
 import "./style.css";
 import { TextBlock } from "../text-block/index";
 
@@ -8,12 +8,66 @@ interface IProps {
   data: Community;
 }
 
-export const SectionCommunity: React.SFC<IProps> = ({ data }) => {
-  return (
-    <section className={`xx-x-x`}>
-      {data.contentBlocks.map((cb, i) => (
-        <TextBlock key={`text-block${i}`} data={cb} />
-      ))}
-    </section>
-  );
-};
+interface IState {
+  openQuestionIndex: number;
+}
+
+export class SectionCommunity extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      openQuestionIndex: -1
+    };
+  }
+
+  setQuestion = (index: number) => {
+    const { openQuestionIndex } = this.state;
+
+    if (openQuestionIndex === index) {
+      this.setState({
+        openQuestionIndex: -1
+      });
+    } else {
+      this.setState({
+        openQuestionIndex: index
+      });
+    }
+  };
+
+  render() {
+    const { data } = this.props;
+    const { openQuestionIndex } = this.state;
+
+    return (
+      <section className={`xx-x-x`}>
+        <div className="text-block">
+          {data.faq.map((q: Question, i: number) => (
+            <div
+              className={`question ${openQuestionIndex === i ? "open" : ""}`}
+            >
+              <strong
+                className={"question-title"}
+                onClick={() => this.setQuestion(i)}
+              >
+                {q.question}
+              </strong>
+              <article
+                className={"answer"}
+                dangerouslySetInnerHTML={{
+                  __html: q.answer
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        {data.contentBlocks.map((cb, i) => (
+          <TextBlock
+            key={`text-block${i}`}
+            data={cb}
+            className={i === 0 ? "faq" : ""}
+          />
+        ))}
+      </section>
+    );
+  }
+}

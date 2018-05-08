@@ -77,12 +77,18 @@ export interface TextBlock extends Entity {
   link?: string;
 }
 
+export interface Question extends Entity {
+  answer: string;
+  question: string;
+}
+
 export interface About extends Entity {
   contentBlocks: TextBlock[];
 }
 
 export interface Community extends Entity {
   contentBlocks: TextBlock[];
+  faq: Question[];
 }
 
 export interface GettingStarted extends Entity {

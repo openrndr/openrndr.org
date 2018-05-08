@@ -1,0 +1,24 @@
+.question .answer {
+  display: none;
+}
+
+.question.open .answer {
+  display: block;
+}
+
+.question + .question {
+  margin-top: 1em;
+}
+
+.question-title {
+  cursor: pointer;
+}
+
+.question ul,
+.question li {
+  list-style: none;
+}
+
+.question li {
+  margin-left: 20px;
+}
