@@ -3,7 +3,7 @@ import Carousel from "nuka-carousel";
 
 import { MediaItem, Project as ProjectData } from "../../types";
 import { Video } from "../video";
-import { Image } from "../image";
+import { Image } from "../image/index";
 
 interface ButtonControlProps {
   [key: string]: () => any;
@@ -163,15 +163,17 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
                 key={`slide-${m.id}`}
               >
                 <div className={"gap"} />
-                <div className={"slide-content-column"}>
-                  <Media key={m.id} data={m} />
-                  <figcaption>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: m.caption
-                      }}
-                    />
-                  </figcaption>
+                <div className={"slide-column"}>
+                  <div className={"slide-column-content"}>
+                    <Media key={m.id} data={m} />
+                    <figcaption>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: m.caption
+                        }}
+                      />
+                    </figcaption>
+                  </div>
                 </div>
               </div>
             ))}

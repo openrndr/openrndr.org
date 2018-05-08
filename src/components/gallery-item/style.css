@@ -29,13 +29,21 @@
 .gallery-lightbox .slide-wrapper {
   width: calc(100vw - 40px);
   height: 100vh;
-  /*padding: 20px;*/
   display: grid;
   color: white;
 }
-.slide-content-column {
-  display: grid;
+.slide-column {
+  display: flex;
+  height: 100%;
+}
+
+.slide-column-content {
   align-self: center;
+}
+
+.slide-column-content,
+.slide-column-content * {
+  width: 100%;
 }
 
 .slide-content-column img {

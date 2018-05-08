@@ -59,7 +59,7 @@ export class GalleryItem extends React.Component<IProps, IState> {
           {title && title.length > 0 && <h3 className={"title"}>{title}</h3>}
           {blurb &&
             blurb.length > 0 && (
-              <p
+              <article
                 className={"blurb"}
                 dangerouslySetInnerHTML={{
                   __html: blurb
