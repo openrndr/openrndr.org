@@ -27,11 +27,17 @@ export class ImageX extends React.Component<IProps, IImageState> {
   render() {
     const { data, fit = "clip", crop } = this.props;
     const {
-      file: { url }
+      file: { url, width, height }
     } = data;
 
+    const orientation = width >= height ? "landscape" : "portrait";
+
     return (
-      <div className={`image-wrapper ${this.state.isLoaded ? "loaded" : ""}`}>
+      <div
+        className={`image-wrapper ${orientation} ${
+          this.state.isLoaded ? "loaded" : ""
+        }`}
+      >
         <img className={"load-icon"} src={"loading-black.gif"} />
         <Imgix
           src={url}
@@ -40,8 +46,8 @@ export class ImageX extends React.Component<IProps, IImageState> {
           imgProps={{
             onLoad: this.onLoad
           }}
-          width={"100%"}
-          height={"auto"}
+          width={"auto"}
+          height={"100%"}
         />
       </div>
     );
