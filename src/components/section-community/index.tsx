@@ -42,6 +42,7 @@ export class SectionCommunity extends React.Component<IProps, IState> {
       <section className={`xx-x-x`}>
         <div className="text-block">
           <h3>FAQ</h3>
+          <br/>
           {data.faq.map((q: Question, i: number) => (
             <div
               className={`question ${openQuestionIndex === i ? "open" : ""}`}

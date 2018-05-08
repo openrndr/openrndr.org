@@ -45,22 +45,21 @@ class GalleryComponent extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
-    // this.onResize();
-    // window.addEventListener("resize", this.onResize);
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
   }
 
   componentWillUnmount() {
     if (typeof document !== "undefined") {
-      // window.removeEventListener("resize", this.onResize);
+      window.removeEventListener("resize", this.onResize);
     }
   }
 
   onResize = () => {
-    return;
-    // this.setState({
-    //   numberOfColumns: window.innerWidth <= 1024 ? 3 : 5,
-    //   isMobile: window.innerWidth < 768
-    // });
+    this.setState({
+      numberOfColumns: window.innerWidth <= 1024 ? 3 : 5,
+      isMobile: window.innerWidth < 768
+    });
   };
 
   render() {
