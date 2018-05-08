@@ -1,5 +1,4 @@
 import React from "react";
-import Imgix from "react-imgix";
 import { Image as ImageType } from "../../types";
 
 interface IProps {
@@ -25,23 +24,11 @@ export class Image extends React.Component<IProps, IImageState> {
   };
 
   render() {
-    const { data, fit = "clip", crop } = this.props;
+    const { data } = this.props;
     const {
       file: { url }
     } = data;
 
-    return (
-      <div className={`image-wrapper ${this.state.isLoaded ? "loaded" : ""}`}>
-        <img className={"load-icon"} src={"loading-black.gif"} />
-        <Imgix
-          src={url}
-          fit={fit}
-          crop={crop}
-          imgProps={{
-            onLoad: this.onLoad
-          }}
-        />
-      </div>
-    );
+    return <img src={url} onLoad={this.onLoad} />;
   }
 }

@@ -13,7 +13,7 @@ interface IProps {
 }
 
 import "./style.css";
-import { Image } from "../image/index";
+import { ImageX } from "../image-x/index";
 
 export const GalleryMediaItem: React.SFC<IProps> = ({
   thumbnail,
@@ -25,7 +25,7 @@ export const GalleryMediaItem: React.SFC<IProps> = ({
       {(function() {
         switch (thumbnail.itemType) {
           case "image":
-            return <Image data={thumbnail} fit={"fill"} />;
+            return <ImageX data={thumbnail} fit={"fill"} />;
           case "gif":
             return <BackgroundGif data={thumbnail} />;
           case "video":
