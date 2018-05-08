@@ -18,10 +18,11 @@ interface IProps extends PageProps<ProjectType> {
 interface IState {
   numberOfColumns: number;
   isMobile: boolean;
+  hasPendingTransitions: boolean;
 }
 
 const defaultStyle = {
-  transition: `opacity ${500}ms ease-in-out`,
+  transition: `opacity 500ms ease-in-out`,
   opacity: 0
 };
 
@@ -38,7 +39,8 @@ class GalleryComponent extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       numberOfColumns: 5,
-      isMobile: false
+      isMobile: false,
+      hasPendingTransitions: false
     };
   }
 
@@ -62,7 +64,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { data, title, className = "", hasNext, color } = this.props;
+    const { data, title, className = "", hasNext, color, loading } = this.props;
     const { numberOfColumns } = this.state;
 
     return (
@@ -72,15 +74,25 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <TransitionGroup className={`grid ${className}`}>
           {data.map(item => {
             return (
-              <Transition key={item.id} timeout={500}>
+              <Transition
+                onEntering={() =>
+                  this.setState({ hasPendingTransitions: true })
+                }
+                onEntered={() =>
+                  this.setState({ hasPendingTransitions: false })
+                }
+                key={item.id}
+                timeout={100}
+              >
                 {(state: "entering" | "entered" | "exited") => {
                   // item.media.length > 3 line is only for debugging, remove it when gallery is done
                   if (state === "entering") {
-                    return (
-                      <div className={`load-more-loading-icon`}>
-                        <img src={"loading-black.gif"} />
-                      </div>
-                    );
+                    <GalleryItem
+                      style={{ ...defaultStyle, ...transitionStyles[state] }}
+                      open={false}
+                      data={item}
+                      isMobile={this.state.isMobile}
+                    />;
                   }
                   return (
                     <GalleryItem
@@ -118,7 +130,13 @@ class GalleryComponent extends React.Component<IProps, IState> {
                 : () => null
             }
           >
-            <span>MORE</span>
+            <span>
+              {loading || this.state.hasPendingTransitions ? (
+                <img width="15px" src={"loading-black.gif"} />
+              ) : (
+                "MORE"
+              )}
+            </span>
           </span>
         </div>
       </section>
