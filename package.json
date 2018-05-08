@@ -79,6 +79,6 @@
     "typescript": "^2.6.2"
   },
   "husky": {
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged && yarn lint"
   }
 }

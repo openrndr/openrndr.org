@@ -6,6 +6,8 @@
   ],
   "rules": {
     "import-name": false,
-    "variable-name": false
+    "variable-name": false,
+    "no-console": [true, "log", "error"],
+    "comment-format": false
   }
 }
