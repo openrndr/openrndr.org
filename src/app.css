@@ -45,19 +45,27 @@ strong {
   text-transform: uppercase;
 }
 
-h1 {
-  font-size: 2.2vw;
+
+.menu h3 {
+  font-size: 1vw;
   line-height: 1.2em;
 }
 
-h3 {
-  font-size: 1vw;
-  line-height: 1.2em;
+h1 {
+  font-size: 36px;
+}
+h3{
+  font-size: 16px;
 }
 
 p,
 p * {
   font-size: 12px;
+}
+
+article.running-text{
+  font-size: 16px;
+  line-height: 1.24em;
 }
 
 /*LAYOUT*/
@@ -142,11 +150,6 @@ p * {
 
 
 @media only screen and (max-width: 1024px) {
-  h1 {
-    font-size: 36px;
-  }
-  h3{
-    font-size: 16px;
-  }
+
 }
 
