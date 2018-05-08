@@ -7,6 +7,6 @@ export const calcColumnLeftPosition = (
 };
 
 export const closest = (item: number, items: number[]) =>
-  items.reduce(function(prev, curr) {
+  items.reduce((prev, curr) => {
     return Math.abs(curr - item) < Math.abs(prev - item) ? curr : prev;
   });

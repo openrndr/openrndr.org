@@ -97,7 +97,6 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   };
 
   onClose = (e: any) => {
-    console.log(e.target.classList);
     if (
       e.target.classList.contains("media-item-container") ||
       e.target.classList.contains("carousel-close-btn") ||

@@ -10,8 +10,6 @@ interface IProps {
 }
 
 export const SectionLanding: React.SFC<IProps> = ({ data }) => {
-  console.log(JSON.stringify(data.contentBlocks, null, 3));
-
   return (
     <section className={`xx-x-x`}>
       {data.contentBlocks.map((cb, i) => (
