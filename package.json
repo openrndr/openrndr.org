@@ -10,8 +10,7 @@
       "mkdir -p public && mkdir -p public/data && yarn data:fetch && react-static build",
     "test": "jest --watch",
     "serve": "serve dist -p 3000",
-    "data:fetch":
-      "rm -rf public/data/*.json && ts-node data/index",
+    "data:fetch": "rm -rf public/data/*.json && ts-node data/index",
     "format": "prettier './**/*.{js,ts,tsx}' --write",
     "lint": "tslint -p . -c tslint.json --fix"
   },
@@ -20,14 +19,7 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   },
   "dependencies": {
     "@ibm/type": "^0.5.3",
@@ -79,6 +71,8 @@
     "typescript": "^2.6.2"
   },
   "husky": {
-    "precommit": "pretty-quick --staged && yarn lint"
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && yarn lint"
+    }
   }
 }
