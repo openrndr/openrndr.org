@@ -1,7 +1,7 @@
 footer {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 10% 20% 20% 20% 20% 10%;
   height: calc(300px + 50vh);
   text-align: center;
 }
