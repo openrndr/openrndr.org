@@ -8,6 +8,7 @@
     "import-name": false,
     "variable-name": false,
     "no-console": [true, "log", "error"],
-    "comment-format": false
+    "comment-format": false,
+    "object-shorthand-properties-first": false
   }
 }
