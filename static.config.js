@@ -22,14 +22,17 @@ export default {
     const initialDataFile = fs
       .readdirSync(dataDir)
       .find(filename => filename.includes("initial-data"));
+
     if (!initialDataFile) {
       throw new Error(
         `could not find file containing initial data in ${dataDir}`
       );
     }
+
     const dataProps = JSON.parse(
       fs.readFileSync(path.join(dataDir, initialDataFile))
     );
+
     return [
       {
         path: ``,
