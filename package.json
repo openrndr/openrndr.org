@@ -13,8 +13,7 @@
     "data:fetch":
       "rm -rf public/data/*.json && ts-node --project tsconfig-data.json data/index",
     "format": "prettier './**/*.{js,ts,tsx}' --write",
-    "lint": "tslint -p . -c tslint.json",
-    "precommit": "pretty-quick --staged"
+    "lint": "tslint -p . -c tslint.json"
   },
   "jest": {
     "transform": {
@@ -73,7 +72,7 @@
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^3.0.2",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0-rc.2",
     "jest": "^22.1.4",
     "nodemon": "^1.17.3",
     "prettier": "^1.10.2",
@@ -88,5 +87,8 @@
     "tslint-config-prettier": "^1.6.0",
     "tslint-plugin-prettier": "^1.3.0",
     "typescript": "^2.6.2"
+  },
+  "husky": {
+    "precommit": "pretty-quick --staged"
   }
 }
