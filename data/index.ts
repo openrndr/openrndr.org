@@ -111,7 +111,7 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
     }
   });
   files.forEach(file => {
-      fs.writeFileSync(file.path, JSON.stringify(file.data));
+    fs.writeFileSync(file.path, JSON.stringify(file.data));
   });
 })();
 
