@@ -9,8 +9,8 @@ import {
   Landing
 } from "../src/types";
 import { IDatoSiteData } from "../src/types/site";
-const client = new SiteClient(process.env.DATO_API_TOKEN);
-const loader = new Loader(client);
+
+const dato = new Loader(new SiteClient(process.env.DATO_API_TOKEN));
 
 export interface LoadResult {
   pages: {
@@ -25,9 +25,11 @@ export interface LoadResult {
   site: IDatoSiteData;
 }
 
-export default async function(): Promise<LoadResult> {
-  await loader.load();
-  const result: any = loader.itemsRepo;
+export type Loader = () => Promise<LoadResult>;
+
+const loader: Loader = async () => {
+  await dato.load();
+  const result: any = dato.itemsRepo;
 
   const {
     calendar,
@@ -50,4 +52,6 @@ export default async function(): Promise<LoadResult> {
     },
     site: site.toMap()
   };
-}
+};
+
+export { loader };
