@@ -38,8 +38,11 @@
   display: none;
 }
 
-.x-x-x-x > * .item-info .metadata-group:last-child,
-.xx-xx-x-x-x-x > *:nth-child(n + 3) .item-info .metadata-group:last-child {
+.x-x-x-x > * .item-info .metadata-group:last-child:not(.title),
+.xx-xx-x-x-x-x
+  > *:nth-child(n + 3)
+  .item-info
+  .metadata-group:last-child:not(.title) {
   margin-top: 20px;
 }
 
@@ -51,7 +54,6 @@
   }
 
   .gallery-item .item-info h3 {
-    padding: 10px 20px 0 20px;
   }
 
   .x-x-x-x > * .gallery-item,

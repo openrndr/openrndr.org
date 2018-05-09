@@ -30,7 +30,7 @@ export class ImageX extends React.Component<IProps, IImageState> {
       file: { url, width, height }
     } = data;
 
-    const orientation = width >= height ? "landscape" : "portrait";
+    const orientation = width / height >= 1.5 ? "landscape" : "portrait";
 
     return (
       <div

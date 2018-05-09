@@ -106,13 +106,7 @@
   display: block;
 }
 
-.project-metadata {
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-}
-
-.metadata-group:last-child {
-  /*align-self: flex-end;*/
+.metadata-group:last-child:not(.title) {
   margin-top: 82px;
 }
 
@@ -154,5 +148,16 @@
   .slide-wrapper.horizontal,
   .slide-wrapper.vertical {
     grid-template-columns: 1fr 3fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .metadata-group:last-child:not(.title) {
+    margin-top: 20px;
+  }
+
+  .techspec *,
+  .credits * {
+    color: rgba(255, 255, 255, 0.5);
   }
 }

@@ -74,7 +74,11 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <div
           className={`load-more ${hasNext ? "" : "disabled"}`}
           style={{
-            width: `calc(8 * ${calcColumnUnit(numberOfColumns)})`,
+            width: `calc(${
+              numberOfColumns >= 5
+                ? `8 * ${calcColumnUnit(numberOfColumns)}`
+                : `2 * ${calcColumnUnit(numberOfColumns)}`
+            })`,
             color
           }}
         >

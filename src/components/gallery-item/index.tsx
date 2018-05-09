@@ -90,24 +90,25 @@ export class GalleryItem extends React.Component<IProps, IState> {
                     {title}
                   </h3>
                 )}
-              <div className={"metadata-group"}>
-                {!isTextTruncate &&
-                  techSpecs &&
-                  techSpecs.length > 0 && (
-                    <div className={"techspec"}>
-                      <span>TECH SPECS</span>
-                      <span dangerouslySetInnerHTML={{ __html: techSpecs }} />
-                    </div>
-                  )}
-                {!isTextTruncate &&
-                  credits &&
-                  credits.length > 0 && (
-                    <div className={"credits"}>
-                      <span>CREDITS</span>
-                      <span dangerouslySetInnerHTML={{ __html: credits }} />
-                    </div>
-                  )}
-              </div>
+
+              {!isTextTruncate && (
+                <div className={"metadata-group"}>
+                  {techSpecs &&
+                    techSpecs.length > 0 && (
+                      <div className={"techspec"}>
+                        <span>TECH SPECS</span>
+                        <span dangerouslySetInnerHTML={{ __html: techSpecs }} />
+                      </div>
+                    )}
+                  {credits &&
+                    credits.length > 0 && (
+                      <div className={"credits"}>
+                        <span>CREDITS</span>
+                        <span dangerouslySetInnerHTML={{ __html: credits }} />
+                      </div>
+                    )}
+                </div>
+              )}
             </div>
 
             {blurb &&

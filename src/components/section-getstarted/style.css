@@ -12,6 +12,7 @@
   background: #fdd0dd;
   color: white;
   z-index: 0;
+  height: 49px;
 }
 
 .getting-started-wrapper > a:hover {
@@ -27,5 +28,9 @@
     left: calc(calc(100vw - 40px) * 0.333333);
     width: calc(calc(100vw - 40px) * 0.333333 - 40px);
     font-size: 16px;
+  }
+
+  .getting-started-wrapper > a > h1 {
+    margin-top: 16px;
   }
 }
