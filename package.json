@@ -38,6 +38,7 @@
     "react-router": "^4.2.0",
     "react-static": "^5.5.14",
     "react-transition-group": "^2.3.1",
+    "react-truncate-html": "^0.1.7",
     "react-visibility-sensor": "^3.11.0"
   },
   "devDependencies": {

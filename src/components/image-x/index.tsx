@@ -46,8 +46,6 @@ export class ImageX extends React.Component<IProps, IImageState> {
           imgProps={{
             onLoad: this.onLoad
           }}
-          width={"auto"}
-          height={"100%"}
         />
       </div>
     );

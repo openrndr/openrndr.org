@@ -9,6 +9,8 @@ body {
   overflow-x: hidden;
   font-size: 16px;
   width: 100vw;
+  font-synthesis: style;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -45,7 +47,6 @@ strong {
   text-transform: uppercase;
 }
 
-
 .menu h3 {
   font-size: 1vw;
   line-height: 1.2em;
@@ -54,7 +55,7 @@ strong {
 h1 {
   font-size: 36px;
 }
-h3{
+h3 {
   font-size: 16px;
 }
 
@@ -63,7 +64,7 @@ p * {
   font-size: 12px;
 }
 
-article.running-text{
+article.running-text {
   font-size: 16px;
   line-height: 1.24em;
 }
@@ -148,8 +149,5 @@ article.running-text{
   }
 }
 
-
 @media only screen and (max-width: 1024px) {
-
 }
-

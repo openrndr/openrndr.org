@@ -6,3 +6,4 @@ declare module "prop-types";
 declare module "nuka-carousel";
 declare module "react-imgix";
 declare module "react-visibility-sensor";
+declare module "react-truncate-html";

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Truncate from "react-truncate-html";
 
 import "./style.css";
 import { Project as ProjectData } from "../../types";
