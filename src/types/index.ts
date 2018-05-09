@@ -55,12 +55,17 @@ export interface Project extends Entity {
   media: MediaItem[];
   credits?: string;
   techSpecs?: string;
+  link?: string;
+}
+
+export interface InstaPost extends Entity {
+  link: string;
 }
 
 export interface Showcase extends Entity {
   gallery: Project[];
-  experiments: Project[];
   caseStudies: Project[];
+  experiments: InstaPost[];
 }
 
 export interface IDatoEvent extends Entity {

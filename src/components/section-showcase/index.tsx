@@ -2,14 +2,14 @@ import * as React from "react";
 
 import "./style.css";
 import { Gallery } from "../gallery/index";
-import { Paged, Project } from "../../types";
+import { InstaPost, Paged, Project } from "../../types";
 import { theme } from "../../configs";
 
 export interface IShowCaseProps {
   data: {
-    [index: string]: Paged<Project>;
+    [index: string]: Paged<Project | InstaPost>;
     gallery: Paged<Project>;
-    experiments: Paged<Project>;
+    experiments: Paged<InstaPost>;
     caseStudies: Paged<Project>;
   };
 }

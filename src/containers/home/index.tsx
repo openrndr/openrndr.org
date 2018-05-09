@@ -19,7 +19,8 @@ import {
   IDatoEvent,
   Paged,
   Project,
-  Entity
+  Entity,
+  InstaPost
 } from "../../types";
 import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
@@ -46,7 +47,7 @@ export interface IHomeProps {
     landing: Landing;
     showcase: {
       gallery: Paged<Project>;
-      experiments: Paged<Project>;
+      experiments: Paged<InstaPost>;
       caseStudies: Paged<Project>;
     } & Entity;
     [index: string]: object;

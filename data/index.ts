@@ -1,9 +1,7 @@
 import { loader, Loader } from "./load";
-import { execSync } from "child_process";
 import * as fs from "fs";
 import * as path from "path";
 import { paginate } from "./paginate";
-import { digest } from "./digest";
 import { IHomeProps } from "../src/containers/home";
 
 interface Config {
@@ -35,7 +33,7 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
         initialPageSize: 6
       }),
       experiments: paginate(pages.showcase.experiments, {
-        buildUrl: hash => makeFilePath(`project-${hash}.json`).public,
+        buildUrl: hash => makeFilePath(`insta-post-${hash}.json`).public,
         pageSize: 4
       }),
       caseStudies: paginate(pages.showcase.caseStudies, {

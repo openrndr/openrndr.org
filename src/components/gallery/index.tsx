@@ -6,6 +6,7 @@ import { Project as ProjectType } from "../../types/index";
 import { PageProps, withPagination } from "../paginated";
 import { GalleryItem } from "../gallery-item/index";
 import { calcColumnUnit } from "../../utils/index";
+import { InstaImage } from "../insta-post/index";
 
 interface IProps extends PageProps<ProjectType> {
   title: string;
@@ -58,7 +59,9 @@ class GalleryComponent extends React.Component<IProps, IState> {
 
         <div className={`grid ${className}`}>
           {data.map(item => {
-            return (
+            return item.itemType === "insta_post" ? (
+              <InstaImage link={item.link ? item.link : ""} />
+            ) : (
               <GalleryItem
                 open={false}
                 data={item}
