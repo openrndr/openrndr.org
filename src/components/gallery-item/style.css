@@ -1,4 +1,4 @@
-.item-info{
+.item-info {
   overflow: hidden;
 }
 
@@ -93,8 +93,17 @@
   z-index: 9999999;
 }
 
-.slider-control-bottomcenter{
+.slider-control-bottomcenter {
   display: none;
+}
+
+.read-more {
+  color: gray;
+  cursor: pointer;
+  width: 100%;
+  font-size: 12px;
+  margin-top: 1em;
+  display: block;
 }
 
 @media only screen and (max-width: 600px) {

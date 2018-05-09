@@ -28,7 +28,7 @@
 .xx-xx-x-x-x-x > *:first-child .item-info,
 .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
 .xx-xx .item-info {
-  max-height: 10vw;
+  min-height: 10vw;
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -39,11 +39,9 @@
 }
 
 @media only screen and (max-width: 1024px) {
-    .xx-xx-x-x-x-x > *:first-child .item-info,
-    .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
-    .xx-xx .item-info {
-        max-height: 20vw;
-    }
+  .xx-xx-x-x-x-x > *:first-child .item-info,
+  .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
+  .xx-xx .item-info {
+    min-height: 20vw;
+  }
 }
-
-

@@ -81,17 +81,12 @@ class GalleryComponent extends React.Component<IProps, IState> {
                   this.setState({ hasPendingTransitions: false })
                 }
                 key={item.id}
-                timeout={100}
+                timeout={3000}
               >
                 {(state: "entering" | "entered" | "exited") => {
                   // item.media.length > 3 line is only for debugging, remove it when gallery is done
                   if (state === "entering") {
-                    <GalleryItem
-                      style={{ ...defaultStyle, ...transitionStyles[state] }}
-                      open={false}
-                      data={item}
-                      isMobile={this.state.isMobile}
-                    />;
+                    return null;
                   }
                   return (
                     <GalleryItem
@@ -119,7 +114,12 @@ class GalleryComponent extends React.Component<IProps, IState> {
           }}
         >
           <span
-            style={{ visibility: hasNext ? "initial" : "hidden" }}
+            style={{
+              visibility:
+                hasNext || this.state.hasPendingTransitions
+                  ? "initial"
+                  : "hidden"
+            }}
             onClick={
               hasNext
                 ? () => {

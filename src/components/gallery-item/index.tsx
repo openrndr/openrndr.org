@@ -1,5 +1,4 @@
 import * as React from "react";
-import Truncate from "react-truncate-html";
 
 import "./style.css";
 import { Project as ProjectData } from "../../types";
@@ -15,11 +14,13 @@ interface IProps {
 
 interface IState {
   showLightBox: boolean;
+  isTextTruncate: boolean;
 }
 
 export class GalleryItem extends React.Component<IProps, IState> {
   state = {
-    showLightBox: this.props.open
+    showLightBox: this.props.open,
+    isTextTruncate: true
   };
 
   showLightBox = () => {
@@ -28,7 +29,6 @@ export class GalleryItem extends React.Component<IProps, IState> {
       //   return;
       // }
     }
-
     this.setState({
       showLightBox: true
     });
@@ -40,9 +40,23 @@ export class GalleryItem extends React.Component<IProps, IState> {
     });
   };
 
+  toggleTextTruncate = () => {
+    this.setState({
+      isTextTruncate: !this.state.isTextTruncate
+    });
+  };
+
+  calcVisibleLength = () => {
+    if (typeof document !== "undefined") {
+      const charsPerLine = window.innerWidth / 43.46378906;
+      const lines = 5;
+      return ~~charsPerLine * lines;
+    }
+  };
+
   render() {
     const { data, style, isMobile } = this.props;
-    const { showLightBox } = this.state;
+    const { showLightBox, isTextTruncate } = this.state;
     const { title, blurb, media } = data;
     const thumbnail = media[0];
 
@@ -60,12 +74,20 @@ export class GalleryItem extends React.Component<IProps, IState> {
           {title && title.length > 0 && <h3 className={"title"}>{title}</h3>}
           {blurb &&
             blurb.length > 0 && (
-              <article
-                className={"blurb"}
-                dangerouslySetInnerHTML={{
-                  __html: blurb
-                }}
-              />
+              <div className={"blurb"}>
+                <article
+                  dangerouslySetInnerHTML={{
+                    __html: `${
+                      isTextTruncate
+                        ? `${blurb.slice(0, this.calcVisibleLength())}...`
+                        : blurb
+                    }`
+                  }}
+                />
+                <span className={"read-more"} onClick={this.toggleTextTruncate}>
+                  {isTextTruncate ? "READ MORE" : "READ LESS"}
+                </span>
+              </div>
             )}
         </div>
       </div>
