@@ -42,6 +42,25 @@
   .xx-xx-x-x-x-x > *:first-child .item-info,
   .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
   .xx-xx .item-info {
-    min-height: 20vw;
+    /*min-height: 20vw;*/
+  }
+
+  .gallery-item .item-info h3 {
+    padding: 10px 20px 0 20px;
+  }
+
+  .x-x-x-x > * .gallery-item,
+  .xx-xx-x-x-x-x > *:nth-child(n + 3) .gallery-item {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 764px) and (max-width: 1024px) {
+  .grid .media-item {
+    height: 20vw;
+  }
+  .xx-xx-x-x-x-x > *:first-child .media-item,
+  .xx-xx .media-item {
+    height: 35vw;
   }
 }

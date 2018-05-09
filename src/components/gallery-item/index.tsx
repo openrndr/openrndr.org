@@ -7,7 +7,7 @@ import { LightBox } from "./light-box";
 
 interface IProps {
   data: ProjectData;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
   open: boolean;
   isMobile: boolean;
 }
@@ -55,7 +55,7 @@ export class GalleryItem extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { data, style, isMobile } = this.props;
+    const { data, style = {}, isMobile } = this.props;
     const { showLightBox, isTextTruncate } = this.state;
     const { title, blurb, media } = data;
     const thumbnail = media[0];

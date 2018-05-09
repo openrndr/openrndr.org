@@ -13,7 +13,6 @@ interface State<T extends Entity> {
   data: T[];
   nextUrl: string | null;
   loading: boolean;
-  dataChunks: T[][];
 }
 
 export interface PageProps<T extends Entity> {
@@ -21,7 +20,6 @@ export interface PageProps<T extends Entity> {
   data: T[];
   loadNext: () => any;
   hasNext: boolean;
-  chunkData: T[];
 }
 
 export function withPagination<T extends Entity>(
@@ -32,7 +30,6 @@ export function withPagination<T extends Entity>(
       super(props);
       this.state = {
         data: [],
-        dataChunks: [],
         nextUrl: null,
         loading: false
       };
@@ -42,7 +39,6 @@ export function withPagination<T extends Entity>(
       const { data, next } = this.props.page;
       this.setState({
         data,
-        dataChunks: [data],
         nextUrl: next
       });
     }
@@ -58,12 +54,14 @@ export function withPagination<T extends Entity>(
           })
           .then((res: Paged<T>) => {
             const { data, next } = res;
-            this.setState({
-              data: this.state.data.concat(data),
-              dataChunks: [...this.state.dataChunks, data],
-              nextUrl: next,
-              loading: false
-            });
+            //make a delay for a better transition effect
+            setTimeout(() => {
+              this.setState({
+                data: this.state.data.concat(data),
+                nextUrl: next,
+                loading: false
+              });
+            }, 250);
           });
       }
     };
@@ -77,7 +75,6 @@ export function withPagination<T extends Entity>(
           data={this.state.data}
           loadNext={this.loadNext}
           hasNext={this.state.nextUrl !== null}
-          chunkData={this.state.dataChunks}
         />
       );
     }

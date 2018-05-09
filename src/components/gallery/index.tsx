@@ -1,12 +1,12 @@
 import * as React from "react";
-import { TransitionGroup, Transition } from "react-transition-group";
+import { Fade, Slide } from "react-reveal";
 
 import "./style.css";
 
 import { Project as ProjectType } from "../../types/index";
 import { PageProps, withPagination } from "../paginated";
 import { GalleryItem } from "../gallery-item/index";
-import { calcColumnLeftPosition } from "../../utils/index";
+import { calcColumnLeftPosition, calcColumnUnit } from "../../utils/index";
 
 interface IProps extends PageProps<ProjectType> {
   title: string;
@@ -29,6 +29,7 @@ const defaultStyle = {
 interface TransitionStyles {
   [key: string]: React.CSSProperties;
 }
+
 const transitionStyles: TransitionStyles = {
   entering: { opacity: 0 },
   entered: { opacity: 1 }
@@ -70,55 +71,30 @@ class GalleryComponent extends React.Component<IProps, IState> {
       <section className={`gallery`}>
         <h3 className={"gallery-title"}>{title}</h3>
 
-        <TransitionGroup className={`grid ${className}`}>
+        <div className={`grid ${className}`}>
           {data.map(item => {
             return (
-              <Transition
-                onEntering={() =>
-                  this.setState({ hasPendingTransitions: true })
-                }
-                onEntered={() =>
-                  this.setState({ hasPendingTransitions: false })
-                }
-                key={item.id}
-                timeout={3000}
-              >
-                {(state: "entering" | "entered" | "exited") => {
-                  // item.media.length > 3 line is only for debugging, remove it when gallery is done
-                  if (state === "entering") {
-                    return null;
-                  }
-                  return (
-                    <GalleryItem
-                      style={{ ...defaultStyle, ...transitionStyles[state] }}
-                      open={false}
-                      data={item}
-                      isMobile={this.state.isMobile}
-                    />
-                  );
-                }}
-              </Transition>
+              <Fade clear>
+                <GalleryItem
+                  open={false}
+                  data={item}
+                  isMobile={this.state.isMobile}
+                />
+              </Fade>
             );
           })}
-        </TransitionGroup>
+        </div>
 
         <div
           className={`load-more ${hasNext ? "" : "disabled"}`}
           style={{
-            marginLeft: `calc(-1 * ${calcColumnLeftPosition(
-              1,
-              numberOfColumns
-            )})`,
-            paddingLeft: calcColumnLeftPosition(1, numberOfColumns),
+            width: `calc(2 * ${calcColumnUnit(numberOfColumns)})`,
             color
           }}
         >
           <span
             style={{
-              visibility:
-                hasNext || this.state.hasPendingTransitions
-                  ? "initial"
-                  : "hidden"
+              visibility: hasNext ? "initial" : "hidden"
             }}
             onClick={
               hasNext
@@ -130,7 +106,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
             }
           >
             <span>
-              {loading || this.state.hasPendingTransitions ? (
+              {loading ? (
                 <img width="15px" src={"loading-black.gif"} />
               ) : (
                 "MORE"

@@ -7997,6 +7997,12 @@ react-player@^1.4.0:
     load-script "^1.0.0"
     prop-types "^15.5.6"
 
+react-reveal@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-reveal/-/react-reveal-1.2.1.tgz#b82b04603a095b020720016fa5cc25392fd61d81"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-router-dom@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
