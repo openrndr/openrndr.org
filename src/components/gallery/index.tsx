@@ -1,12 +1,11 @@
 import * as React from "react";
-import { Fade, Slide } from "react-reveal";
 
 import "./style.css";
 
 import { Project as ProjectType } from "../../types/index";
 import { PageProps, withPagination } from "../paginated";
 import { GalleryItem } from "../gallery-item/index";
-import { calcColumnLeftPosition, calcColumnUnit } from "../../utils/index";
+import { calcColumnUnit } from "../../utils/index";
 
 interface IProps extends PageProps<ProjectType> {
   title: string;
@@ -20,20 +19,6 @@ interface IState {
   isMobile: boolean;
   hasPendingTransitions: boolean;
 }
-
-const defaultStyle = {
-  transition: `opacity 500ms ease-in-out`,
-  opacity: 0
-};
-
-interface TransitionStyles {
-  [key: string]: React.CSSProperties;
-}
-
-const transitionStyles: TransitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 }
-};
 
 class GalleryComponent extends React.Component<IProps, IState> {
   constructor(props: IProps) {
@@ -69,18 +54,16 @@ class GalleryComponent extends React.Component<IProps, IState> {
 
     return (
       <section className={`gallery`}>
-        <h3 className={"gallery-title"}>{title}</h3>
+        <h2 className={"gallery-title"}>{title}</h2>
 
         <div className={`grid ${className}`}>
           {data.map(item => {
             return (
-              <Fade clear>
-                <GalleryItem
-                  open={false}
-                  data={item}
-                  isMobile={this.state.isMobile}
-                />
-              </Fade>
+              <GalleryItem
+                open={false}
+                data={item}
+                isMobile={this.state.isMobile}
+              />
             );
           })}
         </div>
@@ -88,7 +71,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <div
           className={`load-more ${hasNext ? "" : "disabled"}`}
           style={{
-            width: `calc(2 * ${calcColumnUnit(numberOfColumns)})`,
+            width: `calc(8 * ${calcColumnUnit(numberOfColumns)})`,
             color
           }}
         >

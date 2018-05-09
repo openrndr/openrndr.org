@@ -23,15 +23,41 @@ ul {
 }
 
 ul > li:before {
-  content: "- ";
+  content: "-";
+  padding-right: 10px;
 }
 
 li ul > li:before {
   content: "";
 }
 
+ul {
+  display: table;
+}
+
+ul > li {
+  display: table-row;
+}
+
+ul > li::before {
+  display: table-cell;
+  text-align: right;
+}
+
 li ul > li {
   margin: 1em 0 0 20px;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+p a {
+  border-bottom: 1px solid #fdd0dd;
+}
+
+p a:hover {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 section {
@@ -42,8 +68,7 @@ section {
 h1,
 h2,
 h3,
-h4,
-strong {
+h4 {
   text-transform: uppercase;
 }
 
@@ -59,14 +84,19 @@ h3 {
   font-size: 16px;
 }
 
-p,
-p * {
-  font-size: 12px;
+.react-reveal {
 }
 
-article.running-text {
-  font-size: 16px;
-  line-height: 1.24em;
+article,
+article * {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.large-text,
+.large-text * {
+  font-size: 18px;
+  line-height: 24px;
 }
 
 /*LAYOUT*/

@@ -12,20 +12,25 @@ interface IProps {
 export const TextBlock: React.SFC<IProps> = ({ data, className = "" }) => {
   return (
     <div className={`text-block ${className}`}>
-      <h3>{data.title}</h3>
-      <br />
+      {data.title && data.title.trim().length > 0 ? (
+        data.link && data.link.length > 0 ? (
+          <a href={data.link} target={"_blank"}>
+            <h3>{data.title}</h3>
+            <br />
+          </a>
+        ) : (
+          <span>
+            <h3>{data.title}</h3>
+            <br />
+          </span>
+        )
+      ) : null}
       <article
         className={"running-text"}
         dangerouslySetInnerHTML={{
           __html: data.bodyText
         }}
       />
-      {data.link &&
-        data.link.length > 0 && (
-          <Link to={data.link} target="_blank">
-            <small>>></small>
-          </Link>
-        )}
     </div>
   );
 };

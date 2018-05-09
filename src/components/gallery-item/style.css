@@ -106,6 +106,30 @@
   display: block;
 }
 
+.project-metadata {
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+}
+
+.metadata-group:last-child {
+  /*align-self: flex-end;*/
+  margin-top: 82px;
+}
+
+.techspec *,
+.credits * {
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.techspec {
+  margin-bottom: 18px;
+}
+
+.project-metadata .title {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .slide-wrapper.horizontal,
   .slide-wrapper.vertical {

@@ -28,12 +28,14 @@ export interface Image extends Entity {
   itemType: "image";
   file: IDatoImageFile;
   caption: string;
+  credits?: string;
 }
 
 export interface Video extends Entity {
   itemType: "video";
   caption: string;
   file: IDatoVideoFile;
+  credits?: string;
 }
 
 export interface Gif extends Entity {
@@ -41,6 +43,7 @@ export interface Gif extends Entity {
   url: string;
   caption: string;
   file: IDatoImageFile;
+  credits?: string;
 }
 
 export type MediaItem = Image | Video | Gif;
@@ -50,6 +53,8 @@ export interface Project extends Entity {
   blurb: string;
   url: string;
   media: MediaItem[];
+  credits?: string;
+  techSpecs?: string;
 }
 
 export interface Showcase extends Entity {

@@ -33,9 +33,14 @@
   grid-template-columns: 50% 50%;
 }
 
-.x-x-x-x > * .item-info .blurb,
-.xx-xx-x-x-x-x > *:nth-child(n + 3) .item-info .blurb {
+.x-x-x-x > * .item-info:not(.show-all) .blurb,
+.xx-xx-x-x-x-x > *:nth-child(n + 3) .item-info:not(.show-all) .blurb {
   display: none;
+}
+
+.x-x-x-x > * .item-info .metadata-group:last-child,
+.xx-xx-x-x-x-x > *:nth-child(n + 3) .item-info .metadata-group:last-child {
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 1024px) {

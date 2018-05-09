@@ -17,15 +17,17 @@ export const SectionCalendar: React.SFC<ICalendarProps> = ({ data }) => {
 
   return (
     <section className={`calendar-section xx-x-x`}>
-      {Object.keys(groups).map(groupKey => (
-        <div key={`event-group-${groupKey}`} className={"event-group"}>
-          <h3>{groupKey}</h3>
-          <br />
-          {groups[groupKey].map((event, i) => (
-            <EventBlock key={`event-${i}`} event={event} />
-          ))}
-        </div>
-      ))}
+      {Object.keys(groups)
+        .filter(groupKey => groups[groupKey].length > 0)
+        .map(groupKey => (
+          <div key={`event-group-${groupKey}`} className={"event-group"}>
+            <h3>{groupKey === "event" ? "events" : groupKey}</h3>
+            <br />
+            {groups[groupKey].map((event, i) => (
+              <EventBlock key={`event-${i}`} event={event} />
+            ))}
+          </div>
+        ))}
     </section>
   );
 };

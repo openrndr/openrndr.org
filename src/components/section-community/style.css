@@ -23,3 +23,7 @@
   margin-top: 1em;
   margin-left: 20px;
 }
+
+.question > article {
+  margin-top: 10px;
+}

@@ -1,0 +1,15 @@
+.event-block,
+.event-block * {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.location-address {
+  margin-top: 9px;
+}
+
+.event-title,
+.type-event .event-note {
+  font-size: 18px;
+  line-height: 24px;
+}

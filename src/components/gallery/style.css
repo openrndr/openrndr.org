@@ -11,6 +11,7 @@
 
 .load-more.disabled {
   cursor: initial;
+  border-top: none;
 }
 
 .load-more > * {

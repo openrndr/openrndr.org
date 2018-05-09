@@ -3,7 +3,6 @@ import * as React from "react";
 import { Landing } from "../../types";
 import "./style.css";
 import { TextBlock } from "../text-block/index";
-import { Banner } from "../banner/index";
 
 interface IProps {
   data: Landing;
@@ -11,9 +10,13 @@ interface IProps {
 
 export const SectionLanding: React.SFC<IProps> = ({ data }) => {
   return (
-    <section className={`xx-x-x`}>
+    <section className={`landing-page xx-x-x`}>
       {data.contentBlocks.map((cb, i) => (
-        <TextBlock key={`text-block${i}`} data={cb} />
+        <TextBlock
+          key={`text-block${i}`}
+          data={cb}
+          className={i === 0 ? "large-text" : ""}
+        />
       ))}
     </section>
   );

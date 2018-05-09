@@ -1,0 +1,31 @@
+.getting-started-wrapper {
+  position: relative;
+}
+
+.getting-started-wrapper > a {
+  position: absolute;
+  top: -108px;
+  left: calc(calc(100vw - 40px) * 0.4);
+  width: calc(calc(100vw - 40px) * 0.4 - 40px);
+  padding: 20px;
+  text-align: center;
+  background: #fdd0dd;
+  color: white;
+  z-index: 0;
+}
+
+.getting-started-wrapper > a:hover {
+  background: #fb9db8;
+}
+
+@media only screen and (max-width: 600px) {
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .getting-started-wrapper > a,
+  .getting-started-wrapper > a > h1 {
+    left: calc(calc(100vw - 40px) * 0.333333);
+    width: calc(calc(100vw - 40px) * 0.333333 - 40px);
+    font-size: 16px;
+  }
+}

@@ -29,6 +29,7 @@ export const Banner: React.SFC<IProps> = ({ data }) => {
                 height={`100%`}
                 playing={true}
                 controls={false}
+                loop={true}
               />
             );
         }
