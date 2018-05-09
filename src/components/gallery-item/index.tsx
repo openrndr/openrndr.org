@@ -53,6 +53,8 @@ export class GalleryItem extends React.Component<IProps, IState> {
       const charsPerLine = window.innerWidth / 43.46378906;
       const lines = 5;
       return ~~charsPerLine * lines;
+    } else {
+      return 160;
     }
   };
 
