@@ -1,4 +1,5 @@
 import * as React from "react";
+import { debounce } from "lodash";
 
 import "./style.css";
 
@@ -29,6 +30,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
       isMobile: false,
       hasPendingTransitions: false
     };
+    this.onResize = debounce(this.onResize, 500);
   }
 
   componentDidMount() {
@@ -60,9 +62,13 @@ class GalleryComponent extends React.Component<IProps, IState> {
         <div className={`grid ${className}`}>
           {data.map(item => {
             return item.itemType === "insta_post" ? (
-              <InstaImage link={item.link ? item.link : ""} />
+              <InstaImage
+                key={`gallery-item-${item.id}`}
+                link={item.link ? item.link : ""}
+              />
             ) : (
               <GalleryItem
+                key={`gallery-item-${item.id}`}
                 open={false}
                 data={item}
                 isMobile={this.state.isMobile}
