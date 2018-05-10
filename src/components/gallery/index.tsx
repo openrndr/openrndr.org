@@ -8,6 +8,7 @@ import { PageProps, withPagination } from "../paginated";
 import { GalleryItem } from "../gallery-item/index";
 import { calcColumnUnit } from "../../utils/index";
 import { InstaImage } from "../insta-post/index";
+import { LoadingDots } from "../loading-dots/index";
 
 interface IProps extends PageProps<ProjectType> {
   title: string;
@@ -101,13 +102,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
                 : () => null
             }
           >
-            <span>
-              {loading ? (
-                <img width="15px" src={"loading-black.gif"} />
-              ) : (
-                "MORE"
-              )}
-            </span>
+            <span>{loading ? <LoadingDots /> : "MORE"}</span>
           </span>
         </div>
       </section>

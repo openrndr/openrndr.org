@@ -13,6 +13,7 @@ export interface IImageState {
 }
 
 import "./style.css";
+import { LoadingDots } from "../loading-dots/index";
 
 export class ImageX extends React.Component<IProps, IImageState> {
   constructor(props: IProps) {
@@ -38,7 +39,8 @@ export class ImageX extends React.Component<IProps, IImageState> {
           this.state.isLoaded ? "loaded" : ""
         }`}
       >
-        <img className={"load-icon"} src={"loading-black.gif"} />
+        {!this.state.isLoaded && <LoadingDots />}
+
         <Imgix
           src={url}
           fit={fit}
