@@ -155,7 +155,9 @@
   .metadata-group:last-child:not(.title) {
     margin-top: 20px;
   }
+}
 
+@media only screen and (max-width: 600px) {
   .techspec *,
   .credits * {
     color: rgba(255, 255, 255, 0.5);

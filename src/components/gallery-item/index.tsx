@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Fade, Slide } from "react-reveal";
+import { debounce } from "lodash";
 
 import "./style.css";
 import { Project as ProjectData } from "../../types";
@@ -17,20 +18,40 @@ interface IProps {
 interface IState {
   showLightBox: boolean;
   isTextTruncate: boolean;
+  charsPerLine: number;
 }
 
 export class GalleryItem extends React.Component<IProps, IState> {
-  state = {
-    showLightBox: this.props.open,
-    isTextTruncate: true
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      showLightBox: this.props.open,
+      isTextTruncate: true,
+      charsPerLine: 0
+    };
+    this.onResize = debounce(this.onResize, 500);
+  }
+
+  componentDidMount() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  componentWillUnmount() {
+    if (typeof document !== "undefined") {
+      window.removeEventListener("resize", this.onResize);
+    }
+  }
+
+  onResize = () => {
+    if (typeof document !== "undefined") {
+      this.setState({
+        charsPerLine: window.innerWidth / 43.46378906
+      });
+    }
   };
 
   showLightBox = () => {
-    if (typeof document !== "undefined") {
-      // if (window.innerWidth <= 760) {
-      //   return;
-      // }
-    }
     this.setState({
       showLightBox: true
     });
@@ -48,13 +69,12 @@ export class GalleryItem extends React.Component<IProps, IState> {
     });
   };
 
-  calcVisibleLength = () => {
+  calcVisibleLength = (defaultLength: number) => {
     if (typeof document !== "undefined") {
-      const charsPerLine = window.innerWidth / 43.46378906;
-      const lines = 5;
-      return ~~charsPerLine * lines;
+      const lines = window.innerWidth > 1400 ? 7 : 5;
+      return ~~this.state.charsPerLine * lines;
     }
-    return 160;
+    return defaultLength;
   };
 
   render() {
@@ -119,7 +139,10 @@ export class GalleryItem extends React.Component<IProps, IState> {
                     dangerouslySetInnerHTML={{
                       __html: `${
                         isTextTruncate
-                          ? `${blurb.slice(0, this.calcVisibleLength())}...`
+                          ? `${blurb.slice(
+                              0,
+                              this.calcVisibleLength(blurb.length)
+                            )}...`
                           : blurb
                       }`
                     }}
