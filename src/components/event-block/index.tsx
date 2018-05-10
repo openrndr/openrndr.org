@@ -34,13 +34,13 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
       <strong className={"event-title"}>{event.title}</strong>
     </a>
     <br />
-    <div className={"event-note"}>{event.note}</div>
-    <address className={"location-address"}>
+    <span className={"event-note"}>{event.note}</span>
+    <span className={"location-address"}>
       <small>
         RNDR studio
         <br />
         Paviljoensgracht 20, 2512 BP Den Haag
       </small>
-    </address>
+    </span>
   </p>
 );

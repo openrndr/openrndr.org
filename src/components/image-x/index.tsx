@@ -44,15 +44,9 @@ export class ImageX extends React.Component<IProps, IImageState> {
         <Imgix
           src={url}
           fit={fit}
-          customParams={{
-            "min-h": 400
-          }}
           crop={crop}
           imgProps={{
-            onLoad: this.onLoad,
-            style: {
-              minHeight: "400px"
-            }
+            onLoad: this.onLoad
           }}
         />
       </div>

@@ -14,89 +14,6 @@
   font-weight: 100;
 }
 
-.gallery-lightbox {
-  width: calc(100vw - 40px);
-  height: 100vh;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999999;
-}
-
-.gallery-lightbox .carousel-container {
-  height: 100vh;
-  width: calc(100% - 20px);
-}
-
-.gallery-lightbox .slide-wrapper {
-  width: calc(100vw - 40px);
-  height: 100vh;
-  display: grid;
-  color: white;
-}
-.slide-column {
-  display: flex;
-  height: 100%;
-}
-
-.slide-column-content {
-  align-self: center;
-}
-
-.slide-column-content,
-.slide-column-content * {
-  width: 100%;
-}
-
-.slide-content-column img {
-  width: 100%;
-  height: auto;
-}
-
-.slide-wrapper.vertical {
-  grid-template-columns: 20% 40% 20% 20%;
-}
-
-.slide-wrapper.horizontal {
-  grid-template-columns: 20% 60% 20%;
-}
-
-.slide-wrapper * {
-  color: white;
-}
-
-.gallery-lightbox .carousel-container .slider,
-.slider-frame,
-.slider-list,
-.slider-slide {
-  height: 100% !important;
-}
-
-.gallery-lightbox .control {
-  color: white;
-  font-size: 2rem;
-}
-
-.gallery-lightbox .control:hover {
-  cursor: pointer;
-  color: springgreen;
-}
-
-.carousel-close-btn {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  top: 20px;
-  right: 20px;
-  z-index: 9999999;
-}
-
-.slider-control-bottomcenter {
-  display: none;
-}
-
 .read-more {
   color: gray;
   cursor: pointer;
@@ -124,31 +41,11 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
-  .slide-wrapper.horizontal,
-  .slide-wrapper.vertical {
-    grid-template-columns: 100%;
-  }
-
-  .gallery-lightbox .carousel-container {
-    width: 100%;
-  }
-
-  .slider-control-bottomleft,
-  .slider-control-bottomright {
-    bottom: 40px !important;
-  }
-
-  .gallery-lightbox .control {
-    font-size: 1rem;
-  }
+.media-item-caption {
+  font-size: 12px;
 }
-
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-  .slide-wrapper.horizontal,
-  .slide-wrapper.vertical {
-    grid-template-columns: 1fr 3fr 1fr;
-  }
+.media-item-credit {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 @media only screen and (max-width: 1024px) {

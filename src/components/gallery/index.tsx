@@ -9,7 +9,7 @@ import { GalleryItem } from "../gallery-item/index";
 import { calcColumnUnit } from "../../utils/index";
 import { InstaImage } from "../insta-post/index";
 import { LoadingDots } from "../loading-dots/index";
-import { LightBox } from "../gallery-item/light-box";
+import { LightBox } from "../light-box/index";
 
 interface IProps extends PageProps<ProjectType> {
   title: string;

@@ -5,7 +5,7 @@ import { debounce } from "lodash";
 import "./style.css";
 import { Project as ProjectData } from "../../types";
 import { GalleryMediaItem } from "../gallery-mediaItem/index";
-import { LightBox } from "./light-box";
+import { LightBox } from "../light-box/index";
 
 interface IProps {
   data: ProjectData;
