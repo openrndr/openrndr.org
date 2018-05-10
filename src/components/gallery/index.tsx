@@ -9,6 +9,7 @@ import { GalleryItem } from "../gallery-item/index";
 import { calcColumnUnit } from "../../utils/index";
 import { InstaImage } from "../insta-post/index";
 import { LoadingDots } from "../loading-dots/index";
+import { LightBox } from "../gallery-item/light-box";
 
 interface IProps extends PageProps<ProjectType> {
   title: string;
@@ -21,6 +22,7 @@ interface IState {
   numberOfColumns: number;
   isMobile: boolean;
   hasPendingTransitions: boolean;
+  lightBoxProject: ProjectType | null;
 }
 
 class GalleryComponent extends React.Component<IProps, IState> {
@@ -29,8 +31,10 @@ class GalleryComponent extends React.Component<IProps, IState> {
     this.state = {
       numberOfColumns: 5,
       isMobile: false,
-      hasPendingTransitions: false
+      hasPendingTransitions: false,
+      lightBoxProject: null
     };
+
     this.onResize = debounce(this.onResize, 500);
   }
 
@@ -52,12 +56,32 @@ class GalleryComponent extends React.Component<IProps, IState> {
     });
   };
 
+  setLightBoxProject = (project: ProjectType) => {
+    this.setState({
+      lightBoxProject: project
+    });
+  };
+
+  unsetLightBoxProject = () => {
+    this.setState({
+      lightBoxProject: null
+    });
+  };
+
   render() {
     const { data, title, className = "", hasNext, color, loading } = this.props;
-    const { numberOfColumns } = this.state;
+    const { numberOfColumns, lightBoxProject, isMobile } = this.state;
 
     return (
       <section className={`gallery`}>
+        {lightBoxProject && (
+          <LightBox
+            data={lightBoxProject}
+            onClose={this.unsetLightBoxProject}
+            isMobile={isMobile}
+          />
+        )}
+
         <h2 className={"gallery-title"}>{title}</h2>
 
         <div className={`grid ${className}`}>
@@ -73,6 +97,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
                 open={false}
                 data={item}
                 isMobile={this.state.isMobile}
+                showLightBoxHandler={() => this.setLightBoxProject(item)}
               />
             );
           })}

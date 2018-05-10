@@ -13,6 +13,7 @@ interface IProps {
   open: boolean;
   isMobile: boolean;
   showMoreHandler?: () => void;
+  showLightBoxHandler: () => void;
 }
 
 interface IState {
@@ -51,18 +52,6 @@ export class GalleryItem extends React.Component<IProps, IState> {
     }
   };
 
-  showLightBox = () => {
-    this.setState({
-      showLightBox: true
-    });
-  };
-
-  hideLightBox = () => {
-    this.setState({
-      showLightBox: false
-    });
-  };
-
   toggleTextTruncate = () => {
     this.setState({
       isTextTruncate: !this.state.isTextTruncate
@@ -78,28 +67,18 @@ export class GalleryItem extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { data, style = {}, isMobile } = this.props;
-    const { showLightBox, isTextTruncate } = this.state;
+    const { data, style = {}, showLightBoxHandler } = this.props;
+    const { isTextTruncate } = this.state;
     const { title, blurb, media, credits, techSpecs } = data;
     const thumbnail = media[0];
 
     return (
       <Fade clear>
-        <div
-          className={"gallery-item"}
-          style={{
-            ...style,
-            zIndex: showLightBox ? 99999 : 1
-          }}
-        >
-          {showLightBox && (
-            <LightBox
-              data={data}
-              onClose={this.hideLightBox}
-              isMobile={isMobile}
-            />
-          )}
-          <GalleryMediaItem onClick={this.showLightBox} thumbnail={thumbnail} />
+        <div className={"gallery-item"}>
+          <GalleryMediaItem
+            onClick={showLightBoxHandler}
+            thumbnail={thumbnail}
+          />
           <div className={`item-info ${!isTextTruncate && "show-all"}`}>
             <div className={"project-metadata"}>
               {title &&
