@@ -1,4 +1,5 @@
 import { SiteClient, Loader } from "datocms-client";
+
 import {
   Showcase,
   Entity,
@@ -9,8 +10,11 @@ import {
   Landing
 } from "../src/types";
 import { IDatoSiteData } from "../src/types/site";
+import { fetchMediumPosts } from "./medium";
 
-const dato = new Loader(new SiteClient(process.env.DATO_API_TOKEN));
+const { DATO_API_TOKEN } = process.env;
+
+const dato = new Loader(new SiteClient(DATO_API_TOKEN));
 
 export interface LoadResult {
   pages: {
@@ -30,6 +34,7 @@ export type Loader = () => Promise<LoadResult>;
 const loader: Loader = async () => {
   await dato.load();
   const result: any = dato.itemsRepo;
+  const mediumPosts = await fetchMediumPosts();
 
   const {
     calendar,
@@ -48,7 +53,13 @@ const loader: Loader = async () => {
       community: community.toMap(),
       gettingStarted: gettingStarted.toMap(),
       landing: landing.toMap(),
-      showcase: showcase.toMap()
+      showcase: {
+        ...showcase.toMap(),
+        caseStudies: mediumPosts.map(mp => ({
+          ...mp,
+          itemType: "medium_post"
+        }))
+      }
     },
     site: site.toMap()
   };

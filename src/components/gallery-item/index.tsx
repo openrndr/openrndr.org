@@ -75,10 +75,12 @@ export class GalleryItem extends React.Component<IProps, IState> {
     return (
       <Fade clear>
         <div className={"gallery-item"}>
-          <GalleryMediaItem
-            onClick={showLightBoxHandler}
-            thumbnail={thumbnail}
-          />
+          {thumbnail && (
+            <GalleryMediaItem
+              onClick={showLightBoxHandler}
+              thumbnail={thumbnail}
+            />
+          )}
           <div className={`item-info ${!isTextTruncate && "show-all"}`}>
             <div className={"project-metadata"}>
               {title &&

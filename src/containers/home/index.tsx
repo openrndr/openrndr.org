@@ -20,7 +20,8 @@ import {
   Paged,
   Project,
   Entity,
-  InstaPost
+  InstaPost,
+  IMediumPost
 } from "../../types";
 import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
@@ -48,7 +49,7 @@ export interface IHomeProps {
     showcase: {
       gallery: Paged<Project>;
       experiments: Paged<InstaPost>;
-      caseStudies: Paged<Project>;
+      caseStudies: Paged<IMediumPost>;
     } & Entity;
     [index: string]: object;
   };

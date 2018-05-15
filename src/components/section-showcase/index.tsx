@@ -2,15 +2,16 @@ import * as React from "react";
 
 import "./style.css";
 import { Gallery } from "../gallery/index";
-import { InstaPost, Paged, Project } from "../../types";
+import { IMediumPost, InstaPost, Paged, Project } from "../../types";
 import { theme } from "../../configs";
+import { MediumGallery } from "../gallery/medium-gallery";
 
 export interface IShowCaseProps {
   data: {
-    [index: string]: Paged<Project | InstaPost>;
+    [index: string]: Paged<Project | InstaPost | IMediumPost>;
     gallery: Paged<Project>;
     experiments: Paged<InstaPost>;
-    caseStudies: Paged<Project>;
+    caseStudies: Paged<IMediumPost>;
   };
 }
 
@@ -37,7 +38,7 @@ export class SectionShowcase extends React.Component<IShowCaseProps, any> {
           color={theme.colors.green}
           onLoadMore={this.onLoadMore}
         />
-        <Gallery
+        <MediumGallery
           title={"case studies"}
           page={data.caseStudies}
           className={"xx-xx"}

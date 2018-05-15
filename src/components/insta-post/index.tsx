@@ -1,6 +1,5 @@
 import * as React from "react";
 import fetchp from "fetch-jsonp";
-import { InstaPost } from "../../types/index";
 
 export interface InstaJson {
   version: string;

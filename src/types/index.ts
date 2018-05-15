@@ -1,7 +1,7 @@
 export interface Entity {
   id: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
   itemType: string;
 }
 
@@ -144,4 +144,19 @@ export interface SiteConfig {
 
 export interface HomeContext {
   activeSectionName: string;
+}
+
+export interface IMediumPost extends Entity {
+  creator: string;
+  title: string;
+  link: string;
+  pubDate: string;
+  content?: string;
+  dc: string;
+  guid: string;
+  categories: string[];
+  isoDate: Date;
+  itemType: string;
+  imageUrl: string | null;
+  blurb: string;
 }
