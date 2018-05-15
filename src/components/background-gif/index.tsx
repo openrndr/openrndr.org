@@ -6,7 +6,10 @@ interface IProps {
 }
 
 export const BackgroundGif: React.SFC<IProps> = ({ data }) => {
-  const { url } = data;
+  const {
+    file: { url }
+  } = data;
+
   return (
     <div
       style={{

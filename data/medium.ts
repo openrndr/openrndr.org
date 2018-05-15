@@ -1,7 +1,7 @@
 import { IMediumPost } from "../src/types/index";
 import * as htmlToText from "html-to-text";
 
-let Parser = require("rss-parser");
+const Parser = require("rss-parser");
 const parser = new Parser();
 const imgRegex = /<img.*?src="(.*?)"/;
 

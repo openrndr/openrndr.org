@@ -16,15 +16,29 @@ interface ButtonControlProps {
 
 import "./style.css";
 import { string } from "prop-types";
+import ReactPlayer from "react-player";
 
 const Media: React.SFC<{ data: MediaItem }> = props => {
   const { data } = props;
   const item = (function() {
+    console.log(data);
     switch (data.itemType) {
       case "image":
         return <Image data={data} />;
       case "gif":
-        return <img src={data.url} />;
+        //we assume that gif images always has a link to Vimeo
+        if (data.vimeoUrl && data.vimeoUrl.length > 0) {
+          return (
+            <ReactPlayer
+              url={data.vimeoUrl}
+              controls={true}
+              muted={true}
+              height={`100%`}
+            />
+          );
+        } else {
+          return <img src={data.url} />;
+        }
       case "video":
         return (
           <Video
@@ -32,7 +46,7 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
             controls={false}
             width={`100%`}
             height={`100%`}
-            playing={true}
+            playing={false}
           />
         );
     }
@@ -47,7 +61,7 @@ const Thumbnail: React.SFC<{ data: MediaItem }> = props => {
       case "image":
         return data.file.url;
       case "gif":
-        return data.url;
+        return data.file.url;
       case "video":
         return data.file.thumbnailUrl;
     }
@@ -144,6 +158,8 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   render() {
     const { data, isMobile } = this.props;
     const currentMedia = data.media[this.state.slideIndex];
+
+    console.log(data);
 
     const orientation = currentMedia.file
       ? currentMedia.file.width > currentMedia.file.height

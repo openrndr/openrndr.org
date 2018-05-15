@@ -40,10 +40,11 @@ export interface Video extends Entity {
 
 export interface Gif extends Entity {
   itemType: "gif";
-  url: string;
+  url?: string;
   caption: string;
   file: IDatoImageFile;
   credits?: string;
+  vimeoUrl?: string;
 }
 
 export type MediaItem = Image | Video | Gif;
