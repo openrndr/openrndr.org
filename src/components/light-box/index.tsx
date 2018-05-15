@@ -21,7 +21,6 @@ import ReactPlayer from "react-player";
 const Media: React.SFC<{ data: MediaItem }> = props => {
   const { data } = props;
   const item = (function() {
-    console.log(data);
     switch (data.itemType) {
       case "image":
         return <Image data={data} />;
@@ -34,11 +33,11 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
               controls={true}
               muted={true}
               height={`100%`}
+              width={`100%`}
             />
           );
-        } else {
-          return <img src={data.url} />;
         }
+        return <img src={data.url} />;
       case "video":
         return (
           <Video
@@ -159,12 +158,12 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
     const { data, isMobile } = this.props;
     const currentMedia = data.media[this.state.slideIndex];
 
-    console.log(data);
-
     const orientation = currentMedia.file
-      ? currentMedia.file.width > currentMedia.file.height
-        ? "horizontal"
-        : "vertical"
+      ? currentMedia.file.width
+        ? currentMedia.file.width > currentMedia.file.height
+          ? "horizontal"
+          : "vertical"
+        : "horizontal"
       : "horizontal";
 
     return (

@@ -2,7 +2,8 @@
   width: calc(100vw - 40px);
   height: calc(100vh - 40px);
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -108,7 +109,7 @@
 
 .carousel-close-btn {
   position: fixed;
-  background: url("/close.png");
+  background: url("/close-white.png");
   width: 15px;
   height: 15px;
   background-size: 100%;
@@ -122,25 +123,20 @@
 }
 
 .slider-control-centerright .control {
-  background: url("/next.png");
+  background: url("/next-white.png");
   width: 15px;
   height: 26px;
   background-size: 100%;
 }
 
 .slider-control-centerleft .control {
-  background: url("/prev.png");
+  background: url("/prev-white.png");
   width: 15px;
   height: 26px;
   background-size: 100%;
 }
 
 @media only screen and (max-width: 600px) {
-  .light-box {
-    background-color: rgba(0, 0, 0, 0.95);
-    color: white;
-  }
-
   .slide-wrapper {
     grid-template-rows: 8fr 2fr;
   }
