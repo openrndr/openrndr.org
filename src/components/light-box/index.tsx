@@ -145,7 +145,10 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   };
 
   onClose = (e: any) => {
+    console.log(e.target.classList);
+
     if (
+      e.target.classList.contains("light-box-thumbnails-wrapper") ||
       e.target.classList.contains("media-item-container") ||
       e.target.classList.contains("carousel-close-btn") ||
       e.target.classList.contains("slide-wrapper")
@@ -200,6 +203,9 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
                   <div className="control" onClick={nextSlide} />
                 )
               }
+              dragging={false}
+              swiping={isMobile}
+              onClick={this.onClose}
             >
               {data.media.map(m => (
                 <div
@@ -207,6 +213,7 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
                     currentMedia.itemType
                   }`}
                   key={`slide-${m.id}`}
+                  onClick={this.onClose}
                 >
                   <Media key={m.id} data={m} />
                   <div className={"media-item-caption"}>

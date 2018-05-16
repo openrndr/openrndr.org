@@ -41,6 +41,7 @@
 
 .slide-wrapper.horizontal {
   width: 80%;
+  padding: 0 10%;
 }
 
 .slide-wrapper.portrait {
@@ -144,6 +145,7 @@
   .slide-wrapper.horizontal,
   .slide-wrapper.portrait {
     width: 100%;
+    padding: 0 !important;
   }
   .light-box-thumbnails-wrapper {
     overflow-x: scroll;
