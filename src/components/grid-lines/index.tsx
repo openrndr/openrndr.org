@@ -14,7 +14,7 @@ export class GridLines extends React.Component<any, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      numberOfColumns: 5
+      numberOfColumns: -1
     };
   }
 
@@ -31,15 +31,20 @@ export class GridLines extends React.Component<any, IState> {
 
   onResize = () => {
     this.setState({
-      numberOfColumns: window.innerWidth <= 1024 ? 3 : 5
+      numberOfColumns: window.innerWidth <= 1024 ? 4 : 6
     });
   };
 
   render() {
+    if (this.state.numberOfColumns === -1) {
+      return null;
+    }
+
     return (
       <div className={"grid-lines"}>
         {Object.keys(theme.colors)
           .map(key => theme.colors[key])
+          .slice(0, this.state.numberOfColumns)
           .map((color: string, i) => (
             <div
               key={`color-bar-${i}`}
