@@ -5,11 +5,12 @@
 }
 
 body {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "IBM Plex Mono", "Menlo", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", Courier, monospace;
   overflow-x: hidden;
   font-size: 16px;
   width: 100vw;
-  font-synthesis: style;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -77,6 +78,15 @@ h4 {
   text-transform: uppercase;
 }
 
+h1,
+h2,
+h3,
+h4,
+b,
+strong {
+  font-weight: normal;
+}
+
 .menu h3 {
   font-size: 1vw;
   line-height: 1.2em;
@@ -89,9 +99,6 @@ h3 {
   font-size: 16px;
 }
 
-.react-reveal {
-}
-
 article,
 article * {
   font-size: 12px;
@@ -102,6 +109,17 @@ article * {
 .large-text * {
   font-size: 18px;
   line-height: 24px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-kerning: normal;
+  font-variant-ligatures: normal;
 }
 
 /*LAYOUT*/
