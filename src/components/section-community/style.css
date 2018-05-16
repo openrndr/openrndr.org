@@ -14,6 +14,10 @@
   cursor: pointer;
 }
 
+.question-title:hover {
+  opacity: 0.5;
+}
+
 .question ul,
 .question li {
   list-style: none;

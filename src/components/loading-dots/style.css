@@ -6,28 +6,29 @@
 
 .loading-dots:after {
   content: " . ";
-  color: rgb(36, 184, 116);
+  color: rgb(255, 189, 255);
   animation: dots 1s steps(5, end) infinite;
 }
 
 @keyframes dots {
   0%,
   20% {
-    color: rgb(36, 184, 116);
-    text-shadow: 0.25em 0 0 rgba(36, 184, 116, 0.1),
-      0.5em 0 0 rgba(36, 184, 116, 0.1);
+    color: rgb(255, 189, 255);
+    text-shadow: 0.25em 0 0 rgba(255, 189, 255, 0.1),
+      0.5em 0 0 rgba(255, 189, 255, 0.1);
   }
   40% {
-    color: rgb(36, 184, 116);
-    text-shadow: 0.25em 0 0 rgba(36, 184, 116, 0.1),
-      0.5em 0 0 rgba(36, 184, 116, 0.1);
+    color: rgb(255, 189, 255);
+    text-shadow: 0.25em 0 0 rgba(255, 189, 255, 0.1),
+      0.5em 0 0 rgba(255, 189, 255, 0.1);
   }
   60% {
-    text-shadow: 0.25em 0 0 rgb(36, 184, 116), 0.5em 0 0 rgba(36, 184, 116, 0.1);
+    text-shadow: 0.25em 0 0 rgb(255, 189, 255),
+      0.5em 0 0 rgba(255, 189, 255, 0.1);
   }
   80%,
   100% {
-    text-shadow: 0.25em 0 0 rgba(36, 184, 116, 1),
-      0.5em 0 0 rgba(36, 184, 116, 1);
+    text-shadow: 0.25em 0 0 rgba(255, 189, 255, 1),
+      0.5em 0 0 rgba(255, 189, 255, 1);
   }
 }

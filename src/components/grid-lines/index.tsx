@@ -31,7 +31,7 @@ export class GridLines extends React.Component<any, IState> {
 
   onResize = () => {
     this.setState({
-      numberOfColumns: window.innerWidth <= 1024 ? 4 : 6
+      numberOfColumns: window.innerWidth <= 1024 ? 4 : 5
     });
   };
 

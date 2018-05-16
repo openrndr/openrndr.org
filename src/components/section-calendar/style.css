@@ -2,6 +2,10 @@
   padding: 20px;
 }
 
+.event-group * {
+  display: block;
+}
+
 @media only screen and (max-width: 1024px) {
   .calendar-section {
     padding-bottom: 50px;
