@@ -12,8 +12,19 @@
 }
 
 .image-wrapper.landscape img {
+  width: 100%;
+  height: auto;
+}
+
+.image-wrapper.landscape.narrow img {
   width: auto;
-  height: 100%;
+  height: 120%;
+}
+
+@-moz-document url-prefix() {
+  .image-wrapper img {
+    min-height: 370px;
+  }
 }
 
 .image-wrapper.portrait img {

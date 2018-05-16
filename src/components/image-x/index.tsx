@@ -31,13 +31,13 @@ export class ImageX extends React.Component<IProps, IImageState> {
       file: { url, width, height }
     } = data;
 
-    const orientation = width / height >= 1.5 ? "landscape" : "portrait";
-
+    const orientation = width / height >= 1.2 ? "landscape" : "portrait";
+    const isNarrow = width / height >= 1.5;
     return (
       <div
         className={`image-wrapper ${orientation} ${
           this.state.isLoaded ? "loaded" : ""
-        }`}
+        } ${isNarrow ? "narrow" : ""}`}
       >
         {!this.state.isLoaded && <LoadingDots />}
 

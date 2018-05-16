@@ -14,7 +14,7 @@ export const BackgroundGif: React.SFC<IProps> = ({ data }) => {
     <div
       style={{
         backgroundImage: `url(${url})`,
-        backgroundSize: "fill",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         width: `100%`,
