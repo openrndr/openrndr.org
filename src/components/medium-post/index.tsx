@@ -38,7 +38,7 @@ export class MediumPost extends React.Component<IProps, any> {
                 }}
               />
               <a className={"read-more"} href={data.link} target={"_blank"}>
-                READ MORE
+                READ ON MEDIUM
               </a>
             </div>
           </div>

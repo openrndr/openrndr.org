@@ -145,8 +145,6 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
   };
 
   onClose = (e: any) => {
-    console.log(e.target.classList);
-
     if (
       e.target.classList.contains("light-box-thumbnails-wrapper") ||
       e.target.classList.contains("media-item-container") ||

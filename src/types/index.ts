@@ -74,10 +74,7 @@ export interface IDatoEvent extends Entity {
   title: string;
   endDate?: string;
   startDate?: string;
-  location?: {
-    latitude: string;
-    longitude: string;
-  };
+  address?: string;
   note?: string;
   link?: string;
 }
