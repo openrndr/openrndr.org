@@ -20,6 +20,15 @@ import ReactPlayer from "react-player";
 
 const Media: React.SFC<{ data: MediaItem }> = props => {
   const { data } = props;
+
+  const orientation = data.file
+    ? data.file.width
+      ? data.file.width > data.file.height
+        ? "horizontal"
+        : "vertical"
+      : "horizontal"
+    : "horizontal";
+
   const item = (function() {
     switch (data.itemType) {
       case "image":
@@ -50,6 +59,7 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
         );
     }
   })();
+
   return <div className="media-item-container">{item}</div>;
 };
 

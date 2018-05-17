@@ -26,6 +26,15 @@
   height: auto;
 }
 
+.slide-wrapper.vertical img {
+  height: calc(calc(calc(100vh - 40px) * 0.8) * 0.95);
+  width: auto;
+  margin: auto;
+}
+.slide-wrapper.vertical .media-item-caption {
+  text-align: center;
+}
+
 .slide-wrapper {
   margin: auto;
   display: grid;
