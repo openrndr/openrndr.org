@@ -38,7 +38,11 @@ export class MediumPost extends React.Component<IProps, any> {
 
             <div className={"blurb"}>
               <TruncateText active={true} text={data.blurb} />
-              <a className={"read-more"} href={data.link} target={"_blank"}>
+              <a
+                className={"read-more button"}
+                href={data.link}
+                target={"_blank"}
+              >
                 READ ON MEDIUM
               </a>
             </div>

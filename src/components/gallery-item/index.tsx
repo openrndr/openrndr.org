@@ -52,7 +52,10 @@ export class GalleryItem extends React.Component<IProps, IState> {
           <div className={`item-info ${!isTextTruncate && "show-all"}`}>
             {title &&
               title.length > 0 && (
-                <h3 className={"item-title"} onClick={this.toggleTextTruncate}>
+                <h3
+                  className={"item-title button"}
+                  onClick={this.toggleTextTruncate}
+                >
                   {title}
                 </h3>
               )}
@@ -86,7 +89,10 @@ export class GalleryItem extends React.Component<IProps, IState> {
               )}
             {((blurb && blurb.length > 0) ||
               (credits && credits.length > 0)) && (
-              <span className={"read-more"} onClick={this.toggleTextTruncate}>
+              <span
+                className={"read-more button"}
+                onClick={this.toggleTextTruncate}
+              >
                 {isTextTruncate ? "READ MORE" : "READ LESS"}
               </span>
             )}

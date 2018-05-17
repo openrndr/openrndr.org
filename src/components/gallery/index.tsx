@@ -129,7 +129,9 @@ class GalleryComponent extends React.Component<IProps, IState> {
                 : () => null
             }
           >
-            <span>{loading ? <LoadingDots /> : "MORE"}</span>
+            <span className={"button"}>
+              {loading ? <LoadingDots /> : "MORE"}
+            </span>
           </span>
         </div>
       </section>

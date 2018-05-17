@@ -29,11 +29,11 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
         </small>
       )}
     </span>
-    <br />
     <a href={event.link}>
-      <strong className={"event-title"}>{event.title}</strong>
+      <div className={"event-title button"}>
+        {event.title.split(" ").map(word => <span>{word}</span>)}
+      </div>
     </a>
-    <br />
     <span className={"event-note"}>{event.note}</span>
     {event.address && (
       <p

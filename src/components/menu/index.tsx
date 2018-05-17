@@ -21,7 +21,7 @@ export const Menu: React.SFC<IProps> = ({ activeIndex, className }) => {
           <Link
             key={`menu-link-${i}`}
             to={`#${item.key}`}
-            className={i === activeIndex ? "disable" : ""}
+            className={`button ${i === activeIndex ? "disable" : ""}`}
           >
             <h3>{item.title}</h3>
           </Link>

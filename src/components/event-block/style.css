@@ -1,3 +1,13 @@
+.event-title > span {
+  display: inline-block;
+  padding-right: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.event-block a {
+  border: none;
+}
+
 .event-block,
 .event-block * {
   font-size: 12px;
@@ -5,13 +15,21 @@
 }
 
 .location-address {
-  margin-top: 9px;
-  font-size: 10px;
+  margin-top: 1em;
   white-space: pre-wrap;
 }
 
+.event-title {
+  max-width: 300px;
+}
+
 .event-title,
-.type-event .event-note {
-  font-size: 18px;
-  line-height: 24px;
+.event-title * {
+  font-size: 16px;
+  line-height: 24.5px;
+}
+
+.event-date,
+.event-title {
+  margin-bottom: 0.5em;
 }

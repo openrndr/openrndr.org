@@ -15,7 +15,7 @@ export const TextBlock: React.SFC<IProps> = ({ data, className = "" }) => {
       {data.title && data.title.trim().length > 0 ? (
         data.link && data.link.length > 0 ? (
           <a href={data.link} target={"_blank"}>
-            <h3>{data.title}</h3>
+            <h3 className={"button"}>{data.title}</h3>
             <br />
           </a>
         ) : (

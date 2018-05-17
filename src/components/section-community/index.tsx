@@ -49,7 +49,7 @@ export class SectionCommunity extends React.Component<IProps, IState> {
               key={`q-${i}`}
             >
               <strong
-                className={"question-title"}
+                className={"question-title button"}
                 onClick={() => this.setQuestion(i)}
               >
                 {q.question}

@@ -19,6 +19,19 @@ a {
   text-decoration: none;
 }
 
+.button {
+  opacity: 1;
+  -webkit-transition: opacity 500ms ease-in-out;
+  -moz-transition: opacity 500ms ease-in-out;
+  -ms-transition: opacity 500ms ease-in-out;
+  -o-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
+
 ul {
   list-style: none;
 }
