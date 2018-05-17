@@ -35,6 +35,7 @@ interface IState {
   activeSectionIndex: number;
   isMobileMenuOpen: boolean;
   openMobileSectionIndex: number;
+  isFireFox: boolean;
 }
 
 export interface IHomeProps {
@@ -117,13 +118,17 @@ class HomePage extends React.Component<
       stickyMenu: false,
       activeSectionIndex: -1,
       isMobileMenuOpen: false,
-      openMobileSectionIndex: -1
+      openMobileSectionIndex: -1,
+      isFireFox: false
     };
   }
 
   componentDidMount() {
     document.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.onResize);
+    this.setState({
+      isFireFox: navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+    });
   }
 
   componentWillUnmount() {
@@ -274,11 +279,12 @@ class HomePage extends React.Component<
       activeSectionIndex,
       stickyMenu,
       openMobileSectionIndex,
-      isMobileMenuOpen
+      isMobileMenuOpen,
+      isFireFox
     } = this.state;
 
     return (
-      <div className={"home-page"}>
+      <div className={`home-page ${isFireFox ? "firefox" : ""}`}>
         <MobileHeader
           isMenuOpen={this.state.isMobileMenuOpen}
           onClick={this.toggleMobileMenu}

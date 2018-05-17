@@ -53,9 +53,7 @@
   }
 }
 
-@-moz-document url-prefix() {
-  .getting-started-wrapper > a {
-    top: -98px;
-    height: 37px;
-  }
+.firefox .getting-started-wrapper > a {
+  top: -98px;
+  height: 37px;
 }
