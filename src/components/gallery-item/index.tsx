@@ -5,7 +5,6 @@ import { debounce } from "lodash";
 import "./style.css";
 import { Project as ProjectData } from "../../types";
 import { GalleryMediaItem } from "../gallery-mediaItem/index";
-import { LightBox } from "../light-box/index";
 
 interface IProps {
   data: ProjectData;
@@ -82,17 +81,14 @@ export class GalleryItem extends React.Component<IProps, IState> {
             />
           )}
           <div className={`item-info ${!isTextTruncate && "show-all"}`}>
-            <div className={"project-metadata"}>
-              {title &&
-                title.length > 0 && (
-                  <h3
-                    className={"title metadata-group"}
-                    onClick={this.toggleTextTruncate}
-                  >
-                    {title}
-                  </h3>
-                )}
+            {title &&
+              title.length > 0 && (
+                <h3 className={"item-title"} onClick={this.toggleTextTruncate}>
+                  {title}
+                </h3>
+              )}
 
+            <div className={"item-credits"}>
               {!isTextTruncate && (
                 <div className={"metadata-group"}>
                   {techSpecs &&
@@ -115,7 +111,7 @@ export class GalleryItem extends React.Component<IProps, IState> {
 
             {blurb &&
               blurb.length > 0 && (
-                <div className={"blurb"}>
+                <div className={"item-blurb"}>
                   <article
                     dangerouslySetInnerHTML={{
                       __html: `${
@@ -128,14 +124,15 @@ export class GalleryItem extends React.Component<IProps, IState> {
                       }`
                     }}
                   />
-                  <span
-                    className={"read-more"}
-                    onClick={this.toggleTextTruncate}
-                  >
-                    {isTextTruncate ? "READ MORE" : "READ LESS"}
-                  </span>
                 </div>
               )}
+
+            {((blurb && blurb.length > 0) ||
+              (credits && credits.length > 0)) && (
+              <span className={"read-more"} onClick={this.toggleTextTruncate}>
+                {isTextTruncate ? "READ MORE" : "READ LESS"}
+              </span>
+            )}
           </div>
         </div>
       </Fade>

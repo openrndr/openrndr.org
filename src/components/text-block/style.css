@@ -1,3 +1,15 @@
 .text-block {
   padding: 0 20px 20px 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .text-block + .text-block {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .text-block + .text-block {
+    margin-top: 50px;
+  }
+}

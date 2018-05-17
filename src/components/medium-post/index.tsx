@@ -27,9 +27,13 @@ export class MediumPost extends React.Component<IProps, any> {
           )}
 
           <div className={`item-info show-all`}>
-            <div className={"project-metadata"}>
-              <h3>{data.title}</h3>
-            </div>
+            <a
+              className={"project-metadata"}
+              href={data.link}
+              target={"_blank"}
+            >
+              <h3 className={"item-title"}>{data.title}</h3>
+            </a>
 
             <div className={"blurb"}>
               <article

@@ -20,7 +20,7 @@ export const fetchMediumPosts = async (): Promise<IMediumPost[]> => {
       const match = imgRegex.exec(content);
       const blurb = text
         .split("\n\n")
-        .slice(0, 1)
+        .slice(1, 3)
         .join("\n");
 
       delete item["content:encoded"];

@@ -29,12 +29,13 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
       ...pages.showcase,
       gallery: paginate(pages.showcase.gallery, {
         buildUrl: hash => makeFilePath(`project-${hash}.json`).public,
-        pageSize: 4,
+        pageSize: 8,
         initialPageSize: 6
       }),
       experiments: paginate(pages.showcase.experiments, {
         buildUrl: hash => makeFilePath(`insta-post-${hash}.json`).public,
-        pageSize: 4
+        pageSize: 8,
+        initialPageSize: 4
       }),
       caseStudies: paginate(pages.showcase.caseStudies, {
         buildUrl: hash => makeFilePath(`case-study-${hash}.json`).public,

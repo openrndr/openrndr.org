@@ -24,8 +24,8 @@
     width: calc(100vw - 40px);
     position: unset;
     display: block;
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
+    padding: 20px 0;
   }
 
   .getting-started-wrapper > a,

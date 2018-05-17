@@ -109,7 +109,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
             width: `calc(${
               numberOfColumns >= 5
                 ? `8 * ${calcColumnUnit(numberOfColumns)}`
-                : `2 * ${calcColumnUnit(numberOfColumns)}`
+                : `4 * ${calcColumnUnit(numberOfColumns)}`
             })`,
             color
           }}

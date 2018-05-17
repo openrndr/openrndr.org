@@ -26,11 +26,11 @@ import {
 import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
 import { MobileHeader } from "../../components/mobile-header/index";
+import { calcBannerSize } from "../../utils/index";
 
 interface IState {
   scrollY: number;
   sectionOffsets: number[];
-  bannerHeight: number;
   stickyMenu: boolean;
   activeSectionIndex: number;
   isMobileMenuOpen: boolean;
@@ -114,7 +114,6 @@ class HomePage extends React.Component<
     this.state = {
       scrollY: 0,
       sectionOffsets: [],
-      bannerHeight: 0,
       stickyMenu: false,
       activeSectionIndex: -1,
       isMobileMenuOpen: false,
@@ -123,7 +122,6 @@ class HomePage extends React.Component<
   }
 
   componentDidMount() {
-    this.updateOffsetTops();
     document.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.onResize);
   }
@@ -143,14 +141,18 @@ class HomePage extends React.Component<
     if (typeof document !== "undefined") {
       if (window.innerWidth > 600) {
         // window.location.hash =
-        //   closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
+        // closetsIndex === -1 ? "" : `#${menuItems[closetsIndex].key}`;
       }
     }
   };
 
+  onBannerMounted = (bannerHeight: number) => {
+    this.updateOffsetTops(bannerHeight);
+  };
+
   onScroll = () => {
     if (typeof document !== "undefined") {
-      const { stickyMenu, bannerHeight, sectionOffsets } = this.state;
+      const { sectionOffsets } = this.state;
       const { scrollY } = window;
 
       const closetsIndex = sectionOffsets.findIndex(
@@ -168,31 +170,31 @@ class HomePage extends React.Component<
         activeSectionIndex: closetsIndex
       });
 
-      if (scrollY >= bannerHeight) {
+      const bannerThumb = this.props.data.landing.banner.media[0];
+      const bannerSize = calcBannerSize(bannerThumb, window.innerWidth);
+
+      if (scrollY >= bannerSize.height) {
         this.setState({ stickyMenu: true });
-      } else if (stickyMenu) {
+      } else {
         this.setState({ stickyMenu: false });
       }
     }
   };
 
-  updateOffsetTops = () => {
+  updateOffsetTops = (bannerHeight: number = 0) => {
     if (typeof document !== "undefined") {
       const sections = [].slice
         .call(document.body.querySelectorAll(".section-wrapper"))
         .concat(document.body.querySelector("footer"));
 
-      const banner: HTMLElement | null = document.querySelector(".banner");
       const isMobile = window.innerWidth <= 600;
 
       this.setState({
-        sectionOffsets: sections.map(
-          (section: HTMLElement) =>
-            isMobile
-              ? section.offsetTop + section.offsetHeight
-              : section.offsetTop + section.offsetHeight * 0.8
-        ),
-        bannerHeight: banner ? banner.offsetHeight : 0
+        sectionOffsets: sections.map((section: HTMLElement) => {
+          return isMobile
+            ? bannerHeight + section.offsetTop + section.offsetHeight
+            : bannerHeight + section.offsetTop + section.offsetHeight * 0.8;
+        })
       });
     }
   };
@@ -205,16 +207,18 @@ class HomePage extends React.Component<
     //if it is not open scroll to first section
     //otherwise send -1 to reset scroll
     this.scrollToSection(isMobileMenuOpen ? -1 : 0);
+    // this.updateOffsetTops();
   };
 
   scrollToSection = (index: number) => {
     if (typeof document !== "undefined") {
       const { sectionOffsets } = this.state;
+
       if (index === -1) {
         // window.scrollTo(0, 0);
         animateScrollTo(0, mobileScrollOptions);
       } else {
-        //50px is header height and 20px is home-page margin top = 70px
+        // 50px is header height and 20px is home-page margin top = 70px
         // window.scrollTo(0, sectionOffsets[index] - 70);
         animateScrollTo(sectionOffsets[index] - 70, mobileScrollOptions);
       }
@@ -228,17 +232,38 @@ class HomePage extends React.Component<
         return;
       }
 
-      this.scrollToSection(index);
-
       //if it is already open
       if (index === this.state.openMobileSectionIndex) {
-        this.setState({
-          openMobileSectionIndex: -1
-        });
+        this.setState(
+          {
+            openMobileSectionIndex: -1
+          },
+          () => {
+            this.scrollToSection(index);
+          }
+        );
       } else if (index !== -1) {
-        this.setState({
-          openMobileSectionIndex: index
-        });
+        this.setState(
+          {
+            openMobileSectionIndex: -1
+          },
+          () => {
+            this.setState(
+              {
+                openMobileSectionIndex: index
+              },
+              () => {
+                this.scrollToSection(index);
+              }
+            );
+          }
+        );
+
+        // this.setState({
+        //   openMobileSectionIndex: index
+        // }, () => {
+        //   this.scrollToSection(index);
+        // });
       }
     }
   };
@@ -260,7 +285,7 @@ class HomePage extends React.Component<
         />
 
         <div className={"landing-section"}>
-          <Banner data={data.landing.banner} />
+          <Banner data={data.landing.banner} onMount={this.onBannerMounted} />
           <SectionWrapper
             className={`${isMobileMenuOpen ? "close" : ""}`}
             id="landing"
