@@ -43,7 +43,6 @@ export class TruncateText extends React.Component<IProps, IState> {
   calcVisibleLength = () => {
     if (typeof document !== "undefined") {
       const lines = window.innerWidth > 1400 ? 7 : 5;
-      console.log(lines, this.state.charsPerLine);
       return ~~this.state.charsPerLine * lines;
     }
     return this.props.text.length;

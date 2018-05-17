@@ -133,7 +133,7 @@
   width: 15px;
   height: 15px;
   background-size: 100%;
-  top: 20px;
+  top: 60px;
   right: 20px;
   z-index: 9999999;
 }
@@ -166,8 +166,19 @@
     width: 100%;
     padding: 0 !important;
   }
+
   .light-box-thumbnails-wrapper {
     overflow-x: scroll;
+  }
+
+  .light-box-thumbnail {
+    width: 80px;
+    height: 80px;
+    padding: 20px;
+  }
+
+  .light-box-thumbnail.highlighted > * {
+    border: 1px solid white;
   }
 
   .carousel-close-btn {

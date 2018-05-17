@@ -29,6 +29,16 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
       : "horizontal"
     : "horizontal";
 
+  let videoStyle = { width: "100%", height: "100%" };
+
+  if (data.itemType === "gif" || data.itemType === "video") {
+    const ratio = data.file.width / data.file.height;
+    videoStyle = {
+      width: "100%",
+      height: `calc(calc(100vw - 40px) / ${ratio})`
+    };
+  }
+
   const item = (function() {
     switch (data.itemType) {
       case "image":
@@ -52,8 +62,8 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
           <Video
             data={data}
             controls={false}
-            width={`100%`}
-            height={`100%`}
+            width={videoStyle.width}
+            height={videoStyle.height}
             playing={false}
           />
         );
