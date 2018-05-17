@@ -2,6 +2,7 @@ import * as React from "react";
 import { Fade, Slide } from "react-reveal";
 
 import { IMediumPost } from "../../types";
+import { TruncateText } from "../truncate-text/index";
 
 interface IProps {
   data: IMediumPost;
@@ -36,11 +37,7 @@ export class MediumPost extends React.Component<IProps, any> {
             </a>
 
             <div className={"blurb"}>
-              <article
-                dangerouslySetInnerHTML={{
-                  __html: data.blurb
-                }}
-              />
+              <TruncateText active={true} text={data.blurb} />
               <a className={"read-more"} href={data.link} target={"_blank"}>
                 READ ON MEDIUM
               </a>
