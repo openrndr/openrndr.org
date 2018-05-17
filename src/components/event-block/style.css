@@ -6,6 +6,8 @@
 
 .location-address {
   margin-top: 9px;
+  font-size: 10px;
+  white-space: pre-wrap;
 }
 
 .event-title,

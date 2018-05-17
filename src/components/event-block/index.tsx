@@ -36,9 +36,10 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
     <br />
     <span className={"event-note"}>{event.note}</span>
     {event.address && (
-      <span className={"location-address"}>
-        <small>{event.address}</small>
-      </span>
+      <p
+        className={"location-address"}
+        dangerouslySetInnerHTML={{ __html: event.address }}
+      />
     )}
   </p>
 );

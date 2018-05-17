@@ -13,8 +13,13 @@
 
 @media only screen and (max-width: 600px) {
   .media-item {
-    height: 35vh !important;
+    min-height: 250px !important;
   }
+
+  /*.xx-xx-x-x-x-x > *:first-child .media-item,*/
+  /*.xx-xx .media-item {*/
+  /*height: 50vw;*/
+  /*}*/
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {

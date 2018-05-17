@@ -77,7 +77,7 @@
 
   .xx-xx-x-x-x-x > *:first-child .media-item,
   .xx-xx .media-item {
-    height: 35vw !important;
+    height: 35vw;
   }
 }
 
