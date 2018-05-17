@@ -12,7 +12,12 @@ export const fetchMediumPosts = async (): Promise<IMediumPost[]> => {
   return Promise.all(
     feed.items.map(async item => {
       const content = item["content:encoded"];
-      const text = htmlToText.fromString(content, {
+      const cleanContent = content.replace(
+        /<figcaption>(.*?)<\/figcaption>/g,
+        ""
+      );
+
+      const text = htmlToText.fromString(cleanContent, {
         ignoreImage: true,
         wordwrap: 800
       });

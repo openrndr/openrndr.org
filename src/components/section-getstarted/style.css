@@ -35,20 +35,24 @@
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 900px) {
   .getting-started-wrapper > a {
-    left: calc(calc(100vw - 40px) * 0.2);
-    width: calc(calc(100vw - 40px) * 0.8 - 40px);
+    width: calc(calc(100vw - 90px) * 0.8 - 40px);
     position: unset;
     display: block;
-    margin-top: -20px;
+    margin-top: 0;
     margin-bottom: 20px;
+    margin-left: 20px;
+  }
+  .getting-started-wrapper > a h1 {
+    font-size: 25px;
+    margin-top: 7px;
   }
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+@media only screen and (min-width: 900px) and (max-width: 1280px) {
   .getting-started-wrapper > a h1 {
-    font-size: 25px;
+    font-size: 23px;
     line-height: 45px;
   }
 }

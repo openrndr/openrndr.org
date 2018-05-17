@@ -28,3 +28,15 @@
   opacity: 0.5;
   cursor: auto;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .menu h3 {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .menu h3 {
+    font-size: 13px !important;
+  }
+}

@@ -217,11 +217,6 @@ p {
 }
 
 @media only screen and (max-width: 1024px) {
-  .menu h3 {
-    font-size: 16px;
-    line-height: 1.2em;
-  }
-
   .gallery .xx-x-x > *:first-child .item-info,
   .gallery .xx-xx-x-x-x-x > *:first-child .item-info,
   .xx-xx-x-x-x-x > *:first-child .item-info,

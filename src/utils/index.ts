@@ -33,7 +33,7 @@ export const calcBannerSize = (
   if (thumb && thumb.file.width) {
     ratio = thumb.file.width / thumb.file.height;
   }
-  const width = windowWidth - 60;
+  const width = windowWidth - 40;
   const height = width / ratio;
   return { width, height };
 };

@@ -67,7 +67,7 @@
   .xx-xx-x-x-x-x > *:first-child .item-info,
   .xx-xx-x-x-x-x > *:nth-child(2) .item-info,
   .xx-xx .item-info {
-    min-height: 20vw;
+    /*min-height: 20vw;*/
   }
 
   .x-x-x-x > * .gallery-item,

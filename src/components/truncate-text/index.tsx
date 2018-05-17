@@ -34,7 +34,8 @@ export class TruncateText extends React.Component<IProps, IState> {
   onResize = () => {
     if (typeof document !== "undefined") {
       this.setState({
-        charsPerLine: window.innerWidth / 43.46378906
+        charsPerLine:
+          window.innerWidth / 43.46378906 * (window.innerWidth < 1024 ? 2 : 1)
       });
     }
   };
@@ -42,6 +43,7 @@ export class TruncateText extends React.Component<IProps, IState> {
   calcVisibleLength = () => {
     if (typeof document !== "undefined") {
       const lines = window.innerWidth > 1400 ? 7 : 5;
+      console.log(lines, this.state.charsPerLine);
       return ~~this.state.charsPerLine * lines;
     }
     return this.props.text.length;
