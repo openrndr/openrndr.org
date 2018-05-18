@@ -9,7 +9,8 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .text-block:not(:first-child) + .text-block {
+  .x-x-x-x .text-block:not(:first-child) + .text-block,
+  .xx-x-x .text-block + .text-block {
     margin-top: 50px;
   }
 }
