@@ -7,7 +7,7 @@ const Slack: React.SFC<any & RouteComponentProps<any>> = props => {
     <div className={"slack-invitation-success"}>
       <div>
         <Link to={"/"}>
-          <img className={"button"} src={"./close.png"} />
+          <img className={"button"} src={"../close.png"} />
         </Link>
         <h1>
           Success! You have been invited to{" "}

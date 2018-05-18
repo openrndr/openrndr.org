@@ -7,7 +7,7 @@ const PayPal: React.SFC<any & RouteComponentProps<any>> = props => {
     <div className={"slack-invitation-success"}>
       <div>
         <Link to={"/"}>
-          <img className={"button"} src={"./close.png"} />
+          <img className={"button"} src={"../close.png"} />
         </Link>
         <h1>Your donation is done! Thank you very very much</h1>
         <span dangerouslySetInnerHTML={{ __html: "&#128139;" }} />
