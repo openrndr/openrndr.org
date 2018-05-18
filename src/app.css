@@ -20,6 +20,7 @@ a {
 }
 
 .button {
+  cursor: pointer;
   opacity: 1;
   -webkit-transition: opacity 500ms ease-in-out;
   -moz-transition: opacity 500ms ease-in-out;
@@ -142,6 +143,30 @@ p {
 
 .mobile-header {
   display: none;
+}
+
+.slack-invitation-success {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 99999999999999;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.slack-invitation-success > div {
+  margin: auto;
+  max-width: 600px;
+}
+
+.slack-invitation-success img {
+  position: fixed;
+  top: 60px;
+  right: 60px;
 }
 
 @media only screen and (max-width: 600px) {

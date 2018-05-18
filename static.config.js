@@ -7,7 +7,7 @@ const dataDir = path.resolve("public", "data");
 const siteDataFile = path.join(dataDir, "site-data.json");
 const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
 
-//check if necessary files exist 
+//check if necessary files exist
 [dataDir, siteDataFile, homeDataPropsFile].forEach(path => {
   if (!fs.existsSync(path)) {
     console.log(
@@ -34,6 +34,11 @@ export default {
         path: ``,
         component: "src/containers/home",
         getData: async () => dataProps
+      },
+      {
+        path: `/slack`,
+        is404: true,
+        component: "src/containers/slack"
       },
       {
         path: `/sandbox`,

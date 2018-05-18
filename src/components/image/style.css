@@ -36,3 +36,11 @@
 .image-wrapper.loaded img:not(.load-icon) {
   opacity: 1;
 }
+
+@media screen and (max-width: 1024px) {
+  .x-x-x-x > * .image-wrapper img,
+  .xx-xx-x-x-x-x > *:nth-child(n + 3) .image-wrapper img {
+    height: auto;
+    width: 100%;
+  }
+}

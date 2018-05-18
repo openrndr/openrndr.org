@@ -52,7 +52,7 @@ class GalleryComponent extends React.Component<IProps, IState> {
   onResize = () => {
     this.setState({
       numberOfColumns: window.innerWidth <= 1024 ? 3 : 5,
-      isMobile: window.innerWidth < 768
+      isMobile: window.innerWidth < 600
     });
   };
 
