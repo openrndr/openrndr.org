@@ -37,8 +37,11 @@ export default {
       },
       {
         path: `/slack`,
-        is404: true,
         component: "src/containers/slack"
+      },
+      {
+        path: `/paypal`,
+        component: "src/containers/paypal"
       },
       {
         path: `/sandbox`,

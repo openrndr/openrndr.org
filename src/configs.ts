@@ -15,7 +15,7 @@ interface Theme {
 
 export const theme: Theme = {
   colors: {
-    pink: "#ffbdff",
+    pink: "#fdd0dd",
     green: "#24b874",
     cyan: "#00bdfb",
     purple: "#ac00ce",
