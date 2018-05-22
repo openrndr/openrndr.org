@@ -60,12 +60,18 @@ class GalleryComponent extends React.Component<IProps, IState> {
     this.setState({
       lightBoxProject: project
     });
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "hidden";
+    }
   };
 
   unsetLightBoxProject = () => {
     this.setState({
       lightBoxProject: null
     });
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "auto";
+    }
   };
 
   render() {

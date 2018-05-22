@@ -18,15 +18,6 @@ export const Video: React.SFC<IProps & ReactPlayerProps> = ({
       muted={true}
       preload={true}
       {...rest}
-      onReady={() => {
-        console.log("ready?");
-      }}
-      onBuffer={() => {
-        console.log("onBuffer?");
-      }}
-      onProgress={args => {
-        console.log(args);
-      }}
     />
   );
 };
