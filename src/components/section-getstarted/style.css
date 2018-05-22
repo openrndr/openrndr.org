@@ -13,10 +13,15 @@
   color: white;
   z-index: 0;
   height: 47px;
+  -webkit-transition: background-color 200ms;
+  -moz-transition: background-color 200ms;
+  -ms-transition: background-color 200ms;
+  -o-transition: background-color 200ms;
+  transition: background-color 200ms;
 }
 
 .getting-started-wrapper > a:hover {
-  background: #fb9db8;
+  background-color: #fb9db8;
 }
 
 @media only screen and (max-width: 600px) {

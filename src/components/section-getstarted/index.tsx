@@ -11,11 +11,7 @@ interface IProps {
 export const SectionGettingStarted: React.SFC<IProps> = ({ data }) => {
   return (
     <div className={"getting-started-wrapper"}>
-      <a
-        className={"button"}
-        href={`https://github.com/openrndr/openrndr`}
-        target={"_blank"}
-      >
+      <a href={`https://github.com/openrndr/openrndr`} target={"_blank"}>
         <h1>SOURCE CODE ON GITHUB</h1>
       </a>
 
