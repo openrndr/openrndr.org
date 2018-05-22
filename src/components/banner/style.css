@@ -16,3 +16,8 @@
   /*height: 70vh !important;*/
   /*}*/
 }
+
+.banner iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
