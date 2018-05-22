@@ -8,7 +8,7 @@ interface IProps {
 import "./style.css";
 
 export const EventBlock: React.SFC<IProps> = ({ event }) => (
-  <p className={`event-block type-${event.eventType}`}>
+  <div className={`event-block type-${event.eventType}`}>
     <span className={"event-date"}>
       {event.startDate && (
         <small>
@@ -31,7 +31,9 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
     </span>
     <a href={event.link}>
       <div className={"event-title button"}>
-        {event.title.split(" ").map(word => <span>{word}</span>)}
+        {event.title
+          .split(" ")
+          .map((word, i) => <span key={`word-${i}`}>{word}</span>)}
       </div>
     </a>
     <span className={"event-note"}>{event.note}</span>
@@ -41,5 +43,5 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
         dangerouslySetInnerHTML={{ __html: event.address }}
       />
     )}
-  </p>
+  </div>
 );

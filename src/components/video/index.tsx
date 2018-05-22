@@ -11,13 +11,5 @@ export const Video: React.SFC<IProps & ReactPlayerProps> = ({
   ...rest
 }) => {
   const { url } = data;
-  return (
-    <ReactPlayer
-      url={url}
-      controls={false}
-      muted={true}
-      preload={true}
-      {...rest}
-    />
-  );
+  return <ReactPlayer url={url} controls={false} muted={true} {...rest} />;
 };

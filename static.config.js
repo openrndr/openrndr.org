@@ -67,6 +67,19 @@ export default {
               content="width=device-width, initial-scale=1"
             />
             {renderMeta.styleTags}
+
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-109731993-2"
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-109731993-2');`
+              }}
+            />
           </Head>
           <Body>{children}</Body>
         </Html>
