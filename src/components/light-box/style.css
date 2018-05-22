@@ -37,6 +37,7 @@
 
 .media-item-caption {
   margin-top: 1em;
+  align-self: flex-start;
 }
 
 .media-item-caption > *:not(:first-child) {

@@ -29,13 +29,18 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
       : "horizontal"
     : "horizontal";
 
-  let videoStyle = { width: "100%", height: "100%" };
+  let videoStyle = { width: "100%", height: "100%", style: {} };
 
   if (data.itemType === "gif" || data.itemType === "video") {
     const ratio = data.file.width / data.file.height;
+    const width = `calc(calc(100vw - 40px) * 0.8)`;
+    const maxHeight = `calc(calc(calc(100vh - 40px) * 0.8) * 0.85)`;
     videoStyle = {
-      width: "100%",
-      height: `calc(calc(100vw - 40px) / ${ratio})`
+      width,
+      height: `calc(${width} / ${ratio})`,
+      style: {
+        maxHeight
+      }
     };
   }
 
@@ -64,6 +69,7 @@ const Media: React.SFC<{ data: MediaItem }> = props => {
             controls={false}
             width={videoStyle.width}
             height={videoStyle.height}
+            style={videoStyle.style}
             playing={false}
           />
         );
