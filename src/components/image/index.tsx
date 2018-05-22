@@ -3,8 +3,7 @@ import { Image as ImageType } from "../../types";
 
 interface IProps {
   data: ImageType;
-  fit?: string;
-  crop?: string;
+  style?: object;
 }
 
 export interface IImageState {
@@ -24,11 +23,11 @@ export class Image extends React.Component<IProps, IImageState> {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, style = {} } = this.props;
     const {
       file: { url }
     } = data;
 
-    return <img src={url} onLoad={this.onLoad} />;
+    return <img src={url} onLoad={this.onLoad} style={style} />;
   }
 }

@@ -1,15 +1,15 @@
 import React from "react";
 import ReactPlayer, { ReactPlayerProps } from "react-player";
-import { Video as VideoType } from "../../types";
+import { IDatoVideoFile } from "../../types";
 
 export interface IProps {
-  data: VideoType;
+  data: IDatoVideoFile;
 }
 
 export const Video: React.SFC<IProps & ReactPlayerProps> = ({
   data,
   ...rest
 }) => {
-  const { url } = data.file;
+  const { url } = data;
   return <ReactPlayer url={url} controls={false} muted={true} {...rest} />;
 };

@@ -44,7 +44,7 @@ export interface Gif extends Entity {
   caption: string;
   file: IDatoImageFile;
   credits?: string;
-  vimeoUrl?: string;
+  video?: IDatoVideoFile;
 }
 
 export type MediaItem = Image | Video | Gif;

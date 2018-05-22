@@ -59,7 +59,7 @@ export class Banner extends React.Component<IProps> {
             case "video":
               return (
                 <Video
-                  data={thumbnail}
+                  data={thumbnail.file}
                   width={width ? width : "100%"}
                   height={height ? height : "100%"}
                   playing={true}
