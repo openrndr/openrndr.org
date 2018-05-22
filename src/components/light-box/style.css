@@ -72,6 +72,10 @@
   width: 60%;
 }
 
+.slide-wrapper {
+  overflow: auto;
+}
+
 .light-box-thumbnails-wrapper {
   display: flex;
 }
@@ -164,6 +168,10 @@
 @media only screen and (max-width: 600px) {
   .slide-wrapper {
     grid-template-rows: 8fr 2fr;
+  }
+
+  .media-item-credit {
+    padding-bottom: 50px;
   }
 
   .slide-wrapper.horizontal,
