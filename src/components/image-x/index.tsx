@@ -6,6 +6,7 @@ interface IProps {
   data: ImageType;
   fit?: string;
   crop?: string;
+  onLoad?: () => void;
 }
 
 export interface IImageState {
@@ -26,7 +27,7 @@ export class ImageX extends React.Component<IProps, IImageState> {
   };
 
   render() {
-    const { data, fit = "max", crop } = this.props;
+    const { data, fit = "max", crop, onLoad = () => {} } = this.props;
     const {
       file: { url, width, height }
     } = data;
@@ -46,7 +47,10 @@ export class ImageX extends React.Component<IProps, IImageState> {
           fit={fit}
           crop={crop}
           imgProps={{
-            onLoad: this.onLoad
+            onLoad: () => {
+              this.onLoad();
+              onLoad();
+            }
           }}
         />
       </div>

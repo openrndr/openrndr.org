@@ -63,12 +63,8 @@ class MediumGalleryComponent extends React.Component<IProps, IState> {
         <h2 className={"gallery-title"}>{title}</h2>
 
         <div className={`grid ${className}`}>
-          {data.map(item => (
-            <MediumPost
-              key={`medium-${item.id}`}
-              data={item}
-              isMobile={isMobile}
-            />
+          {data.map((item, i) => (
+            <MediumPost key={`medium-${i}`} data={item} isMobile={isMobile} />
           ))}
         </div>
 

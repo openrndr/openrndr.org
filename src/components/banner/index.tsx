@@ -6,6 +6,7 @@ import { ImageX } from "../image-x/index";
 import { BackgroundGif } from "../background-gif/index";
 import { Video } from "../video/index";
 import { calcBannerSize } from "../../utils/index";
+import { LoadingDots } from "../loading-dots/index";
 
 interface IProps {
   data: ProjectType;
@@ -14,11 +15,13 @@ interface IProps {
 
 interface IState {
   windowWidth: number;
+  loaded: boolean;
 }
 
-export class Banner extends React.Component<IProps> {
+export class Banner extends React.Component<IProps, IState> {
   state = {
-    windowWidth: 0
+    windowWidth: 0,
+    loaded: false
   };
 
   componentDidMount() {
@@ -43,17 +46,33 @@ export class Banner extends React.Component<IProps> {
     });
   };
 
+  onLoad = () => {
+    this.setState({
+      loaded: true
+    });
+  };
+
   render() {
     const thumbnail = this.props.data.media[0];
-    const { windowWidth } = this.state;
+    const { windowWidth, loaded } = this.state;
     const { width, height } = calcBannerSize(thumbnail, windowWidth);
+    const onLoad = this.onLoad;
+
+    //we do not have onload handler for background gifs :(
+    const isGif = thumbnail.itemType === "gif";
 
     return (
-      <section className={"banner"}>
+      <section
+        className={"banner"}
+        style={{
+          width,
+          height
+        }}
+      >
         {(function() {
           switch (thumbnail.itemType) {
             case "image":
-              return <ImageX data={thumbnail} fit={"fill"} />;
+              return <ImageX data={thumbnail} fit={"fill"} onLoad={onLoad} />;
             case "gif":
               return <BackgroundGif data={thumbnail} />;
             case "video":
@@ -65,8 +84,9 @@ export class Banner extends React.Component<IProps> {
                   playing={true}
                   controls={false}
                   loop={true}
+                  onReady={onLoad}
                   style={{
-                    opacity: width ? 1 : 0
+                    opacity: isGif ? 1 : loaded && width ? 1 : 0
                   }}
                 />
               );
