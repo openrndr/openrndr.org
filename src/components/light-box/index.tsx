@@ -71,6 +71,11 @@ const Media: React.SFC<{ data: MediaItem; windowRatio: number }> = props => {
         if (data.video) {
           return <MediaVideo file={data.video} style={style} />;
         }
+
+        if (data.file) {
+          return <img src={data.file.url} />;
+        }
+
         return <img src={data.url} />;
       case "video":
         return <MediaVideo file={data.file} style={style} />;

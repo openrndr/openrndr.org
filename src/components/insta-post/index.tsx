@@ -1,5 +1,6 @@
 import * as React from "react";
 import fetchp from "fetch-jsonp";
+import { Fade } from "react-reveal";
 
 export interface InstaJson {
   version: string;
@@ -71,31 +72,48 @@ export class InstaImage extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { data } = this.state;
+    const { data, error } = this.state;
+
+    if (error || !data) {
+      console.log("error loading insta post", error);
+      return null;
+    }
 
     return (
-      <div className={`insta-post`}>
-        <a href={this.props.link} target={"_blank"}>
-          <img
-            width="100%"
-            src={data ? data.thumbnail_url : ""}
-            onError={this.handleImageError}
-          />
-        </a>
-        {data && (
-          <article>
-            <p>
-              <span>{data.title}</span>
-              <br />
-              <span>
-                <a target="_blank" href={data.author_url}>
-                  @{data.author_name}
-                </a>
-              </span>
-            </p>
-          </article>
-        )}
-      </div>
+      <Fade clear>
+        <div className={`insta-post`}>
+          <div className={"media-item"}>
+            <a href={this.props.link} target={"_blank"}>
+              <div
+                style={{
+                  // height: data.thumbnail_height < data.thumbnail_width ? "100%": "auto",
+                  // width:  data.thumbnail_height < data.thumbnail_width ? "auto" : "auto",
+                  background: `url(${data ? data.thumbnail_url : ""})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  width: "100%",
+                  height: "100%"
+                }}
+                onError={this.handleImageError}
+              />
+            </a>
+          </div>
+          {data && (
+            <article>
+              <p>
+                <span>{data.title}</span>
+                <br />
+                <span>
+                  <a target="_blank" href={data.author_url}>
+                    @{data.author_name}
+                  </a>
+                </span>
+              </p>
+            </article>
+          )}
+        </div>
+      </Fade>
     );
   }
 }

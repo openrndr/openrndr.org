@@ -58,6 +58,8 @@ class MediumGalleryComponent extends React.Component<IProps, IState> {
     const { data, title, className = "", hasNext, color, loading } = this.props;
     const { numberOfColumns, isMobile } = this.state;
 
+    console.log(data);
+
     return (
       <section className={`gallery`}>
         <h2 className={"gallery-title"}>{title}</h2>

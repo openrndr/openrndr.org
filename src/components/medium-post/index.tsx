@@ -21,11 +21,13 @@ export class MediumPost extends React.Component<IProps, any> {
     return (
       <Fade clear>
         <div className={"gallery-item"}>
-          {data.imageUrl && (
-            <a href={data.link} target={"_blank"}>
-              <img width="100%" src={data.imageUrl} />
-            </a>
-          )}
+          <div className={"media-item"}>
+            {data.imageUrl && (
+              <a href={data.link} target={"_blank"}>
+                <img width="100%" src={data.imageUrl} />
+              </a>
+            )}
+          </div>
 
           <div className={`item-info show-all`}>
             <a

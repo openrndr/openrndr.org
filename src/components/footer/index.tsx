@@ -49,7 +49,11 @@ export const Footer: React.SFC<IProps> = props => {
         >
           OPENRDNR Slack
         </a>
-        <a className={"button"} href={"?"} target={"_blank"}>
+        <a
+          className={"button"}
+          href={"https://stackoverflow.com/questions/tagged/openrndr"}
+          target={"_blank"}
+        >
           StackOverflow
         </a>
       </div>
@@ -72,7 +76,7 @@ export const Footer: React.SFC<IProps> = props => {
         </a>
         <a
           className={"button"}
-          href={"https://www.vimeo.com/openrndr"}
+          href={"https://www.vimeo.com/rndrstudio"}
           target={"_blank"}
         >
           Vimeo

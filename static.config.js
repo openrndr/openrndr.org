@@ -3,6 +3,8 @@ import path from "path";
 import fs from "fs";
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ManifestPlugin = require("webpack-manifest-plugin");
+
 const dataDir = path.resolve("public", "data");
 const siteDataFile = path.join(dataDir, "site-data.json");
 const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
@@ -16,6 +18,8 @@ const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
     process.exit(1);
   }
 });
+
+console.log("NODE_ENV", process.env.NODE_ENV);
 
 export default {
   entry: path.resolve("src", "index.tsx"),
@@ -160,6 +164,7 @@ export default {
       }
     ];
 
+    config.plugins.push(new ManifestPlugin());
     config.plugins.push(new ExtractTextPlugin("styles.css"));
 
     return config;
