@@ -38,20 +38,24 @@ export default {
       },
       {
         path: `/slack`,
-        component: "src/containers/slack"
+        component: "src/containers/slack",
+        noindex: true
       },
       {
         path: `/paypal`,
-        component: "src/containers/paypal"
+        component: "src/containers/paypal",
+        noindex: true
       },
       {
         path: `/sandbox`,
         component: "src/containers/sandbox",
-        getData: async () => {}
+        getData: async () => {},
+        noindex: true
       },
       {
         is404: true,
-        component: "src/containers/404"
+        component: "src/containers/404",
+        noindex: true
       }
     ];
   },
@@ -79,6 +83,27 @@ export default {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'UA-109731993-2');`
+              }}
+            />
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `  window.fbAsyncInit = function() {
+                    FB.init({
+                      appId            : '232392810676495',
+                      autoLogAppEvents : true,
+                      xfbml            : true,
+                      version          : 'v3.0'
+                    });
+                  };
+
+                  (function(d, s, id){
+                     var js, fjs = d.getElementsByTagName(s)[0];
+                     if (d.getElementById(id)) {return;}
+                     js = d.createElement(s); js.id = id;
+                     js.src = "https://connect.facebook.net/en_US/sdk.js";
+                     fjs.parentNode.insertBefore(js, fjs);
+                   }(document, 'script', 'facebook-jssdk'));`
               }}
             />
           </Head>
