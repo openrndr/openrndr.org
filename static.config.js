@@ -157,6 +157,13 @@ export default {
       }
     }
 
+    if (stage === "dev") {
+      loaders = ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: "css-loader"
+      });
+    }
+
     config.module.rules = [
       {
         oneOf: [
@@ -192,7 +199,9 @@ export default {
     ];
 
     // config.plugins.push(new ManifestPlugin());
-    // config.plugins.push(new ExtractTextPlugin("styles[name].css"));
+    if (stage === "dev") {
+      config.plugins.push(new ExtractTextPlugin("styles.css"));
+    }
 
     return config;
   }
