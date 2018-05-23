@@ -75,7 +75,6 @@ export default {
               content="width=device-width, initial-scale=1"
             />
             {renderMeta.styleTags}
-
             <script
               async
               src="https://www.googletagmanager.com/gtag/js?id=UA-109731993-2"
@@ -127,17 +126,42 @@ export default {
     // We replace the existing JS rule with one, that allows us to use
     // both TypeScript and JavaScript interchangeably
 
+    let loaders = [];
+
+    if (stage === "dev") {
+      loaders = [{ loader: "style-loader" }];
+    } else {
+      loaders = [
+        {
+          loader: "css-loader",
+          options: {
+            importLoaders: 1,
+            minimize: stage === "prod",
+            sourceMap: false
+          }
+        }
+      ];
+
+      // Don't extract css to file during node build process
+      if (stage !== "node") {
+        loaders = ExtractTextPlugin.extract({
+          fallback: {
+            loader: "style-loader",
+            options: {
+              sourceMap: false,
+              hmr: false
+            }
+          },
+          use: loaders
+        });
+      }
+    }
+
+    console.log("stage", stage);
+
     config.module.rules = [
       {
         oneOf: [
-          {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-              fallback: "style-loader",
-              use: "css-loader"
-            })
-          },
-
           {
             test: /\.tsx?$/,
             exclude: defaultLoaders.jsLoader.exclude,
@@ -159,13 +183,18 @@ export default {
               }
             ]
           },
+          {
+            test: /\.(css?)$/,
+            loader: loaders
+          },
+          defaultLoaders.cssLoader,
           defaultLoaders.fileLoader
         ]
       }
     ];
 
-    config.plugins.push(new ManifestPlugin());
-    config.plugins.push(new ExtractTextPlugin("styles.css"));
+    // config.plugins.push(new ManifestPlugin());
+    // config.plugins.push(new ExtractTextPlugin("styles[name].css"));
 
     return config;
   }

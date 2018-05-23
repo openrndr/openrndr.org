@@ -75,7 +75,7 @@ export class InstaImage extends React.Component<IProps, IState> {
     const { data, error } = this.state;
 
     if (error || !data) {
-      console.log("error loading insta post", error);
+      // console.log("error loading insta post", error);
       return null;
     }
 
