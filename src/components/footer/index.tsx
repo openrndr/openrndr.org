@@ -84,10 +84,17 @@ export const Footer: React.SFC<IProps> = props => {
         >
           Twitter
         </a>
-
-        <a className={"button"} href={"https://rndr.studio"} target={"_blank"}>
-          RNDR.STUDIO
-        </a>
+      </div>
+      <div>
+        <h3>
+          <a
+            className={"button"}
+            href={"https://rndr.studio"}
+            target={"_blank"}
+          >
+            RNDR.STUDIO
+          </a>
+        </h3>
       </div>
     </footer>
   );
