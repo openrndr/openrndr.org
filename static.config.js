@@ -157,8 +157,6 @@ export default {
       }
     }
 
-    console.log("stage", stage);
-
     config.module.rules = [
       {
         oneOf: [
