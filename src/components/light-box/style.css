@@ -8,6 +8,18 @@
   top: 0;
   left: 0;
   z-index: 99999999;
+
+  opacity: 0;
+
+  -webkit-transition: opacity 500ms ease-in-out;
+  -moz-transition: opacity 500ms ease-in-out;
+  -ms-transition: opacity 500ms ease-in-out;
+  -o-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
+}
+
+.light-box.loaded {
+  opacity: 1;
 }
 
 .light-box-content {

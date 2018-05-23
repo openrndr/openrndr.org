@@ -118,6 +118,7 @@ interface ILightBoxProps {
 interface ILightBoxState {
   slideIndex: number;
   windowRatio: number;
+  loaded: boolean;
 }
 
 export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
@@ -125,7 +126,8 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
     super(props);
     this.state = {
       slideIndex: 0,
-      windowRatio: -1
+      windowRatio: -1,
+      loaded: false
     };
 
     this.onResize = debounce(this.onResize, 100);
@@ -135,6 +137,7 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
     document.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("resize", this.onResize);
     this.onResize();
+    this.setState({ loaded: true });
   }
 
   componentWillUnmount() {
@@ -214,95 +217,90 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
     }
 
     return (
-      <div className={`light-box`} onClick={this.onClose}>
-        <Fade>
-          <div className={"carousel-close-btn control"} />
-          <div className={`light-box-content`}>
-            <div className="carousel-container">
-              <Carousel
-                slideIndex={this.state.slideIndex}
-                afterSlide={(slideIndex: number) =>
-                  this.setState({ slideIndex })
-                }
-                renderCenterLeftControls={({
-                  previousSlide
-                }: ButtonControlProps) =>
-                  this.state.slideIndex - 1 === -1 || isMobile ? null : (
-                    <div className="control" onClick={previousSlide} />
-                  )
-                }
-                renderCenterRightControls={({
-                  nextSlide
-                }: ButtonControlProps) =>
-                  this.state.slideIndex + 1 === data.media.length ||
-                  isMobile ? null : (
-                    <div className="control" onClick={nextSlide} />
-                  )
-                }
-                renderBottomLeftControls={({
-                  previousSlide
-                }: ButtonControlProps) =>
-                  this.state.slideIndex - 1 === -1 || !isMobile ? null : (
-                    <div className="control" onClick={previousSlide} />
-                  )
-                }
-                renderBottomRightControls={({
-                  nextSlide
-                }: ButtonControlProps) =>
-                  this.state.slideIndex + 1 === data.media.length ||
-                  !isMobile ? null : (
-                    <div className="control" onClick={nextSlide} />
-                  )
-                }
-                dragging={false}
-                swiping={isMobile}
-                onClick={this.onClose}
-              >
-                {data.media.map(m => (
-                  <div
-                    className={`slide-wrapper ${orientation} ${
-                      currentMedia.itemType
-                    }`}
-                    key={`slide-${m.id}`}
-                    onClick={this.onClose}
-                  >
-                    <Media
-                      key={m.id}
-                      data={m}
-                      windowRatio={this.state.windowRatio}
-                    />
-                    <div className={"media-item-caption"}>
-                      <div dangerouslySetInnerHTML={{ __html: m.caption }} />
-                      {m.credits && (
-                        <div
-                          className={"media-item-credit"}
-                          dangerouslySetInnerHTML={{ __html: m.credits }}
-                        />
-                      )}
-                    </div>
+      <div
+        className={`light-box ${this.state.loaded ? "loaded" : ""}`}
+        onClick={this.onClose}
+      >
+        <div className={"carousel-close-btn control"} />
+        <div className={`light-box-content`}>
+          <div className="carousel-container">
+            <Carousel
+              slideIndex={this.state.slideIndex}
+              afterSlide={(slideIndex: number) => this.setState({ slideIndex })}
+              renderCenterLeftControls={({
+                previousSlide
+              }: ButtonControlProps) =>
+                this.state.slideIndex - 1 === -1 || isMobile ? null : (
+                  <div className="control" onClick={previousSlide} />
+                )
+              }
+              renderCenterRightControls={({ nextSlide }: ButtonControlProps) =>
+                this.state.slideIndex + 1 === data.media.length ||
+                isMobile ? null : (
+                  <div className="control" onClick={nextSlide} />
+                )
+              }
+              renderBottomLeftControls={({
+                previousSlide
+              }: ButtonControlProps) =>
+                this.state.slideIndex - 1 === -1 || !isMobile ? null : (
+                  <div className="control" onClick={previousSlide} />
+                )
+              }
+              renderBottomRightControls={({ nextSlide }: ButtonControlProps) =>
+                this.state.slideIndex + 1 === data.media.length ||
+                !isMobile ? null : (
+                  <div className="control" onClick={nextSlide} />
+                )
+              }
+              dragging={false}
+              swiping={isMobile}
+              onClick={this.onClose}
+            >
+              {data.media.map(m => (
+                <div
+                  className={`slide-wrapper ${orientation} ${
+                    currentMedia.itemType
+                  }`}
+                  key={`slide-${m.id}`}
+                  onClick={this.onClose}
+                >
+                  <Media
+                    key={m.id}
+                    data={m}
+                    windowRatio={this.state.windowRatio}
+                  />
+                  <div className={"media-item-caption"}>
+                    <div dangerouslySetInnerHTML={{ __html: m.caption }} />
+                    {m.credits && (
+                      <div
+                        className={"media-item-credit"}
+                        dangerouslySetInnerHTML={{ __html: m.credits }}
+                      />
+                    )}
                   </div>
-                ))}
-              </Carousel>
-            </div>
-            <div className={"light-box-thumbnails-wrapper"}>
-              <div className={"light-box-thumbnails-container"}>
-                {data.media.map((media, i) => (
-                  <div
-                    className={`light-box-thumbnail ${
-                      i === this.state.slideIndex ? "highlighted" : ""
-                    }`}
-                    onClick={() => {
-                      this.setState({ slideIndex: i });
-                    }}
-                    key={`thumb-${media.id}`}
-                  >
-                    <Thumbnail data={media} />
-                  </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </Carousel>
+          </div>
+          <div className={"light-box-thumbnails-wrapper"}>
+            <div className={"light-box-thumbnails-container"}>
+              {data.media.map((media, i) => (
+                <div
+                  className={`light-box-thumbnail ${
+                    i === this.state.slideIndex ? "highlighted" : ""
+                  }`}
+                  onClick={() => {
+                    this.setState({ slideIndex: i });
+                  }}
+                  key={`thumb-${media.id}`}
+                >
+                  <Thumbnail data={media} />
+                </div>
+              ))}
             </div>
           </div>
-        </Fade>
+        </div>
       </div>
     );
   }

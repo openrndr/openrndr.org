@@ -19,7 +19,7 @@ const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
 
 export default {
   entry: path.resolve("src", "index.tsx"),
-  // siteRoot: "https://openrndr.org",
+  siteRoot: "https://openrndr.org",
   getSiteData: async () => {
     const data = JSON.parse(fs.readFileSync(siteDataFile));
     return {
