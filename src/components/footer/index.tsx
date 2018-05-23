@@ -16,7 +16,7 @@ export const Footer: React.SFC<IProps> = props => {
   return (
     <footer
       style={{
-        background: theme.colors.pink
+        background: "rgba(253, 208, 221, 0.7)"
       }}
     >
       <Link
