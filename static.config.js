@@ -24,14 +24,12 @@ const sitemapRoutes = [
   {
     path: `/guide`,
     component: "src/containers/externals/guide",
-    redirect: "https://guide.openrndr.org",
-    permalink: "https://guide.openrndr.org"
+    redirect: "https://guide.openrndr.org"
   },
   {
     path: `/rndr-studio`,
     component: "src/containers/externals/rndr",
-    redirect: "https://rndr.studio",
-    permalink: "https://rndr.studio"
+    redirect: "https://rndr.studio"
   },
   {
     path: `/api`,
@@ -92,7 +90,6 @@ export default {
         return `${s.path} \t ${s.redirect}`;
       })
       .join("\n");
-    console.log(redirects);
     exec(`echo ${redirects} > ./dist/_redirect`);
   },
 
