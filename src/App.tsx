@@ -14,6 +14,8 @@ interface IProps {
 }
 
 const App: React.SFC<IProps> = ({ data }) => {
+  const { image } = data.globalSeo.fallbackSeo;
+
   return (
     <Router>
       <div>
@@ -33,10 +35,10 @@ const App: React.SFC<IProps> = ({ data }) => {
           <meta name={`identifier-URL`} content={`${data.domain}`} />
           <meta name={`og:title`} content={`${data.name}`} />
           <meta name={`og:url`} content={`${data.domain}`} />
-          <meta
-            name={`og:image`}
-            content={`${data.globalSeo.fallbackSeo.image.url}`}
-          />
+          <meta name={`og:image`} content={`${image.url}`} />
+          <meta name={`og:image:type`} content={`image/${image.format}`} />
+          <meta name={`og:image:width`} content={`${image.width}`} />
+          <meta name={`og:image:height`} content={`${image.height}`} />
           <meta name={`og:site_name`} content={`${data.name}`} />
           <meta
             name={`og:description`}
@@ -44,13 +46,19 @@ const App: React.SFC<IProps> = ({ data }) => {
           />
           <title>{data.name}</title>
 
+          <link
+            rel="icon"
+            type={`image/${data.favicon.format}`}
+            href={`${data.favicon.url}`}
+          />
+
           <script type="application/ld+json">{`
               {
                 "@context": "http://schema.org",
                 "@type": "Organization",
                 "url": "https://openrndr.org",
                 "name": "${data.name}",
-                "logo": "${data.globalSeo.fallbackSeo.image.url}",
+                "logo": "${image.url}",
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "telephone": "+31 70 363 5776",
