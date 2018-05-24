@@ -27,6 +27,7 @@ import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
 import { MobileHeader } from "../../components/mobile-header/index";
 import { calcBannerSize } from "../../utils/index";
+import { promisify } from "util";
 
 interface IState {
   scrollY: number;
@@ -36,6 +37,8 @@ interface IState {
   isMobileMenuOpen: boolean;
   openMobileSectionIndex: number;
   isFireFox: boolean;
+  mobileAddressBarHeight: number;
+  screenInitialHeight: number;
 }
 
 export interface IHomeProps {
@@ -119,6 +122,8 @@ class HomePage extends React.Component<
       activeSectionIndex: -1,
       isMobileMenuOpen: false,
       openMobileSectionIndex: -1,
+      mobileAddressBarHeight: 0,
+      screenInitialHeight: 0,
       isFireFox: false
     };
   }
@@ -127,7 +132,8 @@ class HomePage extends React.Component<
     document.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.onResize);
     this.setState({
-      isFireFox: navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+      isFireFox: navigator.userAgent.toLowerCase().indexOf("firefox") > -1,
+      screenInitialHeight: window.innerHeight
     });
   }
 
@@ -140,6 +146,18 @@ class HomePage extends React.Component<
 
   onResize = () => {
     this.updateOffsetTops();
+    if (typeof document !== "undefined") {
+      if (
+        window.innerWidth <= 600 &&
+        window.innerHeight !== this.state.screenInitialHeight
+      ) {
+        const addressBarHeight =
+          window.innerHeight - this.state.screenInitialHeight;
+        this.setState({
+          mobileAddressBarHeight: addressBarHeight
+        });
+      }
+    }
   };
 
   onScrollStop = (closetsIndex: number) => {
@@ -157,6 +175,10 @@ class HomePage extends React.Component<
 
   onScroll = () => {
     if (typeof document !== "undefined") {
+      if (window.innerWidth <= 600) {
+        return null;
+      }
+
       const { sectionOffsets } = this.state;
       const { scrollY } = window;
 
@@ -192,13 +214,9 @@ class HomePage extends React.Component<
         .call(document.body.querySelectorAll(".section-wrapper"))
         .concat(document.body.querySelector("footer"));
 
-      const isMobile = window.innerWidth <= 600;
-
       this.setState({
         sectionOffsets: sections.map((section: HTMLElement) => {
-          return isMobile
-            ? bannerHeight + section.offsetTop + section.offsetHeight
-            : bannerHeight + section.offsetTop + section.offsetHeight * 0.8;
+          return bannerHeight + section.offsetTop + section.offsetHeight;
         })
       });
     }
@@ -206,71 +224,70 @@ class HomePage extends React.Component<
 
   toggleMobileMenu = () => {
     const { isMobileMenuOpen } = this.state;
+
     this.setState({
       isMobileMenuOpen: !isMobileMenuOpen
     });
+
     //if it is not open scroll to first section
     //otherwise send -1 to reset scroll
     this.scrollToSection(isMobileMenuOpen ? -1 : 0);
-    // this.updateOffsetTops();
   };
 
   scrollToSection = (index: number) => {
-    if (typeof document !== "undefined") {
-      const { sectionOffsets } = this.state;
-
-      if (index === -1) {
-        // window.scrollTo(0, 0);
-        animateScrollTo(0, mobileScrollOptions);
-      } else {
-        // 50px is header height and 20px is home-page margin top = 70px
-        // window.scrollTo(0, sectionOffsets[index] - 70);
-        animateScrollTo(sectionOffsets[index] - 70, mobileScrollOptions);
+    return new Promise((resolve, reject) => {
+      if (typeof document !== "undefined") {
+        const top = this.calcSectionTop(index);
+        animateScrollTo(top, {
+          ...mobileScrollOptions,
+          onComplete: resolve
+        });
       }
-    }
+    });
   };
 
-  toggleSection = (index: number) => {
+  calcSectionTop = (index: number) => {
+    let top = 0;
+    if (index > -1) {
+      const { mobileAddressBarHeight, sectionOffsets } = this.state;
+      const baseTop = sectionOffsets[0];
+      const itemHeight = (window.innerHeight - 70) / 5 + 2;
+      top =
+        baseTop +
+        70 +
+        (index - 1) * itemHeight -
+        mobileAddressBarHeight -
+        (mobileAddressBarHeight === 0 ? 25 : 0);
+    }
+    return top;
+  };
+
+  toggleSection = async (index: number) => {
     if (typeof document !== "undefined") {
       //mobile only
       if (window.innerWidth > 600) {
         return;
       }
 
-      //if it is already open
+      // if it is already open
       if (index === this.state.openMobileSectionIndex) {
-        this.setState(
-          {
-            openMobileSectionIndex: -1
-          },
-          () => {
-            this.scrollToSection(index);
-          }
-        );
+        this.closeAll();
       } else if (index !== -1) {
-        this.setState(
-          {
-            openMobileSectionIndex: -1
-          },
-          () => {
-            this.setState(
-              {
-                openMobileSectionIndex: index
-              },
-              () => {
-                this.scrollToSection(index);
-              }
-            );
-          }
-        );
-
-        // this.setState({
-        //   openMobileSectionIndex: index
-        // }, () => {
-        //   this.scrollToSection(index);
-        // });
+        await this.closeAll();
+        this.scrollToSection(index);
+        await this.setMenuIndex(index);
       }
     }
+  };
+
+  setMenuIndex = (index: number) => {
+    return new Promise((resolve, reject) => {
+      this.setState({ openMobileSectionIndex: index }, resolve);
+    });
+  };
+
+  closeAll = () => {
+    return this.setMenuIndex(-1);
   };
 
   render() {

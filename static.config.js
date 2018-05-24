@@ -1,6 +1,7 @@
 import React from "react";
 import path from "path";
 import fs from "fs";
+import { exec } from "child_process";
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
@@ -19,7 +20,26 @@ const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
   }
 });
 
-console.log("NODE_ENV", process.env.NODE_ENV);
+const sitemapRoutes = [
+  {
+    path: `/guide`,
+    component: "src/containers/externals/guide",
+    redirect: "https://guide.openrndr.org",
+    permalink: "https://guide.openrndr.org"
+  },
+  {
+    path: `/rndr-studio`,
+    component: "src/containers/externals/rndr",
+    redirect: "https://rndr.studio",
+    permalink: "https://rndr.studio"
+  },
+  {
+    path: `/api`,
+    component: "src/containers/externals/api",
+    redirect: "https://api.openrndr.org",
+    permalink: "https://api.openrndr.org"
+  }
+];
 
 export default {
   entry: path.resolve("src", "index.tsx"),
@@ -33,6 +53,7 @@ export default {
 
   getRoutes: async () => {
     const dataProps = JSON.parse(fs.readFileSync(homeDataPropsFile));
+
     return [
       {
         path: ``,
@@ -55,6 +76,7 @@ export default {
         getData: async () => {},
         noindex: true
       },
+      ...sitemapRoutes,
       {
         is404: true,
         component: "src/containers/404",
@@ -62,6 +84,18 @@ export default {
       }
     ];
   },
+
+  onBuild: async () => {
+    console.log("Everything is done building!");
+    const redirects = sitemapRoutes
+      .map(s => {
+        return `${s.path} \t ${s.redirect}`;
+      })
+      .join("\n");
+    console.log(redirects);
+    exec(`echo ${redirects} > ./dist/_redirect`);
+  },
+
   Document: class CustomHtml extends React.Component {
     render() {
       const { Html, Head, Body, children, renderMeta } = this.props;
