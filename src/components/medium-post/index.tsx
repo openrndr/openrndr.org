@@ -20,8 +20,12 @@ export class MediumPost extends React.Component<IProps, any> {
 
     return (
       <Fade clear>
-        <div className={"gallery-item"}>
-          <div className={"media-item"}>
+        <div
+          className={"gallery-item"}
+          itemScope
+          itemType="http://schema.org/Article"
+        >
+          <div className={"media-item"} itemType={"thumbnailUrl"}>
             {data.imageUrl && (
               <a href={data.link} target={"_blank"}>
                 <img width="100%" src={data.imageUrl} />
@@ -35,10 +39,12 @@ export class MediumPost extends React.Component<IProps, any> {
               href={data.link}
               target={"_blank"}
             >
-              <h3 className={"item-title"}>{data.title}</h3>
+              <h3 className={"item-title"} itemType={"title"}>
+                {data.title}
+              </h3>
             </a>
 
-            <div className={"blurb"}>
+            <div className={"blurb"} itemType={"description"}>
               <TruncateText active={true} text={data.blurb} />
               <a
                 className={"read-more button"}

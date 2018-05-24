@@ -8,10 +8,14 @@ interface IProps {
 import "./style.css";
 
 export const EventBlock: React.SFC<IProps> = ({ event }) => (
-  <div className={`event-block type-${event.eventType}`}>
+  <div
+    className={`event-block type-${event.eventType}`}
+    itemType="http://schema.org/Event"
+    itemScope
+  >
     <span className={"event-date"}>
       {event.startDate && (
-        <small>
+        <small itemProp={"startDate"}>
           {event.startDate
             .split("-")
             .reverse()
@@ -19,7 +23,7 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
         </small>
       )}
       {event.endDate && (
-        <small>
+        <small itemProp={"startDate"}>
           {" "}
           -{" "}
           {event.endDate
@@ -30,13 +34,15 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
       )}
     </span>
     <a href={event.link}>
-      <div className={"event-title button"}>
+      <div className={"event-title button"} itemType={"name"}>
         {event.title
           .split(" ")
           .map((word, i) => <span key={`word-${i}`}>{word}</span>)}
       </div>
     </a>
-    <span className={"event-note"}>{event.note}</span>
+    <span className={"event-note"} itemType={"location"}>
+      {event.note}
+    </span>
     {event.address && (
       <p
         className={"location-address"}
