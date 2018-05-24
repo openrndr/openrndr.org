@@ -22,20 +22,19 @@ const homeDataPropsFile = path.join(dataDir, "home-data-props.json");
 
 const sitemapRoutes = [
   {
-    path: `/guide`,
+    path: `guide`,
     component: "src/containers/externals/guide",
     redirect: "https://guide.openrndr.org"
   },
   {
-    path: `/rndr-studio`,
+    path: `rndr-studio`,
     component: "src/containers/externals/rndr",
     redirect: "https://rndr.studio"
   },
   {
-    path: `/api`,
+    path: `api`,
     component: "src/containers/externals/api",
-    redirect: "https://api.openrndr.org",
-    permalink: "https://api.openrndr.org"
+    redirect: "https://api.openrndr.org"
   }
 ];
 

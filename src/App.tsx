@@ -43,6 +43,28 @@ const App: React.SFC<IProps> = ({ data }) => {
             content={`${data.globalSeo.fallbackSeo.description}`}
           />
           <title>{data.name}</title>
+
+          <script type="application/ld+json">{`
+              {
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                "url": "https://openrndr.org",
+                "name": "${data.name}",
+                "logo": "${data.globalSeo.fallbackSeo.image.url}",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+31 70 363 5776",
+                  "contactType": "credit card support",
+                  "availableLanguage": ["English", "Dutch"]
+                },
+                  "sameAs": [
+                  "https://www.instagram.com/openrndr",
+                  "https://www.facebook.com/openrndr",
+                  "https://www.vimeo.com/rndrstudio",
+                  "https://www.twitter.com/openrndr"
+                ]
+              }
+        `}</script>
         </Head>
         <GridLines />
         <div className="content">
