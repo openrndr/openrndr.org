@@ -128,9 +128,7 @@ export default {
 
     let loaders = [];
 
-    if (stage === "dev") {
-      loaders = [{ loader: "style-loader" }];
-    } else {
+    if (stage !== "dev") {
       loaders = [
         {
           loader: "css-loader",
@@ -144,6 +142,7 @@ export default {
 
       // Don't extract css to file during node build process
       if (stage !== "node") {
+        console.log("loader 2 is");
         loaders = ExtractTextPlugin.extract({
           fallback: {
             loader: "style-loader",
@@ -158,6 +157,7 @@ export default {
     }
 
     if (stage === "dev") {
+      console.log("dev is");
       loaders = ExtractTextPlugin.extract({
         fallback: "style-loader",
         use: "css-loader"
