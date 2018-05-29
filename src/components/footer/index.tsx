@@ -56,6 +56,13 @@ export const Footer: React.SFC<IProps> = props => {
         >
           StackOverflow
         </a>
+        <a
+          className={"button"}
+          href={"https://www.facebook.com/groups/2059326897641588"}
+          target={"_blank"}
+        >
+          Facebook Q&A group
+        </a>
       </div>
 
       <div>
@@ -87,6 +94,13 @@ export const Footer: React.SFC<IProps> = props => {
           target={"_blank"}
         >
           Twitter
+        </a>
+        <a
+          className={"button"}
+          href={"https://medium.com/openrndr"}
+          target={"_blank"}
+        >
+          Medium
         </a>
       </div>
       <div>
