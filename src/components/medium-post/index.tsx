@@ -41,8 +41,12 @@ export class MediumPost extends React.Component<IProps, any> {
           <span style={{ display: "none" }} itemProp={"dateModified"}>
             {data.updatedAt}
           </span>
-          <span style={{ display: "none" }} itemProp={"publisher"}>
-            openrndr medium blog
+          <span
+            style={{ display: "none" }}
+            itemProp={"publisher"}
+            itempType="http://schema.org/Organization"
+          >
+            <span itemProp={"name"}>{data.cerator}</span>
           </span>
 
           <div className={"media-item"}>
