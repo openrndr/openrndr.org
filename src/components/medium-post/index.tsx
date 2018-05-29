@@ -25,17 +25,18 @@ export class MediumPost extends React.Component<IProps, any> {
           itemScope
           itemType="http://schema.org/Article"
         >
-          <span style={{ display: "none" }} itemProp={"author"}>
-            openrndr
-          </span>
-          <span style={{ display: "none" }} itemProp={"Published"}>
-            {data.pubDate}
-          </span>
-          <span style={{ display: "none" }} itemProp={"headline"}>
-            {data.title}
+          <span
+            style={{ display: "none" }}
+            itemProp={"author"}
+            itempType="http://schema.org/Organization"
+          >
+            <span itemProp={"name"}>openrndr</span>
           </span>
           <span style={{ display: "none" }} itemProp={"image"}>
             {data.imageUrl}
+          </span>
+          <span style={{ display: "none" }} itemProp={"datePublished"}>
+            {data.pubDate}
           </span>
           <span style={{ display: "none" }} itemProp={"dateModified"}>
             {data.updatedAt}
@@ -61,7 +62,7 @@ export class MediumPost extends React.Component<IProps, any> {
               href={data.link}
               target={"_blank"}
             >
-              <h3 className={"item-title"} itemProp={"title"}>
+              <h3 className={"item-title"} itemProp={"name headline"}>
                 {data.title}
               </h3>
             </a>
