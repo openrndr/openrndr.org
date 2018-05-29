@@ -1,5 +1,5 @@
 {
-  "name": "react-static-typescript-enabled",
+  "name": "openrndr_org-website",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,7 +12,9 @@
     "serve": "serve dist -p 3000",
     "data:fetch": "rm -rf public/data/*.json && ts-node data/index",
     "format": "prettier './**/*.{js,ts,tsx}' --write",
-    "lint": "tslint -p . -c tslint.json --fix"
+    "lint": "tslint -p . -c tslint.json --fix",
+    "deploy":
+      "curl -X POST -d '' https://api.netlify.com/build_hooks/5b0d1ecfb3127448d06e8e15"
   },
   "jest": {
     "transform": {
