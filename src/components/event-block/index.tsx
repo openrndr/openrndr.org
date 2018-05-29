@@ -34,20 +34,33 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
       )}
     </span>
     <a href={event.link}>
-      <div className={"event-title button"} itemType={"name"}>
+      <div className={"event-title button"} itemProp={"name"}>
         {event.title
           .split(" ")
           .map((word, i) => <span key={`word-${i}`}>{word}</span>)}
       </div>
     </a>
-    <span className={"event-note"} itemType={"location"}>
+
+    <span className={"event-note"} itemProp={"description"}>
       {event.note}
     </span>
-    {event.address && (
-      <p
-        className={"location-address"}
-        dangerouslySetInnerHTML={{ __html: event.address }}
-      />
-    )}
+
+    <div itemType={"http://schema.org/Place"}>
+      {event.address ? (
+        <p
+          className={"location-address"}
+          dangerouslySetInnerHTML={{ __html: event.address }}
+          itemProp={"address"}
+        />
+      ) : (
+        <p
+          className={"location-address"}
+          itemProp={"address"}
+          style={{ display: "none" }}
+        >
+          Paviljoensgracht 20, 2512 BP Den Haag
+        </p>
+      )}
+    </div>
   </div>
 );
