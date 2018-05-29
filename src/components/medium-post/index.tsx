@@ -25,9 +25,31 @@ export class MediumPost extends React.Component<IProps, any> {
           itemScope
           itemType="http://schema.org/Article"
         >
-          <div className={"media-item"} itemType={"thumbnailUrl"}>
+          <span style={{ display: "none" }} itemProp={"author"}>
+            openrndr
+          </span>
+          <span style={{ display: "none" }} itemProp={"Published"}>
+            {data.pubDate}
+          </span>
+          <span style={{ display: "none" }} itemProp={"headline"}>
+            {data.title}
+          </span>
+          <span style={{ display: "none" }} itemProp={"image"}>
+            {data.imageUrl}
+          </span>
+          <span style={{ display: "none" }} itemProp={"dateModified"}>
+            {data.updatedAt}
+          </span>
+          <span style={{ display: "none" }} itemProp={"publisher"}>
+            openrndr medium blog
+          </span>
+
+          <div className={"media-item"}>
             {data.imageUrl && (
               <a href={data.link} target={"_blank"}>
+                <span itemProp={"thumbnailUrl"} style={{ display: "none" }}>
+                  {data.imageUrl}
+                </span>
                 <img width="100%" src={data.imageUrl} />
               </a>
             )}
@@ -39,12 +61,12 @@ export class MediumPost extends React.Component<IProps, any> {
               href={data.link}
               target={"_blank"}
             >
-              <h3 className={"item-title"} itemType={"title"}>
+              <h3 className={"item-title"} itemProp={"title"}>
                 {data.title}
               </h3>
             </a>
 
-            <div className={"blurb"} itemType={"description"}>
+            <div className={"blurb"} itemProp={"description"}>
               <TruncateText active={true} text={data.blurb} />
               <a
                 className={"read-more button"}
