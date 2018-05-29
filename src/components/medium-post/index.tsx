@@ -46,7 +46,7 @@ export class MediumPost extends React.Component<IProps, any> {
             itemProp={"publisher"}
             itempType="http://schema.org/Organization"
           >
-            <span itemProp={"name"}>{data.cerator}</span>
+            <span itemProp={"name"}>{data.creator}</span>
           </span>
 
           <div className={"media-item"}>
