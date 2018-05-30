@@ -8,6 +8,14 @@
   border: none;
 }
 
+.event-block.passed {
+  opacity: 0.5;
+}
+
+.event-block + .event-block {
+  margin-top: 4em;
+}
+
 .event-block,
 .event-block * {
   font-size: 12px;

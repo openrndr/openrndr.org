@@ -7,9 +7,20 @@ interface IProps {
 
 import "./style.css";
 
+const hasPassed = (event: IDatoEvent): boolean => {
+  if (!event.startDate && !event.startDate) {
+    return false;
+  }
+  const date = new Date(event.endDate || event.startDate);
+  const now = new Date();
+  return date < now;
+};
+
 export const EventBlock: React.SFC<IProps> = ({ event }) => (
   <div
-    className={`event-block type-${event.eventType}`}
+    className={`event-block type-${event.eventType} ${
+      hasPassed(event) ? "passed" : ""
+    }`}
     itemType="http://schema.org/Event"
     itemScope
   >

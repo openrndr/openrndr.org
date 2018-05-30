@@ -28,7 +28,7 @@ export class MediumPost extends React.Component<IProps, any> {
           <span
             style={{ display: "none" }}
             itemProp={"author"}
-            itempType="http://schema.org/Organization"
+            itemType="http://schema.org/Organization"
           >
             <span itemProp={"name"}>openrndr</span>
           </span>
@@ -44,7 +44,7 @@ export class MediumPost extends React.Component<IProps, any> {
           <span
             style={{ display: "none" }}
             itemProp={"publisher"}
-            itempType="http://schema.org/Organization"
+            itemType="http://schema.org/Organization"
           >
             <span itemProp={"name"}>{data.creator}</span>
           </span>
