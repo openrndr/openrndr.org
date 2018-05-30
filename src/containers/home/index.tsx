@@ -1,6 +1,7 @@
 import * as React from "react";
 import { withRouteData, withRouter, RouteComponentProps } from "react-static";
 import animateScrollTo from "animated-scroll-to";
+import { Fade } from "react-reveal";
 
 import "./style.css";
 import { Banner } from "../../components/banner/index";
@@ -26,8 +27,8 @@ import {
 import { menuItems, theme } from "../../configs";
 import { Footer } from "../../components/footer/index";
 import { MobileHeader } from "../../components/mobile-header/index";
-import { calcBannerSize } from "../../utils/index";
-import { promisify } from "util";
+import { calcBannerSize, detectBrowser, IBrowserInfo } from "../../utils/index";
+import { SectionWrapper } from "../../components/section-wrapper/index";
 
 interface IState {
   scrollY: number;
@@ -36,7 +37,7 @@ interface IState {
   activeSectionIndex: number;
   isMobileMenuOpen: boolean;
   openMobileSectionIndex: number;
-  isFireFox: boolean;
+  browser: IBrowserInfo | null;
   mobileAddressBarHeight: number;
   screenInitialHeight: number;
 }
@@ -64,51 +65,6 @@ const mobileScrollOptions = {
   minDuration: 500
 };
 
-const SectionWrapper: React.SFC<{
-  id: string;
-  color: string;
-  title?: string;
-  onTitleClick?: () => void;
-  className?: string;
-}> = props => {
-  const {
-    children,
-    id,
-    color,
-    title,
-    onTitleClick = () => {},
-    className = ""
-  } = props;
-  return (
-    <section
-      className={`section-wrapper ${className}`}
-      id={id}
-      style={{
-        borderBottom: id === "calendar" ? `1px solid ${color}` : "none"
-      }}
-    >
-      {title && (
-        <div
-          className={"section-title"}
-          style={{
-            borderBottom: `1px solid ${color}`,
-            borderTop: `1px solid ${color}`
-          }}
-        >
-          <div className={"gap"} />
-          <h1 onClick={onTitleClick}>{title}</h1>
-          <div className={"gap"} />
-        </div>
-      )}
-      <div className={"section-body"}>
-        <div className={"gap"} />
-        {children}
-        <div className={"gap"} />
-      </div>
-    </section>
-  );
-};
-
 class HomePage extends React.Component<
   IHomeProps & RouteComponentProps<any>,
   IState
@@ -124,7 +80,7 @@ class HomePage extends React.Component<
       openMobileSectionIndex: -1,
       mobileAddressBarHeight: 0,
       screenInitialHeight: 0,
-      isFireFox: false
+      browser: null
     };
   }
 
@@ -132,7 +88,7 @@ class HomePage extends React.Component<
     document.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.onResize);
     this.setState({
-      isFireFox: navigator.userAgent.toLowerCase().indexOf("firefox") > -1,
+      browser: detectBrowser(),
       screenInitialHeight: window.innerHeight
     });
   }
@@ -297,11 +253,22 @@ class HomePage extends React.Component<
       stickyMenu,
       openMobileSectionIndex,
       isMobileMenuOpen,
-      isFireFox
+      browser
     } = this.state;
 
     return (
-      <div className={`home-page ${isFireFox ? "firefox" : ""}`}>
+      <div className={`home-page ${browser ? browser.name : ""}`}>
+        {browser &&
+          !browser.isSupported && (
+            <div className={"browser-support-alert"}>
+              <span>
+                Your browser version seems to be quite old. The website is
+                probably not shown correctly, but you will be able to see the
+                content. Update your browser (>= {browser.supportedVersion}) to
+                get the best experience.
+              </span>
+            </div>
+          )}
         <MobileHeader
           isMenuOpen={this.state.isMobileMenuOpen}
           onClick={this.toggleMobileMenu}

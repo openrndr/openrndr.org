@@ -1,4 +1,7 @@
 import { MediaItem } from "../types/index";
+import compareVersions from "compare-versions";
+import { BrowserInfo, BrowserName, detect } from "detect-browser";
+import { string } from "prop-types";
 
 export const calcColumnLeftPosition = (
   colIndex: number = 0,
@@ -36,4 +39,40 @@ export const calcBannerSize = (
   const width = windowWidth - 40;
   const height = width / ratio;
   return { width, height };
+};
+
+export interface IBrowserInfo extends BrowserInfo {
+  isSupported: boolean;
+  supportedVersion: string;
+}
+
+interface ISupportedVersions {
+  [index: string]: string;
+}
+
+const supportedVersions: ISupportedVersions = {
+  safari: "11.0.0",
+  firefox: "59.0.0",
+  chrome: "64.0.0",
+  edge: "16.0.0"
+};
+
+export const detectBrowser = (): IBrowserInfo | null => {
+  if (typeof document !== "undefined") {
+    const browserInfo = detect();
+    if (browserInfo) {
+      const supportedVersion = supportedVersions[browserInfo.name];
+      const isSupported =
+        compareVersions(browserInfo.version, supportedVersion) >= 0;
+      return {
+        ...browserInfo,
+        isSupported,
+        supportedVersion
+      };
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
 };

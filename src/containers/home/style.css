@@ -27,6 +27,20 @@
   margin-top: 20px;
 }
 
+.browser-support-alert {
+  width: calc(100vw - 80px);
+  margin-left: 20px;
+  margin-top: -20px;
+}
+
+.browser-support-alert > span {
+  background: gray;
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .content {
     /*margin-top: 70px;*/

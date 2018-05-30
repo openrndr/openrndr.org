@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Fade, Slide } from "react-reveal";
-import { debounce } from "lodash";
 
 import "./style.css";
 import { Project as ProjectData } from "../../types";
