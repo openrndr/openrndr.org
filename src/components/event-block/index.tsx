@@ -25,13 +25,15 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
     itemScope
   >
     <span className={"event-date"}>
-      {event.startDate && (
+      {event.startDate ? (
         <small itemProp={"startDate"}>
           {event.startDate
             .split("-")
             .reverse()
             .join("-")}
         </small>
+      ) : (
+        <small>upcoming...</small>
       )}
       {event.endDate && (
         <small itemProp={"startDate"}>
