@@ -69,10 +69,8 @@ export const detectBrowser = (): IBrowserInfo | null => {
         isSupported,
         supportedVersion
       };
-    } else {
-      return null;
     }
-  } else {
-    return null;
   }
+
+  return null;
 };

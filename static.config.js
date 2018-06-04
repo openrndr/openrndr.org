@@ -67,12 +67,6 @@ export default {
         component: "src/containers/paypal",
         noindex: true
       },
-      {
-        path: `/sandbox`,
-        component: "src/containers/sandbox",
-        getData: async () => {},
-        noindex: true
-      },
       ...sitemapRoutes,
       {
         is404: true,

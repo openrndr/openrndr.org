@@ -55,7 +55,17 @@ export class MediumPost extends React.Component<IProps, any> {
                 <span itemProp={"thumbnailUrl"} style={{ display: "none" }}>
                   {data.imageUrl}
                 </span>
-                <img width="100%" src={data.imageUrl} />
+                {/*<img width="100%" src={data.imageUrl} />*/}
+                <div
+                  style={{
+                    background: `url(${data.imageUrl})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    width: "100%",
+                    height: "100%",
+                    display: "block"
+                  }}
+                />
               </a>
             )}
           </div>
