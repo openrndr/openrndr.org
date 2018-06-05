@@ -59,16 +59,20 @@ const supportedVersions: ISupportedVersions = {
 
 export const detectBrowser = (): IBrowserInfo | null => {
   if (typeof document !== "undefined") {
-    const browserInfo = detect();
-    if (browserInfo) {
-      const supportedVersion = supportedVersions[browserInfo.name];
-      const isSupported =
-        compareVersions(browserInfo.version, supportedVersion) >= 0;
-      return {
-        ...browserInfo,
-        isSupported,
-        supportedVersion
-      };
+    try {
+      const browserInfo = detect();
+      if (browserInfo) {
+        const supportedVersion = supportedVersions[browserInfo.name];
+        const isSupported =
+          compareVersions(browserInfo.version, supportedVersion) >= 0;
+        return {
+          ...browserInfo,
+          isSupported,
+          supportedVersion
+        };
+      }
+    } catch (err) {
+      // console.error(err);
     }
   }
 

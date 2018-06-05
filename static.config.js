@@ -99,10 +99,12 @@ export default {
               content="width=device-width, initial-scale=1"
             />
             {renderMeta.styleTags}
-            <script
-              src="https://cdn.ravenjs.com/3.25.2/raven.min.js"
-              crossorigin="anonymous"
-            />
+
+            {/*<script*/}
+            {/*src="https://cdn.ravenjs.com/3.25.2/raven.min.js"*/}
+            {/*crossorigin="anonymous"*/}
+            {/*/>*/}
+
             <script
               async
               src="https://www.googletagmanager.com/gtag/js?id=UA-109731993-2"
@@ -117,11 +119,11 @@ export default {
               }}
             />
 
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `Raven.config('https://88323b3460944648998a76896520922c@sentry.io/1219645').install()`
-              }}
-            />
+            {/*<script*/}
+            {/*dangerouslySetInnerHTML={{*/}
+            {/*__html: `Raven.config('https://88323b3460944648998a76896520922c@sentry.io/1219645').install()`*/}
+            {/*}}*/}
+            {/*/>*/}
 
             <script
               dangerouslySetInnerHTML={{
