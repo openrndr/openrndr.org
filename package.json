@@ -24,7 +24,7 @@
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   },
   "dependencies": {
-    "@ibm/type": "^0.5.3",
+    "@ibm/type": "^0.5.4",
     "animated-scroll-to": "^1.2.0",
     "compare-versions": "^3.2.1",
     "datocms-client": "^0.3.41",

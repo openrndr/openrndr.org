@@ -123,7 +123,7 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
-"@ibm/type@^0.5.3":
+"@ibm/type@^0.5.4":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@ibm/type/-/type-0.5.4.tgz#fad1d196a89127c6cb3b0fbfefce54bc8f7e8212"
 

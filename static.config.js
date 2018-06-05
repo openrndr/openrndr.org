@@ -100,15 +100,26 @@ export default {
             />
             {renderMeta.styleTags}
             <script
+              src="https://cdn.ravenjs.com/3.25.2/raven.min.js"
+              crossorigin="anonymous"
+            />
+            <script
               async
               src="https://www.googletagmanager.com/gtag/js?id=UA-109731993-2"
             />
+
             <script
               dangerouslySetInnerHTML={{
                 __html: `window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'UA-109731993-2');`
+              }}
+            />
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `Raven.config('https://88323b3460944648998a76896520922c@sentry.io/1219645').install()`
               }}
             />
 
