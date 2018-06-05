@@ -1,3 +1,15 @@
+.home-page {
+  opacity: 0;
+  -webkit-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -ms-transition: opacity 1000ms;
+  -o-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+}
+.home-page.mounted {
+  opacity: 1;
+}
+
 .section-body,
 .section-title {
   display: grid;

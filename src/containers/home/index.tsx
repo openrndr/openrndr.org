@@ -40,6 +40,7 @@ interface IState {
   browser: IBrowserInfo | null;
   mobileAddressBarHeight: number;
   screenInitialHeight: number;
+  mounted: boolean;
 }
 
 export interface IHomeProps {
@@ -80,16 +81,19 @@ class HomePage extends React.Component<
       openMobileSectionIndex: -1,
       mobileAddressBarHeight: 0,
       screenInitialHeight: 0,
-      browser: null
+      browser: null,
+      mounted: false
     };
   }
 
   componentDidMount() {
+    console.log("home did mount");
     document.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.onResize);
     this.setState({
       browser: detectBrowser(),
-      screenInitialHeight: window.innerHeight
+      screenInitialHeight: window.innerHeight,
+      mounted: true
     });
   }
 
@@ -253,11 +257,16 @@ class HomePage extends React.Component<
       stickyMenu,
       openMobileSectionIndex,
       isMobileMenuOpen,
-      browser
+      browser,
+      mounted
     } = this.state;
 
     return (
-      <div className={`home-page ${browser ? browser.name : ""}`}>
+      <div
+        className={`home-page ${browser ? browser.name : ""} ${
+          mounted ? "mounted" : ""
+        }`}
+      >
         {browser &&
           !browser.isSupported && (
             <div className={"browser-support-alert"}>
