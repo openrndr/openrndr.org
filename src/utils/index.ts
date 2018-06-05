@@ -54,7 +54,9 @@ const supportedVersions: ISupportedVersions = {
   safari: "11.0.0",
   firefox: "59.0.0",
   chrome: "64.0.0",
-  edge: "16.0.0"
+  edge: "16.0.0",
+  ios: "11.0.0",
+  "ios-webview": "11.0.0"
 };
 
 export const detectBrowser = (): IBrowserInfo | null => {
@@ -63,8 +65,15 @@ export const detectBrowser = (): IBrowserInfo | null => {
       const browserInfo = detect();
       if (browserInfo) {
         const supportedVersion = supportedVersions[browserInfo.name];
-        const isSupported =
-          compareVersions(browserInfo.version, supportedVersion) >= 0;
+        let isSupported = true;
+
+        if (!supportedVersion || typeof supportedVersion === "undefined") {
+          isSupported = false;
+        } else {
+          isSupported =
+            compareVersions(browserInfo.version, supportedVersion) >= 0;
+        }
+
         return {
           ...browserInfo,
           isSupported,
@@ -72,7 +81,7 @@ export const detectBrowser = (): IBrowserInfo | null => {
         };
       }
     } catch (err) {
-      // console.error(err);
+      console.error(err);
     }
   }
 
