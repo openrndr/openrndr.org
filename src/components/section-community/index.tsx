@@ -39,38 +39,43 @@ export class SectionCommunity extends React.Component<IProps, IState> {
     const { openQuestionIndex } = this.state;
 
     return (
-      <section className={`xx-x-x`}>
-        <div className="text-block">
-          <h3>FAQ</h3>
-          <br />
-          {data.faq.map((q: Question, i: number) => (
-            <div
-              className={`question ${openQuestionIndex === i ? "open" : ""}`}
-              key={`q-${i}`}
-            >
-              <strong
-                className={"question-title button"}
-                onClick={() => this.setQuestion(i)}
+      <div className={"page-with-button-wrapper"}>
+        <a href={`https://goo.gl/forms/WB4VMrkAyYKs3M382`} target={"_blank"}>
+          <h1>Submit your project</h1>
+        </a>
+        <section className={`xx-x-x`}>
+          <div className="text-block">
+            <h3>FAQ</h3>
+            <br />
+            {data.faq.map((q: Question, i: number) => (
+              <div
+                className={`question ${openQuestionIndex === i ? "open" : ""}`}
+                key={`q-${i}`}
               >
-                {q.question}
-              </strong>
-              <article
-                className={"answer"}
-                dangerouslySetInnerHTML={{
-                  __html: q.answer
-                }}
-              />
-            </div>
+                <strong
+                  className={"question-title button"}
+                  onClick={() => this.setQuestion(i)}
+                >
+                  {q.question}
+                </strong>
+                <article
+                  className={"answer"}
+                  dangerouslySetInnerHTML={{
+                    __html: q.answer
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+          {data.contentBlocks.map((cb, i) => (
+            <TextBlock
+              key={`text-block${i}`}
+              data={cb}
+              className={i === 0 ? "faq" : ""}
+            />
           ))}
-        </div>
-        {data.contentBlocks.map((cb, i) => (
-          <TextBlock
-            key={`text-block${i}`}
-            data={cb}
-            className={i === 0 ? "faq" : ""}
-          />
-        ))}
-      </section>
+        </section>
+      </div>
     );
   }
 }

@@ -1,8 +1,8 @@
-.getting-started-wrapper {
+.page-with-button-wrapper {
   position: relative;
 }
 
-.getting-started-wrapper > a {
+.page-with-button-wrapper > a {
   position: absolute;
   top: -108px;
   left: calc(calc(calc(100vw - 40px) * 0.4) + 1px);
@@ -20,12 +20,12 @@
   transition: background-color 200ms;
 }
 
-.getting-started-wrapper > a:hover {
+.page-with-button-wrapper > a:hover {
   background-color: #fb9db8;
 }
 
 @media only screen and (max-width: 600px) {
-  .getting-started-wrapper > a {
+  .page-with-button-wrapper > a {
     width: calc(100vw - 40px);
     position: unset;
     display: block;
@@ -33,15 +33,15 @@
     padding: 20px 0;
   }
 
-  .getting-started-wrapper > a,
-  .getting-started-wrapper > a h1 {
+  .page-with-button-wrapper > a,
+  .page-with-button-wrapper > a h1 {
     font-size: 26px;
     height: 45px;
   }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .getting-started-wrapper > a {
+  .page-with-button-wrapper > a {
     width: calc(calc(100vw - 90px) * 0.8 - 40px);
     position: unset;
     display: block;
@@ -49,20 +49,20 @@
     margin-bottom: 20px;
     margin-left: 20px;
   }
-  .getting-started-wrapper > a h1 {
+  .page-with-button-wrapper > a h1 {
     font-size: 25px;
     margin-top: 7px;
   }
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1280px) {
-  .getting-started-wrapper > a h1 {
+  .page-with-button-wrapper > a h1 {
     font-size: 23px;
     line-height: 45px;
   }
 }
 
-.firefox .getting-started-wrapper > a {
+.firefox .page-with-button-wrapper > a {
   top: -98px;
   height: 37px;
 }

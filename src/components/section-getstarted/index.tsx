@@ -10,11 +10,10 @@ interface IProps {
 
 export const SectionGettingStarted: React.SFC<IProps> = ({ data }) => {
   return (
-    <div className={"getting-started-wrapper"}>
+    <div className={"page-with-button-wrapper"}>
       <a href={`https://github.com/openrndr/openrndr`} target={"_blank"}>
         <h1>SOURCE CODE ON GITHUB</h1>
       </a>
-
       <section className={`x-x-x-x`}>
         {data.contentBlocks.map((cb, i) => (
           <TextBlock key={`text-block${i}`} data={cb} />
