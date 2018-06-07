@@ -77,13 +77,19 @@ export default {
   },
 
   onBuild: async () => {
-    console.log("Everything is done building!");
     const redirects = sitemapRoutes
       .map(s => {
         return `${s.path} \t ${s.redirect}`;
       })
       .join("\n");
-    exec(`echo ${redirects} > ./dist/_redirect`);
+
+    const robotsTXT = `User-agent: *
+Allow: /
+Sitemap: https://openrndr.org/sitemap.xml
+`;
+
+    await exec(`echo "${redirects}" > ./dist/_redirect`);
+    await exec(`echo "${robotsTXT}" > ./dist/robots.txt`);
   },
 
   Document: class CustomHtml extends React.Component {

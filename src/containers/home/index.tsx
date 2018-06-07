@@ -87,7 +87,6 @@ class HomePage extends React.Component<
   }
 
   componentDidMount() {
-    console.log("home did mount");
     document.addEventListener("scroll", this.onScroll);
     window.addEventListener("resize", this.onResize);
     this.setState({
