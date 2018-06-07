@@ -38,3 +38,9 @@
   width: 20px;
   height: auto;
 }
+
+@media screen and (max-width: 1024px) {
+  .gallery {
+    max-width: calc(calc(100vw - 40px) * 0.8);
+  }
+}

@@ -34,6 +34,7 @@ export class ImageX extends React.Component<IProps, IImageState> {
 
     const orientation = width / height >= 1.2 ? "landscape" : "portrait";
     const isNarrow = width / height >= 1.5;
+
     return (
       <div
         className={`image-wrapper ${orientation} ${
