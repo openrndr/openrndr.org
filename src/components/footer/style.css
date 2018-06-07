@@ -32,3 +32,9 @@ footer > * > *:first-child h3 {
     color: white;
   }
 }
+
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  footer {
+    grid-template-columns: 20% 40% 40%;
+  }
+}
