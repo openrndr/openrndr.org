@@ -110,6 +110,7 @@
   align-self: center;
 
   cursor: pointer;
+  opacity: 0.25;
 
   -webkit-transition: opacity 500ms ease-in-out;
   -moz-transition: opacity 500ms ease-in-out;
@@ -120,7 +121,7 @@
 
 .light-box-thumbnail.highlighted,
 .light-box-thumbnail:hover {
-  opacity: 0.25;
+  opacity: 1;
 }
 
 .light-box-thumb-container {
@@ -218,5 +219,13 @@
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (max-width: 600px) {
+  .light-box {
+    width: 100vw;
+    padding: 20px 0;
+  }
+
+  .light-box .media-item-caption {
+    padding: 0 20px;
+  }
 }

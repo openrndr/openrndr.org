@@ -7,6 +7,8 @@ interface IProps {
   fit?: string;
   crop?: string;
   onLoad?: () => void;
+  width?: string;
+  height?: string;
 }
 
 export interface IImageState {
@@ -28,6 +30,10 @@ export class ImageX extends React.Component<IProps, IImageState> {
 
   render() {
     const { data, fit = "max", crop, onLoad = () => {} } = this.props;
+
+    const viewW = this.props.width;
+    const viewH = this.props.height;
+
     const {
       file: { url, width, height }
     } = data;
@@ -42,7 +48,6 @@ export class ImageX extends React.Component<IProps, IImageState> {
         } ${isNarrow ? "narrow" : ""}`}
       >
         {!this.state.isLoaded && <LoadingDots />}
-
         <Imgix
           src={url}
           fit={fit}

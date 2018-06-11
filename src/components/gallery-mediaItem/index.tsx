@@ -25,18 +25,20 @@ export const GalleryMediaItem: React.SFC<IProps> = ({
       {(function() {
         switch (thumbnail.itemType) {
           case "image":
-            return <ImageX data={thumbnail} fit={"fill"} />;
+            return <ImageX data={thumbnail} fit={"fillmax"} />;
           case "gif":
             return <BackgroundGif data={thumbnail} />;
           case "video":
             return (
-                <div style={{
+              <div
+                style={{
                   background: `url(${thumbnail.file.thumbnailUrl})`,
                   width: `100%`,
                   height: `100%`,
                   backgroundPosition: "center",
                   backgroundSize: "fill"
-                }}/>
+                }}
+              />
             );
         }
       })()}

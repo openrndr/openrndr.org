@@ -39,16 +39,23 @@ const MediaVideo: React.SFC<{ file: IDatoVideoFile; style: IMediaStyle }> = ({
   />
 );
 
-const Media: React.SFC<{ data: MediaItem; windowRatio: number }> = props => {
-  const { data, windowRatio } = props;
+const Media: React.SFC<{
+  data: MediaItem;
+  windowRatio: number;
+  isMobile: boolean;
+}> = props => {
+  const { data, windowRatio, isMobile } = props;
 
   const file = data.itemType === "gif" && data.video ? data.video : data.file;
   let style: IMediaStyle = { width: "100%", height: "100%", maxHeight: "" };
 
   if (file) {
     const ratio = file.width / file.height;
-    const width = `calc(calc(100vw - 40px) * 0.8)`;
-    const maxHeight = `calc(calc(calc(100vh - 40px) * 0.8) * 0.85)`;
+    const width = isMobile ? "100vw" : `calc(calc(100vw - 40px) * 0.8)`;
+    const maxHeight = isMobile
+      ? `calc(100vw * 0.85)`
+      : `calc(calc(calc(100vh - 40px) * 0.8) * 0.85)`;
+
     style = {
       width,
       height: `calc(${width} / ${ratio})`,
@@ -124,6 +131,7 @@ interface ILightBoxState {
   slideIndex: number;
   windowRatio: number;
   loaded: boolean;
+  isMobile: boolean;
 }
 
 export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
@@ -132,7 +140,8 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
     this.state = {
       slideIndex: 0,
       windowRatio: -1,
-      loaded: false
+      loaded: false,
+      isMobile: false
     };
 
     this.onResize = debounce(this.onResize, 100);
@@ -154,7 +163,8 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
 
   onResize = () => {
     this.setState({
-      windowRatio: window.innerWidth / window.innerHeight
+      windowRatio: window.innerWidth / window.innerHeight,
+      isMobile: window.innerWidth <= 600
     });
   };
 
@@ -274,6 +284,7 @@ export class LightBox extends React.Component<ILightBoxProps, ILightBoxState> {
                     key={m.id}
                     data={m}
                     windowRatio={this.state.windowRatio}
+                    isMobile={isMobile}
                   />
                   <div className={"media-item-caption"}>
                     <div dangerouslySetInnerHTML={{ __html: m.caption }} />
