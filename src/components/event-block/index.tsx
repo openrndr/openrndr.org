@@ -26,7 +26,7 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
   >
     <span className={"event-date"}>
       {event.startDate ? (
-        <small itemProp={"startDate"}>
+        <small itemProp={"startDate"} style={{ display: "inline-block" }}>
           {event.startDate
             .split("-")
             .reverse()
@@ -36,9 +36,12 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
         <small>upcoming...</small>
       )}
       {event.endDate && (
-        <small itemProp={"startDate"}>
-          {" "}
-          -{" "}
+        <small style={{ display: "inline-block", margin: "0 5px" }}>
+          {" — "}
+        </small>
+      )}
+      {event.endDate && (
+        <small itemProp={"endDate"} style={{ display: "inline-block" }}>
           {event.endDate
             .split("-")
             .reverse()
