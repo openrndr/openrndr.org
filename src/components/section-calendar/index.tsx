@@ -3,18 +3,10 @@ import { groupBy } from "lodash";
 
 import "./style.css";
 import { EventBlock } from "../event-block/index";
-import { Paged, IDatoEvent } from "../../types";
+import { Calendar } from "../../types";
 
-export interface ICalendarProps {
-  data: {
-    events: Paged<IDatoEvent>;
-  };
-}
-
-export const SectionCalendar: React.SFC<ICalendarProps> = ({ data }) => {
-  const { events } = data;
-  const groups = groupBy(events.data, "eventType");
-
+export const SectionCalendar: React.SFC<{ data: Calendar }> = ({ data }) => {
+  const groups = groupBy(data.events, "eventType");
   return (
     <section className={`calendar-section xx-x-x`}>
       {Object.keys(groups)

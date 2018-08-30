@@ -3,6 +3,8 @@ import * as fs from "fs";
 import * as path from "path";
 import { paginate } from "./paginate";
 import { IHomeProps } from "../src/containers/home";
+import { groupBy } from "lodash";
+import { Paged, IDatoEvent } from "../src/types";
 
 interface Config {
   load: Loader;
@@ -15,16 +17,9 @@ type PrepareDataFiles = (config: Config) => Promise<DataFile[]>;
 const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
   const { load, makeFilePath } = config;
   const { pages, site } = await load();
-
+  pages.calendar;
   const paginatedData = {
     ...pages,
-    calendar: {
-      ...pages.calendar,
-      events: paginate(pages.calendar.events, {
-        buildUrl: hash => makeFilePath(`event-${hash}.json`).public,
-        pageSize: 4
-      })
-    },
     showcase: {
       ...pages.showcase,
       gallery: paginate(pages.showcase.gallery, {
@@ -47,10 +42,6 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
   const homeProps: IHomeProps = {
     data: {
       ...paginatedData,
-      calendar: {
-        ...paginatedData.calendar,
-        events: paginatedData.calendar.events[0]
-      },
       showcase: {
         ...paginatedData.showcase,
         gallery: paginatedData.showcase.gallery[0],
@@ -70,9 +61,8 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
     data: site
   };
 
-  const { calendar, showcase } = paginatedData;
+  const { showcase } = paginatedData;
   const pageFiles: DataFile[] = [
-    calendar.events,
     showcase.gallery,
     showcase.experiments,
     showcase.caseStudies

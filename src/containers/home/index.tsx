@@ -14,6 +14,7 @@ import { SectionCalendar } from "../../components/section-calendar/index";
 import { SectionShowcase } from "../../components/section-showcase/index";
 import {
   About,
+  Calendar,
   Community,
   GettingStarted,
   Landing,
@@ -45,9 +46,7 @@ interface IState {
 
 export interface IHomeProps {
   data: {
-    calendar: {
-      events: Paged<IDatoEvent>;
-    } & Entity;
+    calendar: Calendar;
     about: About;
     community: Community;
     gettingStarted: GettingStarted;

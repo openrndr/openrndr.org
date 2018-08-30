@@ -65,7 +65,7 @@ export interface InstaPost extends Entity {
 
 export interface Showcase extends Entity {
   gallery: Project[];
-  caseStudies: Project[];
+  caseStudies: IMediumPost[];
   experiments: InstaPost[];
 }
 
