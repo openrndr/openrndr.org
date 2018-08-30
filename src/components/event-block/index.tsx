@@ -57,9 +57,13 @@ export const EventBlock: React.SFC<IProps> = ({ event }) => (
       </div>
     </a>
 
-    <span className={"event-note"} itemProp={"description"}>
-      {event.note}
-    </span>
+    {event.note && (
+      <div
+        className="event-note"
+        itemProp="description"
+        dangerouslySetInnerHTML={{ __html: event.note }}
+      />
+    )}
 
     <div itemType={"http://schema.org/Place"}>
       {event.address ? (
