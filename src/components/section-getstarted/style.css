@@ -61,8 +61,3 @@
     line-height: 45px;
   }
 }
-
-.firefox .page-with-button-wrapper > a {
-  top: -98px;
-  height: 37px;
-}
