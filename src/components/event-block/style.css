@@ -27,10 +27,6 @@
   white-space: pre-wrap;
 }
 
-.event-title {
-  max-width: 300px;
-}
-
 .event-title,
 .event-title * {
   font-size: 16px;
@@ -40,4 +36,8 @@
 .event-date,
 .event-title {
   margin-bottom: 0.5em;
+}
+
+.event-note p {
+  padding-bottom: 1rem;
 }

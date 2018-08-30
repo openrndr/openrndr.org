@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-.event-group * {
+.event-group *:not(li) {
   display: block;
 }
 
