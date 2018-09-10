@@ -54,7 +54,7 @@ export class SectionShowcase extends React.Component<IShowCaseProps, any> {
           onLoadMore={this.onLoadMore}
         />
         <Gallery
-          title={"past workshops"}
+          title={"workshops"}
           page={data.pastWorkshops}
           className={"x-x-x-x"}
           color={theme.colors.green}
