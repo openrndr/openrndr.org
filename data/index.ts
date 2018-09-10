@@ -32,6 +32,10 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
         pageSize: 8,
         initialPageSize: 4
       }),
+      pastWorkshops: paginate(pages.showcase.pastWorkshops, {
+        buildUrl: hash => makeFilePath(`past-workshop-${hash}.json`).public,
+        pageSize: 4
+      }),
       caseStudies: paginate(pages.showcase.caseStudies, {
         buildUrl: hash => makeFilePath(`case-study-${hash}.json`).public,
         pageSize: 2
@@ -46,6 +50,7 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
         ...paginatedData.showcase,
         gallery: paginatedData.showcase.gallery[0],
         experiments: paginatedData.showcase.experiments[0],
+        pastWorkshops: paginatedData.showcase.pastWorkshops[0],
         caseStudies: paginatedData.showcase.caseStudies[0]
       }
     }
@@ -65,6 +70,7 @@ const prepareDataFiles: PrepareDataFiles = async (config: Config) => {
   const pageFiles: DataFile[] = [
     showcase.gallery,
     showcase.experiments,
+    showcase.pastWorkshops,
     showcase.caseStudies
   ]
     .map(paginatedData => {

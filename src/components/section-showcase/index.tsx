@@ -12,6 +12,7 @@ export interface IShowCaseProps {
     gallery: Paged<Project>;
     experiments: Paged<InstaPost>;
     caseStudies: Paged<IMediumPost>;
+    pastWorkshops: Paged<InstaPost>;
   };
 }
 
@@ -48,6 +49,13 @@ export class SectionShowcase extends React.Component<IShowCaseProps, any> {
         <Gallery
           title={"experiments"}
           page={data.experiments}
+          className={"x-x-x-x"}
+          color={theme.colors.green}
+          onLoadMore={this.onLoadMore}
+        />
+        <Gallery
+          title={"past workshops"}
+          page={data.pastWorkshops}
           className={"x-x-x-x"}
           color={theme.colors.green}
           onLoadMore={this.onLoadMore}

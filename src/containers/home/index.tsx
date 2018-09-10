@@ -54,6 +54,7 @@ export interface IHomeProps {
     showcase: {
       gallery: Paged<Project>;
       experiments: Paged<InstaPost>;
+      pastWorkshops: Paged<InstaPost>;
       caseStudies: Paged<IMediumPost>;
     } & Entity;
     [index: string]: object;

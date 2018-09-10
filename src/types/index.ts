@@ -67,6 +67,7 @@ export interface Showcase extends Entity {
   gallery: Project[];
   caseStudies: IMediumPost[];
   experiments: InstaPost[];
+  pastWorkshops: InstaPost[];
 }
 
 export interface IDatoEvent extends Entity {
