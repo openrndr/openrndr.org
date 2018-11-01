@@ -29,7 +29,6 @@ export class SectionShowcase extends React.Component<IShowCaseProps, any> {
 
   render() {
     const { data } = this.props;
-
     return (
       <section className={`showcase`}>
         <Gallery

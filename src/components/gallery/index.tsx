@@ -77,7 +77,6 @@ class GalleryComponent extends React.Component<IProps, IState> {
   render() {
     const { data, title, className = "", hasNext, color, loading } = this.props;
     const { numberOfColumns, lightBoxProject, isMobile } = this.state;
-
     return (
       <section className={`gallery`}>
         {lightBoxProject && (

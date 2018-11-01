@@ -1,3 +1,4 @@
+//@ts-ignore
 import { SiteClient, Loader } from "datocms-client";
 
 import {

@@ -1,6 +1,6 @@
 import * as React from "react";
-import fetchp from "fetch-jsonp";
 import { Fade } from "react-reveal";
+import axios, { AxiosResponse } from "axios";
 
 export interface InstaJson {
   version: string;
@@ -46,18 +46,22 @@ export class InstaImage extends React.Component<IProps, IState> {
     if (typeof window !== "undefined") {
       const API = "https://api.instagram.com/oembed/?url=";
       const url = `${API}${this.props.link}`;
-      fetchp(url)
-        .then(res => {
-          return res.json();
+      axios({
+        url,
+        method: "get",
+        responseType: "json"
+      })
+        .then((res: AxiosResponse<InstaJson>) => {
+          return res.data;
         })
-        .then(json => {
+        .then((json: InstaJson) => {
           this.setState({
             loading: false,
             data: json,
             error: false
           });
         })
-        .catch(() => {
+        .catch((err: Error) => {
           this.setState({
             error: true,
             loading: false,
