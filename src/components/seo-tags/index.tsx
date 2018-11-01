@@ -13,10 +13,7 @@ const MetaTagsComponent: React.SFC<IProps> = ({ data }) => {
   return (
     <Head>
       <meta name={`keywords`} content={`JAVA,kotlin,programming`} />
-      <meta
-        name={`description`}
-        content={`${data.globalSeo.fallbackSeo.description}`}
-      />
+      <meta name={`description`} content={`${data.globalSeo.fallbackSeo.description}`} />
       <meta name={`copyright`} content={`OPENRNDR`} />
       <meta name={`language`} content={`EN`} />
       <meta name={`Classification`} content={`Programming`} />
@@ -25,17 +22,15 @@ const MetaTagsComponent: React.SFC<IProps> = ({ data }) => {
       <meta name={`owner`} content={`OPENRDNR`} />
       <meta name={`url`} content={`${data.domain}`} />
       <meta name={`identifier-URL`} content={`${data.domain}`} />
-      <meta name={`og:title`} content={`${data.name}`} />
-      <meta name={`og:url`} content={`${data.domain}`} />
-      <meta name={`og:image`} content={`${image.url}`} />
-      <meta name={`og:image:type`} content={`image/${image.format}`} />
-      <meta name={`og:image:width`} content={`${image.width}`} />
-      <meta name={`og:image:height`} content={`${image.height}`} />
-      <meta name={`og:site_name`} content={`${data.name}`} />
-      <meta
-        name={`og:description`}
-        content={`${data.globalSeo.fallbackSeo.description}`}
-      />
+      <meta property={`og:title`} content={`${data.name}`} />
+      <meta property={`og:url`} content={`${data.domain}`} />
+      <meta property={`og:image`} content={`${image.url}`} />
+      <meta property={`og:image:type`} content={`image/${image.format}`} />
+      <meta property={`og:image:width`} content={`${image.width}`} />
+      <meta property={`og:image:height`} content={`${image.height}`} />
+      <meta property={`og:site_name`} content={`${data.name}`} />
+      <meta property={`og:description`} content={`${data.globalSeo.fallbackSeo.description}`} />
+      <meta property={`og:type`} content={`website`} />
       <title>{data.name}</title>
 
       <link
@@ -54,7 +49,7 @@ const MetaTagsComponent: React.SFC<IProps> = ({ data }) => {
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "telephone": "+31 70 363 5776",
-                  "contactType": "credit card support",
+                  "contactType": "support",
                   "availableLanguage": ["English", "Dutch"]
                 },
                   "sameAs": [
