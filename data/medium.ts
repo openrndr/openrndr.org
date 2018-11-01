@@ -5,7 +5,7 @@ const Parser = require("rss-parser");
 const parser = new Parser();
 const imgRegex = /<img.*?src="(.*?)"/;
 
-export const fetchMediumPosts = async (): Promise<IMediumPost | any[]> => {
+export const fetchMediumPosts = async (): Promise<IMediumPost[] | any[]> => {
   const openRDNRfeedsUrl = `https://medium.com/feed/@openrndr`;
   const feed: { items: object[] }[] = await parser.parseURL(openRDNRfeedsUrl);
 
