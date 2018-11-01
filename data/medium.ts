@@ -1,17 +1,20 @@
-import { IMediumPost } from "../src/types/index";
+import { IMediumPost } from "../src/types";
 import * as htmlToText from "html-to-text";
 
 const Parser = require("rss-parser");
 const parser = new Parser();
 const imgRegex = /<img.*?src="(.*?)"/;
 
-export const fetchMediumPosts = async (): Promise<IMediumPost[] | any[]> => {
+export const fetchMediumPosts = async (): Promise<IMediumPost[]> => {
   const openRDNRfeedsUrl = `https://medium.com/feed/@openrndr`;
-  const feed: { items: object[] }[] = await parser.parseURL(openRDNRfeedsUrl);
+  const feed: { items: IMediumPost[] } = await parser
+    .parseURL(openRDNRfeedsUrl)
+    .catch(err => {
+      return [];
+    });
 
   return Promise.all(
-    //@ts-ignore
-    feed.items.map(async item => {
+    feed.items.map(async (item: IMediumPost) => {
       const content = item["content:encoded"];
       const cleanContent = content.replace(
         /<figcaption>(.*?)<\/figcaption>/g,
@@ -29,7 +32,7 @@ export const fetchMediumPosts = async (): Promise<IMediumPost[] | any[]> => {
         .slice(1, 3)
         .join("\n");
 
-      delete item["content:encoded"];
+      item["content:encoded"] = "";
 
       return {
         ...item,

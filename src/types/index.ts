@@ -151,7 +151,8 @@ export interface IMediumPost extends Entity {
   link: string;
   pubDate: string;
   content?: string;
-  dc: string;
+  "dc:creator": string;
+  "content:encoded": string;
   guid: string;
   categories: string[];
   isoDate: Date;
