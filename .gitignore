@@ -24,3 +24,4 @@ data/dato-dump.json
 data/home-dataprops.json
 sandbox.tsx
 tmp
+.idea/
