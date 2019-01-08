@@ -1,5 +1,6 @@
 .menu {
   position: absolute;
+  left: 0px;
   padding: 20px;
 }
 .menu > * {

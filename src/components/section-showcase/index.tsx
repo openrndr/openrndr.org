@@ -35,28 +35,28 @@ export class SectionShowcase extends React.Component<IShowCaseProps, any> {
           title={"gallery"}
           page={data.gallery}
           className={"xx-xx-x-x-x-x"}
-          color={theme.colors.green}
+          color={theme.colors.pink}
           onLoadMore={this.onLoadMore}
         />
         <MediumGallery
           title={"case studies"}
           page={data.caseStudies}
           className={"xx-xx"}
-          color={theme.colors.green}
+          color={theme.colors.pink}
           onLoadMore={this.onLoadMore}
         />
         <Gallery
           title={"experiments"}
           page={data.experiments}
           className={"x-x-x-x"}
-          color={theme.colors.green}
+          color={theme.colors.pink}
           onLoadMore={this.onLoadMore}
         />
         <Gallery
           title={"workshops"}
           page={data.pastWorkshops}
           className={"x-x-x-x"}
-          color={theme.colors.green}
+          color={theme.colors.pink}
           onLoadMore={this.onLoadMore}
         />
       </section>

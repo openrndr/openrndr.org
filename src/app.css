@@ -22,11 +22,17 @@ a {
 .button {
   cursor: pointer;
   opacity: 1;
-  -webkit-transition: opacity 200ms;
+  /*  -webkit-transition: opacity 200ms;
   -moz-transition: opacity 200ms;
   -ms-transition: opacity 200ms;
   -o-transition: opacity 200ms;
-  transition: opacity 200ms;
+  transition: opacity 200ms;*/
+}
+
+.load-more .button {
+  /*font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;*/
+  /*font-weight: 600;*/
+  color: black;
 }
 
 .button:hover {

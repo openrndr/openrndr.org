@@ -310,7 +310,7 @@ class HomePage extends React.Component<
 
           <SectionWrapper
             id="showcase"
-            color={theme.colors.green}
+            color={theme.colors.pink}
             title={menuItems[1].title}
             onTitleClick={() => this.toggleSection(1)}
             className={openMobileSectionIndex === 1 ? "open" : ""}
@@ -320,7 +320,7 @@ class HomePage extends React.Component<
 
           <SectionWrapper
             id="community"
-            color={theme.colors.cyan}
+            color={theme.colors.pink}
             title={menuItems[2].title}
             onTitleClick={() => this.toggleSection(2)}
             className={openMobileSectionIndex === 2 ? "open" : ""}
@@ -330,7 +330,7 @@ class HomePage extends React.Component<
 
           <SectionWrapper
             id="about"
-            color={theme.colors.purple}
+            color={theme.colors.pink}
             title={menuItems[3].title}
             onTitleClick={() => this.toggleSection(3)}
             className={openMobileSectionIndex === 3 ? "open" : ""}

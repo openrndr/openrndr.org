@@ -18,6 +18,15 @@
   padding: 10px;
   align-self: center;
   text-transform: uppercase;
+  -webkit-transition: background 100ms ease-in-out;
+  -moz-transition: background 100ms ease-in-out;
+  -ms-transition: background 100ms ease-in-out;
+  -o-transition: background 100ms ease-in-out;
+  transition: background 100ms ease-in-out;
+}
+
+.load-more > *:hover {
+  background: rgba(255, 204, 218, 0.1);
 }
 
 .gallery-title {

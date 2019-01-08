@@ -13,11 +13,11 @@
   color: white;
   z-index: 0;
   height: 47px;
-  -webkit-transition: background-color 200ms;
-  -moz-transition: background-color 200ms;
-  -ms-transition: background-color 200ms;
-  -o-transition: background-color 200ms;
-  transition: background-color 200ms;
+  -webkit-transition: background-color 100ms;
+  -moz-transition: background-color 100ms;
+  -ms-transition: background-color 100ms;
+  -o-transition: background-color 100ms;
+  transition: background-color 100ms;
 }
 
 .page-with-button-wrapper > a:hover {

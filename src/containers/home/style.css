@@ -63,7 +63,6 @@
     grid-template-columns: 100%;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid blue;
     width: 100%;
   }
 
@@ -78,6 +77,15 @@
     color: white;
   }
 
+  .large-text {
+    padding-bottom: 40px !important;
+    color: #ffccda !important;
+  }
+
+  h3 {
+    color: #ffccda !important;
+  }
+
   .sections .section-wrapper .section-body {
     display: none;
     padding-top: 20px;
@@ -88,8 +96,40 @@
     display: block;
   }
 
+  .page-github-button {
+    display: none !important;
+  }
+
+  /*article, article *  {
+      font-size: 14px !important;
+      line-height: 20px !important;
+  */
+
+  /* article * {
+        font-size: 18px !important;
+        line-height: 20px !important;
+  }*/
+
+  .mobile-menu-icon {
+    font-size: 21px;
+  }
+
+  .text-block {
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+  }
+
   .sections .section-title {
     height: calc(calc(100vh - 70px) / 5);
+  }
+
+  .mobile-header-logo {
+    color: #ffccda !important;
+    font-size: 23px !important;
+  }
+
+  .mobile-header {
+    border-bottom: 1px solid #ffccda;
   }
 }
 
