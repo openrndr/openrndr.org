@@ -2,6 +2,7 @@
   position: absolute;
   left: 0px;
   padding: 20px;
+  padding-left: 5px;
 }
 .menu > * {
   display: block;
@@ -28,6 +29,17 @@
 .menu .disable {
   opacity: 0.5;
   cursor: auto;
+}
+
+.menu h3 {
+  font-size: 0.9vw;
+  line-height: 1.2;
+}
+
+@media only screen and (min-width: 1440px) {
+  .menu {
+    padding-left: 20px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
