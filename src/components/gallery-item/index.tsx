@@ -92,7 +92,7 @@ export class GalleryItem extends React.Component<IProps, IState> {
                 className={"read-more button"}
                 onClick={this.toggleTextTruncate}
               >
-                {isTextTruncate ? "READ MORE" : "READ LESS"}
+                {isTextTruncate ? "READ MORE" : "×"}
               </span>
             )}
           </div>

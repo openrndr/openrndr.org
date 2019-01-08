@@ -25,8 +25,8 @@ export const TextBlock: React.SFC<IProps> = ({ data, className = "" }) => {
           </span>
         )
       ) : null}
-      <article
-        className={"running-text"}
+      <div
+        className={"running-text article"}
         dangerouslySetInnerHTML={{
           __html: data.bodyText
         }}

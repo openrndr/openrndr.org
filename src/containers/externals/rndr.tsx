@@ -15,9 +15,9 @@ const Rndr: React.SFC<any> = () => {
         <a href={`https://rndr.studio`} target={"_blank"}>
           {title}
         </a>
-        <article>
+        <div className={"article"}>
           <p>{text}</p>
-        </article>
+        </div>
       </h1>
     </div>
   );

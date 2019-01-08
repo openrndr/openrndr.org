@@ -58,8 +58,8 @@ export class SectionCommunity extends React.Component<IProps, IState> {
                 >
                   {q.question}
                 </strong>
-                <article
-                  className={"answer"}
+                <div
+                  className={"answer article"}
                   dangerouslySetInnerHTML={{
                     __html: q.answer
                   }}

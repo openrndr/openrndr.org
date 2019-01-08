@@ -16,9 +16,9 @@ const Guide: React.SFC<any> = () => {
         <a href={`https://guide.openrndr.org`} target={"_blank"}>
           {title}
         </a>
-        <article>
+        <div className={"article"}>
           <p>{text}</p>
-        </article>
+        </div>
       </h1>
       <Redirect to={"https://guide.openrndr.org"} />
     </div>

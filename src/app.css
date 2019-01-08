@@ -29,6 +29,11 @@ a {
   transition: opacity 200ms;*/
 }
 
+.read-more {
+  //background-color:red;
+  padding-top: 0px !important;
+}
+
 .load-more .button {
   /*font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;*/
   /*font-weight: 600;*/
@@ -87,7 +92,7 @@ iframe {
 }
 
 /*TYPOGRAPHY*/
-article,
+.article,
 .media-item-caption {
   white-space: pre-wrap;
 }
@@ -120,8 +125,8 @@ h3 {
   font-size: 16px;
 }
 
-article,
-article * {
+.article,
+.article * {
   font-size: 12px;
   line-height: 18px;
 }
@@ -199,6 +204,9 @@ p {
   body {
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
+  }
+
+  video {
   }
 
   /* For mobile phones: */

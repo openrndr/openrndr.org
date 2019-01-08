@@ -104,7 +104,7 @@ export class InstaImage extends React.Component<IProps, IState> {
             </a>
           </div>
           {data && (
-            <article>
+            <div className="article">
               <p>
                 <span>{data.title}</span>
                 <br />
@@ -114,7 +114,7 @@ export class InstaImage extends React.Component<IProps, IState> {
                   </a>
                 </span>
               </p>
-            </article>
+            </div>
           )}
         </div>
       </Fade>

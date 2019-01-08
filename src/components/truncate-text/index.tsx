@@ -51,7 +51,8 @@ export class TruncateText extends React.Component<IProps, IState> {
   render() {
     const { text, active } = this.props;
     return (
-      <article
+      <div
+        className={"article"}
         dangerouslySetInnerHTML={{
           __html: active
             ? `${text.slice(0, this.calcVisibleLength())}...`

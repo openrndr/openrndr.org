@@ -15,7 +15,9 @@ const App: React.SFC<any> = () => (
       <MetaTags />
       <GridLines />
       <div className="content">
-        <Routes />
+        <article>
+          <Routes />
+        </article>
       </div>
     </div>
   </Router>
