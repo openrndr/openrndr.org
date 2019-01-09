@@ -201,7 +201,11 @@ p {
     overflow: -moz-scrollbars-none;
   }
 
-  video {
+  .video {
+  }
+
+  .load-more span .button {
+    color: #fdd0dd !important;
   }
 
   /* For mobile phones: */

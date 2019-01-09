@@ -2,7 +2,7 @@
   position: absolute;
   left: 0px;
   padding: 20px;
-  padding-left: 5px;
+  //background-color: red;
 }
 .menu > * {
   display: block;
