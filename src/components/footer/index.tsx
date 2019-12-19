@@ -44,17 +44,17 @@ export const Footer: React.SFC<IProps> = props => {
         <h3>SUPPORT</h3>
         <a
           className={"button"}
-          href={"https://publicslack.com/slacks/openrndr/invites/new"}
+          href={"https://openrndr.discourse.group"}
           target={"_blank"}
         >
-          OPENRDNR Slack
+          Join Discourse
         </a>
         <a
           className={"button"}
-          href={"https://stackoverflow.com/questions/tagged/openrndr"}
+          href={"https://communityinviter.com/apps/openrndr/openrndr"}
           target={"_blank"}
         >
-          StackOverflow
+          Join Slack
         </a>
       </div>
 
