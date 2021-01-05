@@ -27,7 +27,7 @@
     "@ibm/type": "^0.5.4",
     "@types/axios": "^0.14.0",
     "animated-scroll-to": "^1.2.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "compare-versions": "^3.2.1",
     "datocms-client": "^0.3.41",
     "detect-browser": "^2.5.0",
